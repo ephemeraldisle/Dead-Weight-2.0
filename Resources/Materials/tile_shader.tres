@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ctbaan0qf40hr"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/tilemap_lights.gdshader" id="1_2aal6"]
+
+[resource]
+shader = ExtResource("1_2aal6")
+shader_parameter/color_a = Color(1, 1, 1, 1)
+shader_parameter/color_b = Color(1, 0, 0, 1)
+shader_parameter/speed_factor = 5.0

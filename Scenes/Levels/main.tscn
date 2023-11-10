@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmvkm5ouu0lnd"]
+
+[ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
+[ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
+[ext_resource type="PackedScene" uid="uid://crl3cbdt0b741" path="res://Scenes/Fundamentals/global_camera.tscn" id="3_2l16h"]
+[ext_resource type="PackedScene" uid="uid://dwlq8k2espun1" path="res://Scenes/Components/Universal/save_data.tscn" id="3_ajutw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackgroundSpace" parent="." instance=ExtResource("1_a8rnd")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_skake")]
+
+[node name="SaveData" parent="TileMap" instance=ExtResource("3_ajutw")]
+
+[node name="GlobalCamera" parent="." instance=ExtResource("3_2l16h")]
+debug = true
