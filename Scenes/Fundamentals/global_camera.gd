@@ -26,7 +26,7 @@ var player: Node2D
 var targeting_player = false
 
 @onready var center: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height")) / 2
-@onready var aim_position: Vector2 = center
+@onready var aim_position = Vector2.ZERO
 @onready var noise = FastNoiseLite.new()
 @onready var base_zoom = zoom
 @onready var original_position = global_position

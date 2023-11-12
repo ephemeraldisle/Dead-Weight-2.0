@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://ne2t50ej8jod"]
+
+[ext_resource type="Texture2D" uid="uid://ck4nbrqhyeb3p" path="res://Art/Projectiles/hits-6-Sheet.png" id="1_k5sqg"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/laser_hit_effect.gd" id="2_7m6b8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c1fh"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n55x"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn825"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vo2e"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4nsk"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcje8"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnw3a"]
+atlas = ExtResource("1_k5sqg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3q2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c1fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n55x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn825")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vo2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4nsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcje8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnw3a")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="LaserHitEffect" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_n3q2h")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+script = ExtResource("2_7m6b8")

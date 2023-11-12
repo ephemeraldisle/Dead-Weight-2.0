@@ -95,6 +95,21 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="tilemap"
+2d_physics/layer_2="objects"
+2d_physics/layer_3="player"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="player projectiles"
+2d_physics/layer_6="tank"
+2d_physics/layer_7="player pickup"
+2d_physics/layer_8="asteroid type things"
+2d_physics/layer_9="rope"
+2d_physics/layer_10="actionables"
+2d_physics/layer_11="identifiers"
+2d_physics/layer_13="moving platform"
+
 [physics]
 
 2d/run_on_separate_thread=true

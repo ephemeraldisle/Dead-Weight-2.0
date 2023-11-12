@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://vef6tdll8ra3"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Environment/Togglers/power_node.gd" id="1_vw2gk"]
+[ext_resource type="Texture2D" uid="uid://bv4g3t6nddt1b" path="res://Art/Environment/Objects/power node.png" id="3_wajpj"]
+[ext_resource type="AudioStream" uid="uid://cg4orrw4gqgev" path="res://Audio/Objects/Togglers/power node crystal shatter.mp3" id="4_8x28o"]
+[ext_resource type="PackedScene" uid="uid://dspe86sj8v0ex" path="res://Scenes/Components/Environment/toggler_component.tscn" id="4_dy054"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrvt7"]
+atlas = ExtResource("3_wajpj")
+region = Rect2(0, 0, 100, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3umh"]
+atlas = ExtResource("3_wajpj")
+region = Rect2(100, 0, 100, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c5k1"]
+atlas = ExtResource("3_wajpj")
+region = Rect2(200, 0, 100, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5uyr"]
+atlas = ExtResource("3_wajpj")
+region = Rect2(300, 0, 100, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45wll"]
+atlas = ExtResource("3_wajpj")
+region = Rect2(400, 0, 100, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly5yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrvt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3umh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c5k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5uyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45wll")
+}],
+"loop": false,
+"name": &"yup",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk3fr"]
+size = Vector2(74, 94)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8y5x6"]
+streams_count = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("4_8x28o")
+stream_0/weight = 1.0
+
+[node name="PowerNode" type="StaticBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_vw2gk")
+metadata/_edit_vertical_guides_ = []
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ly5yy")
+animation = &"yup"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(-11, 1)
+shape = SubResource("RectangleShape2D_gk3fr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8y5x6")
+max_distance = 1000.0
+max_polyphony = 4
+bus = &"Sounds"
+
+[node name="TogglerComponent" parent="." instance=ExtResource("4_dy054")]

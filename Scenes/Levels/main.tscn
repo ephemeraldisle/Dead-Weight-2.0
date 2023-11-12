@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=9 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
 [ext_resource type="PackedScene" uid="uid://crl3cbdt0b741" path="res://Scenes/Fundamentals/global_camera.tscn" id="3_2l16h"]
-[ext_resource type="PackedScene" uid="uid://dwlq8k2espun1" path="res://Scenes/Components/Universal/save_data.tscn" id="3_ajutw"]
+[ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
+[ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
+[ext_resource type="PackedScene" uid="uid://vef6tdll8ra3" path="res://Scenes/Objects/Environment/Togglers/power_node.tscn" id="6_q7au7"]
+[ext_resource type="PackedScene" uid="uid://bfi1wqf0pfmuw" path="res://Scenes/Objects/Environment/Toggleables/Traps/laser_trap.tscn" id="7_ela7u"]
+[ext_resource type="PackedScene" uid="uid://bf75lquvw7wae" path="res://Scenes/Objects/Environment/Toggleables/barrier.tscn" id="8_vqn2n"]
 
 [node name="Main" type="Node2D"]
 
@@ -11,7 +15,29 @@
 
 [node name="TileMap" parent="." instance=ExtResource("2_skake")]
 
-[node name="SaveData" parent="TileMap" instance=ExtResource("3_ajutw")]
-
 [node name="GlobalCamera" parent="." instance=ExtResource("3_2l16h")]
+position = Vector2(30, -222)
 debug = true
+
+[node name="Door" parent="." instance=ExtResource("5_6bcy1")]
+position = Vector2(836, -447)
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="LaserTrap" parent="." instance=ExtResource("7_ela7u")]
+position = Vector2(134, -284)
+
+[node name="PowerNode" parent="." instance=ExtResource("6_q7au7")]
+position = Vector2(161, -155)
+scale = Vector2(0.544, 0.544)
+
+[node name="ControlPanel" parent="." node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(87, -154)
+linked_objects_start_active = [NodePath("../Door"), NodePath("../LaserTrap"), NodePath("../Barrier")]
+
+[node name="Barrier" parent="." instance=ExtResource("8_vqn2n")]
+position = Vector2(-68, -193)
+starting_mode = 0
+
+[node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
+z_index = 500

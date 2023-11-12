@@ -1,0 +1,199 @@
+[gd_scene load_steps=30 format=3 uid="uid://b6pqpgnnjyp7p"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/turret.gd" id="1_h0w3e"]
+[ext_resource type="Texture2D" uid="uid://dt386qmftyhe" path="res://Art/Environment/Objects/laser_turret.png" id="1_joift"]
+[ext_resource type="PackedScene" uid="uid://bi4dytxp16uuc" path="res://Scenes/Projectiles/turret_laser.tscn" id="2_pf3gk"]
+[ext_resource type="PackedScene" uid="uid://bwvn4aucd7pik" path="res://Scenes/Projectiles/laser_light.tscn" id="3_a03an"]
+[ext_resource type="AudioStream" uid="uid://xny6rwo617ms" path="res://Audio/Objects/Traps/Turret/lasercharging.mp3" id="6_vkyp3"]
+[ext_resource type="AudioStream" uid="uid://b3817w45435ay" path="res://Audio/Objects/Traps/Turret/new turret fire sound.mp3" id="7_qmtgs"]
+[ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="7_tflrq"]
+[ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="8_f6aoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1v63"]
+atlas = ExtResource("1_joift")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_valyy"]
+atlas = ExtResource("1_joift")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3b5o"]
+atlas = ExtResource("1_joift")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc1xb"]
+atlas = ExtResource("1_joift")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpiu7"]
+atlas = ExtResource("1_joift")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rrwb"]
+atlas = ExtResource("1_joift")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiw4l"]
+atlas = ExtResource("1_joift")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2xiv"]
+atlas = ExtResource("1_joift")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1vn"]
+atlas = ExtResource("1_joift")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axnwn"]
+atlas = ExtResource("1_joift")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyont"]
+atlas = ExtResource("1_joift")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vemoi"]
+atlas = ExtResource("1_joift")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8mmq"]
+atlas = ExtResource("1_joift")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7levw"]
+atlas = ExtResource("1_joift")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6trx"]
+atlas = ExtResource("1_joift")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnsf7"]
+atlas = ExtResource("1_joift")
+region = Rect2(1920, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a5o2"]
+atlas = ExtResource("1_joift")
+region = Rect2(2048, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjsnn"]
+atlas = ExtResource("1_joift")
+region = Rect2(2176, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yolqk"]
+atlas = ExtResource("1_joift")
+region = Rect2(2176, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6wrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1v63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_valyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3b5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc1xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpiu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rrwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiw4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2xiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axnwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyont")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vemoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8mmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7levw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6trx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnsf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a5o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjsnn")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yolqk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2uwf"]
+size = Vector2(50, 67)
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_h0w3e")
+laser = ExtResource("2_pf3gk")
+light = ExtResource("3_a03an")
+off_time = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g6wrv")
+animation = &"fire"
+autoplay = "idle"
+frame = 17
+frame_progress = 1.0
+
+[node name="FirePoint" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["danger"]]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 23.5)
+shape = SubResource("RectangleShape2D_g2uwf")
+
+[node name="ChargeSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_vkyp3")
+panning_strength = 3.0
+bus = &"Sounds"
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_qmtgs")
+panning_strength = 3.0
+bus = &"Sounds"
+
+[node name="TimerComponent" parent="." instance=ExtResource("7_tflrq")]
+
+[node name="PowerController" parent="." instance=ExtResource("8_f6aoc")]

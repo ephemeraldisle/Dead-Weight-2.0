@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=60 format=3 uid="uid://ekuj3egoitq0"]
 
-[ext_resource type="Texture2D" uid="uid://c3dyj2huam0dp" path="res://Art/Tiles/level_tileset.png" id="1_4gj3q"]
+[ext_resource type="Texture2D" uid="uid://c3dyj2huam0dp" path="res://Art/Environment/Tiles/level_tileset.png" id="1_4gj3q"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fbe5b"]
 polygon = PackedVector2Array(-40, -40, 64, -40, 64, 64, -40, 64)

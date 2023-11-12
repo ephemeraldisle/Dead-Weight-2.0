@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbhc3j087wtxl"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_track.gd" id="1_5enud"]
+[ext_resource type="Texture2D" uid="uid://c5ao8ujxfmmt5" path="res://Art/Environment/Objects/saw track.png" id="1_yejhl"]
+[ext_resource type="PackedScene" uid="uid://dmsyy6q14ruhv" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_blade.tscn" id="2_bn2c8"]
+[ext_resource type="Script" path="res://Scenes/Components/Environment/damaging_zone.gd" id="4_ei5vv"]
+[ext_resource type="AudioStream" uid="uid://bq8yjai6egkfh" path="res://Audio/Objects/Traps/Saw/saw sound.mp3" id="4_xrxxg"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="5_p1pb3"]
+[ext_resource type="Texture2D" uid="uid://bwne30q5i102u" path="res://Art/Faces/scared face.png" id="6_iv6lh"]
+[ext_resource type="PackedScene" uid="uid://cktj00bqwqqud" path="res://Scenes/Audio/impact_sound_for_player.tscn" id="6_vlul4"]
+[ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="8_iwej4"]
+[ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="9_o0seq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thtvm"]
+atlas = ExtResource("1_yejhl")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xq3j"]
+radius = 54.0833
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wf4qk"]
+
+[node name="SawTrack" type="Node2D"]
+script = ExtResource("1_5enud")
+off_time = 0
+tween_ease = 0
+tween_trans = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_direction = 1
+offset_left = -600.0
+offset_top = -15.0
+offset_right = 600.0
+offset_bottom = 15.0
+texture = SubResource("AtlasTexture_thtvm")
+region_rect = Rect2(224, 189, 128, 20)
+patch_margin_left = 27
+patch_margin_top = 11
+patch_margin_right = 22
+patch_margin_bottom = 4
+
+[node name="StartPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-523, 0)
+
+[node name="EndPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(530, 0)
+
+[node name="SawHolder" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-523, 0)
+
+[node name="SawBlade" parent="SawHolder" instance=ExtResource("2_bn2c8")]
+unique_name_in_owner = true
+light_mask = 4
+position = Vector2(0, -48)
+rotation = 1.5708
+frame = 0
+frame_progress = 0.0
+
+[node name="SawHitbox" type="Area2D" parent="SawHolder"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 292
+monitoring = false
+monitorable = false
+script = ExtResource("4_ei5vv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawHolder/SawHitbox"]
+visible = false
+shape = SubResource("CircleShape2D_3xq3j")
+
+[node name="ImpactSoundForPlayer" parent="SawHolder/SawHitbox" instance=ExtResource("6_vlul4")]
+position = Vector2(523, 0)
+
+[node name="SawSound" type="AudioStreamPlayer2D" parent="SawHolder"]
+unique_name_in_owner = true
+stream = ExtResource("4_xrxxg")
+volume_db = -80.0
+max_distance = 1000.0
+attenuation = 0.5
+panning_strength = 3.0
+bus = &"Sounds"
+
+[node name="SawLight" type="PointLight2D" parent="SawHolder"]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+scale = Vector2(0.1, 0.1)
+energy = 0.0
+range_item_cull_mask = 5
+texture = ExtResource("5_p1pb3")
+
+[node name="Identifier" type="AnimatableBody2D" parent="SawHolder" groups=["danger"]]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawHolder/Identifier"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_wf4qk")
+
+[node name="Sprite2D" type="Sprite2D" parent="SawHolder/Identifier"]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_iv6lh")
+
+[node name="PowerController" parent="." instance=ExtResource("8_iwej4")]
+
+[node name="TimerComponent" parent="." instance=ExtResource("9_o0seq")]
+
+[connection signal="body_entered" from="SawHolder/SawHitbox" to="." method="_on_saw_hitbox_body_entered"]

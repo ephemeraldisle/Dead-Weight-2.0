@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c34mfqhn2vlcn"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Environment/power_controller.gd" id="1_1i1mf"]
+
+[node name="PowerController" type="Node"]
+script = ExtResource("1_1i1mf")

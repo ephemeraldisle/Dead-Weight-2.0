@@ -30,25 +30,8 @@ var state := {
 	"local" = {},	
 }
 
-var screenshake = true
-var master_volume = 1
-var music_volume = 1
-var sound_volume = 1
 
-var tutorial_complete = false
-var options_visited = false
-var jetpack_enabled = tutorial_complete
-var rotation_enabled = tutorial_complete
-var death_enabled = tutorial_complete
-var gun_enabled = false
 
-var shield_enabled = true
-var introduction_watched = false
-
-var spawn_point = Vector2(166, 84)
-var heart_beep = true
-var crates_cleared = false
-var completed_actions = {}
 var boss_zone_entered = false
 var alternate_face = 0
 var dialogue_happening = false
@@ -92,16 +75,17 @@ func update_spawn_position(pos: Vector2):
 	state.spawn_point = pos
 	SaveManager.update_spawn_point(pos)
 
-func add_completed_action(actor: NodePath):
-#	print_debug("adding this id %s" %actor)
-	#print(actor)
-	state.local[actor] = true
 
 func total_save() -> void:
+	print_debug("big ol save")
 	SaveManager.update_save_data()
 
 func unlock_gun() -> void:
 	state.abilities.gun_enabled = true
+
+func register_local_save(parent_id, save_data) -> void:
+	print_debug("registering local save")
+	state.local[parent_id] = save_data.duplicate(true)
 
 func reset_unsaved_actions() -> void:
 #	print_debug("resetting")
@@ -118,4 +102,3 @@ func check_saved_action(action_id: int) -> bool:
 		return true
 	else:
 		return false
-

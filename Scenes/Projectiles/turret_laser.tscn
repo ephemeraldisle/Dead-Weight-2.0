@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://bi4dytxp16uuc"]
+
+[ext_resource type="Texture2D" uid="uid://dn6j34dh8csvj" path="res://Art/Projectiles/pulse - Copy-Sheet.png" id="1_j7kxa"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/turret_laser.gd" id="1_wjc14"]
+[ext_resource type="PackedScene" uid="uid://ne2t50ej8jod" path="res://Scenes/Projectiles/laser_hit_effect.tscn" id="2_ohcmf"]
+[ext_resource type="AudioStream" uid="uid://suwmtowe581u" path="res://Audio/Objects/Traps/Turret/laserhit.mp3" id="3_1o8yh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s5ne"]
+atlas = ExtResource("1_j7kxa")
+region = Rect2(0, 0, 126, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10dt7"]
+atlas = ExtResource("1_j7kxa")
+region = Rect2(126, 0, 126, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0wbb"]
+atlas = ExtResource("1_j7kxa")
+region = Rect2(252, 0, 126, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1roq"]
+atlas = ExtResource("1_j7kxa")
+region = Rect2(378, 0, 126, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w8lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s5ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10dt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0wbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1roq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqoi3"]
+radius = 7.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tgxp8"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("3_1o8yh")
+stream_0/weight = 1.0
+
+[node name="Turret Laser" type="AnimatableBody2D" groups=["danger"]]
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 309
+sync_to_physics = false
+script = ExtResource("1_wjc14")
+hit_effect = ExtResource("2_ohcmf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4w8lj")
+autoplay = "default"
+frame_progress = 0.934877
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 0)
+shape = SubResource("CircleShape2D_xqoi3")
+
+[node name="Hit Sound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_tgxp8")
+attenuation = 1.31951
+panning_strength = 3.0
+bus = &"Sounds"

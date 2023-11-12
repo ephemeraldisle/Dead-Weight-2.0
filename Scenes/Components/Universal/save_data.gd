@@ -1,9 +1,11 @@
 extends Node
+class_name SaveData
 
 signal save_updated
 
-var completed = false
+@export var _default_save_data: Dictionary
 
+@onready var save_data = _default_save_data.duplicate(true)
 @onready var parent_id = get_parent().get_path()
 
 func _ready() -> void:
@@ -11,8 +13,18 @@ func _ready() -> void:
 	reset()
 	
 func reset() -> void:
-	if completed != GameState.state.local.has(parent_id):
-		completed = GameState.state.local[parent_id]
+	if GameState.state.local.has(parent_id):
+		save_data = GameState.state.local[parent_id].duplicate(true)
+	else: 
+		save_data = _default_save_data.duplicate(true)
+	save_updated.emit()
+
+func get_data(key):
+	return save_data[key] 
+
+func update_data(key, value) -> void:
+	save_data[key] = value
+	GameState.register_local_save(parent_id, save_data)
 
 func on_player_died() -> void:
 	reset()

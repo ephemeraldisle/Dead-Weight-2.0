@@ -41,7 +41,6 @@ func _ready() -> void:
 #	print(_save_data_default.options.screenshake)
 	load_save_file()
 	_initliazed = true
-#	print_debug(save_data["completed_actions"])
 
 
 func load_save_file() -> void:
