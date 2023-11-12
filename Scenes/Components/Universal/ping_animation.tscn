@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce7rh3vtcmies"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Universal/ping_animation.gd" id="1_3qdl6"]
+[ext_resource type="Texture2D" uid="uid://30dm8ruytp3n" path="res://Art/UI/ping line 1.png" id="1_patbo"]
+[ext_resource type="Texture2D" uid="uid://e3o6ren8xbk7" path="res://Art/UI/ping line 2.png" id="2_7lyg3"]
+[ext_resource type="Texture2D" uid="uid://c5auxll8o2gs8" path="res://Art/Faces/cool face.png" id="2_nw151"]
+[ext_resource type="Texture2D" uid="uid://cnregnitiwnrl" path="res://Art/UI/ping line 3.png" id="3_776t4"]
+
+[sub_resource type="Animation" id="Animation_24aoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lil Guy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Med Guy:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Big Guy:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q7p6o"]
+resource_name = "ping"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lil Guy:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 0.466517, 1, 2.2974, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.172549, 0.470588, 0.768627, 1), Color(1, 1, 1, 1), Color(0.172549, 0.470588, 0.768627, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Med Guy:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 0.466517, 1, 2.2974, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.172549, 0.470588, 0.768627, 1), Color(1, 1, 1, 1), Color(0.172549, 0.470588, 0.768627, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Big Guy:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.466517, 1, 2.2974, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.172549, 0.470588, 0.768627, 1), Color(1, 1, 1, 1), Color(0.172549, 0.470588, 0.768627, 1), Color(0.172549, 0.470588, 0.768627, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iupq1"]
+_data = {
+"RESET": SubResource("Animation_24aoi"),
+"ping": SubResource("Animation_q7p6o")
+}
+
+[node name="PingAnimation" type="Node2D"]
+process_mode = 3
+z_index = 50
+rotation = -0.261799
+script = ExtResource("1_3qdl6")
+portrait_texture = Array[Texture]([ExtResource("2_nw151")])
+
+[node name="Lil Guy" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_patbo")
+
+[node name="Med Guy" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_7lyg3")
+
+[node name="Big Guy" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_776t4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iupq1")
+}
