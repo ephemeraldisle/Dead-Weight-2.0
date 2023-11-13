@@ -3,7 +3,7 @@ extends Node2D
 @export var raycasts: Array[RayCast2D]
 @export var magnet_particles: Array[GPUParticles2D]
 
-var magnet_modifier = 1
+var magnet_modifier = 0
 var magnet_animating = false
 var magnet_extended = false
 

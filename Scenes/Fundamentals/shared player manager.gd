@@ -1,5 +1,7 @@
 extends Node2D
 
+const PAUSE_FRAME_TIME = 0.05
+
 var player
 var tank
 #var player_holder = preload("res://Scenes/player_holder.tscn")
@@ -32,7 +34,7 @@ func register_connections():
 	GlobalCamera.follow_node(self)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !player or !tank:
 		return
 	var distance = player.global_position - tank.global_position
@@ -93,3 +95,9 @@ func request_energy_percentage() -> float:
 
 func request_water_percentage() -> float:
 	return player.get_water_percentage()
+
+
+func request_pause_frames() -> void:
+	get_tree().paused = true
+	await get_tree().create_timer(PAUSE_FRAME_TIME).timeout
+	get_tree().paused = false

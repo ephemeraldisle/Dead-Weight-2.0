@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://5xkp2n7lbo7x"]
+[gd_scene load_steps=73 format=3 uid="uid://5xkp2n7lbo7x"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_j445f"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/Tank.gd" id="1_rjyx0"]
@@ -30,8 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="16_lohjb"]
 [ext_resource type="Texture2D" uid="uid://demu11mu3a5b1" path="res://Art/Player/Tank/mouth1.png" id="16_upsqu"]
 [ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="19_pcqb3"]
-[ext_resource type="Script" path="res://Scenes/Objects/Player/EyeDanger.gd" id="23_hep82"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="24_1rugv"]
+[ext_resource type="Script" path="res://Scenes/Objects/Player/ExpressionManager.gd" id="31_36umq"]
 [ext_resource type="PackedScene" uid="uid://bayla3pm7wq78" path="res://Scenes/Components/Player/shield_module.tscn" id="34_sjcxy"]
 [ext_resource type="PackedScene" uid="uid://d0i0vf4geewcj" path="res://Scenes/Components/Player/magnet_module.tscn" id="37_cpaf8"]
 
@@ -169,6 +169,47 @@ tracks/2/keys = {
 "values": [12.059]
 }
 
+[sub_resource type="Animation" id="Animation_55xxs"]
+resource_name = "no_shield"
+length = 0.01
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/width")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/buffer")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/color")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.94902, 0.721569, 0.254902, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_aumo5"]
 resource_name = "on"
 length = 6.0
@@ -242,6 +283,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mn03v"]
 _data = {
 "RESET": SubResource("Animation_0xar8"),
+"no_shield": SubResource("Animation_55xxs"),
 "on": SubResource("Animation_aumo5"),
 "shieldbreak": SubResource("Animation_w5c12")
 }
@@ -584,7 +626,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("%upper lid:visible")
+tracks/23/path = NodePath("RightEyeComplex/UpperLid:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -596,7 +638,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("%lower lid:visible")
+tracks/24/path = NodePath("RightEyeComplex/LowerLid:visible")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -900,7 +942,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("%upper lid:visible")
+tracks/21/path = NodePath("RightEyeComplex/UpperLid:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -912,7 +954,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("%lower lid:visible")
+tracks/22/path = NodePath("RightEyeComplex/LowerLid:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1327,7 +1369,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("%upper lid:visible")
+tracks/21/path = NodePath("RightEyeComplex/UpperLid:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -1339,7 +1381,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("%lower lid:visible")
+tracks/22/path = NodePath("RightEyeComplex/LowerLid:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1510,7 +1552,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%upper lid:visible")
+tracks/10/path = NodePath("RightEyeComplex/UpperLid:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1522,7 +1564,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("%lower lid:visible")
+tracks/11/path = NodePath("RightEyeComplex/LowerLid:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1846,7 +1888,7 @@ autoplay = "rest"
 
 [node name="ShieldAnimator" type="AnimationPlayer" parent="Node2D/AnimatedSprite2D"]
 unique_name_in_owner = true
-autoplay = "on"
+autoplay = "no_shield"
 libraries = {
 "": SubResource("AnimationLibrary_mn03v")
 }
@@ -1872,7 +1914,7 @@ rotation = 3.14159
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_atax5")
 
-[node name="upper lid" type="Sprite2D" parent="Node2D/EyeHolders/RightEyeComplex"]
+[node name="UpperLid" type="Sprite2D" parent="Node2D/EyeHolders/RightEyeComplex"]
 unique_name_in_owner = true
 light_mask = 2
 material = SubResource("ShaderMaterial_dxpla")
@@ -1880,7 +1922,7 @@ position = Vector2(0, -28)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_hogxd")
 
-[node name="lower lid" type="Sprite2D" parent="Node2D/EyeHolders/RightEyeComplex"]
+[node name="LowerLid" type="Sprite2D" parent="Node2D/EyeHolders/RightEyeComplex"]
 unique_name_in_owner = true
 modulate = Color(0.160156, 0.683594, 0.566406, 1)
 light_mask = 2
@@ -2031,14 +2073,13 @@ speed_scale = 3.84
 explosiveness = 1.0
 fixed_fps = 60
 
-[node name="EyeDanger" type="Area2D" parent="." node_paths=PackedStringArray("gazer")]
+[node name="ExpressionManager" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 1242
-script = ExtResource("23_hep82")
-gazer = NodePath("../GazeTarget")
+script = ExtResource("31_36umq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeDanger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExpressionManager"]
 position = Vector2(6, 0)
 shape = SubResource("CircleShape2D_d5dkr")
 
@@ -2052,7 +2093,7 @@ position = Vector2(353, 2)
 scale = Vector2(0.349146, 0.349146)
 texture = ExtResource("24_1rugv")
 
-[node name="Magnet Module" parent="." instance=ExtResource("37_cpaf8")]
+[node name="MagnetModule" parent="." instance=ExtResource("37_cpaf8")]
 
-[node name="Shield Module" parent="." node_paths=PackedStringArray("shield_animator") instance=ExtResource("34_sjcxy")]
+[node name="ShieldModule" parent="." node_paths=PackedStringArray("shield_animator") instance=ExtResource("34_sjcxy")]
 shield_animator = NodePath("../Node2D/AnimatedSprite2D/ShieldAnimator")

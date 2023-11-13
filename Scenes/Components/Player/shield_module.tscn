@@ -51,7 +51,7 @@ color_ramp = SubResource("GradientTexture1D_g84nx")
 hue_variation_min = -0.01
 hue_variation_max = 0.01
 
-[node name="Shield Module" type="Node2D"]
+[node name="ShieldModule" type="Node2D"]
 script = ExtResource("1_0qxpu")
 
 [node name="ShieldRecharge" type="AudioStreamPlayer2D" parent="."]
@@ -92,4 +92,3 @@ trail_section_subdivisions = 1
 
 [node name="AbilityPowerController" parent="." instance=ExtResource("6_xx24b")]
 ability_name = "shield"
-powered = false

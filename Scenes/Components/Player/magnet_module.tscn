@@ -131,7 +131,7 @@ color_ramp = SubResource("GradientTexture1D_shvha")
 hue_variation_min = -0.02
 hue_variation_max = 0.02
 
-[node name="Magnet Module" type="Node2D" node_paths=PackedStringArray("raycasts", "magnet_particles")]
+[node name="MagnetModule" type="Node2D" node_paths=PackedStringArray("raycasts", "magnet_particles")]
 script = ExtResource("1_qpcpe")
 raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D4"), NodePath("RayCast2D2"), NodePath("RayCast2D3"), NodePath("RayCast2D6"), NodePath("RayCast2D7"), NodePath("RayCast2D5")]
 magnet_particles = [NodePath("MagnetParticles"), NodePath("MagnetParticles2")]

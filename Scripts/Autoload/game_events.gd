@@ -11,6 +11,16 @@ signal full_heal
 signal player_died
 signal energy_percent_changed
 signal health_changed
+signal dialogue_started
+signal dialogue_ended
+
+
+func emit_dialogue_started() -> void:
+	dialogue_started.emit()
+
+
+func emit_dialogue_ended() -> void:
+	dialogue_ended.emit()
 
 
 func emit_health_changed(number: int) -> void:

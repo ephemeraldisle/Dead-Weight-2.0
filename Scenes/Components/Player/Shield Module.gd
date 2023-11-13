@@ -5,7 +5,7 @@ const ENERGY_COST_PER_FRAME = 0.0055
 @export var shield_animator: AnimationPlayer 
 @export var shield_energy_cost := 0.75
 
-var shielded = true
+var shielded = false
 var _gathered_energy := 0.0
 
 @onready var sparks: GPUParticles2D = %Sparks
@@ -16,6 +16,8 @@ var _gathered_energy := 0.0
 
 func _ready() -> void:
 	ability_power_controller.power_changed.connect(on_shield_enabled)
+	if ability_power_controller.powered:
+		start_shield()
 
 func _physics_process(_delta: float) -> void:	
 	if not ability_power_controller.powered:

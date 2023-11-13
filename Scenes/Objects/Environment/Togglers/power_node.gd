@@ -9,7 +9,7 @@ const INVINCIBILITY_TIME = 0.5
 @export var linked_objects_start_deactive: Array[Node2D]
 
 var _times_hit := 0
-var _damagable := true
+var _damageable := true
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -41,15 +41,15 @@ func update_appearance_and_hitbox() -> void:
 func check_save_data() -> void:
 	if toggler_component.toggled:
 		_times_hit = 0
-		_damagable = true
+		_damageable = true
 	else:
 		_times_hit = MAX_HITS
-		_damagable = false
+		_damageable = false
 	update_appearance_and_hitbox()
 
 
 func on_damage() -> void:
-	if !_damagable:
+	if !_damageable:
 		return
 	_times_hit = min(_times_hit + 1, MAX_HITS)
 
@@ -66,6 +66,6 @@ func on_damage() -> void:
 
 
 func invicibilty_frames() -> void:
-	_damagable = false
+	_damageable = false
 	await get_tree().create_timer(INVINCIBILITY_TIME, false, true).timeout
-	_damagable = true
+	_damageable = true
