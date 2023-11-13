@@ -16,6 +16,7 @@ var state := {
 		"tutorial_complete": false,
 		"options_visited": false,
 		"introduction_watched": false,
+		"batteries": 1,
 	},
 	"abilities":
 	{
@@ -102,7 +103,9 @@ func reset_unsaved_actions() -> void:
 	for ability in SaveManager.save_data.abilities:
 		if SaveManager.save_data.abilities[ability] == false:
 			state.abilities[ability] = false
-
+	for progress in SaveManager.save_data.progression:
+		state.progression[progress] = SaveManager.save_data.progression[progress]
+	GameEvents.emit_unsaved_reset()
 
 func check_saved_action(action_id: int) -> bool:
 	if state.local.has(action_id):

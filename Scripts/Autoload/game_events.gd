@@ -13,6 +13,7 @@ signal energy_percent_changed
 signal health_changed
 signal dialogue_started
 signal dialogue_ended
+signal unsaved_reset
 
 
 func emit_dialogue_started() -> void:
@@ -61,3 +62,6 @@ func emit_gun_collected() -> void:
 
 func emit_full_heal() -> void:
 	full_heal.emit()
+
+func emit_unsaved_reset() -> void:
+	unsaved_reset.emit()

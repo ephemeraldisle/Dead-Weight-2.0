@@ -19,6 +19,7 @@ var _save_data_default := {
 		"tutorial_complete": false,
 		"options_visited": false,
 		"introduction_watched": false,
+		"batteries": 1,
 	},
 	"abilities":
 	{

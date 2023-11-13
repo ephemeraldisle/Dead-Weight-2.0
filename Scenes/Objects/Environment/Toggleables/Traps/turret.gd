@@ -3,6 +3,7 @@ extends Toggleable
 signal finished_charging
 
 const ANIMATION_TIME = 0.6875
+const LASER_ADJUST_SCALE = Vector2(2.124, 2.124)
 
 @export var laser: PackedScene
 @export var light: PackedScene
@@ -61,9 +62,8 @@ func activate(_instant: bool = false) -> void:
 	fire_sound.play()
 	var new_laser = laser.instantiate()
 
-	new_laser.scale = Vector2(2.124, 2.124)
-#	foreground.add_child(new_laser)
-	add_child(new_laser)
+	new_laser.scale = LASER_ADJUST_SCALE
+	foreground.add_child(new_laser)
 	new_laser.global_position = fire_point.global_position
 	var direction = global_position.direction_to(fire_point.global_position)
 	var laser_velocity = direction * speed_factor

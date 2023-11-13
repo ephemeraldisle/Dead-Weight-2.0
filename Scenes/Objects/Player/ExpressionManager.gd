@@ -40,8 +40,6 @@ var agitation = 0
 
 func _ready() -> void:
 	tank.tank_hurt.connect(try_emotion.bind("hurt"))
-
-
 #	get_tree().get_first_node_in_group("player").player_damaged.connect(try_emotion.bind("hurt"))
 
 
@@ -87,9 +85,9 @@ func try_emotion(animation_name: String) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var location = get_closest_thing_of_interest()
-	if location == Vector2.ZERO:
-		location = to_global(get_local_mouse_position())
+	var target = get_closest_thing_of_interest()
+	if target == Vector2.ZERO:
+		target = to_global(get_local_mouse_position())
 
 	eye_ball.look_at(Vector2.UP)
 	eye_ball_2.look_at(Vector2.UP)
@@ -101,7 +99,7 @@ func _physics_process(delta: float) -> void:
 
 	if tank.magnet_module.magnet_modifier > 0:
 		expressions.play("concentrating")
-		location = tank.global_position + tank.transform.y * MAGNET_TARGET_OFFSET
+		target = tank.global_position + tank.transform.y * MAGNET_TARGET_OFFSET
 	elif agitation > 0:
 		if agitation >= HURT_THRESHOLD:
 			expressions.play("hurt")
@@ -111,7 +109,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		expressions.play("RESET")
 
-	desired_target_position = location
+	desired_target_position = target
 	current_target_position = lerp(
 		current_target_position, desired_target_position, LERP_PERCENTAGE
 	)
