@@ -1,6 +1,6 @@
 extends Toggleable
 
-enum Mode {on, off}
+enum Mode { on, off }
 
 const BARRIER_FADE_TIME = 1.0
 
@@ -35,6 +35,7 @@ func activate(instant: bool = false) -> void:
 	current_mode = Mode.on
 	activated.emit()
 
+
 func deactivate(instant: bool = false) -> void:
 	damaging_zone.monitoring = false
 	var tween = create_tween()
@@ -50,6 +51,7 @@ func deactivate(instant: bool = false) -> void:
 	current_mode = Mode.off
 	deactivated.emit()
 
+
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
@@ -58,7 +60,8 @@ func make_invisible(instant: bool = false) -> void:
 	tween.tween_property(on_hum, "volume_db", -80, 0.01 if instant else FADE_TIME)
 	await tween.finished
 	made_invisible.emit()
-	
+
+
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
@@ -67,7 +70,8 @@ func make_visible(instant: bool = false) -> void:
 	tween.tween_property(on_hum, "volume_db", 0, 0.01 if instant else FADE_TIME)
 	await tween.finished
 	made_visible.emit()
-	
+
+
 func on_power_changed(powered: bool) -> void:
 	if powered:
 		activate()

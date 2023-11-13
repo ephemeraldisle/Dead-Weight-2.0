@@ -1,0 +1,248 @@
+[gd_scene load_steps=19 format=3 uid="uid://d0i0vf4geewcj"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Player/Magnet Module.gd" id="1_qpcpe"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="2_42isc"]
+[ext_resource type="Texture2D" uid="uid://b5qi2wers0ldt" path="res://Art/Player/Tank/tankmagnet.png" id="3_ein21"]
+[ext_resource type="AudioStream" uid="uid://blxukddjdx6hp" path="res://Audio/Objects/Player/Tank/magnetloop.mp3" id="4_pr5bo"]
+[ext_resource type="AudioStream" uid="uid://dsrfo1oqp5310" path="res://Audio/Objects/Player/Tank/magnetextend.mp3" id="5_8yc1c"]
+[ext_resource type="AudioStream" uid="uid://clhua682il3cm" path="res://Audio/Objects/Player/Tank/magnetretract.mp3" id="6_vf676"]
+[ext_resource type="Texture2D" uid="uid://ctbyabueji42o" path="res://Art/Particles/circle_05.png" id="7_0lwft"]
+
+[sub_resource type="Animation" id="Animation_j8scl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1p6nq"]
+resource_name = "extend"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(7, 9), Vector2(7, 22), Vector2(7, 14), Vector2(7, 18), Vector2(7, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.2, 0.5), Vector2(0.3, 0.2), Vector2(0.23, 0.28), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlwih"]
+_data = {
+"RESET": SubResource("Animation_j8scl"),
+"extend": SubResource("Animation_1p6nq")
+}
+
+[sub_resource type="Gradient" id="Gradient_qqlo5"]
+offsets = PackedFloat32Array(0, 0.432161, 0.502513, 0.683417, 0.773869, 1)
+colors = PackedColorArray(1, 0, 0.0166664, 0.764706, 1, 0.32549, 0.12549, 1, 1, 0, 0.366667, 1, 1, 0.133333, 0, 1, 1, 0.133333, 0, 0, 1, 0.133333, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uuuyw"]
+gradient = SubResource("Gradient_qqlo5")
+
+[sub_resource type="Curve" id="Curve_5yoiv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.165217, 1), 0.0, 0.0, 0, 0, Vector2(0.491304, 0.757895), 0.0, 0.0, 0, 0, Vector2(0.865217, 1), 0.0, 0.0, 0, 0, Vector2(0.943478, 0.673684), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_k8igo"]
+curve = SubResource("Curve_5yoiv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_re0ay"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+direction = Vector3(-1, 0.2, 0)
+spread = 0.0
+gravity = Vector3(120, -150, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 120.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 40.0
+linear_accel_max = 60.0
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_k8igo")
+color = Color(0.988235, 0.988235, 0.988235, 1)
+color_ramp = SubResource("GradientTexture1D_uuuyw")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+
+[sub_resource type="Gradient" id="Gradient_3kva0"]
+offsets = PackedFloat32Array(0, 0.432161, 0.502513, 0.683417, 0.773869, 1)
+colors = PackedColorArray(0, 0.0666666, 1, 0.764706, 0.22, 0.714, 1, 1, 0, 0.216667, 1, 1, 0, 0.783333, 1, 1, 0, 0.2, 1, 0, 1, 0.133333, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_shvha"]
+gradient = SubResource("Gradient_3kva0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fgmq1"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+direction = Vector3(1, 0.2, 0)
+spread = 0.0
+gravity = Vector3(-120, -150, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 120.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 40.0
+linear_accel_max = 60.0
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_k8igo")
+color = Color(0.988235, 0.988235, 0.988235, 1)
+color_ramp = SubResource("GradientTexture1D_shvha")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+
+[node name="Magnet Module" type="Node2D" node_paths=PackedStringArray("raycasts", "magnet_particles")]
+script = ExtResource("1_qpcpe")
+raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D4"), NodePath("RayCast2D2"), NodePath("RayCast2D3"), NodePath("RayCast2D6"), NodePath("RayCast2D7"), NodePath("RayCast2D5")]
+magnet_particles = [NodePath("MagnetParticles"), NodePath("MagnetParticles2")]
+
+[node name="AbilityPowerController" parent="." instance=ExtResource("2_42isc")]
+ability_name = "magnet"
+powered = false
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(-19, -5)
+rotation = 0.174533
+target_position = Vector2(0, 250)
+collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(-9, -2)
+rotation = 0.0872665
+target_position = Vector2(0, 275)
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(6, 0)
+target_position = Vector2(0, 300)
+collision_mask = 3
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(31, -5)
+rotation = -0.174533
+target_position = Vector2(0, 250)
+collision_mask = 3
+
+[node name="RayCast2D6" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(-24, -10)
+rotation = 0.349066
+target_position = Vector2(0, 225)
+collision_mask = 3
+
+[node name="RayCast2D7" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(36, -10)
+rotation = -0.349066
+target_position = Vector2(0, 225)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(21, -2)
+rotation = -0.0872665
+target_position = Vector2(0, 275)
+collision_mask = 3
+
+[node name="Magnet" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(7, 9)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_ein21")
+
+[node name="MagnetExtender" type="AnimationPlayer" parent="Magnet"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_nlwih")
+}
+
+[node name="MagnetLoop" type="AudioStreamPlayer2D" parent="Magnet"]
+unique_name_in_owner = true
+stream = ExtResource("4_pr5bo")
+volume_db = 15.0
+attenuation = 1.23114
+bus = &"Sounds"
+
+[node name="MagnetOpen" type="AudioStreamPlayer2D" parent="Magnet"]
+unique_name_in_owner = true
+stream = ExtResource("5_8yc1c")
+volume_db = -1.809
+attenuation = 1.23114
+bus = &"Sounds"
+
+[node name="MagnetClose" type="AudioStreamPlayer2D" parent="Magnet"]
+unique_name_in_owner = true
+stream = ExtResource("6_vf676")
+volume_db = -1.809
+attenuation = 1.23114
+bus = &"Sounds"
+
+[node name="MagnetParticles" type="GPUParticles2D" parent="."]
+z_index = 100
+z_as_relative = false
+position = Vector2(50, 80)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_re0ay")
+texture = ExtResource("7_0lwft")
+lifetime = 1.35
+randomness = 0.25
+fixed_fps = 60
+local_coords = true
+
+[node name="MagnetParticles2" type="GPUParticles2D" parent="."]
+z_index = 100
+z_as_relative = false
+position = Vector2(-50, 80)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_fgmq1")
+texture = ExtResource("7_0lwft")
+lifetime = 1.35
+randomness = 0.25
+fixed_fps = 60
+local_coords = true

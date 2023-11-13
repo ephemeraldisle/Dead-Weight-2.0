@@ -21,8 +21,10 @@ config/windows_native_icon="res://Art/System/deadweight_player_title_thing_vhi_i
 
 SaveManager="*res://Scripts/Autoload/save_manager.gd"
 GameState="*res://Scripts/Autoload/game_state.gd"
-GlobalCamera="*res://Scenes/Fundamentals/global_camera.gd"
 GameEvents="*res://Scripts/Autoload/game_events.gd"
+ScreenTransition="*res://Scenes/Fundamentals/screen_transition.tscn"
+GlobalCamera="*res://Scenes/Fundamentals/global_camera.tscn"
+SharedPlayerManager="*res://Scenes/Fundamentals/shared_player_manager.tscn"
 
 [display]
 

@@ -10,11 +10,13 @@ const ANIMATION_TIME = 0.4
 
 @onready var ajar = not start_closed
 
+
 func _ready() -> void:
 	super()
 	pressure_activator.pressure_activated.connect(on_pressure_activated)
 	if not power_controller.powered or not start_closed:
 		deactivate(true)
+
 
 func activate(instant: bool = false) -> void:
 	animation_player.speed_scale = 99 if instant else 1
@@ -25,6 +27,7 @@ func activate(instant: bool = false) -> void:
 	ajar = false
 	activated.emit()
 
+
 func deactivate(instant: bool = false) -> void:
 	animation_player.speed_scale = 99 if instant else 1
 	animation_player.play("open")
@@ -34,23 +37,27 @@ func deactivate(instant: bool = false) -> void:
 	ajar = true
 	deactivated.emit()
 
+
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
-	
+
+
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
-	
+
+
 func on_power_changed(powered: bool) -> void:
 	if powered:
 		activate()
 	else:
 		deactivate()
+
 
 func on_pressure_activated() -> void:
 	if power_controller.powered:

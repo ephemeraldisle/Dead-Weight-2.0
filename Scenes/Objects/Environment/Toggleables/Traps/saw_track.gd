@@ -1,6 +1,5 @@
 extends Toggleable
 
-
 const DEACTIVATED_FRAME = 7
 const LIGHT_FADE_TIME = 1.0
 
@@ -24,6 +23,7 @@ const LIGHT_FADE_TIME = 1.0
 @onready var first_position = start_point.position
 @onready var second_position = end_point.position
 
+
 func _ready() -> void:
 	super()
 	timer_component.timeout.connect(on_timer_timeout)
@@ -45,9 +45,10 @@ func activate(instant: bool = false) -> void:
 		saw_blade.play("activate")
 		await saw_blade.animation_finished
 	activated.emit()
-	
+
+
 func deactivate(instant: bool = false) -> void:
-	saw_blade.play("deactivate")	
+	saw_blade.play("deactivate")
 	var the_tween = create_tween()
 	the_tween.set_parallel()
 	the_tween.tween_property(saw_light, "energy", 0, 0.01 if instant else 0.25)
@@ -59,27 +60,32 @@ func deactivate(instant: bool = false) -> void:
 	saw_sound.stop()
 	deactivated.emit()
 
+
 func do_saw(from_spot: Vector2 = first_position, to_spot: Vector2 = second_position) -> void:
 	var position_a = from_spot
 	var position_b = to_spot
-	
+
 	if off_time <= 0:
 		activate(true)
 	else:
 		activate()
-		await activated	
-	
+		await activated
+
 	saw_blade.play("active")
 	saw_hitbox.monitoring = true
 	var the_tween = create_tween()
-	the_tween.tween_property(saw_holder, "position", to_spot, blade_travel_time).from(from_spot)\
-		.set_ease(tween_ease if use_ease else Tween.EASE_IN_OUT)\
-		.set_trans(tween_trans if use_trans else Tween.TRANS_LINEAR)
+	(
+		the_tween
+		. tween_property(saw_holder, "position", to_spot, blade_travel_time)
+		. from(from_spot)
+		. set_ease(tween_ease if use_ease else Tween.EASE_IN_OUT)
+		. set_trans(tween_trans if use_trans else Tween.TRANS_LINEAR)
+	)
 	await the_tween.finished
-	
+
 	first_position = position_b
 	second_position = position_a
-	
+
 	if off_time > 0:
 		deactivate()
 	else:
@@ -98,7 +104,8 @@ func make_invisible(instant: bool = false) -> void:
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
-	
+
+
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
@@ -108,12 +115,13 @@ func make_visible(instant: bool = false) -> void:
 	await tween.finished
 	made_visible.emit()
 
-	
+
 func on_power_changed(powered: bool) -> void:
 	if powered:
 		do_saw()
 	else:
 		deactivate()
+
 
 func on_timer_timeout() -> void:
 	if power_controller.powered:

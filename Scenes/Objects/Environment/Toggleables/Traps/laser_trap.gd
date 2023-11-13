@@ -21,6 +21,7 @@ signal finished_discharging
 
 var looping = false
 
+
 func _ready():
 	super()
 	timer_component.timeout.connect(on_timer_timeout)
@@ -31,6 +32,7 @@ func _ready():
 	else:
 		await get_tree().create_timer(initial_delay, false, true).timeout
 		fire_laser()
+
 
 func fire_laser() -> void:
 	if power_controller.powered:
@@ -43,35 +45,40 @@ func fire_laser() -> void:
 		await finished_discharging
 		deactivate()
 
+
 func charge_up():
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, "color:a",1, 1)
-	if sound_enabled: synced_sound_coroutine()
-	animated_sprite_2d.play("Activate")	
+	light_tween.tween_property(light, "color:a", 1, 1)
+	if sound_enabled:
+		synced_sound_coroutine()
+	animated_sprite_2d.play("Activate")
 	await animated_sprite_2d.animation_finished
 	finished_charging.emit()
 
+
 func activate(instant: bool = false) -> void:
 	light.visible = true
-	
+
 	animated_sprite_2d.play("Active")
-	
-	if instant and sound_enabled: 
+
+	if instant and sound_enabled:
 		loop_sound.play()
-	
+
 	damaging_zone.monitoring = true
 	looping = true
 	activated.emit()
 
+
 func charge_down():
-	animated_sprite_2d.play("Deactivate")	
+	animated_sprite_2d.play("Deactivate")
 	var light_tween = create_tween() as Tween
 	light_tween.tween_property(light, "color:a", 0, 1)
 	damaging_zone.monitoring = false
 	await animated_sprite_2d.animation_finished
 	finished_discharging.emit()
-	
-func deactivate(instant: bool = false) -> void:
+
+
+func deactivate(_instant: bool = false) -> void:
 	animated_sprite_2d.play("Inactive")
 	light.visible = false
 	damaging_zone.monitoring = false
@@ -79,6 +86,7 @@ func deactivate(instant: bool = false) -> void:
 	if sound_enabled:
 		loop_sound.stop()
 	deactivated.emit()
+
 
 func synced_sound_coroutine():
 	var remaining_time = on_time
@@ -88,7 +96,7 @@ func synced_sound_coroutine():
 	fire_sound.play()
 	if remaining_time > 3:
 		await get_tree().create_timer(3, false, true).timeout
-		remaining_time -=3
+		remaining_time -= 3
 		loop_sound.play()
 		await get_tree().create_timer(remaining_time, false, true).timeout
 		loop_sound.stop()
@@ -99,16 +107,20 @@ func synced_sound_coroutine():
 	fire_sound.stop()
 
 
-
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(loop_sound, "volume_db", -80, 0.01 if instant else FADE_TIME).from_current()
+	(
+		tween
+		. tween_property(loop_sound, "volume_db", -80, 0.01 if instant else FADE_TIME)
+		. from_current()
+	)
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
-	
+
+
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
@@ -117,12 +129,14 @@ func make_visible(instant: bool = false) -> void:
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
-	
+
+
 func on_power_changed(powered: bool) -> void:
 	if powered and always_on:
 		activate()
 	else:
 		deactivate()
+
 
 func on_timer_timeout():
 	if power_controller.powered:

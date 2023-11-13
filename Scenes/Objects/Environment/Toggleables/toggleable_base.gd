@@ -10,20 +10,26 @@ signal made_visible
 
 @onready var power_controller = $PowerController as PowerController
 
+
 func _ready() -> void:
 	power_controller.power_changed.connect(on_power_changed)
 
-func activate(instant: bool = false) -> void:
+
+func activate(_instant: bool = false) -> void:
 	activated.emit()
 
-func deactivate(instant: bool = false) -> void:
+
+func deactivate(_instant: bool = false) -> void:
 	deactivated.emit()
 
-func make_invisible(instant: bool = false) -> void:
+
+func make_invisible(_instant: bool = false) -> void:
 	made_invisible.emit()
 
-func make_visible(instant: bool = false) -> void:
+
+func make_visible(_instant: bool = false) -> void:
 	made_visible.emit()
+
 
 func change_power(powered: bool) -> void:
 	if powered:
@@ -31,5 +37,6 @@ func change_power(powered: bool) -> void:
 	else:
 		power_controller.power_off()
 
-func on_power_changed(powered: bool) -> void:
+
+func on_power_changed(_powered: bool) -> void:
 	pass

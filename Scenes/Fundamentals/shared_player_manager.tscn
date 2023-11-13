@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp4xcrakwe6wl"]
+
+[ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
+[ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
+[ext_resource type="AudioStream" uid="uid://d1k12deehk832" path="res://Audio/Hurt Sounds/Robot/robohit.mp3" id="3_1txdn"]
+[ext_resource type="AudioStream" uid="uid://cavnptp542jp4" path="res://Audio/Hurt Sounds/Robot/robohit7.mp3" id="4_me8qp"]
+[ext_resource type="AudioStream" uid="uid://cten1esqgd26n" path="res://Audio/Hurt Sounds/Robot/robohit6.mp3" id="5_sdmau"]
+[ext_resource type="AudioStream" uid="uid://dx1eo3urkx2de" path="res://Audio/Hurt Sounds/Robot/robohit4.mp3" id="6_mjwwd"]
+[ext_resource type="AudioStream" uid="uid://ceaninhcg8cet" path="res://Audio/Hurt Sounds/Robot/robohit3.mp3" id="7_vix1u"]
+[ext_resource type="AudioStream" uid="uid://b6snd40lca4dy" path="res://Audio/Hurt Sounds/Robot/robohit2.mp3" id="8_w4nov"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
+streams_count = 6
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("3_1txdn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_me8qp")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_sdmau")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_mjwwd")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_vix1u")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_w4nov")
+stream_5/weight = 1.0
+
+[node name="SharedPlayerManager" type="Node2D"]
+script = ExtResource("1_shdlt")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="Fireball" type="Sprite2D" parent="AudioListener2D"]
+visible = false
+texture = ExtResource("2_2scta")
+
+[node name="HitSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8nnmg")
+volume_db = 5.0
+max_polyphony = 5
+bus = &"Sounds"
+
+[node name="PlayerRay" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+collision_mask = 4111
+
+[node name="TankRay" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+collision_mask = 4139

@@ -26,17 +26,16 @@ func _ready() -> void:
 	timer_component.change_time(off_time)
 	timer_component.timeout.connect(on_timer_timeout)
 	super()
-	
+
 	if not power_controller.powered:
 		deactivate(true)
 	else:
 		fire_laser()
 
 
-
-
 func fire_laser() -> void:
-	if _firing: return
+	if _firing:
+		return
 	_firing = true
 	await get_tree().create_timer(initial_delay).timeout
 	charge_up()
@@ -49,33 +48,35 @@ func fire_laser() -> void:
 func charge_up():
 	animated_sprite_2d.play("fire")
 	charge_sound.play()
-	if debug: print_debug("%s chargin up" %self)
+	if debug:
+		print_debug("%s chargin up" % self)
 	await get_tree().create_timer(ANIMATION_TIME, false, true).timeout
 	finished_charging.emit()
 
 
-func activate(instant: bool = false) -> void:
-	if !power_controller.powered: return
-	
+func activate(_instant: bool = false) -> void:
+	if !power_controller.powered:
+		return
+
 	fire_sound.play()
 	var new_laser = laser.instantiate()
-	
+
 	new_laser.scale = Vector2(2.124, 2.124)
-#	foreground.add_child(new_laser)	
+#	foreground.add_child(new_laser)
 	add_child(new_laser)
 	new_laser.global_position = fire_point.global_position
 	var direction = global_position.direction_to(fire_point.global_position)
-	var laser_velocity = direction*speed_factor
+	var laser_velocity = direction * speed_factor
 	new_laser.rotation = direction.angle()
-	
+
 	var lite = light.instantiate()
 	new_laser.add_child(lite)
 	new_laser.program_projectile(laser_velocity, lite)
-	
+
 	activated.emit()
 
 
-func deactivate(instant: bool = false) -> void:
+func deactivate(_instant: bool = false) -> void:
 	deactivated.emit()
 
 

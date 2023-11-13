@@ -15,11 +15,12 @@ var target_pupil_size = Vector2(0.9,0.9)
 var desired_target_position = Vector2.ZERO
 var current_target_position = Vector2.ZERO
 var agitation = 0
+
 @onready var tank: RigidBody2D = $".."
 
 func _ready() -> void:
 	tank.tank_hurt.connect(try_emotion.bind("hurt"))
-	get_tree().get_first_node_in_group("player").player_damaged.connect(try_emotion.bind("hurt"))
+#	get_tree().get_first_node_in_group("player").player_damaged.connect(try_emotion.bind("hurt"))
 
 
 func get_closest_thing_of_interest() -> Vector2:
@@ -91,5 +92,5 @@ func _physics_process(delta: float) -> void:
 	desired_target_position = location
 	current_target_position = lerp(current_target_position, desired_target_position, 0.65)
 	
-	right_eye_holder.look_at(current_target_position)	
-	left_eye_holder.look_at(current_target_position)		
+	right_eye_holder.look_at(current_target_position)
+	left_eye_holder.look_at(current_target_position)

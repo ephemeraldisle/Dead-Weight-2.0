@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 signal finish_transition
 
 const TRANSITION_TIME = 2.0
@@ -25,7 +24,13 @@ var zoom_tween: Tween
 var player: Node2D
 var targeting_player = false
 
-@onready var center: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height")) / 2
+@onready var center: Vector2 = (
+	Vector2(
+		ProjectSettings.get_setting("display/window/size/viewport_width"),
+		ProjectSettings.get_setting("display/window/size/viewport_height")
+	)
+	/ 2
+)
 @onready var aim_position = Vector2.ZERO
 @onready var noise = FastNoiseLite.new()
 @onready var base_zoom = zoom
@@ -50,9 +55,9 @@ func _physics_process(delta: float) -> void:
 		rotation = base_rotation
 	if debug:
 		var direction = Input.get_vector("left", "right", "up", "down")
-		global_position += direction*delta*DEBUG_MOVE_MULTIPLIER
+		global_position += direction * delta * DEBUG_MOVE_MULTIPLIER
 		var zoom_axis = Input.get_axis("click", "jump")
-		var new_zoom = clamp(zoom.x + zoom_axis*delta, 0.05, 5)
+		var new_zoom = clamp(zoom.x + zoom_axis * delta, 0.05, 5)
 		zoom = Vector2(new_zoom, new_zoom)
 
 
@@ -78,11 +83,18 @@ func snap_to_aim() -> void:
 	global_position = get_aim_position()
 
 
-func change_zoom_level(new_zoom: Vector2 = base_zoom, transition_time: float = DEFAULT_ZOOM_TIME) -> void:
+func change_zoom_level(
+	new_zoom: Vector2 = base_zoom, transition_time: float = DEFAULT_ZOOM_TIME
+) -> void:
 	if zoom_tween:
 		zoom_tween.kill()
 	zoom_tween = create_tween()
-	zoom_tween.tween_property(self, "zoom", new_zoom, transition_time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	(
+		zoom_tween
+		. tween_property(self, "zoom", new_zoom, transition_time)
+		. set_ease(Tween.EASE_OUT)
+		. set_trans(Tween.TRANS_BACK)
+	)
 
 
 func add_trauma(amount = SHAKE) -> void:
@@ -93,17 +105,16 @@ func shake() -> void:
 	if !GameState.screenshake:
 		return
 	var amount = pow(trauma, TRAUMA_POWER)
-	
+
 	rotation = base_rotation + MAX_ROLL * amount * noise.get_noise_1d(noise_y)
 	offset[0] = MAX_OFFSET[0] * amount * noise.get_noise_1d(noise_y)
 	offset[1] = MAX_OFFSET[1] * amount * noise.get_noise_1d(noise_y + ARBITRARY_NOISE_OFFSET)
-	
+
 	noise_y += 1
 
 
 func get_camera_offset() -> Vector2:
 	return global_position - original_position
-
 
 #func _physics_process(delta):
 #	if targeting_player:
@@ -112,4 +123,4 @@ func get_camera_offset() -> Vector2:
 #		if player_velocity.length() <= 0:
 #			speed_component = 10
 #		target_position = player.global_position+player_velocity*delta*speed_component
-#		global_position = global_position.lerp(target_position, 1 - exp(-delta*speed_component)) 
+#		global_position = global_position.lerp(target_position, 1 - exp(-delta*speed_component))

@@ -30,9 +30,12 @@ func _ready() -> void:
 func update_appearance_and_hitbox() -> void:
 	animated_sprite_2d.frame = _times_hit
 	match _times_hit:
-		0: collision_shape_2d.position = original_shape_position
-		2: collision_shape_2d.position.y = original_shape_position.y + FIRST_Y_ADJUSTMENT
-		MAX_HITS: collision_shape_2d.position.y = original_shape_position.y + SECOND_Y_ADJUSTMENT
+		0:
+			collision_shape_2d.position = original_shape_position
+		2:
+			collision_shape_2d.position.y = original_shape_position.y + FIRST_Y_ADJUSTMENT
+		MAX_HITS:
+			collision_shape_2d.position.y = original_shape_position.y + SECOND_Y_ADJUSTMENT
 
 
 func check_save_data() -> void:
@@ -46,15 +49,16 @@ func check_save_data() -> void:
 
 
 func on_damage() -> void:
-	if !_damagable: return
-	_times_hit = min(_times_hit+1, MAX_HITS)
-	
+	if !_damagable:
+		return
+	_times_hit = min(_times_hit + 1, MAX_HITS)
+
 	var particles_instance = particles.instantiate()
 	add_child(particles_instance)
 	particles_instance.emitting = true
 	audio_stream_player_2d.play()
 	update_appearance_and_hitbox()
-	
+
 	if _times_hit == MAX_HITS:
 		toggler_component.set_off()
 	else:

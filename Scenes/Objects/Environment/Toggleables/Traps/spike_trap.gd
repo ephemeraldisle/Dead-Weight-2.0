@@ -24,6 +24,7 @@ const LIGHT_FADE_TIME = 1.0
 
 var looping = false
 
+
 func _ready():
 	animated_sprite_2d.set_frame_and_progress(DEACTIVATED_FRAME, 1)
 	super()
@@ -37,6 +38,7 @@ func _ready():
 	else:
 		deactivate(true)
 
+
 func eject_spikes() -> void:
 	if power_controller.powered:
 		await get_tree().create_timer(initial_delay, false, true).timeout
@@ -46,24 +48,27 @@ func eject_spikes() -> void:
 		await get_tree().create_timer(on_time, false, true).timeout
 		deactivate()
 
+
 func charge_up():
 	light.visible = true
 	var light_tween = create_tween() as Tween
 	light_tween.tween_property(light, "color:a", 1, LIGHT_FADE_TIME)
-	animated_sprite_2d.play("activate")	
+	animated_sprite_2d.play("activate")
 	await animated_sprite_2d.animation_finished
 	finished_charging.emit()
+
 
 func activate(instant: bool = false) -> void:
 	light.visible = true
 	light.color.a = 1
 	animated_sprite_2d.play("activeloop")
-	if sound_enabled: 
+	if sound_enabled:
 		loop_sound.play()
 	damaging_zone.monitoring = true
 	looping = true
 	activated.emit()
-	
+
+
 func deactivate(instant: bool = false) -> void:
 	var light_tween = create_tween() as Tween
 	light_tween.tween_property(light, "color:a", 0, 0.01 if instant else LIGHT_FADE_TIME)
@@ -76,15 +81,21 @@ func deactivate(instant: bool = false) -> void:
 		loop_sound.stop()
 	deactivated.emit()
 
+
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(loop_sound, "volume_db", -80, 0.01 if instant else FADE_TIME).from_current()
+	(
+		tween
+		. tween_property(loop_sound, "volume_db", -80, 0.01 if instant else FADE_TIME)
+		. from_current()
+	)
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
-	
+
+
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
@@ -93,16 +104,19 @@ func make_visible(instant: bool = false) -> void:
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
-	
+
+
 func on_power_changed(powered: bool) -> void:
 	if powered and always_on:
 		activate()
 	else:
 		deactivate()
 
+
 func on_timer_timeout() -> void:
 	if power_controller.powered:
 		eject_spikes()
+
 
 func on_pressure_activated() -> void:
 	if power_controller.powered:
