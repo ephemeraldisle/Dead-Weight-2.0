@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://briir57rexnqh"]
+
+[ext_resource type="FontFile" uid="uid://bxj8beswk0mvf" path="res://Resources/Fonts/Squares.ttf" id="1_rhm36"]
+[ext_resource type="StyleBox" path="res://Resources/Textures/waterbackground.tres" id="2_qrrxj"]
+[ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="3_cqpwx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol77h"]
+bg_color = Color(0.265625, 0.785156, 0.910156, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.305882, 0.8, 0.8, 0.368627)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8wq7"]
+bg_color = Color(0.321569, 0.121569, 0.6, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 20.0
+expand_margin_top = 500.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4w0q"]
+bg_color = Color(0.0666667, 0.6, 0.6, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+
+[resource]
+ProgressBar/font_sizes/font_size = 6
+ProgressBar/fonts/font = ExtResource("1_rhm36")
+ProgressBar/styles/background = ExtResource("2_qrrxj")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ol77h")
+VSlider/icons/grabber = ExtResource("3_cqpwx")
+VSlider/icons/grabber_highlight = ExtResource("3_cqpwx")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_o8wq7")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_e4w0q")
+VSlider/styles/slider = ExtResource("2_qrrxj")

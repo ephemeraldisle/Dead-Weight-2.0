@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsurnmyedsdo5"]
+
+[ext_resource type="Script" path="res://Scenes/UI/water_meter.gd" id="1_6c1bv"]
+[ext_resource type="Theme" uid="uid://briir57rexnqh" path="res://Resources/UI/ui_theme.tres" id="1_pr68t"]
+[ext_resource type="Texture2D" uid="uid://by5pysu5ove4g" path="res://Art/UI/Water/ecg cap bot.svg" id="2_lo4j8"]
+[ext_resource type="Texture2D" uid="uid://bitq6o8oqwsek" path="res://Art/UI/Water/ecg sidex vert.svg" id="3_norck"]
+[ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="4_bku82"]
+[ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="6_8a6cn"]
+
+[sub_resource type="Gradient" id="Gradient_agvhe"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.557312, 0.758893, 0.913043)
+colors = PackedColorArray(0.98, 0.0588, 0.10486, 1, 0.529412, 0.239216, 0.0941176, 1, 0.980392, 0.0588235, 0.105882, 0.0941176, 0.980392, 0.0588235, 0.105882, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g7xxu"]
+gradient = SubResource("Gradient_agvhe")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_gj8et"]
+offsets = PackedFloat32Array(0, 0.666667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qm866"]
+gradient = SubResource("Gradient_gj8et")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jnix8"]
+lifetime_randomness = 0.01
+emission_shape = 1
+emission_sphere_radius = 21.36
+particle_flag_disable_z = true
+direction = Vector3(0.41, -1, 0)
+spread = 18.41
+flatness = 1.0
+gravity = Vector3(0, 230.34, 0)
+initial_velocity_min = 272.73
+initial_velocity_max = 363.64
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 93.945
+damping_max = 100.0
+angle_min = -210.0
+angle_max = -210.0
+scale_min = 0.02
+scale_max = 0.04
+color = Color(0.265625, 0.785156, 0.910156, 1)
+color_ramp = SubResource("GradientTexture1D_qm866")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+turbulence_noise_strength = 15.15
+turbulence_noise_scale = 7.41
+turbulence_noise_speed = Vector3(1.835, 3.045, -0.87)
+
+[node name="WaterMeter" type="CanvasLayer"]
+script = ExtResource("1_6c1bv")
+slimer_start = Vector2(15, 667)
+slimer_end = Vector2(15, 180)
+
+[node name="RedGlow" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -519.0
+offset_right = 61.0
+offset_bottom = -19.0
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_g7xxu")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -530.0
+offset_right = 57.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MeterContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0.05, 0.160833, 1)
+custom_minimum_size = Vector2(25, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/MeterContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="WaterProgressBar" type="ProgressBar" parent="MarginContainer/MarginContainer/MeterContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_pr68t")
+max_value = 1.0
+step = 0.001
+value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(30, 5)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_lo4j8")
+expand_mode = 5
+stretch_mode = 4
+flip_v = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("3_norck")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(30, 5)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_lo4j8")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Slimer" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+offset_left = 15.0
+offset_top = 180.0
+offset_right = 48.0
+offset_bottom = 212.0
+texture = ExtResource("4_bku82")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="WaterDrops" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = -5
+z_as_relative = false
+position = Vector2(34, 199)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_jnix8")
+texture = ExtResource("6_8a6cn")
+lifetime = 0.5
+explosiveness = 0.25
+fixed_fps = 60

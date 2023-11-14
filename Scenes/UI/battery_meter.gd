@@ -1,76 +1,91 @@
 extends CanvasLayer
 
+const BARS_PER_BATTERY = 4
+const MINIMUM_ANIMATION_FRAMES = 20
+
+
+@export var energy_manager: Node
+
+#var energy_manager = {
+#	"current_energy": 5.7,
+#	"current_bars": 5,
+#	"current_batteries": 4,
+#}
+
+var current_batteries
+var active_battery
+
+var previous_percent := 1.0
+var current_percent := 1.0
+var animating = false
+var power_on_ticks: int = 0
+
+
 @onready var power_indicator: TextureRect = %PowerIndicator
-@onready var battery_holder = %BatteryHolder
 @onready var power_indicator_animator: AnimationPlayer = %PowerIndicatorAnimator
 @onready var sparks: GPUParticles2D = $MarginContainer/BatteryHolder/Battery0/Sparks
-@onready var battery_children = battery_holder.get_children()
-var previous_percent = 1.0
-var current_percent = 1.0
-var animating = false
-var power_on_ticks = 0
+@onready var battery_children = %BatteryHolder.get_children()
 
-func _ready():
-	power_indicator.hide()
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	energy_manager.bars_changed.connect(_update_battery_texture_frames)
+	_update_available_batteries()
+	_update_battery_texture_frames()
+
+
+func _physics_process(_delta: float) -> void:
+	current_percent = clamp(energy_manager.current_energy - energy_manager.current_bars, 0, 1)
+	_update_progress_bar_fill()
 	if current_percent < previous_percent:
 		power_on_ticks = 0
-		power_indicator.show()
-		animation_on()
+		_animation_on()
 	elif animating:
 		power_on_ticks += 1
-		if power_on_ticks >= 20:
-			animating = false
-			animation_off()
+		if power_on_ticks >= MINIMUM_ANIMATION_FRAMES:
+			_animation_off()
 			power_on_ticks = 0
 	previous_percent = current_percent
 
-func animation_on():
-	if not animating:
-		animating = true
-		sparks.emitting = true
-		power_indicator_animator.play("poweron")
-		await power_indicator_animator.animation_finished
-		if animating:
-			power_indicator_animator.play("on")
 
-func animation_off():
-	power_indicator_animator.play_backwards("poweron")
-	sparks.emitting = false
-	await power_indicator_animator.animation_finished
-	power_indicator.hide()
-		
-func update_energy(current_energy: int, max_energy: int, percent: float):
-	current_percent = percent
-	if max_energy < 4:
-		print("ALERT ENERGY SETUP IS WRONG")
-	var potential_batteries = 0
-	var assigned_progress_bar = false
-	@warning_ignore("integer_division")
-	for i in floor(max_energy/4):
+func _update_available_batteries() -> void:
+	var available_batteries = []
+	for i in energy_manager.current_batteries:
 		battery_children[i].visible = true
-		potential_batteries+=1
-	if potential_batteries < 4:
-		for i in 4 - potential_batteries:
-			battery_children[i-1].adjust_progress_bar(-1)
-			battery_children[i-1].texture.current_frame = 0
-	if current_energy > max_energy:
-		current_energy = max_energy
-		print("ENERGY ERROR MORE ENERGY THAN BATTERIES")
-	for i in floor(current_energy/4):
-		battery_children[potential_batteries-1].texture.current_frame = 4
-		battery_children[potential_batteries-1].adjust_progress_bar(-1)
-		current_energy -= 4
-		potential_batteries -= 1
-	for i in potential_batteries:
-		var energy_amount = clamp(current_energy % 4, 0, 4)
-		battery_children[potential_batteries-1].texture.current_frame = energy_amount
-		current_energy -= energy_amount
-		if !assigned_progress_bar:
-			battery_children[potential_batteries-1].adjust_progress_bar(current_percent)
-			assigned_progress_bar = true
+		available_batteries.push_front(battery_children[i])
+	current_batteries = available_batteries
+
+
+func _update_battery_texture_frames() -> void:
+	var available_bars = energy_manager.current_bars
+	for battery in current_batteries:
+		if available_bars > 0:
+			if available_bars >= BARS_PER_BATTERY:
+				battery.texture.current_frame = BARS_PER_BATTERY
+				battery.change_progress_bar_visibility(false)
+			else:
+				battery.texture.current_frame = available_bars
+				active_battery = battery
+				battery.change_progress_bar_visibility(true)
+				battery.adjust_progress_bar_position(available_bars)
+			available_bars -= BARS_PER_BATTERY
 		else:
-			battery_children[potential_batteries-1].adjust_progress_bar(-1)
-		potential_batteries -= 1
-	
+			battery.texture.current_frame = 0
+
+
+func _update_progress_bar_fill() -> void:
+	active_battery.adjust_progress_bar_fill(current_percent)
+
+
+func _animation_on():
+	if not animating:
+		for battery in current_batteries:
+			battery.sparks.emitting = true
+		animating = true
+		power_indicator_animator.play("poweron")
+
+
+func _animation_off():
+	animating = false
+	power_indicator_animator.play_backwards("poweroff")
+	for battery in current_batteries:
+		battery.sparks.emitting = false

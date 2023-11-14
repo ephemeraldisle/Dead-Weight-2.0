@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bs1ax2n2enoln"]
+[gd_scene load_steps=26 format=3 uid="uid://bs1ax2n2enoln"]
 
 [ext_resource type="Texture2D" uid="uid://2fo8homs1gar" path="res://Art/UI/Battery/battery 0.svg" id="1_i6bmb"]
 [ext_resource type="Script" path="res://Scenes/UI/battery_meter.gd" id="1_k2ikr"]
@@ -38,6 +38,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.648438, 0.492188, 0.175781, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_a2crq"]
 resource_name = "on"
@@ -54,6 +66,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.952941, 0.788235, 0.482353, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_08w1n"]
@@ -72,11 +96,53 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0.494118), Color(0.647059, 0.494118, 0.176471, 0.72549), Color(1, 1, 1, 1), Color(0.952941, 0.788235, 0.482353, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_awkym"]
+resource_name = "poweroff"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.494118), Color(0.647059, 0.494118, 0.176471, 0.72549), Color(1, 1, 1, 1), Color(0.952941, 0.788235, 0.482353, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dc7n5"]
 _data = {
 "RESET": SubResource("Animation_kghdt"),
 "on": SubResource("Animation_a2crq"),
+"poweroff": SubResource("Animation_awkym"),
 "poweron": SubResource("Animation_08w1n")
 }
 
@@ -184,6 +250,7 @@ texture = SubResource("AnimatedTexture_uj30n")
 script = ExtResource("7_abcyl")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery0"]
+visible = false
 layout_mode = 0
 offset_left = 107.0
 offset_top = 3.0
@@ -197,6 +264,7 @@ texture_progress = ExtResource("8_7r0fj")
 
 [node name="PowerIndicator" type="TextureRect" parent="MarginContainer/BatteryHolder/Battery0"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0.648438, 0.492188, 0.175781, 1)
 layout_mode = 0
 offset_left = -510.0
@@ -208,10 +276,11 @@ texture = ExtResource("9_47agy")
 
 [node name="PowerIndicatorAnimator" type="AnimationPlayer" parent="MarginContainer/BatteryHolder/Battery0/PowerIndicator"]
 unique_name_in_owner = true
-autoplay = "on"
+autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_dc7n5")
 }
+next/poweron = &"on"
 
 [node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery0"]
 position = Vector2(77, 39)
@@ -245,6 +314,18 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_7r0fj")
 
+[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery1"]
+position = Vector2(77, 39)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_gbh2u")
+texture = ExtResource("9_47agy")
+lifetime = 0.9
+explosiveness = 0.4
+randomness = 0.4
+fixed_fps = 60
+visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
+
 [node name="Battery2" type="TextureRect" parent="MarginContainer/BatteryHolder"]
 visible = false
 z_index = 3
@@ -265,6 +346,18 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_7r0fj")
 
+[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery2"]
+position = Vector2(77, 39)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_gbh2u")
+texture = ExtResource("9_47agy")
+lifetime = 0.9
+explosiveness = 0.4
+randomness = 0.4
+fixed_fps = 60
+visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
+
 [node name="Battery3" type="TextureRect" parent="MarginContainer/BatteryHolder"]
 visible = false
 z_index = 2
@@ -284,3 +377,15 @@ step = 0.005
 value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_7r0fj")
+
+[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery3"]
+position = Vector2(77, 39)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_gbh2u")
+texture = ExtResource("9_47agy")
+lifetime = 0.9
+explosiveness = 0.4
+randomness = 0.4
+fixed_fps = 60
+visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
