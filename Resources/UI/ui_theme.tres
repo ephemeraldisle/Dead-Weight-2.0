@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://briir57rexnqh"]
 
 [ext_resource type="FontFile" uid="uid://bxj8beswk0mvf" path="res://Resources/Fonts/Squares.ttf" id="1_rhm36"]
-[ext_resource type="StyleBox" path="res://Resources/Textures/waterbackground.tres" id="2_qrrxj"]
+[ext_resource type="StyleBox" uid="uid://dq78n1urgvuu5" path="res://Resources/Textures/waterbackground.tres" id="2_qrrxj"]
 [ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="3_cqpwx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol77h"]
