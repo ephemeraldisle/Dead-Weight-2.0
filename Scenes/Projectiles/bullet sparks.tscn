@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4jkofll5idt7"]
+
+[ext_resource type="Texture2D" uid="uid://bmg4el3dyh8i6" path="res://Art/Particles/spark_01.png" id="1_4cj1b"]
+
+[sub_resource type="Gradient" id="Gradient_4pg18"]
+offsets = PackedFloat32Array(0, 0.561562, 0.903904, 1)
+colors = PackedColorArray(1, 0.681, 0.13, 1, 1, 1, 1, 0.686275, 0, 0, 0, 0.368627, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ci7ip"]
+gradient = SubResource("Gradient_4pg18")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5b1x"]
+lifetime_randomness = 0.42
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 123.71
+initial_velocity_max = 340.2
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 53.608
+damping_max = 61.856
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.05
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_ci7ip")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+top_level = true
+z_index = 400
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_h5b1x")
+texture = ExtResource("1_4cj1b")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://br23stoowal76"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/basic_bullet.gd" id="1_q8qee"]
+[ext_resource type="Texture2D" uid="uid://bc3g1d7artd16" path="res://Art/Particles/trace_06.png" id="2_j5xgf"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="3_16njj"]
+[ext_resource type="AudioStream" uid="uid://s5qt0p5fw4t" path="res://Audio/Objects/Player/Astro/trybounce.mp3" id="4_1agm1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jp1lo"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndbu7"]
+radius = 11.0
+height = 50.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_udtie"]
+streams_count = 1
+random_pitch = 1.25
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("4_1agm1")
+stream_0/weight = 1.0
+
+[node name="BasicBullet" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 4235
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_jp1lo")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_q8qee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_ndbu7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="SpriteHolder" type="Node2D" parent="."]
+
+[node name="Fireball" type="Sprite2D" parent="SpriteHolder"]
+modulate = Color(1, 0.658824, 0.270588, 0.933333)
+position = Vector2(0, 1)
+rotation = 1.57079
+scale = Vector2(0.288005, 0.169016)
+texture = ExtResource("2_j5xgf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.2, 0.2)
+color = Color(1, 0.658824, 0.270588, 0.933333)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("3_16njj")
+
+[node name="bounce" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_udtie")
+volume_db = 6.71
+max_polyphony = 10
+panning_strength = 3.0
+bus = &"Sounds"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

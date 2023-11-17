@@ -1,0 +1,525 @@
+[gd_scene load_steps=42 format=3 uid="uid://ci67irojgt1k2"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Player/Player.gd" id="1_5bc4x"]
+[ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_k54aa"]
+[ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="2_2eetd"]
+[ext_resource type="AudioStream" uid="uid://bfy6v5jrvv3r3" path="res://Resources/Audio/hurt_sounds.tres" id="2_gqq08"]
+[ext_resource type="PackedScene" uid="uid://cfldpt74nosda" path="res://Scenes/Components/Player/health_manager.tscn" id="2_jhuq7"]
+[ext_resource type="PackedScene" uid="uid://cgeh48bgco303" path="res://Scenes/Components/Universal/hitflash.tscn" id="2_qj748"]
+[ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="2_w5iac"]
+[ext_resource type="PackedScene" uid="uid://dlv3e43sskac2" path="res://Scenes/Components/Player/gun_controller.tscn" id="3_ne81q"]
+[ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="3_xf2sc"]
+[ext_resource type="PackedScene" uid="uid://ccdapjnk4pmbt" path="res://Scenes/Components/Player/jetpack.tscn" id="4_pxbl6"]
+[ext_resource type="Texture2D" uid="uid://yx12p5j5mvd8" path="res://Art/Player/Astro/rect334.png" id="5_tbl5k"]
+[ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="6_ps57t"]
+[ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="7_4e8ip"]
+[ext_resource type="Texture2D" uid="uid://bvky6tn4rv1lh" path="res://Art/Player/Astro/upper leg.png" id="8_mmt60"]
+[ext_resource type="Texture2D" uid="uid://bmxwgjkqlb61k" path="res://Art/Player/Astro/lower leg.png" id="9_c8l8g"]
+[ext_resource type="SkeletonModificationStack2D" path="res://Scenes/Objects/skeleton modifications.tres" id="10_ql0tl"]
+[ext_resource type="Texture2D" uid="uid://qxfljovc0waj" path="res://Art/Player/Astro/boot.png" id="11_ix8ol"]
+[ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="11_lcc80"]
+[ext_resource type="Material" path="res://Resources/Materials/playershaderoutline.tres" id="11_w2qfu"]
+[ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="12_137wm"]
+[ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/player_ui.tscn" id="13_7i7to"]
+[ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="18_3fgdm"]
+[ext_resource type="PackedScene" uid="uid://bf2m6g8fuvyo5" path="res://Scenes/Components/Player/action_finder.tscn" id="19_2p47t"]
+[ext_resource type="Texture2D" uid="uid://dkugrel5ecc1d" path="res://Art/Faces/astro zoom.png" id="21_q0nyc"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="23_ohgvd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_imi5j"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkjuh"]
+atlas = ExtResource("5_tbl5k")
+region = Rect2(0, 0, 250, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4bag"]
+atlas = ExtResource("5_tbl5k")
+region = Rect2(1000, 0, 250, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0ry5"]
+atlas = ExtResource("5_tbl5k")
+region = Rect2(250, 0, 250, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlqkm"]
+atlas = ExtResource("5_tbl5k")
+region = Rect2(500, 0, 250, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efion"]
+atlas = ExtResource("5_tbl5k")
+region = Rect2(750, 0, 250, 401)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kbsb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkjuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4bag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0ry5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlqkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efion")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_0w47n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.125, 0.125)]
+}
+
+[sub_resource type="Animation" id="Animation_hw2b5"]
+resource_name = "pew"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.2, 0.225, 0.25),
+"transitions": PackedFloat32Array(2.2974, 0.615572, 2, 1.6245, 1),
+"update": 0,
+"values": [Vector2(0.125, 0.125), Vector2(0.08, 0.18), Vector2(0.14, 0.08), Vector2(0.1, 0.135), Vector2(0.125, 0.125)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52b0x"]
+_data = {
+"RESET": SubResource("Animation_0w47n"),
+"pew": SubResource("Animation_hw2b5")
+}
+
+[sub_resource type="Animation" id="Animation_7ppj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontLegTarget:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackLegTarget:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_nhcy4"]
+resource_name = "idle legs"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontLegTarget:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.6, 2.3, 3.3, 3.8, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-15, 25), Vector2(-23, 19), Vector2(-27, 14), Vector2(-20, 27), Vector2(-9, 28), Vector2(2, 23), Vector2(3, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackLegTarget:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.7, 2.4, 3.1, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, 23), Vector2(15, 20), Vector2(0, 20), Vector2(-1, 45), Vector2(15, 25), Vector2(28, 16), Vector2(27, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_akui4"]
+_data = {
+"RESET": SubResource("Animation_7ppj5"),
+"idle legs": SubResource("Animation_nhcy4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljav4"]
+radius = 63.0079
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c844w"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rj8b"]
+radius = 17.0294
+
+[node name="Player" type="RigidBody2D" groups=["Player", "SUITS.U.", "player"]]
+light_mask = 2
+collision_layer = 4
+collision_mask = 4267
+mass = 40.0
+physics_material_override = ExtResource("1_k54aa")
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 5
+contact_monitor = true
+angular_damp = 3.0
+script = ExtResource("1_5bc4x")
+hurt_sounds = ExtResource("2_gqq08")
+
+[node name="BatteryManager" parent="." instance=ExtResource("2_2eetd")]
+unique_name_in_owner = true
+
+[node name="Hitflash" parent="." node_paths=PackedStringArray("health_component", "sprites") instance=ExtResource("2_qj748")]
+health_component = NodePath("../HealthManager")
+sprites = [NodePath("../AnimatedSprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Pointer3"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2/Pointer2"), NodePath("../Skeleton2D/Spine/FrontLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Boot/Boot"), NodePath("../Skeleton2D/Spine/BackLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/OtherBoot/Boot")]
+
+[node name="HealthManager" parent="." node_paths=PackedStringArray("controller", "water_manager") instance=ExtResource("2_jhuq7")]
+unique_name_in_owner = true
+controller = NodePath("..")
+water_manager = NodePath("../WaterManager")
+
+[node name="WaterManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("2_w5iac")]
+unique_name_in_owner = true
+health_manager = NodePath("../HealthManager")
+
+[node name="Jetpack" parent="." node_paths=PackedStringArray("water_manager") instance=ExtResource("4_pxbl6")]
+position = Vector2(-19, -24)
+water_manager = NodePath("../WaterManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+position = Vector2(1, -22)
+shape = SubResource("CapsuleShape2D_imi5j")
+
+[node name="AttachmentPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-16, -19)
+
+[node name="Pointer" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(-24, 82)
+rotation = -2.35125
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_xf2sc")
+flip_h = true
+
+[node name="GunController" parent="." node_paths=PackedStringArray("fire_point", "gun_animator") instance=ExtResource("3_ne81q")]
+position = Vector2(29, -24)
+fire_point = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/Fire Point")
+gun_animator = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/GunAnimator")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+light_mask = 2
+z_index = 2
+material = ExtResource("11_w2qfu")
+position = Vector2(3, -27)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_5kbsb")
+autoplay = "default"
+frame_progress = 0.323302
+flip_h = true
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = ExtResource("10_ql0tl")
+
+[node name="Spine" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(5, -8)
+rest = Transform2D(1, 0, 0, 1, 5, -8)
+
+[node name="FrontUpperArmBone" type="Bone2D" parent="Skeleton2D/Spine"]
+position = Vector2(-17, 2)
+rotation = -2.17763
+rest = Transform2D(-0.853084, 0.52177, -0.52177, -0.853084, -17, 2)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone"]
+light_mask = 2
+z_index = 3
+position = Vector2(2.23417, -4.5835)
+rotation = -2.81744
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_ps57t")
+
+[node name="FrontLowerArmBone" type="Bone2D" parent="Skeleton2D/Spine/FrontUpperArmBone"]
+position = Vector2(6.9098, -10.595)
+rotation = -1.74584
+rest = Transform2D(-0.182658, -0.983176, 0.983176, -0.182658, 6.9098, -10.595)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone"]
+light_mask = 2
+z_index = 7
+position = Vector2(2.30744, 2.16234)
+rotation = 4.04104
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_4e8ip")
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone"]
+position = Vector2(4.61562, 5.28615)
+rotation = 0.749313
+rest = Transform2D(0.732157, 0.681136, -0.681136, 0.732157, 4.61562, 5.28615)
+editor_settings/show_bone_gizmo = false
+
+[node name="Pointer3" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D"]
+light_mask = 2
+z_index = 6
+position = Vector2(-0.639038, -0.153778)
+rotation = 2.99306
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xf2sc")
+flip_h = true
+
+[node name="Gun" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D"]
+visible = false
+light_mask = 2
+z_index = 5
+position = Vector2(6.30151, -5.31532)
+rotation = -0.00671601
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("11_lcc80")
+
+[node name="Fire Point" type="Node2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun"]
+position = Vector2(50.0045, -2.96037)
+
+[node name="GunAnimator" type="AnimationPlayer" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_52b0x")
+}
+
+[node name="BackUpperArmBone" type="Bone2D" parent="Skeleton2D/Spine"]
+position = Vector2(13, 0)
+rotation = 1.76241
+scale = Vector2(0.999993, 0.999993)
+rest = Transform2D(-0.656013, 0.754737, -0.754737, -0.656013, 13, 0)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Spine/BackUpperArmBone"]
+light_mask = 2
+z_index = 1
+position = Vector2(5.41725, -1.62893)
+rotation = 1.00103
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_ps57t")
+
+[node name="BackLowerArmBone" type="Bone2D" parent="Skeleton2D/Spine/BackUpperArmBone"]
+position = Vector2(10.8345, -3.25786)
+rotation = -1.30667
+rest = Transform2D(0.948649, -0.316329, 0.316329, 0.948649, 10.8345, -3.25786)
+auto_calculate_length_and_angle = false
+length = 9.78
+bone_angle = 1.70535
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone"]
+light_mask = 2
+z_index = 1
+position = Vector2(3.57767, -0.447594)
+rotation = -3.16045
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_4e8ip")
+
+[node name="Pointer2" type="Sprite2D" parent="Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2"]
+light_mask = 2
+position = Vector2(-29.1057, 1.69055)
+rotation = -0.298054
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_xf2sc")
+flip_h = true
+
+[node name="FrontLegUp" type="Bone2D" parent="Skeleton2D/Spine"]
+position = Vector2(-15, 16)
+rotation = 1.48708
+scale = Vector2(0.999994, 0.999994)
+rest = Transform2D(-0.0613955, 0.998106, -0.998106, -0.0613955, -15, 16)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp"]
+light_mask = 2
+z_index = 3
+position = Vector2(5.96856, 0.202635)
+rotation = -1.3865
+scale = Vector2(0.199999, 0.199999)
+texture = ExtResource("8_mmt60")
+flip_h = true
+
+[node name="FrontLegBot" type="Bone2D" parent="Skeleton2D/Spine/FrontLegUp"]
+position = Vector2(11.0451, -0.0766878)
+rest = Transform2D(0.963633, -0.267226, 0.267226, 0.963633, 11.0451, -0.0766878)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp/FrontLegBot"]
+light_mask = 2
+z_index = 2
+position = Vector2(4.89887, 1.41458)
+rotation = -1.03836
+scale = Vector2(0.199999, 0.199999)
+texture = ExtResource("9_c8l8g")
+
+[node name="Boot" type="Bone2D" parent="Skeleton2D/Spine/FrontLegUp/FrontLegBot"]
+position = Vector2(10.7942, 2.91281)
+rotation = -0.663648
+rest = Transform2D(0.787751, -0.615994, 0.615994, 0.787751, 10.7942, 2.91281)
+auto_calculate_length_and_angle = false
+length = 7.475
+bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
+
+[node name="Boot" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp/FrontLegBot/Boot"]
+light_mask = 2
+z_index = 1
+position = Vector2(2.82638, -0.107559)
+rotation = 0.0943812
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_ix8ol")
+
+[node name="BackLegUp" type="Bone2D" parent="Skeleton2D/Spine"]
+position = Vector2(7, 17)
+rotation = 2.84235
+scale = Vector2(0.999987, 0.999987)
+rest = Transform2D(0.129096, 0.991614, -0.991614, 0.129096, 7, 17)
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp"]
+light_mask = 2
+z_index = 1
+position = Vector2(5.96856, 0.202635)
+rotation = -1.3865
+scale = Vector2(0.199999, 0.199999)
+texture = ExtResource("8_mmt60")
+flip_h = true
+
+[node name="BackLegBot" type="Bone2D" parent="Skeleton2D/Spine/BackLegUp"]
+position = Vector2(10.0001, -0.0694332)
+rotation = 0.253094
+scale = Vector2(0.999982, 0.999982)
+rest = Transform2D(0.963629, -0.26722, 0.26722, 0.963629, 11.0451, -0.0766878)
+auto_calculate_length_and_angle = false
+length = 7.0
+bone_angle = -14.899
+editor_settings/show_bone_gizmo = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp/BackLegBot"]
+light_mask = 2
+position = Vector2(4.89887, 1.41458)
+rotation = -1.03836
+scale = Vector2(0.199999, 0.199999)
+texture = ExtResource("9_c8l8g")
+
+[node name="OtherBoot" type="Bone2D" parent="Skeleton2D/Spine/BackLegUp/BackLegBot"]
+position = Vector2(9.91569, 1.63985)
+rotation = 0.194325
+scale = Vector2(0.999989, 0.999989)
+rest = Transform2D(0.762681, -0.646719, 0.646719, 0.762681, 10.7947, 2.91287)
+auto_calculate_length_and_angle = false
+length = 7.475
+bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
+
+[node name="Boot" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp/BackLegBot/OtherBoot"]
+light_mask = 2
+z_index = -1
+position = Vector2(2.82638, -0.107559)
+rotation = 0.0943812
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_ix8ol")
+
+[node name="FrontLegTarget" type="Node2D" parent="."]
+visible = false
+position = Vector2(-15, 25)
+
+[node name="EyeHolder" type="Sprite2D" parent="FrontLegTarget"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_137wm")
+
+[node name="BackLegTarget" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 23)
+rotation = 0.385902
+
+[node name="EyeHolder2" type="Sprite2D" parent="BackLegTarget"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_137wm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+autoplay = "idle legs"
+libraries = {
+"": SubResource("AnimationLibrary_akui4")
+}
+
+[node name="PlayerUI" parent="." instance=ExtResource("13_7i7to")]
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+visible = false
+position = Vector2(3, -9)
+shape = SubResource("CircleShape2D_ljav4")
+
+[node name="PingAnimation" parent="." instance=ExtResource("18_3fgdm")]
+position = Vector2(49, -1.90735e-06)
+rotation = 0.0597067
+scale = Vector2(0.25, 0.25)
+portrait_texture = Array[Texture]([ExtResource("21_q0nyc")])
+
+[node name="ActionFinder" parent="." instance=ExtResource("19_2p47t")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionFinder"]
+visible = false
+shape = SubResource("CircleShape2D_c844w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 3
+position = Vector2(0, -19)
+scale = Vector2(0.15, 0.15)
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("23_ohgvd")
+
+[node name="HeadArea" type="Area2D" parent="."]
+position = Vector2(2, -59)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadArea"]
+z_index = 10
+position = Vector2(-1, 15)
+shape = SubResource("CircleShape2D_8rj8b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
