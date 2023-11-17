@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlv3e43sskac2"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Player/gun_module.gd" id="1_mp5oc"]
+[ext_resource type="PackedScene" uid="uid://br23stoowal76" path="res://Scenes/Projectiles/basic_bullet.tscn" id="2_qtw4p"]
+[ext_resource type="PackedScene" path="res://Scenes/Audio/player_lasers.tscn" id="3_3wbiy"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="4_aon2j"]
+
+[node name="GunModule" type="Node2D"]
+script = ExtResource("1_mp5oc")
+bullet = ExtResource("2_qtw4p")
+laser_sounds = ExtResource("3_3wbiy")
+
+[node name="AbilityPowerController" parent="." instance=ExtResource("4_aon2j")]
+ability_name = "gun"
+powered = false

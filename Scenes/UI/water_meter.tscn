@@ -116,7 +116,6 @@ expand_mode = 5
 
 [node name="WaterDrops" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = -5
 z_as_relative = false
 position = Vector2(34, 199)

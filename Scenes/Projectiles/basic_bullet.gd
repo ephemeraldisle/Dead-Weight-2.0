@@ -9,7 +9,7 @@ extends RigidBody2D
 func _ready():
 	timer.timeout.connect(queue_free)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	look_at(global_position + linear_velocity.normalized())
 	constant_force = Vector2.ZERO
 	constant_force = linear_velocity.normalized()*5000
@@ -24,5 +24,5 @@ func _on_body_entered(body):
 			body.on_damage()
 		queue_free()
 
-func player_take_damage(meaningless: Vector2) -> void:
+func player_take_damage(_meaningless: Vector2) -> void:
 	queue_free()

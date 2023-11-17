@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 	_adjust_bars()
 	if current_bars > 0 and current_energy < max_energy:
 		change_energy(ENERGY_RECHARGE_RATE)
-	change_energy(-ENERGY_RECHARGE_RATE*0.99)
+
 
 
 func _adjust_bars() -> void:

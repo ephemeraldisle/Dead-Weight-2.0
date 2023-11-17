@@ -43,6 +43,7 @@ var can_beep = false
 func _ready() -> void:
 	GameEvents.beep_toggled.connect(_on_beep_toggled)
 	_on_beep_toggled()
+	GameEvents.health_changed.connect(set_status)
 
 func _on_beep_toggled() -> void:
 	if not can_beep:

@@ -1,26 +1,24 @@
-[gd_scene load_steps=42 format=3 uid="uid://ci67irojgt1k2"]
+[gd_scene load_steps=40 format=3 uid="uid://ci67irojgt1k2"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/Player/Player.gd" id="1_5bc4x"]
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_k54aa"]
-[ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="2_2eetd"]
 [ext_resource type="AudioStream" uid="uid://bfy6v5jrvv3r3" path="res://Resources/Audio/hurt_sounds.tres" id="2_gqq08"]
 [ext_resource type="PackedScene" uid="uid://cfldpt74nosda" path="res://Scenes/Components/Player/health_manager.tscn" id="2_jhuq7"]
 [ext_resource type="PackedScene" uid="uid://cgeh48bgco303" path="res://Scenes/Components/Universal/hitflash.tscn" id="2_qj748"]
-[ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="2_w5iac"]
-[ext_resource type="PackedScene" uid="uid://dlv3e43sskac2" path="res://Scenes/Components/Player/gun_controller.tscn" id="3_ne81q"]
+[ext_resource type="PackedScene" uid="uid://dlv3e43sskac2" path="res://Scenes/Components/Player/gun_module.tscn" id="3_ne81q"]
 [ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="3_xf2sc"]
-[ext_resource type="PackedScene" uid="uid://ccdapjnk4pmbt" path="res://Scenes/Components/Player/jetpack.tscn" id="4_pxbl6"]
+[ext_resource type="PackedScene" uid="uid://ccdapjnk4pmbt" path="res://Scenes/Components/Player/jetpack_module.tscn" id="4_pxbl6"]
+[ext_resource type="PackedScene" uid="uid://ewqd0igk0slv" path="res://Scenes/Components/Player/restart_module.tscn" id="4_tihvk"]
+[ext_resource type="PackedScene" uid="uid://ipi0t2mj5em2" path="res://Scenes/Components/Player/rotation_module.tscn" id="5_f2pw0"]
 [ext_resource type="Texture2D" uid="uid://yx12p5j5mvd8" path="res://Art/Player/Astro/rect334.png" id="5_tbl5k"]
 [ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="6_ps57t"]
 [ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="7_4e8ip"]
 [ext_resource type="Texture2D" uid="uid://bvky6tn4rv1lh" path="res://Art/Player/Astro/upper leg.png" id="8_mmt60"]
 [ext_resource type="Texture2D" uid="uid://bmxwgjkqlb61k" path="res://Art/Player/Astro/lower leg.png" id="9_c8l8g"]
-[ext_resource type="SkeletonModificationStack2D" path="res://Scenes/Objects/skeleton modifications.tres" id="10_ql0tl"]
 [ext_resource type="Texture2D" uid="uid://qxfljovc0waj" path="res://Art/Player/Astro/boot.png" id="11_ix8ol"]
 [ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="11_lcc80"]
 [ext_resource type="Material" path="res://Resources/Materials/playershaderoutline.tres" id="11_w2qfu"]
 [ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="12_137wm"]
-[ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/player_ui.tscn" id="13_7i7to"]
 [ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="18_3fgdm"]
 [ext_resource type="PackedScene" uid="uid://bf2m6g8fuvyo5" path="res://Scenes/Components/Player/action_finder.tscn" id="19_2p47t"]
 [ext_resource type="Texture2D" uid="uid://dkugrel5ecc1d" path="res://Art/Faces/astro zoom.png" id="21_q0nyc"]
@@ -29,6 +27,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_imi5j"]
 radius = 20.0
 height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rj8b"]
+radius = 17.0294
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkjuh"]
 atlas = ExtResource("5_tbl5k")
@@ -179,9 +180,6 @@ radius = 63.0079
 [sub_resource type="CircleShape2D" id="CircleShape2D_c844w"]
 radius = 150.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8rj8b"]
-radius = 17.0294
-
 [node name="Player" type="RigidBody2D" groups=["Player", "SUITS.U.", "player"]]
 light_mask = 2
 collision_layer = 4
@@ -196,30 +194,40 @@ angular_damp = 3.0
 script = ExtResource("1_5bc4x")
 hurt_sounds = ExtResource("2_gqq08")
 
-[node name="BatteryManager" parent="." instance=ExtResource("2_2eetd")]
+[node name="RestartModule" parent="." instance=ExtResource("4_tihvk")]
+
+[node name="RotationModule" parent="." instance=ExtResource("5_f2pw0")]
+
+[node name="HealthManager" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_jhuq7")]
 unique_name_in_owner = true
+controller = NodePath("..")
+
+[node name="GunModule" parent="." node_paths=PackedStringArray("fire_point", "gun_animator") instance=ExtResource("3_ne81q")]
+position = Vector2(29, -24)
+fire_point = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/Fire Point")
+gun_animator = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/GunAnimator")
+
+[node name="Jetpack" parent="." instance=ExtResource("4_pxbl6")]
+position = Vector2(-19, -24)
 
 [node name="Hitflash" parent="." node_paths=PackedStringArray("health_component", "sprites") instance=ExtResource("2_qj748")]
 health_component = NodePath("../HealthManager")
-sprites = [NodePath("../AnimatedSprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Pointer3"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2/Pointer2"), NodePath("../Skeleton2D/Spine/FrontLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Boot/Boot"), NodePath("../Skeleton2D/Spine/BackLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/OtherBoot/Boot")]
+sprites = [NodePath("../BodySprite"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/Sprite2D"), NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Pointer3"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2"), NodePath("../Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone/Sprite2D2/Pointer2"), NodePath("../Skeleton2D/Spine/FrontLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/FrontLegUp/FrontLegBot/Boot/Boot"), NodePath("../Skeleton2D/Spine/BackLegUp/Sprite2D5"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/Sprite2D6"), NodePath("../Skeleton2D/Spine/BackLegUp/BackLegBot/OtherBoot/Boot")]
 
-[node name="HealthManager" parent="." node_paths=PackedStringArray("controller", "water_manager") instance=ExtResource("2_jhuq7")]
-unique_name_in_owner = true
-controller = NodePath("..")
-water_manager = NodePath("../WaterManager")
-
-[node name="WaterManager" parent="." node_paths=PackedStringArray("health_manager") instance=ExtResource("2_w5iac")]
-unique_name_in_owner = true
-health_manager = NodePath("../HealthManager")
-
-[node name="Jetpack" parent="." node_paths=PackedStringArray("water_manager") instance=ExtResource("4_pxbl6")]
-position = Vector2(-19, -24)
-water_manager = NodePath("../WaterManager")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 z_index = 3
 position = Vector2(1, -22)
 shape = SubResource("CapsuleShape2D_imi5j")
+
+[node name="HeadArea" type="Area2D" parent="."]
+position = Vector2(2, -59)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadArea"]
+z_index = 10
+position = Vector2(-1, 15)
+shape = SubResource("CircleShape2D_8rj8b")
 
 [node name="AttachmentPoint" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -234,12 +242,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_xf2sc")
 flip_h = true
 
-[node name="GunController" parent="." node_paths=PackedStringArray("fire_point", "gun_animator") instance=ExtResource("3_ne81q")]
-position = Vector2(29, -24)
-fire_point = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/Fire Point")
-gun_animator = NodePath("../Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun/GunAnimator")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 light_mask = 2
 z_index = 2
@@ -252,7 +255,6 @@ frame_progress = 0.323302
 flip_h = true
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-modification_stack = ExtResource("10_ql0tl")
 
 [node name="Spine" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(5, -8)
@@ -263,6 +265,7 @@ position = Vector2(-17, 2)
 rotation = -2.17763
 rest = Transform2D(-0.853084, 0.52177, -0.52177, -0.853084, -17, 2)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone"]
 light_mask = 2
@@ -277,6 +280,7 @@ position = Vector2(6.9098, -10.595)
 rotation = -1.74584
 rest = Transform2D(-0.182658, -0.983176, 0.983176, -0.182658, 6.9098, -10.595)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone"]
 light_mask = 2
@@ -302,7 +306,6 @@ texture = ExtResource("3_xf2sc")
 flip_h = true
 
 [node name="Gun" type="Sprite2D" parent="Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D"]
-visible = false
 light_mask = 2
 z_index = 5
 position = Vector2(6.30151, -5.31532)
@@ -325,6 +328,7 @@ rotation = 1.76241
 scale = Vector2(0.999993, 0.999993)
 rest = Transform2D(-0.656013, 0.754737, -0.754737, -0.656013, 13, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Spine/BackUpperArmBone"]
 light_mask = 2
@@ -342,6 +346,7 @@ auto_calculate_length_and_angle = false
 length = 9.78
 bone_angle = 1.70535
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/Spine/BackUpperArmBone/BackLowerArmBone"]
 light_mask = 2
@@ -365,6 +370,7 @@ rotation = 1.48708
 scale = Vector2(0.999994, 0.999994)
 rest = Transform2D(-0.0613955, 0.998106, -0.998106, -0.0613955, -15, 16)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp"]
 light_mask = 2
@@ -379,6 +385,7 @@ flip_h = true
 position = Vector2(11.0451, -0.0766878)
 rest = Transform2D(0.963633, -0.267226, 0.267226, 0.963633, 11.0451, -0.0766878)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp/FrontLegBot"]
 light_mask = 2
@@ -396,6 +403,7 @@ auto_calculate_length_and_angle = false
 length = 7.475
 bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Boot" type="Sprite2D" parent="Skeleton2D/Spine/FrontLegUp/FrontLegBot/Boot"]
 light_mask = 2
@@ -411,6 +419,7 @@ rotation = 2.84235
 scale = Vector2(0.999987, 0.999987)
 rest = Transform2D(0.129096, 0.991614, -0.991614, 0.129096, 7, 17)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp"]
 light_mask = 2
@@ -430,6 +439,7 @@ auto_calculate_length_and_angle = false
 length = 7.0
 bone_angle = -14.899
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp/BackLegBot"]
 light_mask = 2
@@ -447,6 +457,7 @@ auto_calculate_length_and_angle = false
 length = 7.475
 bone_angle = 0.0
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Boot" type="Sprite2D" parent="Skeleton2D/Spine/BackLegUp/BackLegBot/OtherBoot"]
 light_mask = 2
@@ -473,14 +484,12 @@ rotation = 0.385902
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("12_137wm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="leganimator" type="AnimationPlayer" parent="."]
 process_mode = 3
 autoplay = "idle legs"
 libraries = {
 "": SubResource("AnimationLibrary_akui4")
 }
-
-[node name="PlayerUI" parent="." instance=ExtResource("13_7i7to")]
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 64
@@ -511,15 +520,5 @@ blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("23_ohgvd")
-
-[node name="HeadArea" type="Area2D" parent="."]
-position = Vector2(2, -59)
-collision_layer = 0
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadArea"]
-z_index = 10
-position = Vector2(-1, 15)
-shape = SubResource("CircleShape2D_8rj8b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

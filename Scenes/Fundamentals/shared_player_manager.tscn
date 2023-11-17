@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bp4xcrakwe6wl"]
+[gd_scene load_steps=14 format=3 uid="uid://bp4xcrakwe6wl"]
 
 [ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/player_ui.tscn" id="9_bp3ua"]
 [ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="10_jtc8m"]
 [ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="11_wlsew"]
+[ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="12_ld8n6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
 streams_count = 6
@@ -32,8 +33,10 @@ stream_5/weight = 1.0
 script = ExtResource("1_shdlt")
 
 [node name="WaterManager" parent="." instance=ExtResource("10_jtc8m")]
+unique_name_in_owner = true
 
 [node name="EnergyManager" parent="." instance=ExtResource("11_wlsew")]
+unique_name_in_owner = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
@@ -65,5 +68,10 @@ water_manager = NodePath("../../WaterManager")
 
 [node name="BatteryMeter" parent="PlayerUI" index="2" node_paths=PackedStringArray("energy_manager")]
 energy_manager = NodePath("../../EnergyManager")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_ld8n6")
 
 [editable path="PlayerUI"]

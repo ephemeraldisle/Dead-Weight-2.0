@@ -21,7 +21,7 @@ var _animating = false
 var _power_on_ticks: int = 0
 
 
-@onready var _power_indicator: TextureRect = %PowerIndicator
+#@onready var _power_indicator: TextureRect = %PowerIndicator
 @onready var _power_indicator_animator: AnimationPlayer = %PowerIndicatorAnimator
 @onready var _battery_children = %BatteryHolder.get_children()
 
@@ -33,6 +33,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if _active_battery == null:
+		return
 	_current_percent = clamp(energy_manager.current_energy - energy_manager.current_bars, 0, 1)
 	_update_progress_bar_fill()
 	if _current_percent < _previous_percent:

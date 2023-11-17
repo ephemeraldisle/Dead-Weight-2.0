@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccdapjnk4pmbt"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/jetpack.gd" id="1_qu1d7"]
-[ext_resource type="Texture2D" uid="uid://bnjhswvpb476j" path="res://Art/Particles/smoke_02.png" id="2_1ddfw"]
-[ext_resource type="Texture2D" uid="uid://bylh0nyxa1vnv" path="res://Art/Player/dirtCliff_right.png" id="3_1nb5q"]
-[ext_resource type="AudioStream" uid="uid://ie2r4sp53y27" path="res://Audio/Objects/Player/Astro/512815__mostyxs__good-jetpack-sound-loop.wav" id="4_7dnrw"]
+[ext_resource type="Script" path="res://Scenes/Components/Player/jetpack_module.gd" id="1_xdcwn"]
+[ext_resource type="Texture2D" uid="uid://bnjhswvpb476j" path="res://Art/Particles/smoke_02.png" id="2_87hyr"]
+[ext_resource type="Texture2D" uid="uid://bylh0nyxa1vnv" path="res://Art/Player/dirtCliff_right.png" id="3_gtfh3"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="4_w3tuf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p5dux"]
 lifetime_randomness = 0.25
@@ -25,8 +25,8 @@ color = Color(0.772549, 0.862745, 0.929412, 1)
 hue_variation_min = -0.02
 hue_variation_max = 0.02
 
-[node name="Jetpack" type="Node2D"]
-script = ExtResource("1_qu1d7")
+[node name="JetpackModule" type="Node2D"]
+script = ExtResource("1_xdcwn")
 
 [node name="JetParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -36,7 +36,7 @@ scale = Vector2(0.75, 1)
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_p5dux")
-texture = ExtResource("2_1ddfw")
+texture = ExtResource("2_87hyr")
 lifetime = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -44,7 +44,10 @@ light_mask = 2
 z_index = 2
 rotation = -3.14159
 scale = Vector2(0.15, 0.25)
-texture = ExtResource("3_1nb5q")
+texture = ExtResource("3_gtfh3")
 
 [node name="noises" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_7dnrw")
+
+[node name="AbilityPowerController" parent="." instance=ExtResource("4_w3tuf")]
+ability_name = "jetpack"
+powered = false

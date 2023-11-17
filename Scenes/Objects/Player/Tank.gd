@@ -20,6 +20,7 @@ var _damageable = true
 @onready var ping_animation = $PingAnimation
 @onready var water_drops: GPUParticles2D = %WaterDrops
 @onready var shield_module: Node2D = $ShieldModule
+@onready var magnet_module: Node2D = $MagnetModule
 
 
 func _ready() -> void:

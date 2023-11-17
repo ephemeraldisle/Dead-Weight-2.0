@@ -5,7 +5,7 @@ const CURRENT_VERSION = 0.2
 
 var _save_data_default := {
 	"version": CURRENT_VERSION,
-	"spawn_point": Vector2(166, 84),
+	"spawn_point": Vector2(-230,-450),
 	"options":
 	{
 		"screenshake": true,
@@ -23,10 +23,11 @@ var _save_data_default := {
 	},
 	"abilities":
 	{
-		"jetpack": false,
-		"rotation": false,
-		"death": false,
-		"gun": false,
+		"jetpack": true,
+		"rotation": true,
+		"death": true,
+		"interact": true,
+		"gun": true,
 		"shield": false,
 		"magnet": false
 	},

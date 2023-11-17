@@ -2,8 +2,9 @@ extends Camera2D
 
 signal finish_transition
 
+const DEBUG = false
 const TRANSITION_TIME = 2.0
-const LERP_WEIGHT = 0.1
+const LERP_WEIGHT = 0.2
 const DEFAULT_ZOOM_TIME = 16
 const SHAKE = 0.5
 const DECAY = 0.8
@@ -14,7 +15,6 @@ const NOISE_FREQUENCY = 0.25
 const ARBITRARY_NOISE_OFFSET = 9999
 const DEBUG_MOVE_MULTIPLIER = 1000
 
-@export var debug = false
 
 var aim_node: Node2D
 var trauma := 0.0
@@ -41,19 +41,21 @@ func _ready() -> void:
 	randomize()
 	noise.seed = randi()
 	noise.frequency = NOISE_FREQUENCY
-	global_position = center
+	position = center
 	make_current()
 
 
 func _physics_process(delta: float) -> void:
-	if !debug:
-		global_position = lerp(global_position, get_aim_position(), LERP_WEIGHT)
+	if not DEBUG:
+		if aim_node != null:
+			aim_position= aim_node.global_position
+		global_position = lerp(global_position, aim_position, LERP_WEIGHT)
 	if trauma:
 		trauma = max(trauma - DECAY * delta, 0)
 		shake()
 	else:
 		rotation = base_rotation
-	if debug:
+	if DEBUG:
 		var direction = Input.get_vector("left", "right", "up", "down")
 		global_position += direction * delta * DEBUG_MOVE_MULTIPLIER
 		var zoom_axis = Input.get_axis("click", "jump")
@@ -75,7 +77,7 @@ func follow_position(pos: Vector2) -> void:
 func get_aim_position() -> Vector2:
 	var effective_aim_position = aim_position
 	if aim_node != null:
-		effective_aim_position = aim_node.glboal_position
+		effective_aim_position = aim_node.global_position
 	return effective_aim_position
 
 
@@ -102,7 +104,7 @@ func add_trauma(amount = SHAKE) -> void:
 
 
 func shake() -> void:
-	if !GameState.screenshake:
+	if not GameState.state.options.screenshake:
 		return
 	var amount = pow(trauma, TRAUMA_POWER)
 

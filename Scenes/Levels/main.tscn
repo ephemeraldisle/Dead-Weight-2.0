@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=8 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
-[ext_resource type="PackedScene" uid="uid://crl3cbdt0b741" path="res://Scenes/Fundamentals/global_camera.tscn" id="3_2l16h"]
 [ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
 [ext_resource type="PackedScene" uid="uid://vef6tdll8ra3" path="res://Scenes/Objects/Environment/Togglers/power_node.tscn" id="6_q7au7"]
@@ -14,10 +13,6 @@
 [node name="ParallaxBackgroundSpace" parent="." instance=ExtResource("1_a8rnd")]
 
 [node name="TileMap" parent="." instance=ExtResource("2_skake")]
-
-[node name="GlobalCamera" parent="." instance=ExtResource("3_2l16h")]
-position = Vector2(30, -222)
-debug = true
 
 [node name="Door" parent="." instance=ExtResource("5_6bcy1")]
 position = Vector2(836, -447)
@@ -41,3 +36,6 @@ starting_mode = 0
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
 z_index = 500
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-230, -451)

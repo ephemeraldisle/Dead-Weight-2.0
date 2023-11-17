@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ipi0t2mj5em2"]
+
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="1_bu5a6"]
+[ext_resource type="Script" path="res://Scenes/Components/Player/rotation_module.gd" id="1_cdrev"]
+
+[node name="RotationModule" type="Node"]
+script = ExtResource("1_cdrev")
+
+[node name="AbilityPowerController" parent="." instance=ExtResource("1_bu5a6")]
+ability_name = "rotation"
+powered = false

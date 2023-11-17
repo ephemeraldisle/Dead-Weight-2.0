@@ -43,9 +43,9 @@ func _squeeze_bar(should_squeeze: bool) -> void:
 	_squeeze_tween.tween_property(squeezer, "material:shader_parameter/squeeze_amount", int(should_squeeze), SQUEEZE_TWEEN_TIME).from_current()
 
 
-func _update_progress(value: float) -> void:
+func _update_progress() -> void:
 	_tween = create_tween()
-	_tween.tween_property(fill_bar, "material:shader_parameter/progress", value, FILL_TWEEN_TIME)
+	_tween.tween_property(fill_bar, "material:shader_parameter/progress", SharedPlayerManager.request_water_percentage(), FILL_TWEEN_TIME)
 
 
 func _update_particles(health: int) -> void:

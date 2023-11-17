@@ -2,7 +2,7 @@ extends Node
 
 var state := {
 	"version": 0.00,
-	"spawn_point": Vector2(166, 84),
+	"spawn_point": Vector2(-230,-450),
 	"options":
 	{
 		"screenshake": true,
@@ -23,6 +23,7 @@ var state := {
 		"jetpack": false,
 		"rotation": false,
 		"death": false,
+		"interact": false,
 		"gun": false,
 		"shield": false,
 		"magnet": false
