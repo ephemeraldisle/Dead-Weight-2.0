@@ -1,6 +1,7 @@
 extends Node2D
 
 const PAUSE_FRAME_TIME = 0.05
+const MAX_SEPARATION_DISTANCE = 400
 
 var player
 var tank
@@ -38,7 +39,7 @@ func _physics_process(_delta):
 	if !player or !tank:
 		return
 	var distance = player.global_position - tank.global_position
-	if distance.length() > 400:
+	if distance.length() > MAX_SEPARATION_DISTANCE:
 		die()
 	global_position = tank.global_position + distance * 0.5
 	tank_ray.global_position = player.global_position

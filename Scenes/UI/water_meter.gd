@@ -1,52 +1,59 @@
 extends CanvasLayer
 
+const SQUEEZE_TWEEN_TIME = 0.1
+const FILL_TWEEN_TIME = 0.25
+const PARTICLE_TWEEN_TIME = 0.2
+const STANDARD_PARTICLES = 5
+const MID_HEALTH = 2
+const MID_PARTICLE_MULTIPLIER = 2
+const LOW_HEALTH = 1
+const LOW_PARTICLE_MULTIPLIER = 4
+
+@export var water_manager: Node
+
+var _tween
+var _squeeze_tween
+var _particle_tween
+
 @onready var meter_container = %MeterContainer
-@onready var slimer = %Slimer
-@onready var water_progress_bar = %WaterProgressBar as ProgressBar
-@onready var red_glow = %RedGlow
 @onready var water_drops: GPUParticles2D = %WaterDrops
-
-@export var slimer_start: Vector2
-@export var slimer_end: Vector2
-
-var increasing = true
-var desired_value = 1
-var the_tween
+@onready var fill_bar: TextureRect = %FillBar
+@onready var squeezer: TextureRect = %Squeezer
 
 func _ready() -> void:
-	GameEvents.health_changed.connect(update_particles)
+	GameEvents.health_changed.connect(_update_particles)
+	water_manager.water_changed.connect(_update_progress)
 
 
-func update_progress(value: float):
-#	if the_tween:
-#		the_tween.kill()
-	the_tween = create_tween() as Tween
-	the_tween.tween_property(water_progress_bar, "value", value, 0.2)
-
-
-func _process(delta):
-	if Input.is_action_pressed("jump") && water_progress_bar.value > 0:
-		meter_container.modulate=Color.html("ff0d29")
-		slimer.modulate=Color.html("ff0d29")
-		red_glow.visible = true
-	else:
-		meter_container.modulate=Color.html("ffffff")
-		slimer.modulate=Color.html("ffffff")	
-		red_glow.visible = false
-	slimer.position = lerp(slimer_start, slimer_end, water_progress_bar.value)
-	if water_progress_bar.value <= 0:
-		slimer.modulate=Color.html("ff0d29")
+func _physics_process(_delta: float) -> void:	
+	if water_manager.water_percent <= 0:
 		water_drops.emitting = false
 	else:
 		water_drops.emitting = true
+	if not GameState.state.abilities.jetpack:
+		return
+	if Input.is_action_just_pressed("jump"):
+		_squeeze_bar(true)
+	elif Input.is_action_just_released("jump"):
+		_squeeze_bar(false)
 
 
-func update_particles(health: int):
-	var amount = 5
-	if health == 2:
-		amount = 10
-	if health == 1:
-		amount = 20
-	the_tween = create_tween() as Tween
-	the_tween.tween_property(water_drops, "amount", amount, 0.2).from_current()
+func _squeeze_bar(should_squeeze: bool) -> void:
+	_squeeze_tween = create_tween()
+	_squeeze_tween.tween_property(squeezer, "material:shader_parameter/squeeze_amount", int(should_squeeze), SQUEEZE_TWEEN_TIME).from_current()
+
+
+func _update_progress(value: float) -> void:
+	_tween = create_tween()
+	_tween.tween_property(fill_bar, "material:shader_parameter/progress", value, FILL_TWEEN_TIME)
+
+
+func _update_particles(health: int) -> void:
+	var amount = STANDARD_PARTICLES
+	if health == MID_HEALTH:
+		amount = STANDARD_PARTICLES * MID_PARTICLE_MULTIPLIER
+	if health == LOW_HEALTH:
+		amount = STANDARD_PARTICLES * LOW_PARTICLE_MULTIPLIER
+	_particle_tween = create_tween()
+	_particle_tween.tween_property(water_drops, "amount", amount, PARTICLE_TWEEN_TIME).from_current()
 

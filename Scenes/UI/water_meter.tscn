@@ -1,31 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsurnmyedsdo5"]
+[gd_scene load_steps=12 format=3 uid="uid://dsurnmyedsdo5"]
 
 [ext_resource type="Script" path="res://Scenes/UI/water_meter.gd" id="1_6c1bv"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water_meter.gdshader" id="2_yhwrf"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/loading_fluid.gdshader" id="3_nytwa"]
-[ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="4_bku82"]
 [ext_resource type="Texture2D" uid="uid://cwqmj66y1mys1" path="res://Art/UI/Water/roundedrect.png" id="4_fm5nl"]
 [ext_resource type="Texture2D" uid="uid://dsx87sp7tkhmk" path="res://Art/UI/Water/roundedddrect.png" id="4_g21o6"]
 [ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="6_8a6cn"]
 
-[sub_resource type="Gradient" id="Gradient_agvhe"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.557312, 0.758893, 0.913043)
-colors = PackedColorArray(0.98, 0.0588, 0.10486, 1, 0.529412, 0.239216, 0.0941176, 1, 0.980392, 0.0588235, 0.105882, 0.0941176, 0.980392, 0.0588235, 0.105882, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g7xxu"]
-gradient = SubResource("Gradient_agvhe")
-width = 500
-height = 500
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7i78"]
+shader = ExtResource("2_yhwrf")
+shader_parameter/squeeze_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p2xgg"]
 shader = ExtResource("3_nytwa")
-shader_parameter/progress = 0.62
+shader_parameter/progress = 0.82
 shader_parameter/bg_color = Color(0.34902, 0.168627, 1, 0.133333)
-shader_parameter/wave_1_color = Color(0, 0.0392157, 0.32549, 1)
+shader_parameter/wave_1_color = Color(0, 0.164706, 1, 1)
 shader_parameter/wave_2_color = Color(0.0431373, 0.627451, 0.956863, 1)
-shader_parameter/wave_2_color_b = Color(0, 0.188235, 0.654902, 1)
+shader_parameter/wave_2_color_b = Color(1, 0, 0.333333, 1)
 
 [sub_resource type="Gradient" id="Gradient_gj8et"]
 offsets = PackedFloat32Array(0, 0.666667, 1)
@@ -63,8 +55,6 @@ turbulence_noise_speed = Vector3(1.835, 3.045, -0.87)
 
 [node name="WaterMeter" type="CanvasLayer"]
 script = ExtResource("1_6c1bv")
-slimer_start = Vector2(15, 667)
-slimer_end = Vector2(15, 180)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_left = 19.0
@@ -74,20 +64,6 @@ offset_bottom = 700.0
 size_flags_vertical = 3
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_bottom = 1
-
-[node name="RedGlow" type="TextureRect" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -519.0
-offset_right = 61.0
-offset_bottom = -19.0
-grow_vertical = 0
-texture = SubResource("GradientTexture2D_g7xxu")
-expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 2
@@ -115,14 +91,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer"]
+[node name="Squeezer" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_y7i78")
 clip_contents = true
 layout_mode = 2
 texture = ExtResource("4_fm5nl")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer/TextureRect2"]
+[node name="FillBar" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer/Squeezer"]
+unique_name_in_owner = true
 show_behind_parent = true
 material = SubResource("ShaderMaterial_p2xgg")
 clip_contents = true
@@ -134,18 +113,6 @@ grow_vertical = 2
 size_flags_vertical = 3
 texture = ExtResource("4_g21o6")
 expand_mode = 5
-
-[node name="Slimer" type="TextureRect" parent="."]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(32, 32)
-offset_left = 15.0
-offset_top = 180.0
-offset_right = 48.0
-offset_bottom = 212.0
-texture = ExtResource("4_bku82")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="WaterDrops" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true

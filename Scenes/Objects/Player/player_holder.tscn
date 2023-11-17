@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj7uydye3oc1k"]
+
+[ext_resource type="PackedScene" uid="uid://5xkp2n7lbo7x" path="res://Scenes/Objects/Tank.tscn" id="1_6illi"]
+[ext_resource type="PackedScene" uid="uid://chiwh1qrg4g6s" path="res://Scenes/RopeBullshit/rope_holder.tscn" id="2_b2brt"]
+[ext_resource type="PackedScene" uid="uid://ci67irojgt1k2" path="res://Scenes/Objects/player.tscn" id="3_vt678"]
+
+[node name="Player Holder" type="Node2D"]
+z_index = 10
+
+[node name="Tank" parent="." instance=ExtResource("1_6illi")]
+position = Vector2(-3, 96)
+
+[node name="RopeHolder" parent="." instance=ExtResource("2_b2brt")]
+position = Vector2(0, -11)
+enable_animation = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("tank", "rope_holder") instance=ExtResource("3_vt678")]
+position = Vector2(0, -11)
+tank = NodePath("../Tank")
+rope_holder = NodePath("../RopeHolder")

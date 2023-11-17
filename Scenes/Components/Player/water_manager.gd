@@ -1,5 +1,6 @@
 extends Node
 
+const SECONDS_PER_TICK = 1
 const TICK_LOSS = 0.005
 const TICK_DAMAGE_TRIGGER_AMOUNT = 5
 const EFFECTIVELY_EMPTY_WATER_AMOUNT = 0.005
@@ -7,33 +8,32 @@ const EFFECTIVELY_EMPTY_WATER_AMOUNT = 0.005
 signal water_changed
 
 @export var health_manager: Node
-@export var seconds_per_tick = 1
+
+var _waterless_ticks = -1
+var _waterActive = false
+
 @onready var water_percent := 1.0
-@onready var timer := $Timer as Timer
-
-var waterless_ticks = -1
-var waterActive = false
-
+@onready var _timer := $Timer as Timer
 
 func _ready() -> void:
-	timer.wait_time = seconds_per_tick
-	GameEvents.water_collected.connect(change_water)
-	timer.timeout.connect(on_timer_timeout)
+	_timer.wait_time = SECONDS_PER_TICK
+	GameEvents.water_collected.connect(_change_water)
+	_timer.timeout.connect(_on_timer_timeout)
 	water_changed.emit()
 
 
-func on_timer_timeout() -> void:
-	if waterActive:
+func _on_timer_timeout() -> void:
+	if _waterActive:
 		water_percent = max(water_percent - TICK_LOSS, 0)
 		water_changed.emit()
 	if water_percent <= EFFECTIVELY_EMPTY_WATER_AMOUNT:
-		if waterless_ticks >= TICK_DAMAGE_TRIGGER_AMOUNT:
+		if _waterless_ticks >= TICK_DAMAGE_TRIGGER_AMOUNT:
 			health_manager.on_damage()
-			waterless_ticks = 0
+			_waterless_ticks = 0
 		else:
-			waterless_ticks += 1
+			_waterless_ticks += 1
 
 
-func change_water(value: float) -> void:
+func _change_water(value: float) -> void:
 	water_percent = clamp(water_percent+value, 0, 1)
 	water_changed.emit()

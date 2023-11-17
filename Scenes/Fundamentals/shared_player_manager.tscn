@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp4xcrakwe6wl"]
+[gd_scene load_steps=13 format=3 uid="uid://bp4xcrakwe6wl"]
 
 [ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://dx1eo3urkx2de" path="res://Audio/Hurt Sounds/Robot/robohit4.mp3" id="6_mjwwd"]
 [ext_resource type="AudioStream" uid="uid://ceaninhcg8cet" path="res://Audio/Hurt Sounds/Robot/robohit3.mp3" id="7_vix1u"]
 [ext_resource type="AudioStream" uid="uid://b6snd40lca4dy" path="res://Audio/Hurt Sounds/Robot/robohit2.mp3" id="8_w4nov"]
+[ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/player_ui.tscn" id="9_bp3ua"]
+[ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="10_jtc8m"]
+[ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="11_wlsew"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
 streams_count = 6
@@ -28,6 +31,10 @@ stream_5/weight = 1.0
 [node name="SharedPlayerManager" type="Node2D"]
 script = ExtResource("1_shdlt")
 
+[node name="WaterManager" parent="." instance=ExtResource("10_jtc8m")]
+
+[node name="EnergyManager" parent="." instance=ExtResource("11_wlsew")]
+
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
@@ -42,9 +49,21 @@ max_polyphony = 5
 bus = &"Sounds"
 
 [node name="PlayerRay" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(200, 0)
 collision_mask = 4111
 
 [node name="TankRay" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(200, 0)
 collision_mask = 4139
+
+[node name="PlayerUI" parent="." instance=ExtResource("9_bp3ua")]
+
+[node name="WaterMeter" parent="PlayerUI" index="0" node_paths=PackedStringArray("water_manager")]
+water_manager = NodePath("../../WaterManager")
+
+[node name="BatteryMeter" parent="PlayerUI" index="2" node_paths=PackedStringArray("energy_manager")]
+energy_manager = NodePath("../../EnergyManager")
+
+[editable path="PlayerUI"]

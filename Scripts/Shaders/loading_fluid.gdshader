@@ -42,7 +42,7 @@ float DrawBubbles(vec2 uv){
                 const  float num = loopT*count;
                 for(float i=1.;i<num;i++){
                     float size = 0.02*Rand(i*69.420)+0.015;
-                    float t = mod(TIME + Rand(i)*loopT,loopT)*1.25;
+                    float t = mod(TIME + Rand(i)*loopT,loopT)*(progress + 0.22);
                     float deg = radians((Rand(i*1354.54)*maxDeg + (90.-maxDeg*0.5)));
                     vec2 vel = vec2(cos(deg),sin(deg));
                     float ty = max((vel.y*0.3 - maxVY),0.)/ay;
@@ -82,8 +82,8 @@ void fragment() {
 	float frontFill = step(uv.y, fillAnimation + frontWave + fillProgress);
 	float backFill = step(uv.y, -fillAnimation + backWave + fillProgress);
 	
-	vec3 wave_colored = vec3(frontFill) * wave_1_color.rgb;
-	vec3 wave_2_colored = vec3(backFill) * mix(wave_2_color.rgb, wave_2_color_b.rgb, -uv.y);
+	vec3 wave_colored = vec3(frontFill) * mix(mix(wave_1_color.rgb, wave_2_color.rgb, -uv.y), wave_2_color_b.rgb, -uv.y*(1.-progress));
+	vec3 wave_2_colored = vec3(backFill) * mix(mix(wave_2_color.rgb, wave_1_color.rgb, -uv.y), wave_2_color_b.rgb,-uv.y*(1.-progress));
 	
 	vec3 waves_color = mix(wave_colored, wave_2_colored, backFill);
 	 //draw bubbles
@@ -91,5 +91,11 @@ void fragment() {
     waves_color += DrawBubbles(vec2(uv.x*.05, uv.y*1.0))*vec3(0.8)* bubbleMask;
 	COLOR.rgb = mix(bg_color.rgb, waves_color, max(backFill, frontFill));
 	if (max(backFill, frontFill) <= 0.0){
-	COLOR.a = bg_color.a;}}
+	COLOR.a = bg_color.a;}
+	
+		
+	uv = vec2(0.5,0.5);
+	}
+
+	
 }

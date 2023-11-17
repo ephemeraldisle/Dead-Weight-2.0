@@ -1,0 +1,213 @@
+[gd_scene load_steps=14 format=3 uid="uid://chiwh1qrg4g6s"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Player/Ropes/rope_holder.gd" id="1_jcq2k"]
+[ext_resource type="PackedScene" uid="uid://bxg6gpwbl1rgr" path="res://Scenes/Objects/Player/Ropes/rope_segment.tscn" id="2_6fvv8"]
+[ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="3_3qfhb"]
+[ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="3_gol0s"]
+[ext_resource type="Texture2D" uid="uid://dg7cw3pdg1aut" path="res://Art/Faces/hose prime.png" id="4_q5c12"]
+[ext_resource type="Texture2D" uid="uid://kx634qu1yl6u" path="res://Art/Faces/hose a.png" id="5_5vksj"]
+[ext_resource type="Texture2D" uid="uid://hq5xgrk32ud" path="res://Art/Faces/hose c.png" id="6_jd6a7"]
+[ext_resource type="Texture2D" uid="uid://pyehmpn8f2f" path="res://Art/Faces/hose b.png" id="6_tigvm"]
+[ext_resource type="Texture2D" uid="uid://cxisp7drmnf8v" path="res://Art/Faces/hose d.png" id="7_k37e4"]
+[ext_resource type="Texture2D" uid="uid://binqp40xk7qn2" path="res://Art/Faces/hose e.png" id="9_2lqp5"]
+
+[sub_resource type="Animation" id="Animation_a72n8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.125, 0.125)]
+}
+
+[sub_resource type="Animation" id="Animation_yml5l"]
+resource_name = "pump"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.85),
+"transitions": PackedFloat32Array(2.2974, 1.86607, 2, 0.535887),
+"update": 0,
+"values": [Vector2(0.15, 0.188), Vector2(0.167, 0.1), Vector2(0.125, 0.125), Vector2(0.14, 0.14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owg4p"]
+_data = {
+"RESET": SubResource("Animation_a72n8"),
+"pump": SubResource("Animation_yml5l")
+}
+
+[node name="RopeHolder" type="Node2D"]
+script = ExtResource("1_jcq2k")
+
+[node name="OriginPin" type="PinJoint2D" parent="."]
+unique_name_in_owner = true
+node_b = NodePath("../RopeSegment")
+
+[node name="RopeSegment" parent="." groups=["Hose", "Hose Prime"] instance=ExtResource("2_6fvv8")]
+
+[node name="PingAnimation" parent="RopeSegment" instance=ExtResource("3_3qfhb")]
+position = Vector2(-12, -2)
+rotation = -2.48877
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("4_q5c12")])
+
+[node name="RopeSegment2" parent="." instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 10)
+
+[node name="RopeSegment3" parent="." groups=["Hose A"] instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 20)
+
+[node name="PingAnimation" parent="RopeSegment3" instance=ExtResource("3_3qfhb")]
+position = Vector2(-19, -2)
+rotation = -2.93226
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("5_5vksj")])
+
+[node name="RopeSegment4" parent="." instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 30)
+
+[node name="RopeSegment5" parent="." groups=["Hose B"] instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 40)
+
+[node name="PingAnimation" parent="RopeSegment5" instance=ExtResource("3_3qfhb")]
+position = Vector2(18, 0)
+rotation = -0.0300097
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("6_tigvm")])
+
+[node name="RopeSegment6" parent="." instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 50)
+
+[node name="RopeSegment7" parent="." groups=["Hose C"] instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 60)
+
+[node name="PingAnimation" parent="RopeSegment7" instance=ExtResource("3_3qfhb")]
+position = Vector2(-21, 0)
+rotation = -3.11725
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("6_jd6a7")])
+
+[node name="RopeSegment8" parent="." instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 70)
+
+[node name="RopeSegment9" parent="." groups=["Hose D"] instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 80)
+
+[node name="PingAnimation" parent="RopeSegment9" instance=ExtResource("3_3qfhb")]
+position = Vector2(18, 1)
+rotation = -0.115753
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("7_k37e4")])
+
+[node name="RopeSegment10" parent="." groups=["Hose E"] instance=ExtResource("2_6fvv8")]
+position = Vector2(0, 90)
+
+[node name="Icon4" type="Sprite2D" parent="RopeSegment10"]
+modulate = Color(0.576471, 0.67451, 0.678431, 1)
+position = Vector2(0, 10)
+rotation = 3.14159
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_gol0s")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RopeSegment10"]
+root_node = NodePath("../Icon4")
+autoplay = "pump"
+libraries = {
+"": SubResource("AnimationLibrary_owg4p")
+}
+
+[node name="PingAnimation" parent="RopeSegment10" instance=ExtResource("3_3qfhb")]
+position = Vector2(-14, 8)
+rotation = -3.36771
+scale = Vector2(0.15, 0.15)
+portrait_texture = Array[Texture]([ExtResource("9_2lqp5")])
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 10)
+node_a = NodePath("../RopeSegment")
+node_b = NodePath("../RopeSegment2")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="."]
+position = Vector2(0, 20)
+node_a = NodePath("../RopeSegment2")
+node_b = NodePath("../RopeSegment3")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, 30)
+node_a = NodePath("../RopeSegment3")
+node_b = NodePath("../RopeSegment4")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="."]
+position = Vector2(0, 40)
+node_a = NodePath("../RopeSegment4")
+node_b = NodePath("../RopeSegment5")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(0, 50)
+node_a = NodePath("../RopeSegment5")
+node_b = NodePath("../RopeSegment6")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="."]
+position = Vector2(0, 60)
+node_a = NodePath("../RopeSegment6")
+node_b = NodePath("../RopeSegment7")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2(0, 70)
+node_a = NodePath("../RopeSegment7")
+node_b = NodePath("../RopeSegment8")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+position = Vector2(0, 90)
+node_a = NodePath("../RopeSegment9")
+node_b = NodePath("../RopeSegment10")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="."]
+position = Vector2(0, 80)
+node_a = NodePath("../RopeSegment8")
+node_b = NodePath("../RopeSegment9")
+bias = 0.9
+disable_collision = false
+softness = 0.3
+
+[node name="EndPin" type="PinJoint2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 100)
+node_a = NodePath("../RopeSegment10")
