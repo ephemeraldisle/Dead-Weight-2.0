@@ -49,11 +49,11 @@ func _update_progress() -> void:
 
 
 func _update_particles(health: int) -> void:
-	var amount = STANDARD_PARTICLES
+	var particle_amount = STANDARD_PARTICLES
 	if health == MID_HEALTH:
-		amount = STANDARD_PARTICLES * MID_PARTICLE_MULTIPLIER
+		particle_amount = STANDARD_PARTICLES * MID_PARTICLE_MULTIPLIER
 	if health == LOW_HEALTH:
-		amount = STANDARD_PARTICLES * LOW_PARTICLE_MULTIPLIER
+		particle_amount = STANDARD_PARTICLES * LOW_PARTICLE_MULTIPLIER
 	_particle_tween = create_tween()
-	_particle_tween.tween_property(water_drops, "amount", amount, PARTICLE_TWEEN_TIME).from_current()
+	_particle_tween.tween_property(water_drops, "amount", particle_amount, PARTICLE_TWEEN_TIME).from_current()
 

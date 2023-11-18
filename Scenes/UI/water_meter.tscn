@@ -13,11 +13,12 @@ shader_parameter/squeeze_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p2xgg"]
 shader = ExtResource("3_nytwa")
-shader_parameter/progress = 0.82
+shader_parameter/aspect_ratio = 0.05
+shader_parameter/progress = 1.0
 shader_parameter/bg_color = Color(0.34902, 0.168627, 1, 0.133333)
 shader_parameter/wave_1_color = Color(0, 0.164706, 1, 1)
 shader_parameter/wave_2_color = Color(0.0431373, 0.627451, 0.956863, 1)
-shader_parameter/wave_2_color_b = Color(1, 0, 0.333333, 1)
+shader_parameter/wave_mix_color = null
 
 [sub_resource type="Gradient" id="Gradient_gj8et"]
 offsets = PackedFloat32Array(0, 0.666667, 1)

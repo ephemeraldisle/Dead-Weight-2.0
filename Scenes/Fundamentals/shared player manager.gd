@@ -85,8 +85,6 @@ func die():
 #	player.play_hurt_sounds()
 	dying = true
 	
-	GlobalCamera.follow_position(GameState.state.spawn_point)
-	GlobalCamera.snap_to_aim()
 	
 	ScreenTransition.transition(DEATH_FADE_TIME, DEATH_PAUSE_TIME)
 	clean_up_pickups()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
@@ -6,7 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
 [ext_resource type="PackedScene" uid="uid://vef6tdll8ra3" path="res://Scenes/Objects/Environment/Togglers/power_node.tscn" id="6_q7au7"]
 [ext_resource type="PackedScene" uid="uid://bfi1wqf0pfmuw" path="res://Scenes/Objects/Environment/Toggleables/Traps/laser_trap.tscn" id="7_ela7u"]
+[ext_resource type="PackedScene" uid="uid://bovathl82chfr" path="res://Scenes/Objects/Environment/wire.tscn" id="8_ls52l"]
 [ext_resource type="PackedScene" uid="uid://bf75lquvw7wae" path="res://Scenes/Objects/Environment/Toggleables/barrier.tscn" id="8_vqn2n"]
+
+[sub_resource type="Curve2D" id="Curve2D_hwv2x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23, -21, -53.9716, 22.2236, 53.9716, -22.2236, 41, -235, -23.0173, 25.3984, 23.0173, -25.3984, 419, -417, -22.2236, 43.6535, 22.2236, -43.6535, 495, -426, -44.2001, 78.6611, 44.2001, -78.6611, 496, -574, -96.6408, -43.4509, 96.6408, 43.4509, 461, -828, -34.4611, -11.9865, 34.4611, 11.9865, 851, -823, 53.9391, 29.9661, -53.9391, -29.9661, 844, -593, 0, 0, 0, 0, 771, -607)
+}
+point_count = 9
 
 [node name="Main" type="Node2D"]
 
@@ -39,3 +46,7 @@ z_index = 500
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-230, -451)
+
+[node name="Wire" parent="." instance=ExtResource("8_ls52l")]
+position = Vector2(-386, -620)
+curve = SubResource("Curve2D_hwv2x")

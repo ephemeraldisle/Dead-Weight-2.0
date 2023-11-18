@@ -46,9 +46,9 @@ func _ready():
 	await get_tree().create_timer(0.2, false, true).timeout
 	skeleton_2d.set_modification_stack(skeleton_mods)
 	
-#func _physics_process(delta):
-#	pointer.position = get_local_mouse_position()
-#
+func _physics_process(delta):
+	pointer.position = get_local_mouse_position()
+
 
 	
 func _on_body_entered(other: Node2D):
