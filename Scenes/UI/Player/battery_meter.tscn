@@ -224,7 +224,7 @@ frame_4/duration = 1.0
 [node name="BatteryMeter" type="CanvasLayer"]
 script = ExtResource("1_rn33s")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VisionController" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -234,7 +234,7 @@ mouse_filter = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="BatteryHolder" type="HBoxContainer" parent="MarginContainer"]
+[node name="BatteryHolder" type="HBoxContainer" parent="VisionController"]
 unique_name_in_owner = true
 layout_direction = 3
 layout_mode = 2
@@ -243,13 +243,13 @@ size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = -36
 
-[node name="Battery0" type="TextureRect" parent="MarginContainer/BatteryHolder"]
+[node name="Battery0" type="TextureRect" parent="VisionController/BatteryHolder"]
 z_index = 5
 layout_mode = 2
 texture = SubResource("AnimatedTexture_uj30n")
 script = ExtResource("7_jw7tm")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery0"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VisionController/BatteryHolder/Battery0"]
 visible = false
 layout_mode = 0
 offset_left = 107.0
@@ -262,7 +262,7 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_s4tbg")
 
-[node name="PowerIndicator" type="TextureRect" parent="MarginContainer/BatteryHolder/Battery0"]
+[node name="PowerIndicator" type="TextureRect" parent="VisionController/BatteryHolder/Battery0"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(0.648438, 0.492188, 0.175781, 1)
@@ -274,7 +274,7 @@ offset_bottom = 2100.0
 scale = Vector2(0.031, 0.031)
 texture = ExtResource("9_4gepj")
 
-[node name="PowerIndicatorAnimator" type="AnimationPlayer" parent="MarginContainer/BatteryHolder/Battery0/PowerIndicator"]
+[node name="PowerIndicatorAnimator" type="AnimationPlayer" parent="VisionController/BatteryHolder/Battery0/PowerIndicator"]
 unique_name_in_owner = true
 autoplay = "RESET"
 libraries = {
@@ -282,7 +282,7 @@ libraries = {
 }
 next/poweron = &"on"
 
-[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery0"]
+[node name="Sparks" type="GPUParticles2D" parent="VisionController/BatteryHolder/Battery0"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
@@ -294,14 +294,14 @@ randomness = 0.4
 fixed_fps = 60
 visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
 
-[node name="Battery1" type="TextureRect" parent="MarginContainer/BatteryHolder"]
+[node name="Battery1" type="TextureRect" parent="VisionController/BatteryHolder"]
 visible = false
 z_index = 4
 layout_mode = 2
 texture = SubResource("AnimatedTexture_2shjp")
 script = ExtResource("7_jw7tm")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery1"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VisionController/BatteryHolder/Battery1"]
 visible = false
 layout_mode = 0
 offset_left = 107.0
@@ -314,7 +314,7 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_s4tbg")
 
-[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery1"]
+[node name="Sparks" type="GPUParticles2D" parent="VisionController/BatteryHolder/Battery1"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
@@ -326,14 +326,14 @@ randomness = 0.4
 fixed_fps = 60
 visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
 
-[node name="Battery2" type="TextureRect" parent="MarginContainer/BatteryHolder"]
+[node name="Battery2" type="TextureRect" parent="VisionController/BatteryHolder"]
 visible = false
 z_index = 3
 layout_mode = 2
 texture = SubResource("AnimatedTexture_ampjr")
 script = ExtResource("7_jw7tm")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery2"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VisionController/BatteryHolder/Battery2"]
 visible = false
 layout_mode = 2
 offset_left = 112.0
@@ -346,7 +346,7 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_s4tbg")
 
-[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery2"]
+[node name="Sparks" type="GPUParticles2D" parent="VisionController/BatteryHolder/Battery2"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
@@ -358,14 +358,14 @@ randomness = 0.4
 fixed_fps = 60
 visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
 
-[node name="Battery3" type="TextureRect" parent="MarginContainer/BatteryHolder"]
+[node name="Battery3" type="TextureRect" parent="VisionController/BatteryHolder"]
 visible = false
 z_index = 2
 layout_mode = 2
 texture = ExtResource("10_ww28s")
 script = ExtResource("7_jw7tm")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery3"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VisionController/BatteryHolder/Battery3"]
 visible = false
 layout_mode = 2
 offset_left = 112.0
@@ -378,7 +378,7 @@ value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("8_s4tbg")
 
-[node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery3"]
+[node name="Sparks" type="GPUParticles2D" parent="VisionController/BatteryHolder/Battery3"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15

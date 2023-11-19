@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Components/Player/gun_module.gd" id="1_mp5oc"]
 [ext_resource type="PackedScene" uid="uid://br23stoowal76" path="res://Scenes/Projectiles/basic_bullet.tscn" id="2_qtw4p"]
-[ext_resource type="PackedScene" uid="uid://3fbjouvl8lio" path="res://Scenes/Audio/player_lasers.tscn" id="3_3wbiy"]
+[ext_resource type="PackedScene" uid="uid://3fbjouvl8lio" path="res://Scenes/Background/Audio/player_lasers.tscn" id="3_3wbiy"]
 [ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="4_aon2j"]
 
 [node name="GunModule" type="Node2D"]

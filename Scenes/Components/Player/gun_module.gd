@@ -15,7 +15,7 @@ var target
 var gpu_particles_2d = preload("res://Scenes/Projectiles/bullet sparks.tscn")
 @onready var ability_power_controller: Node = $AbilityPowerController
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	look_at(get_global_mouse_position())
 
 func _input(event):

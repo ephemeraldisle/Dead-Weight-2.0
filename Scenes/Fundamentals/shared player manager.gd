@@ -22,10 +22,12 @@ var dying = false
 
 
 #func _ready() -> void:
-#	spawn_player()
-#	register_connections()
-
-
+#	await get_tree().create_timer(5).timeout
+#	disable_ui()
+#	await get_tree().create_timer(2).timeout
+#	enable_ui()
+#	await get_tree().create_timer(2).timeout
+#	disable_ui()
 
 
 
@@ -76,11 +78,11 @@ func despawn_player() -> void:
 	GlobalCamera.follow_position(Vector2.ZERO)
 	
 
-func enable_ui() -> void:
-	player_ui.toggle_all(true)
+func enable_ui(instant = false) -> void:
+	player_ui.toggle_all(true, instant)
 	
-func disable_ui() -> void:
-	player_ui.toggle_all(false)
+func disable_ui(instant = false) -> void:
+	player_ui.toggle_all(false, instant)
 
 
 func play_hit_sound():

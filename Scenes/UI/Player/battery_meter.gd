@@ -24,6 +24,7 @@ var _power_on_ticks: int = 0
 #@onready var _power_indicator: TextureRect = %PowerIndicator
 @onready var _power_indicator_animator: AnimationPlayer = %PowerIndicatorAnimator
 @onready var _battery_children = %BatteryHolder.get_children()
+@onready var vision_controller: MarginContainer = $VisionController
 
 
 func _ready() -> void:
@@ -91,3 +92,12 @@ func _animation_off():
 	_power_indicator_animator.play_backwards("poweroff")
 	for battery in _current_batteries:
 		battery.sparks.emitting = false
+
+
+func fade_visibility(vis: bool, fade_time: float) -> void:
+	var tween = create_tween()	
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	if vis == false:
+		tween.tween_property(vision_controller, "modulate:a", 0.0, fade_time).from(1.0)
+	else:
+		tween.tween_property(vision_controller, "modulate:a", 1.0, fade_time).from(0.0)	

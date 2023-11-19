@@ -6,6 +6,7 @@ var game_running = true
 
 func start_level() -> void:
 	SharedPlayerManager.spawn_player()
+	SharedPlayerManager.enable_ui(true)
 	SharedPlayerManager.enable_ui()
 
 func stop_level() -> void:

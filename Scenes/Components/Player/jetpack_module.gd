@@ -13,7 +13,7 @@ signal jetpacked
 var never_jetpacked_before = true
 @onready var ability_power_controller: Node = $AbilityPowerController as AbilityPowerController
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not ability_power_controller.powered:
 		return
 	if not GameState.dialogue_happening and Input.is_action_pressed("jump") and SharedPlayerManager.request_water_percentage() > 0:

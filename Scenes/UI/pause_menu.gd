@@ -22,12 +22,12 @@ func _ready():
 #	GlobalCamera.add_trauma(0.5)
 	$%ResumeButton.pressed.connect(on_play_pressed)
 	$%OptionsButton.pressed.connect(on_options_pressed)
-	$%QuitButton.pressed.connect(on_quit_pressed)	
+	$%QuitButton.pressed.connect(on_quit_pressed)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		if viewing_options:
-			if options_instance != null:	
+			if options_instance != null:
 				AudioManager.play_ui_click()
 				options_instance.on_back_button_pressed()
 		else:
@@ -75,7 +75,7 @@ func on_quit_pressed():
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 
 func on_options_closed():
-	AudioManager.play_ui_click()	
+	AudioManager.play_ui_click()
 	await get_tree().create_timer(0.5).timeout
 	viewing_options = false
 	animation_player.play("enter_2")

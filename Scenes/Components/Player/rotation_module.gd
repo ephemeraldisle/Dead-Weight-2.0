@@ -21,7 +21,7 @@ var rotating = false
 @onready var ability_power_controller: Node = $AbilityPowerController
 @onready var original_damp = parent.angular_damp
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if GameState.introduction_running or not ability_power_controller.powered:
 		return	
 

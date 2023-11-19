@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bs1ax2n2enoln" path="res://Scenes/UI/Player/battery_meter.tscn" id="4_bl7yo"]
 
 [node name="PlayerUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_eop6j")
 
 [node name="WaterMeter" parent="." instance=ExtResource("2_bksjs")]

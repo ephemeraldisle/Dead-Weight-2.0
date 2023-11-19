@@ -38,6 +38,7 @@ var can_beep = false
 @onready var condition_label = %ConditionLabel as Label
 @onready var beep_sound: AudioStreamPlayer = $BeepSound
 @onready var hearts: GPUParticles2D = $Hearts
+@onready var vision_controller = $VisionController
 
 
 func _ready() -> void:
@@ -65,3 +66,11 @@ func set_status(health):
 		hearts.emitting = SharedPlayerManager.request_water_percentage() > 0
 	else:
 		hearts.emitting = false
+
+func fade_visibility(vis: bool, fade_time: float) -> void:
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	if vis == false:
+		tween.tween_property(vision_controller, "modulate:a", 0.0, fade_time).from(1.0)
+	else:
+		tween.tween_property(vision_controller, "modulate:a", 1.0, fade_time).from(0.0)	

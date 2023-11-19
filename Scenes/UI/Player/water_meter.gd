@@ -19,6 +19,7 @@ var _particle_tween
 @onready var water_drops: GPUParticles2D = %WaterDrops
 @onready var fill_bar: TextureRect = %FillBar
 @onready var squeezer: TextureRect = %Squeezer
+@onready var vision_controller: MarginContainer = $VisionController
 
 func _ready() -> void:
 	GameEvents.health_changed.connect(_update_particles)
@@ -57,3 +58,13 @@ func _update_particles(health: int) -> void:
 	_particle_tween = create_tween()
 	_particle_tween.tween_property(water_drops, "amount", particle_amount, PARTICLE_TWEEN_TIME).from_current()
 
+
+func fade_visibility(vis: bool, fade_time: float) -> void:
+	var tween = create_tween()	
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	if vis == false:
+		water_drops.emitting = false
+		tween.tween_property(vision_controller, "modulate:a", 0.0, fade_time).from(1.0)
+	else:
+		water_drops.emitting = true
+		tween.tween_property(vision_controller, "modulate:a", 1.0, fade_time).from(0.0)	

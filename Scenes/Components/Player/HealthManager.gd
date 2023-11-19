@@ -18,7 +18,7 @@ func _ready():
 #	await get_tree().create_timer(2).timeout
 #	on_damage()
 
-func _process(delta):
+func _process(_delta):
 #	print(timer.time_left)
 	if timer.time_left > 0:
 		GameEvents.emit_water_collected(-HEAL_WATER_DRAIN)

@@ -55,18 +55,10 @@ turbulence_noise_scale = 7.41
 turbulence_noise_speed = Vector3(1.835, 3.045, -0.87)
 
 [node name="WaterMeter" type="CanvasLayer"]
+process_mode = 1
 script = ExtResource("1_k0g2m")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-offset_left = 19.0
-offset_top = 200.0
-offset_right = 44.0
-offset_bottom = 700.0
-size_flags_vertical = 3
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VisionController" type="MarginContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -76,7 +68,7 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VisionController"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -85,14 +77,14 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="MeterContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="MeterContainer" type="VBoxContainer" parent="VisionController/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(25, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Squeezer" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer"]
+[node name="Squeezer" type="TextureRect" parent="VisionController/MarginContainer/MeterContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_y7i78")
 clip_contents = true
@@ -101,7 +93,7 @@ texture = ExtResource("3_64fra")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="FillBar" type="TextureRect" parent="MarginContainer/MarginContainer/MeterContainer/Squeezer"]
+[node name="FillBar" type="TextureRect" parent="VisionController/MarginContainer/MeterContainer/Squeezer"]
 unique_name_in_owner = true
 show_behind_parent = true
 material = SubResource("ShaderMaterial_p2xgg")
@@ -117,6 +109,7 @@ expand_mode = 5
 
 [node name="WaterDrops" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 z_index = -5
 z_as_relative = false
 position = Vector2(34, 199)
