@@ -11,7 +11,7 @@ var max_bars
 var current_bars
 var max_energy
 var current_energy
-var previous_bars
+var previous_bars: int
 
 func _ready():
 	_calculate_battery_energy()
@@ -37,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _adjust_bars() -> void:
+	previous_bars = current_bars
 	current_bars = floor(current_energy)
 	if current_bars != previous_bars:
 		bars_changed.emit()

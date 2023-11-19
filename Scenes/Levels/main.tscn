@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=11 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfi1wqf0pfmuw" path="res://Scenes/Objects/Environment/Toggleables/Traps/laser_trap.tscn" id="7_ela7u"]
 [ext_resource type="PackedScene" uid="uid://bovathl82chfr" path="res://Scenes/Objects/Environment/wire.tscn" id="8_ls52l"]
 [ext_resource type="PackedScene" uid="uid://bf75lquvw7wae" path="res://Scenes/Objects/Environment/Toggleables/barrier.tscn" id="8_vqn2n"]
+[ext_resource type="PackedScene" uid="uid://b6pqpgnnjyp7p" path="res://Scenes/Objects/Environment/Toggleables/Traps/turret.tscn" id="9_fc8q6"]
 
 [sub_resource type="Curve2D" id="Curve2D_hwv2x"]
 _data = {
@@ -50,3 +51,8 @@ position = Vector2(-230, -451)
 [node name="Wire" parent="." instance=ExtResource("8_ls52l")]
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_hwv2x")
+
+[node name="Turret" parent="." instance=ExtResource("9_fc8q6")]
+position = Vector2(27, -480)
+rotation = 3.14159
+scale = Vector2(0.54, 0.54)

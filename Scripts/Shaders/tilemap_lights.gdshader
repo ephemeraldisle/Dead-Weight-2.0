@@ -15,7 +15,7 @@ vec4 generic_desaturate(vec3 colour, float factor) {
 void fragment() {
 	if (COLOR.r >= 0.70){
 		COLOR = generic_desaturate(COLOR.rgb, 1.0);
-		float offset = FRAGCOORD.x*0.001;
+		float offset = FRAGCOORD.y*-0.01;
 		vec4 mix_color = vec4(mix(color_a, color_b, (sin((TIME+offset)*speed_factor)+1.0)*0.75));
 		COLOR.rgb = vec3(mix(COLOR.rgb, mix_color.rgb, 0.75));
 	}

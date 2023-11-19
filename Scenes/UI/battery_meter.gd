@@ -58,8 +58,9 @@ func _update_available_batteries() -> void:
 
 func _update_battery_texture_frames() -> void:
 	var available_bars = energy_manager.current_bars
+#	print(available_bars)
 	for battery in _current_batteries:
-		if available_bars > 0:
+		if available_bars >= 0:
 			if available_bars >= BARS_PER_BATTERY:
 				battery.texture.current_frame = BARS_PER_BATTERY
 				battery.change_progress_bar_visibility(false)
@@ -71,7 +72,7 @@ func _update_battery_texture_frames() -> void:
 			available_bars -= BARS_PER_BATTERY
 		else:
 			battery.texture.current_frame = 0
-
+			battery.change_progress_bar_visibility(false)
 
 func _update_progress_bar_fill() -> void:
 	_active_battery.adjust_progress_bar_fill(_current_percent)

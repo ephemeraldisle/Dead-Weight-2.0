@@ -7,8 +7,6 @@ const MAX_ENERGY_COST = 0.01
 const MAX_MULTIPLIER = 10
 const DEFAULT_MULTIPLIER = 1
 
-@onready var parent = get_parent() as RigidBody2D
-@onready var ability_power_controller: Node = $AbilityPowerController
 
 signal player_rotated
 var left_rotation = false
@@ -17,8 +15,11 @@ var monitoring_rotation = false
 
 var left_multiplier = DEFAULT_MULTIPLIER
 var right_multiplier = DEFAULT_MULTIPLIER
-var original_damp = 0
 var rotating = false
+
+@onready var parent = get_parent() as RigidBody2D
+@onready var ability_power_controller: Node = $AbilityPowerController
+@onready var original_damp = parent.angular_damp
 
 func _physics_process(delta):
 	if GameState.introduction_running or not ability_power_controller.powered:

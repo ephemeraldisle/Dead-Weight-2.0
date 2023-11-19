@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	if DEBUG:
 		var direction = Input.get_vector("left", "right", "up", "down")
 		global_position += direction * delta * DEBUG_MOVE_MULTIPLIER
-		var zoom_axis = Input.get_axis("click", "jump")
+		var zoom_axis = Input.get_axis("zoom out", "zoom in")
 		var new_zoom = clamp(zoom.x + zoom_axis * delta, 0.05, 5)
 		zoom = Vector2(new_zoom, new_zoom)
 
