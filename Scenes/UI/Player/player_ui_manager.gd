@@ -1,4 +1,7 @@
 extends CanvasLayer
+
+const FADE_TIME = 0.5
+
 @onready var energy_manager: Node2D = %EnergyManager
 
 @onready var water_manager = %WaterManager
@@ -23,16 +26,27 @@ extends CanvasLayer
 #		energy_manager.current_energy, energy_manager.max_energy, energy_manager.current_percent
 #	)
 
-
-func enable_battery_ui() -> void:
-	battery_meter.visible = true
-
-
-func enable_water_ui() -> void:
-	water_meter.visible = true
+func toggle_all(vis: bool) -> void:
+	toggle_battery_ui(vis)
+	toggle_water_ui(vis)
+	toggle_health_ui(vis)	
 
 
-func enable_health_ui() -> void:
-	ekg.visible = true
-	ekg.can_beep = true
+func toggle_battery_ui(vis: bool) -> void:
+	var tween = create_tween()
+	tween.tween_property(battery_meter, "modulate:a", int(vis), FADE_TIME).from(int(not vis))
+	battery_meter.visible = vis
+
+
+func toggle_water_ui(vis: bool) -> void:
+	var tween = create_tween()
+	tween.tween_property(water_meter, "modulate:a", int(vis), FADE_TIME).from(int(not vis))
+	water_meter.visible = vis
+
+
+func toggle_health_ui(vis: bool) -> void:
+	var tween = create_tween()
+	tween.tween_property(ekg, "modulate:a", int(vis), FADE_TIME).from(int(not vis))
+	ekg.visible = vis
+	ekg.can_beep = vis
 	ekg._on_beep_toggled()

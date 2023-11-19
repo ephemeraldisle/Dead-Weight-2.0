@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ooplnmbcpgt"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Cinematic/explosion_spawner.gd" id="1_8wqbs"]
+
+[node name="ExplosionSpawner" type="Node2D"]
+script = ExtResource("1_8wqbs")

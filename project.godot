@@ -25,6 +25,8 @@ GameEvents="*res://Scripts/Autoload/game_events.gd"
 ScreenTransition="*res://Scenes/Fundamentals/screen_transition.tscn"
 GlobalCamera="*res://Scenes/Fundamentals/global_camera.tscn"
 SharedPlayerManager="*res://Scenes/Fundamentals/shared_player_manager.tscn"
+AudioManager="*res://Scenes/Fundamentals/audio_manager.tscn"
+FlowController="*res://Scripts/Autoload/flow_controller.gd"
 
 [display]
 

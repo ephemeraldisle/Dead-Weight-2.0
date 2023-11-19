@@ -16,13 +16,17 @@ var dying = false
 #@onready var tank_ray: RayCast2D = $TankRay
 @onready var water_manager: Node = %WaterManager
 @onready var energy_manager: Node2D = %EnergyManager
+@onready var player_ui: CanvasLayer = $PlayerUI
 
 #var _bad_count: int = 0
 
 
-func _ready() -> void:
-	spawn_player()
-	register_connections()
+#func _ready() -> void:
+#	spawn_player()
+#	register_connections()
+
+
+
 
 
 func register_connections():
@@ -41,7 +45,7 @@ func register_connections():
 
 
 func _physics_process(_delta):
-	if !player or !tank:
+	if not player or not tank:
 		return
 	var distance = player.global_position - tank.global_position
 	if distance.length() > MAX_SEPARATION_DISTANCE:
@@ -67,6 +71,17 @@ func spawn_player() -> void:
 	new_player.global_position = GameState.state.spawn_point
 	register_connections()
 
+func despawn_player() -> void:
+	player.get_parent().queue_free()
+	GlobalCamera.follow_position(Vector2.ZERO)
+	
+
+func enable_ui() -> void:
+	player_ui.toggle_all(true)
+	
+func disable_ui() -> void:
+	player_ui.toggle_all(false)
+
 
 func play_hit_sound():
 	hit_sounds.play()
@@ -84,7 +99,6 @@ func die():
 	
 #	player.play_hurt_sounds()
 	dying = true
-	
 	
 	ScreenTransition.transition(DEATH_FADE_TIME, DEATH_PAUSE_TIME)
 	clean_up_pickups()

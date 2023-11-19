@@ -48,7 +48,7 @@ func _ready() -> void:
 func _on_beep_toggled() -> void:
 	if not can_beep:
 		return
-	beep_sound.volume_db = 0 if GameState.options.heart_beep else SILENT_DB
+	beep_sound.volume_db = 0 if GameState.state.options.heart_beep else SILENT_DB
 
 
 func set_status(health):

@@ -1,0 +1,38 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://brjucymfesu5x"
+path="res://.godot/imported/Saira-ExtraBold.woff2-c29f6d06d676c35841a5521f24d67074.fontdata"
+
+[deps]
+
+source_file="res://Resources/Fonts/Saira-ExtraBold.woff2"
+dest_files=["res://.godot/imported/Saira-ExtraBold.woff2-c29f6d06d676c35841a5521f24d67074.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=true
+multichannel_signed_distance_field=true
+msdf_pixel_range=16
+msdf_size=100
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

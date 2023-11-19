@@ -1,18 +1,18 @@
 [gd_scene load_steps=12 format=3 uid="uid://dsurnmyedsdo5"]
 
-[ext_resource type="Script" path="res://Scenes/UI/water_meter.gd" id="1_6c1bv"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/water_meter.gdshader" id="2_yhwrf"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/loading_fluid.gdshader" id="3_nytwa"]
-[ext_resource type="Texture2D" uid="uid://cwqmj66y1mys1" path="res://Art/UI/Water/roundedrect.png" id="4_fm5nl"]
-[ext_resource type="Texture2D" uid="uid://dsx87sp7tkhmk" path="res://Art/UI/Water/roundedddrect.png" id="4_g21o6"]
-[ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="6_8a6cn"]
+[ext_resource type="Script" path="res://Scenes/UI/Player/water_meter.gd" id="1_k0g2m"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water_meter.gdshader" id="2_pfgyn"]
+[ext_resource type="Texture2D" uid="uid://cwqmj66y1mys1" path="res://Art/UI/Water/roundedrect.png" id="3_64fra"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/loading_fluid.gdshader" id="4_u76uw"]
+[ext_resource type="Texture2D" uid="uid://dsx87sp7tkhmk" path="res://Art/UI/Water/roundedddrect.png" id="5_ehu82"]
+[ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="6_ilxua"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7i78"]
-shader = ExtResource("2_yhwrf")
+shader = ExtResource("2_pfgyn")
 shader_parameter/squeeze_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p2xgg"]
-shader = ExtResource("3_nytwa")
+shader = ExtResource("4_u76uw")
 shader_parameter/aspect_ratio = 0.05
 shader_parameter/progress = 1.0
 shader_parameter/bg_color = Color(0.34902, 0.168627, 1, 0.133333)
@@ -55,7 +55,7 @@ turbulence_noise_scale = 7.41
 turbulence_noise_speed = Vector3(1.835, 3.045, -0.87)
 
 [node name="WaterMeter" type="CanvasLayer"]
-script = ExtResource("1_6c1bv")
+script = ExtResource("1_k0g2m")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_left = 19.0
@@ -97,7 +97,7 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_y7i78")
 clip_contents = true
 layout_mode = 2
-texture = ExtResource("4_fm5nl")
+texture = ExtResource("3_64fra")
 expand_mode = 5
 stretch_mode = 5
 
@@ -112,7 +112,7 @@ offset_bottom = 500.721
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("4_g21o6")
+texture = ExtResource("5_ehu82")
 expand_mode = 5
 
 [node name="WaterDrops" type="GPUParticles2D" parent="."]
@@ -122,7 +122,7 @@ z_as_relative = false
 position = Vector2(34, 199)
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_jnix8")
-texture = ExtResource("6_8a6cn")
+texture = ExtResource("6_ilxua")
 lifetime = 0.5
 explosiveness = 0.25
 fixed_fps = 60

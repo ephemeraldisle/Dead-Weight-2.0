@@ -1,0 +1,307 @@
+[gd_scene load_steps=13 format=3 uid="uid://41oewi1o43t4"]
+
+[ext_resource type="Script" path="res://Scenes/UI/options_menu.gd" id="1_7k7dk"]
+[ext_resource type="Theme" uid="uid://cexmcmmcmil1d" path="res://Resources/UI/kenneyUI.tres" id="2_5dq7t"]
+[ext_resource type="LabelSettings" uid="uid://bhqw0w2hp5x4t" path="res://Resources/UI/header label settings.tres" id="3_vfain"]
+[ext_resource type="LabelSettings" uid="uid://cbr3ggg455b7y" path="res://Resources/UI/subheader.tres" id="4_3hlfa"]
+[ext_resource type="FontFile" uid="uid://2afp3lo5y5sf" path="res://Resources/Fonts/Saira-Regular.woff2" id="5_av8pi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kgaq5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8odrn"]
+font = ExtResource("5_av8pi")
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_umi22"]
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_apw2h"]
+allow_unpress = true
+
+[sub_resource type="Animation" id="Animation_uf2yk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 246)]
+}
+
+[sub_resource type="Animation" id="Animation_kccgd"]
+resource_name = "enter"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/Node2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.65, 0.85, 1),
+"transitions": PackedFloat32Array(1.86607, 0.812252, 1.6245, -0.5, 1),
+"update": 0,
+"values": [Vector2(0, -300), Vector2(0, 156), Vector2(0, 200), Vector2(0, 250), Vector2(0, 230)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/Node2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9),
+"transitions": PackedFloat32Array(1.31951, 1, 1.6245, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.25, 1.25), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2t8l"]
+_data = {
+"RESET": SubResource("Animation_uf2yk"),
+"enter": SubResource("Animation_kccgd")
+}
+
+[node name="OptionsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+follow_viewport_enabled = true
+script = ExtResource("1_7k7dk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Node2D" type="Node2D" parent="MarginContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+position = Vector2(0, 246)
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D"]
+process_mode = 3
+z_index = 3
+custom_minimum_size = Vector2(300, 100)
+offset_left = -145.0
+offset_top = -199.0
+offset_right = 155.0
+offset_bottom = 285.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_5dq7t")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Options"
+label_settings = ExtResource("3_vfain")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kgaq5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_5dq7t")
+text = "Volume"
+label_settings = ExtResource("4_3hlfa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = -6
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Main"
+label_settings = SubResource("LabelSettings_8odrn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = -6
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+process_mode = 3
+layout_mode = 2
+text = "Sounds"
+label_settings = SubResource("LabelSettings_8odrn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = -6
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+process_mode = 3
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_8odrn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kgaq5")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_5dq7t")
+text = "Other Options"
+label_settings = ExtResource("4_3hlfa")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_5dq7t")
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="WindowCheck" type="CheckBox" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/GridContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_5dq7t")
+button_pressed = true
+text = "Windowed"
+icon_alignment = 1
+
+[node name="ScreenshakeCheck" type="CheckBox" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/GridContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_5dq7t")
+button_group = SubResource("ButtonGroup_umi22")
+text = "Screenshake"
+icon_alignment = 1
+
+[node name="BeepCheck" type="CheckBox" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/GridContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_5dq7t")
+button_pressed = true
+button_group = SubResource("ButtonGroup_apw2h")
+text = "Heart Monitor Beeping"
+icon_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kgaq5")
+
+[node name="BackButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/Node2D/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_g2t8l")
+}

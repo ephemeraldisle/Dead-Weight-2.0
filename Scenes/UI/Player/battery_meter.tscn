@@ -1,27 +1,27 @@
 [gd_scene load_steps=26 format=3 uid="uid://bs1ax2n2enoln"]
 
-[ext_resource type="Texture2D" uid="uid://2fo8homs1gar" path="res://Art/UI/Battery/battery 0.svg" id="1_i6bmb"]
-[ext_resource type="Script" path="res://Scenes/UI/battery_meter.gd" id="1_k2ikr"]
-[ext_resource type="Texture2D" uid="uid://bgngu6myjorfy" path="res://Art/UI/Battery/battery 0.25.svg" id="2_5omyo"]
-[ext_resource type="Texture2D" uid="uid://ca2td56fr5fau" path="res://Art/UI/Battery/battery 0.75.svg" id="3_fldue"]
-[ext_resource type="Texture2D" uid="uid://gvhufc0d7w5l" path="res://Art/UI/Battery/battery 0.5.svg" id="4_5gq85"]
-[ext_resource type="Texture2D" uid="uid://tkutpyc135i7" path="res://Art/UI/Battery/full battery.svg" id="4_pbvvw"]
-[ext_resource type="Script" path="res://Scenes/UI/IndividualBattery.gd" id="7_abcyl"]
-[ext_resource type="Texture2D" uid="uid://ck3nlp0pu3n3t" path="res://Art/UI/Battery/battery fill bar shading.svg" id="8_7r0fj"]
-[ext_resource type="Texture2D" uid="uid://igcxemyvhpwg" path="res://Art/Particles/electric.svg" id="9_47agy"]
-[ext_resource type="Texture2D" uid="uid://cst3s1v1b1qra" path="res://Resources/Textures/battery textures.tres" id="10_fu0a3"]
+[ext_resource type="Script" path="res://Scenes/UI/Player/battery_meter.gd" id="1_rn33s"]
+[ext_resource type="Texture2D" uid="uid://2fo8homs1gar" path="res://Art/UI/Battery/battery 0.svg" id="2_teiuf"]
+[ext_resource type="Texture2D" uid="uid://bgngu6myjorfy" path="res://Art/UI/Battery/battery 0.25.svg" id="3_iabhq"]
+[ext_resource type="Texture2D" uid="uid://gvhufc0d7w5l" path="res://Art/UI/Battery/battery 0.5.svg" id="4_uajie"]
+[ext_resource type="Texture2D" uid="uid://ca2td56fr5fau" path="res://Art/UI/Battery/battery 0.75.svg" id="5_uhjp6"]
+[ext_resource type="Texture2D" uid="uid://tkutpyc135i7" path="res://Art/UI/Battery/full battery.svg" id="6_4gutn"]
+[ext_resource type="Script" path="res://Scenes/UI/Player/IndividualBattery.gd" id="7_jw7tm"]
+[ext_resource type="Texture2D" uid="uid://ck3nlp0pu3n3t" path="res://Art/UI/Battery/battery fill bar shading.svg" id="8_s4tbg"]
+[ext_resource type="Texture2D" uid="uid://igcxemyvhpwg" path="res://Art/Particles/electric.svg" id="9_4gepj"]
+[ext_resource type="Texture2D" uid="uid://cst3s1v1b1qra" path="res://Resources/Textures/battery textures.tres" id="10_ww28s"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_uj30n"]
 frames = 5
 pause = true
-frame_0/texture = ExtResource("1_i6bmb")
-frame_1/texture = ExtResource("2_5omyo")
+frame_0/texture = ExtResource("2_teiuf")
+frame_1/texture = ExtResource("3_iabhq")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("4_5gq85")
+frame_2/texture = ExtResource("4_uajie")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("3_fldue")
+frame_3/texture = ExtResource("5_uhjp6")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("4_pbvvw")
+frame_4/texture = ExtResource("6_4gutn")
 frame_4/duration = 1.0
 
 [sub_resource type="Animation" id="Animation_kghdt"]
@@ -197,32 +197,32 @@ hue_variation_max = 0.01
 frames = 5
 pause = true
 speed_scale = 0.0
-frame_0/texture = ExtResource("1_i6bmb")
-frame_1/texture = ExtResource("2_5omyo")
+frame_0/texture = ExtResource("2_teiuf")
+frame_1/texture = ExtResource("3_iabhq")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("4_5gq85")
+frame_2/texture = ExtResource("4_uajie")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("3_fldue")
+frame_3/texture = ExtResource("5_uhjp6")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("4_pbvvw")
+frame_4/texture = ExtResource("6_4gutn")
 frame_4/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ampjr"]
 frames = 5
 pause = true
 speed_scale = 0.0
-frame_0/texture = ExtResource("1_i6bmb")
-frame_1/texture = ExtResource("2_5omyo")
+frame_0/texture = ExtResource("2_teiuf")
+frame_1/texture = ExtResource("3_iabhq")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("4_5gq85")
+frame_2/texture = ExtResource("4_uajie")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("3_fldue")
+frame_3/texture = ExtResource("5_uhjp6")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("4_pbvvw")
+frame_4/texture = ExtResource("6_4gutn")
 frame_4/duration = 1.0
 
 [node name="BatteryMeter" type="CanvasLayer"]
-script = ExtResource("1_k2ikr")
+script = ExtResource("1_rn33s")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -247,7 +247,7 @@ theme_override_constants/separation = -36
 z_index = 5
 layout_mode = 2
 texture = SubResource("AnimatedTexture_uj30n")
-script = ExtResource("7_abcyl")
+script = ExtResource("7_jw7tm")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery0"]
 visible = false
@@ -260,7 +260,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 fill_mode = 3
-texture_progress = ExtResource("8_7r0fj")
+texture_progress = ExtResource("8_s4tbg")
 
 [node name="PowerIndicator" type="TextureRect" parent="MarginContainer/BatteryHolder/Battery0"]
 unique_name_in_owner = true
@@ -272,7 +272,7 @@ offset_top = 7.0
 offset_right = 20.0
 offset_bottom = 2100.0
 scale = Vector2(0.031, 0.031)
-texture = ExtResource("9_47agy")
+texture = ExtResource("9_4gepj")
 
 [node name="PowerIndicatorAnimator" type="AnimationPlayer" parent="MarginContainer/BatteryHolder/Battery0/PowerIndicator"]
 unique_name_in_owner = true
@@ -287,7 +287,7 @@ position = Vector2(77, 39)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_gbh2u")
-texture = ExtResource("9_47agy")
+texture = ExtResource("9_4gepj")
 lifetime = 0.9
 explosiveness = 0.4
 randomness = 0.4
@@ -299,7 +299,7 @@ visible = false
 z_index = 4
 layout_mode = 2
 texture = SubResource("AnimatedTexture_2shjp")
-script = ExtResource("7_abcyl")
+script = ExtResource("7_jw7tm")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery1"]
 visible = false
@@ -312,14 +312,14 @@ max_value = 1.0
 step = 0.005
 value = 1.0
 fill_mode = 3
-texture_progress = ExtResource("8_7r0fj")
+texture_progress = ExtResource("8_s4tbg")
 
 [node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery1"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_gbh2u")
-texture = ExtResource("9_47agy")
+texture = ExtResource("9_4gepj")
 lifetime = 0.9
 explosiveness = 0.4
 randomness = 0.4
@@ -331,7 +331,7 @@ visible = false
 z_index = 3
 layout_mode = 2
 texture = SubResource("AnimatedTexture_ampjr")
-script = ExtResource("7_abcyl")
+script = ExtResource("7_jw7tm")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery2"]
 visible = false
@@ -344,14 +344,14 @@ max_value = 1.0
 step = 0.005
 value = 1.0
 fill_mode = 3
-texture_progress = ExtResource("8_7r0fj")
+texture_progress = ExtResource("8_s4tbg")
 
 [node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery2"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_gbh2u")
-texture = ExtResource("9_47agy")
+texture = ExtResource("9_4gepj")
 lifetime = 0.9
 explosiveness = 0.4
 randomness = 0.4
@@ -362,8 +362,8 @@ visibility_rect = Rect2(-676.321, -636.396, 1348.38, 1271.19)
 visible = false
 z_index = 2
 layout_mode = 2
-texture = ExtResource("10_fu0a3")
-script = ExtResource("7_abcyl")
+texture = ExtResource("10_ww28s")
+script = ExtResource("7_jw7tm")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/BatteryHolder/Battery3"]
 visible = false
@@ -376,14 +376,14 @@ max_value = 1.0
 step = 0.005
 value = 1.0
 fill_mode = 3
-texture_progress = ExtResource("8_7r0fj")
+texture_progress = ExtResource("8_s4tbg")
 
 [node name="Sparks" type="GPUParticles2D" parent="MarginContainer/BatteryHolder/Battery3"]
 position = Vector2(77, 39)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_gbh2u")
-texture = ExtResource("9_47agy")
+texture = ExtResource("9_4gepj")
 lifetime = 0.9
 explosiveness = 0.4
 randomness = 0.4

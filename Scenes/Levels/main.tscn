@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=12 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
+[ext_resource type="Script" path="res://Scenes/Levels/main.gd" id="1_ji81j"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
 [ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
@@ -17,6 +18,7 @@ _data = {
 point_count = 9
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ji81j")
 
 [node name="ParallaxBackgroundSpace" parent="." instance=ExtResource("1_a8rnd")]
 

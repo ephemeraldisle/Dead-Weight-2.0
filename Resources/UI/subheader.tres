@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cbr3ggg455b7y"]
+
+[ext_resource type="FontFile" uid="uid://jfrvsgah5wcs" path="res://Themes and UI/Saira-SemiBold.woff2" id="1_baq5v"]
+
+[resource]
+font = ExtResource("1_baq5v")
+font_size = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
