@@ -308,6 +308,7 @@ texture = SubResource("PlaceholderTexture2D_ft5ub")
 texture_scale = 50.0
 
 [node name="SECRET_HIDERS" type="Node2D" parent="."]
+visible = false
 
 [node name="SecretHider" parent="SECRET_HIDERS" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
 z_index = 6
@@ -734,3 +735,420 @@ position = Vector2(-6110, -3876)
 [node name="PowerNode17" parent="Objects" instance=ExtResource("6_q7au7")]
 position = Vector2(-5040, -2735)
 rotation = -1.57078
+
+[node name="PowerNode14" parent="Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-4905, -3054)
+rotation = -3.14159
+
+[node name="Turret14" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5827, -2992)
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 2.0
+speed_factor = 50
+
+[node name="Turret5" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5799, -2462)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 4.0
+
+[node name="Turret6" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5734, -2461)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 1.0
+off_time = 2.0
+
+[node name="Turret7" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5669, -2462)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="Turret11" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-3756, -2410)
+rotation = -1.57081
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="Turret12" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-3756, -2340)
+rotation = -1.57081
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="Turret13" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5439, -3168)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 13
+
+[node name="Turret" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5593, 150.24)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 150
+
+[node name="Turret9" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-6356, -1064)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 2.0
+speed_factor = 200
+
+[node name="Turret10" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-6059, -1129)
+rotation = -1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 1.0
+off_time = 2.0
+speed_factor = 200
+
+[node name="Turret2" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-4067, -411)
+rotation = 3.14159
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 2.0
+off_time = 8.0
+speed_factor = 120
+
+[node name="Turret8" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-4313, -102)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 4.0
+off_time = 4.0
+speed_factor = 120
+
+[node name="Turret4" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-4122, -1193)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 120
+
+[node name="Turret3" parent="Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-5593, 276.24)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 2.0
+off_time = 4.0
+speed_factor = 150
+
+[node name="LaserTrap" parent="Objects" instance=ExtResource("7_ela7u")]
+z_index = -6
+position = Vector2(1569, -7)
+
+[node name="LaserTrap8" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-152, 951)
+
+[node name="LaserTrap11" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-3488, -841)
+
+[node name="LaserTrap12" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-3776, -842)
+
+[node name="LaserTrap13" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4063, -842)
+
+[node name="LaserTrap29" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5442, -2283)
+rotation = -1.57079
+
+[node name="LaserTrap30" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5441, -2797)
+rotation = -1.57079
+
+[node name="LaserTrap31" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5442, -2607)
+rotation = -1.57079
+
+[node name="LaserTrap15" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4484, -1309)
+rotation = 1.57079
+
+[node name="LaserTrap16" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5483, -1611)
+rotation = 3.14159
+
+[node name="LaserTrap17" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5380, -1742)
+rotation = -1.57081
+
+[node name="LaserTrap25" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-3883, -2377)
+rotation = 3.14159
+
+[node name="LaserTrap26" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4590, -2632)
+rotation = 3.14159
+
+[node name="LaserTrap27" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4326, -2632)
+rotation = 3.14159
+
+[node name="LaserTrap28" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4292, -3499)
+rotation = -1.5708
+initial_delay = 5.55556e+11
+
+[node name="LaserTrap24" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5441, -2025)
+rotation = -1.57081
+
+[node name="LaserTrap18" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-4866, -1872)
+rotation = -1.57081
+
+[node name="LaserTrap14" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-6211, -936)
+rotation = 1.57079
+
+[node name="LaserTrap22" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5322, -839)
+rotation = 3.14159
+
+[node name="LaserTrap23" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-6341, -839)
+rotation = 3.14159
+
+[node name="LaserTrap20" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5122, -1163)
+rotation = 1.57079
+
+[node name="LaserTrap21" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-5255, -1287)
+rotation = 3.14159
+
+[node name="LaserTrap19" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-6208, -1188)
+rotation = 1.57079
+
+[node name="TutorialLaser" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(254, -802)
+rotation = 1.57079
+
+[node name="LaserTrap9" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(484, 508.8)
+scale = Vector2(1, 0.8)
+
+[node name="LaserTrap32" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-946, 456.8)
+scale = Vector2(1, 0.8)
+
+[node name="LaserTrap33" parent="Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-823, 946.4)
+rotation = 1.57079
+scale = Vector2(0.8, 1)
+
+[node name="Barrier2" parent="Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(-4644, -840)
+
+[node name="Barrier3" parent="Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(-4902, -840)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="SpikeTrap" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5983, -1395)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap5" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-3292, -1196)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap6" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-3292, -1133)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap2" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5634, -1245)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap7" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5828, -1395)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap8" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6051, -1311)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap9" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5539, -1333)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap10" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5933, -1309)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap11" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6109, -1396)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap12" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5824, -1245)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap13" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5729, -1332)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap14" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5442, -1246)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap15" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4950, -1322)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap16" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4950, -1260)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap17" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4707, -616)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap18" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4707, -616)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap19" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5348, -616)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap20" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5348, -616)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap3" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4447, -1641)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap4" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4514, -1641)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap21" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4830, -1954)
+rotation = -1.57081
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap22" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4837, -2098)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap24" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4579, -2098)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap25" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4902, -2032)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap28" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4707, -2018)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap31" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4389, -2089)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap32" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4389, -2027)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap33" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4641, -2856)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap34" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4641, -2856)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap35" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4260, -3048)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap36" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4260, -3048)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap37" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4707, -3563)
+rotation = 1.57081
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap38" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-4707, -3563)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap39" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5987, -4072)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap40" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-5987, -4072)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap41" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6212, -3879)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap43" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6212, -3687)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap45" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6121, -3497)
+rotation = 1.57081
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap46" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6109, -3354)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap42" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6307, -3786)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikeTrap44" parent="Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-6109, -3620)
+rotation = -1.57081
+scale = Vector2(0.5, 0.5)
