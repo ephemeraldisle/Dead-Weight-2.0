@@ -70,7 +70,7 @@ func _physics_process(_delta):
 func spawn_player() -> void:
 	var new_player = player_holder.instantiate()
 	get_tree().current_scene.add_child(new_player)
-	new_player.global_position = GameState.state.spawn_point
+	new_player.global_position = GameState.get_spawn_position()
 	register_connections()
 
 func despawn_player() -> void:

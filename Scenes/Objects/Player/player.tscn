@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgeh48bgco303" path="res://Scenes/Components/Universal/hitflash.tscn" id="2_qj748"]
 [ext_resource type="PackedScene" uid="uid://dlv3e43sskac2" path="res://Scenes/Components/Player/gun_module.tscn" id="3_ne81q"]
 [ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="3_xf2sc"]
+[ext_resource type="PackedScene" uid="uid://by64xyomyanos" path="res://Scenes/Components/Player/interact_module.tscn" id="4_7y4eu"]
 [ext_resource type="PackedScene" uid="uid://ccdapjnk4pmbt" path="res://Scenes/Components/Player/jetpack_module.tscn" id="4_pxbl6"]
 [ext_resource type="PackedScene" uid="uid://ewqd0igk0slv" path="res://Scenes/Components/Player/restart_module.tscn" id="4_tihvk"]
 [ext_resource type="PackedScene" uid="uid://ipi0t2mj5em2" path="res://Scenes/Components/Player/rotation_module.tscn" id="5_f2pw0"]
@@ -17,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bmxwgjkqlb61k" path="res://Art/Player/Astro/lower leg.png" id="9_c8l8g"]
 [ext_resource type="Texture2D" uid="uid://qxfljovc0waj" path="res://Art/Player/Astro/boot.png" id="11_ix8ol"]
 [ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="11_lcc80"]
-[ext_resource type="Material" path="res://Resources/Materials/playershaderoutline.tres" id="11_w2qfu"]
 [ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="12_137wm"]
 [ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="18_3fgdm"]
 [ext_resource type="PackedScene" uid="uid://bf2m6g8fuvyo5" path="res://Scenes/Components/Player/action_finder.tscn" id="19_2p47t"]
@@ -194,6 +194,8 @@ angular_damp = 3.0
 script = ExtResource("1_5bc4x")
 hurt_sounds = ExtResource("2_gqq08")
 
+[node name="InteractModule" parent="." instance=ExtResource("4_7y4eu")]
+
 [node name="RestartModule" parent="." instance=ExtResource("4_tihvk")]
 
 [node name="RotationModule" parent="." instance=ExtResource("5_f2pw0")]
@@ -245,7 +247,6 @@ flip_h = true
 process_mode = 3
 light_mask = 2
 z_index = 2
-material = ExtResource("11_w2qfu")
 position = Vector2(3, -27)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_5kbsb")
@@ -516,8 +517,17 @@ light_mask = 3
 position = Vector2(0, -19)
 scale = Vector2(0.15, 0.15)
 blend_mode = 2
-range_item_cull_mask = 3
+range_item_cull_mask = 2
+texture = ExtResource("23_ohgvd")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+light_mask = 3
+position = Vector2(0, -19)
+scale = Vector2(0.15, 0.15)
+blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("23_ohgvd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="PingAnimation"]

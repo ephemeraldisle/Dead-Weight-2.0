@@ -18,6 +18,7 @@ extends RigidBody2D
 var lil_party = preload("res://Scenes/Particles/power_node_hit_particles.tscn")
 var skeleton_mods = preload("res://Resources/skeleton modifications.tres")
 
+
 signal player_rotated
 signal player_jetpacked
 var left_rotation = false

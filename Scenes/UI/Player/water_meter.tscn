@@ -18,7 +18,7 @@ shader_parameter/progress = 1.0
 shader_parameter/bg_color = Color(0.34902, 0.168627, 1, 0.133333)
 shader_parameter/wave_1_color = Color(0, 0.164706, 1, 1)
 shader_parameter/wave_2_color = Color(0.0431373, 0.627451, 0.956863, 1)
-shader_parameter/wave_mix_color = null
+shader_parameter/wave_mix_color = Color(0.819608, 0.0313726, 0.360784, 1)
 
 [sub_resource type="Gradient" id="Gradient_gj8et"]
 offsets = PackedFloat32Array(0, 0.666667, 1)

@@ -16,7 +16,7 @@ var never_jetpacked_before = true
 func _physics_process(_delta):
 	if not ability_power_controller.powered:
 		return
-	if not GameState.dialogue_happening and Input.is_action_pressed("jump") and SharedPlayerManager.request_water_percentage() > 0:
+	if Input.is_action_pressed("jump") and SharedPlayerManager.request_water_percentage() > 0:
 			if never_jetpacked_before:
 				never_jetpacked_before = false
 				jetpacked.emit()

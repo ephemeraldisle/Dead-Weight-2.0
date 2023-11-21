@@ -2,13 +2,14 @@ extends StaticBody2D
 
 const DISABLED_COLOR = Color("00fefeff")
 const ENABLED_COLOR = Color("fe0000ff")
+const FADE_TIME = 0.25
 
 @export var linked_objects_start_active: Array[Node2D]
 @export var linked_objects_start_deactive: Array[Node2D]
 @export var sound_to_play: AudioStream
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
-@onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var light: PointLight2D = $PointLight2D
 @onready var toggler_component: Node2D = $TogglerComponent as Toggler
 
 var available_to_act = true
@@ -33,14 +34,14 @@ func check_save_data(instant: bool = false) -> void:
 
 
 func set_enabled() -> void:
-	point_light_2d.color = ENABLED_COLOR
+	light.color = ENABLED_COLOR
 	animated_sprite_2d.play("Active")
 	action_reset.emit()
 	available_to_act = true
 
 
 func set_disabled(instant: bool = false) -> void:
-	point_light_2d.color = DISABLED_COLOR
+	light.color = DISABLED_COLOR
 	action_finished.emit()
 	if !instant:
 		animated_sprite_2d.play("DeactivateStart")
@@ -48,12 +49,18 @@ func set_disabled(instant: bool = false) -> void:
 	animated_sprite_2d.play("DeactivateLoop")
 
 
-func make_invisible(_instant: bool = false) -> void:
-	point_light_2d.visible = false
+func make_invisible(instant: bool = false) -> void:
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 
 
-func make_visible(_instant: bool = false) -> void:
-	point_light_2d.visible = true
+func make_visible(instant: bool = false) -> void:
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 
 
 func do_action(need_sound: bool = true):

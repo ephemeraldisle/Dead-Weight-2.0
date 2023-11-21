@@ -2054,7 +2054,14 @@ light_mask = 3
 position = Vector2(1, -9)
 scale = Vector2(0.15, 0.15)
 blend_mode = 2
-range_item_cull_mask = 3
+range_item_cull_mask = 2
+texture = ExtResource("16_lohjb")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+light_mask = 3
+position = Vector2(1, -9)
+scale = Vector2(0.15, 0.15)
+blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("16_lohjb")
 

@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float aspect_ratio = 0.05;
-uniform float progress: hint_range(0.0, 1.0, 0.01) = 0.5;
+uniform float progress: hint_range(0.0, 1.0, 0.0025) = 0.5;
 uniform vec4 bg_color: source_color;
 uniform vec4 wave_1_color: source_color;
 uniform vec4 wave_2_color: source_color;

@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if not ability_power_controller.powered:
 		return
 		
-	if !GameState.dialogue_happening && Input.is_action_pressed("down") && SharedPlayerManager.request_energy_percentage() > 0:
+	if Input.is_action_pressed("down") && SharedPlayerManager.request_energy_percentage() > 0:
 		do_magnet(delta)
 		magnet_modifier += 1
 		GameEvents.emit_energy_percent_changed(-0.0055)

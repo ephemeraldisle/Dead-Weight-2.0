@@ -1,8 +1,11 @@
 extends Node
 
+const DEFAULT_SPAWN = Vector2(-230, -450)
+
+
 var state := {
 	"version": 0.00,
-	"spawn_point": Vector2(-230,-450),
+	"spawn_point": null,
 	"options":
 	{
 		"screenshake": true,
@@ -76,9 +79,16 @@ func toggle_beep(enabled: bool):
 	SaveManager.update_heart_beep(enabled)
 
 
-func update_spawn_position(pos: Vector2):
-	state.spawn_point = pos
-	SaveManager.update_spawn_point(pos)
+func update_spawn_position(node: Node2D):
+	state.spawn_point = node.get_path()
+	SaveManager.update_spawn_point(node)
+
+
+func get_spawn_position() -> Vector2:
+	if state.spawn_point != null:
+		return get_node(state.spawn_point).global_position
+	else:
+		return DEFAULT_SPAWN
 
 
 func total_save() -> void:
@@ -88,6 +98,9 @@ func total_save() -> void:
 
 func unlock_gun() -> void:
 	state.abilities.gun = true
+
+func unlock_ability(ability: String) -> void:
+	state.abilities[ability] = true
 
 
 func register_local_save(parent_id, save_data) -> void:

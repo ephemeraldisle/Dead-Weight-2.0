@@ -13,6 +13,7 @@ const LASER_ADJUST_SCALE = Vector2(2.124, 2.124)
 @export var debug = false
 
 var _firing = false
+var _visible = true
 
 @onready var fire_point: Sprite2D = $FirePoint
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -48,7 +49,8 @@ func fire_laser() -> void:
 
 func charge_up():
 	animated_sprite_2d.play("fire")
-	charge_sound.play()
+	if _visible:
+		charge_sound.play()
 	if debug:
 		print_debug("%s chargin up" % self)
 	await get_tree().create_timer(ANIMATION_TIME, false, true).timeout
@@ -56,7 +58,7 @@ func charge_up():
 
 
 func activate(_instant: bool = false) -> void:
-	if !power_controller.powered:
+	if not power_controller.powered or not _visible:
 		return
 
 	fire_sound.play()
@@ -90,14 +92,14 @@ func make_invisible(instant: bool = false) -> void:
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
-
+	_visible = false
 
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
-
+	_visible = true
 
 func on_power_changed(powered: bool) -> void:
 	if powered:

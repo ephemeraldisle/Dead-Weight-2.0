@@ -1,0 +1,38 @@
+~ save_crystal
+do pause_game()
+if state.progression.tutorial_complete == true
+	SAVR: [speed=2]Temporal signature registration completed. Enjoy your [wave amp=25 freq=5]save juice[/wave]!
+	SUITS.U.: Great. I suggest we find other means of propulsion. Perhaps a firearm?
+	do alternate_face = 7
+	SML-E: A fire arm? I only deal with water and air, friend!
+	SUITS.U.: . . .
+	do alternate_face = 2
+	SML-E: ?
+	SUITS.U.: . . .
+	do alternate_face = 0
+	SML-E: Really, nothing?
+	do alternate_face = 4
+	SML-E: I thought it was funny.
+	SUITS.U.: You thought wrong.
+	do alternate_face = 8
+	SML-E: Where can we get a firearm?
+	SUITS.U.: When things were intact, the armory was just one room to the left.
+	do alternate_face = 5
+	SML-E: Isn't there a bunch of stuff in the way?
+	SAVR: Oh, I can help with that! We're not supposed to admit it, but we can tinker with the parameters you save with us...
+	SUITS.U.: Seriously?
+	do alternate_face = 6
+	SML-E: Why didn't you do something like that to avoid the ship exploding?
+	SAVR: Time cops, they only permit such shenanigans in tutorials, like we're in right now.
+	do alternate_face = 3
+	SML-E: What's a tutorial?
+	SAVR: [speed=2]Temporal signature registration completed. Enjoy your complementary [wave amp=25 freq=5]save juice[/wave]!
+	do alternate_face =0
+	SML-E: Really..?
+	SUITS.U.: It must've done its readjustment...
+	SUITS.U.: I guess we should just press R now.
+	do state.progression.tutorial_complete = true
+else
+	SAVR: [speed=2]Temporal signature registration completed. Enjoy your complementary [wave amp=25 freq=5]save juice[/wave]!
+do unpause_game()
+=> END

@@ -4,6 +4,8 @@ class_name Laser_Trap
 signal finished_charging
 signal finished_discharging
 
+const SOUND_FADE_TIME = FADE_TIME * 2.0
+
 @export var always_on = false
 @export var sound_enabled = false
 @export var off_time: float = 5
@@ -111,11 +113,10 @@ func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	(
-		tween
-		. tween_property(loop_sound, "volume_db", -80, 0.01 if instant else FADE_TIME)
-		. from_current()
-	)
+	tween.tween_property(loop_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(charge_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(fire_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(discharge_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
@@ -125,7 +126,10 @@ func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(looping, "volume_db", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(loop_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(charge_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(fire_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
+	tween.tween_property(discharge_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()

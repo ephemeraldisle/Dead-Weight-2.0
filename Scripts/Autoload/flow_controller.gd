@@ -19,3 +19,9 @@ func _unhandled_input(event) -> void:
 			get_tree().root.set_input_as_handled()
 			var pause = pause_menu_scene.instantiate()
 			add_child(pause)
+
+func pause_game() -> void:
+	get_tree().paused = true
+
+func unpause_game() -> void:
+	get_tree().paused = false
