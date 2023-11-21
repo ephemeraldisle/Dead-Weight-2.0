@@ -63,6 +63,45 @@ size = Vector2(913, 264)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im5y0"]
 size = Vector2(141, 205)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fobs1"]
+size = Vector2(913, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h08wk"]
+size = Vector2(90, 150.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecf2g"]
+size = Vector2(608.75, 371)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id7nr"]
+size = Vector2(399, 1018)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yoo4"]
+size = Vector2(1021, 186.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eg2i"]
+size = Vector2(257, 94.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66wrd"]
+size = Vector2(191, 261)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot53u"]
+size = Vector2(314.5, 366)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87iw0"]
+size = Vector2(453, 924)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpntm"]
+size = Vector2(233.5, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02evd"]
+size = Vector2(453, 1274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oixbk"]
+size = Vector2(236, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_163ga"]
+size = Vector2(334, 221)
+
 [sub_resource type="Curve2D" id="Curve2D_qek0o"]
 _data = {
 "points": PackedVector2Array(-7.24455, -10.7093, 7.24455, 10.7093, 34, 24, 0, 0, 0, 0, 27, -204, 2.10224, -5.46583, -2.10224, 5.46583, 31, -306)
@@ -289,3 +328,248 @@ shape = SubResource("RectangleShape2D_im5y0")
 [node name="Wire" parent="SECRET_HIDERS/SecretHider" instance=ExtResource("8_ls52l")]
 position = Vector2(524, -834)
 curve = SubResource("Curve2D_qek0o")
+
+[node name="SecretHider2" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4032, -1464)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider2"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131064, 262145, 3, -196600, 65537, 1, -262136, 65537, 1, -327672, 458753, 2, -131065, 393217, 2, -196601, 131073, 1, -262137, 458753, 2, -327673, 65537, 2, -131066, 458753, 1, -196602, 393217, 1, -262138, 393217, 1, -327674, 65537, 1, -131067, 327681, 2, -196603, 65537, 1, -262139, 65537, 1, -327675, 131073, 2, -131068, 393217, 2, -196604, 327681, 2, -262140, 327681, 2, -327676, 458753, 1, -131069, 131073, 1, -196605, 131073, 1, -262141, 393217, 2, -327677, 458753, 1, -131070, 458753, 2, -196606, 393217, 1, -262142, 131073, 2, -327678, 131073, 2, -131071, 65537, 1, -196607, 131073, 1, -262143, 458753, 1, -327679, 65537, 2, -131072, 327681, 2, -196608, 131073, 1, -262144, 131073, 1, -327680, 393217, 2, -65537, 131073, 2, -131073, 327681, 2, -196609, 458753, 1, -262145, 458753, 1, -65538, 131073, 2, -131074, 458753, 2, -196610, 131073, 2, -262146, 458753, 2, -65539, 327681, 2, -131075, 458753, 1, -196611, 131073, 1, -262147, 458753, 2, -4, 458753, 2, -65540, 131073, 2, -131076, 327681, 2, -196612, 131073, 2, -262148, 393217, 1, -131063, 196609, 3, -196599, 262145, 3, -262135, 458753, 1, -196598, 327681, 3, -131062, 1, 3, -327671, 262145, 4, -262134, 327681, 2, -65530, 393217, 1, -65531, 458753, 2, -65532, 393217, 2, -65533, 65537, 1, -65534, 393217, 1, -65535, 327681, 2, -65536, 458753, 1, -1, 393217, 1, -2, 65537, 1, -3, 65537, 1, -65529, 458753, 2, -65528, 196609, 2, 8, 196609, 3, 7, 262145, 3, -327669, 131073, 0, -262133, 65537, 1, -131061, 131073, 3, -196597, 65537, 1, -327684, 65537, 1, -327683, 65537, 1, -327682, 393217, 2, -393218, 65537, 1, -393219, 65537, 2, -393220, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider2"]
+position = Vector2(252.5, -108.5)
+shape = SubResource("RectangleShape2D_fobs1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider2"]
+position = Vector2(-157, -279.25)
+shape = SubResource("RectangleShape2D_h08wk")
+
+[node name="SecretHider3" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-5312, -1656)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider3"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-327676, 65537, 2, -393212, 131073, 1, -393213, 458753, 1, -393214, 131073, 1, -393215, 393217, 2, -393216, 458753, 1, -327680, 131073, 2, -327677, 131073, 2, -327678, 65537, 1, -327679, 458753, 2, -327681, 393217, 2, -262145, 327681, 3, -262146, 131073, 3, -327682, 393217, 2, -262147, 262145, 3, -327683, 327681, 2, -262148, 327681, 2, -327684, 393217, 1, -262140, 65537, 2, -262141, 458753, 1, -262142, 393217, 1, -262143, 393217, 1, -262144, 393217, 1, -196609, 1, 1, -196610, 262145, 2, -196611, 196609, 2, -196612, 393217, 1, -196613, 458753, 2, -262149, 65537, 2, -327685, 458753, 1, -458748, 131073, 1, -393221, 327681, 2, -393220, 458753, 2, -393219, 393217, 1, -393218, 65537, 1, -393217, 327681, 2, -458752, 131073, 1, -458751, 393217, 2, -524287, 65537, 1, -589823, 458753, 2, -524288, 458753, 2, -589824, 393217, 1, -458753, 65537, 2, -524289, 327681, 4, -458754, 458753, 1, -524290, 65537, 0, -458755, 327681, 2, -524291, 65537, 0, -458756, 65537, 2, -524292, 65537, 0, -458757, 327681, 2, -524293, 262145, 4, -458750, 458753, 2, -262150, 131073, 1, -327686, 65537, 1, -393222, 65537, 1, -458749, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider3"]
+visible = false
+position = Vector2(-19.625, -320.5)
+shape = SubResource("RectangleShape2D_ecf2g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider3"]
+visible = false
+position = Vector2(-458.5, -740)
+shape = SubResource("RectangleShape2D_id7nr")
+
+[node name="SecretHider4" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-6016, -2296)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider4"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-720897, 327681, 2, -655361, 131073, 1, -589825, 131073, 2, -524289, 65537, 1, -458753, 393217, 2, -393217, 393217, 2, -327681, 65537, 1, -262145, 131073, 2, -196609, 131073, 1, -131073, 327681, 2, -65537, 458753, 1, -1, 65537, 1, 65535, 327681, 2, 131071, 131073, 2, 196607, 65537, 1, 262143, 131073, 1, 327679, 131073, 1, 393215, 65537, 2, -786432, 458753, 1, -720896, 65537, 2, -655360, 393217, 1, -589824, 393217, 2, -524288, 131073, 1, -458752, 327681, 2, -393216, 131073, 2, -327680, 65537, 2, -262144, 393217, 2, -196608, 327681, 2, -131072, 65537, 2, -65536, 65537, 2, 0, 65537, 2, 65536, 131073, 1, 131072, 327681, 2, 196608, 458753, 1, 262144, 65537, 1, 327680, 458753, 1, -786431, 458753, 1, -720895, 327681, 2, -655359, 65537, 2, -589823, 65537, 2, -524287, 393217, 1, -458751, 65537, 1, -393215, 458753, 1, -327679, 393217, 2, -262143, 393217, 1, -196607, 65537, 1, -131071, 393217, 1, -65535, 458753, 1, 1, 327681, 2, 65537, 131073, 2, 131073, 327681, 2, 196609, 458753, 2, 262145, 458753, 2, 327681, 131073, 1, -786430, 65537, 2, -720894, 131073, 1, -655358, 65537, 2, -589822, 458753, 2, -524286, 458753, 2, -458750, 458753, 2, -393214, 393217, 1, -327678, 458753, 2, -262142, 458753, 1, -196606, 131073, 2, -131070, 65537, 1, -65534, 393217, 2, 2, 393217, 2, 65538, 131073, 1, 131074, 327681, 2, 196610, 65537, 1, 262146, 65537, 1, 327682, 393217, 1, -786429, 131073, 2, -720893, 458753, 1, -655357, 393217, 1, -589821, 131073, 1, -524285, 131073, 1, -458749, 393217, 2, -393213, 393217, 2, -327677, 65537, 1, -262141, 131073, 2, -196605, 458753, 1, -131069, 65537, 1, -65533, 65537, 1, 3, 65537, 1, 65539, 393217, 2, 131075, 393217, 2, 196611, 131073, 2, 262147, 65537, 2, 327683, 327681, 2, -786428, 458753, 1, -720892, 458753, 1, -655356, 131073, 1, -589820, 262145, 3, -524284, 262145, 4, -458748, 393217, 1, -393212, 393217, 2, -327676, 65537, 1, -262140, 393217, 2, -196604, 65537, 2, -131068, 65537, 1, -65532, 458753, 1, 4, 393217, 2, 65540, 65537, 2, 131076, 65537, 2, 196612, 131073, 1, 262148, 65537, 2, 327684, 393217, 2, -655355, 262145, 3, -589819, 196609, 3, -524283, 196609, 0, -458747, 262145, 4, -393218, 458753, 2, -458754, 327681, 2, -524290, 131073, 2, -589826, 327681, 2, -655362, 458753, 2, -720898, 458753, 2, -393219, 65537, 1, -458755, 65537, 2, -524291, 131073, 1, -589827, 458753, 2, -655363, 458753, 2, -720899, 458753, 2, -393220, 393217, 1, -458756, 393217, 2, -524292, 458753, 2, -589828, 393217, 2, -655364, 393217, 2, -720900, 458753, 1, -393221, 65537, 1, -458757, 65537, 2, -524293, 65537, 2, -589829, 65537, 2, -655365, 458753, 1, -720901, 131073, 2, 131077, 65537, 1, 65541, 65537, 1, 5, 65537, 1, -65531, 65537, 1, -131067, 65537, 1, -196603, 65537, 1, -262139, 65537, 1, -327675, 65537, 1, -393211, 65537, 1, -720891, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider4"]
+visible = false
+position = Vector2(181.5, -57.5)
+shape = SubResource("RectangleShape2D_id7nr")
+
+[node name="SecretHider5" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-5312, -1656)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider5"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider5"]
+visible = false
+position = Vector2(118.5, 606.125)
+shape = SubResource("RectangleShape2D_8yoo4")
+
+[node name="SecretHider6" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4156, -4216)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider6"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(851967, 196609, 2, 786431, 196609, 2, 720895, 262145, 3, 851966, 131073, 2, 786430, 131073, 1, 720894, 131073, 2, 851965, 327681, 4, 786429, 1, 1, 720893, 327681, 3, 851964, 1, 0, 786428, 327681, 0, 720892, 1, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider6"]
+visible = false
+position = Vector2(-132.5, 794.938)
+shape = SubResource("RectangleShape2D_1eg2i")
+
+[node name="SecretHider7" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4604, -4024)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider7"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(851967, 196609, 0, 786431, 458753, 0, 720895, 196609, 3, 851966, 262145, 4, 786430, 196609, 1, 720894, 262145, 3, 851965, 131073, 2, 786429, 393217, 2, 720893, 131073, 2, 851964, 393217, 2, 786428, 131073, 2, 720892, 393217, 2, 720891, 1, 1, 786427, 1, 1, 851963, 327681, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider7"]
+visible = false
+position = Vector2(-132.5, 794.938)
+shape = SubResource("RectangleShape2D_1eg2i")
+
+[node name="SecretHider14" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4604, -4024)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider14"]
+material = ExtResource("1_a3mvc")
+position = Vector2(60, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131071, 196609, 1, -196607, 196609, 2, -262143, 196609, 1, -327679, 262145, 3, -393215, 131073, 0, -131072, 458753, 2, -196608, 458753, 2, -262144, 393217, 1, -327680, 458753, 2, -393216, 65537, 0, -65537, 327681, 2, -131073, 393217, 1, -196609, 131073, 1, -262145, 393217, 2, -327681, 131073, 0, -65538, 65537, 2, -131074, 393217, 1, -196610, 458753, 1, -262146, 458753, 1, -327682, 65537, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider14"]
+position = Vector2(82.5, -189.5)
+shape = SubResource("RectangleShape2D_66wrd")
+
+[node name="SecretHider9" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4604, -4024)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider9"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(131070, 1, 3, 65534, 327681, 3, -2, 131073, 1, -65538, 131073, 2, -131074, 393217, 1, -196610, 393217, 2, 131069, 131073, 8, 65533, 65537, 3, -3, 131073, 2, -65539, 327681, 2, -131075, 393217, 1, -196611, 458753, 1, 65532, 262145, 3, -4, 458753, 1, -65540, 131073, 1, -131076, 131073, 2, -196612, 458753, 2, 65531, 65537, 1, -5, 327681, 2, -65541, 65537, 1, -131077, 458753, 1, -196613, 65537, 1, 65530, 393217, 1, -6, 393217, 2, -65542, 327681, 4, -131078, 1, 1, -196614, 327681, 3, 131068, 196609, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider9"]
+visible = false
+position = Vector2(-230.75, -8)
+shape = SubResource("RectangleShape2D_ot53u")
+
+[node name="SecretHider11" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4604, -4024)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider11"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-523, -72)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131079, 65537, 1, -65543, 65537, 1, -7, 327681, 2, 65529, 131073, 1, -131078, 262145, 4, -65542, 65537, 2, -6, 131073, 1, 65530, 327681, 2, -131077, 327681, 4, -65541, 393217, 2, -5, 393217, 1, 65531, 458753, 2, -131076, 393217, 2, -65540, 393217, 1, -4, 131073, 2, 65532, 393217, 2, -131075, 458753, 1, -65539, 65537, 1, -3, 131073, 2, 65533, 65537, 2, -196615, 65537, 0, -196612, 131073, 0, -196614, 196609, 0, -196613, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider11"]
+visible = false
+position = Vector2(-821, -144)
+shape = SubResource("RectangleShape2D_ot53u")
+
+[node name="SecretHider13" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-5950, -4448)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider13"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-514, -96)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(262147, 196609, 1, 327683, 262145, 4, 196608, 131073, 2, 262144, 393217, 1, 327680, 393217, 1, 393216, 458753, 1, 458752, 131073, 2, 196609, 327681, 2, 262145, 393217, 1, 327681, 393217, 2, 393217, 131073, 1, 458753, 327681, 2, 196610, 131073, 1, 262146, 327681, 2, 327682, 458753, 2, 393218, 393217, 2, 458754, 131073, 2, 524288, 327681, 2, 589824, 393217, 1, 655360, 458753, 1, 720896, 65537, 1, 786432, 393217, 1, 851968, 458753, 1, 917504, 458753, 2, 524289, 65537, 1, 589825, 393217, 1, 655361, 458753, 1, 720897, 131073, 1, 786433, 65537, 1, 851969, 327681, 2, 917505, 65537, 2, 524290, 65537, 2, 589826, 65537, 2, 655362, 131073, 1, 720898, 393217, 1, 786434, 393217, 2, 851970, 458753, 1, 917506, 458753, 2, 393219, 393217, 2, 458755, 393217, 1, 524291, 131073, 2, 589827, 65537, 1, 655363, 393217, 1, 720899, 65537, 2, 786435, 65537, 2, 851971, 458753, 2, 917507, 458753, 2, 393220, 131073, 2, 458756, 393217, 1, 524292, 458753, 2, 589828, 393217, 1, 655364, 131073, 1, 720900, 393217, 2, 786436, 65537, 2, 851972, 65537, 1, 917508, 458753, 1, 393221, 65537, 2, 458757, 327681, 2, 524293, 327681, 2, 589829, 131073, 1, 655365, 458753, 2, 720901, 65537, 1, 786437, 65537, 1, 851973, 65537, 2, 917509, 65537, 2, 983040, 131073, 2, 1048576, 393217, 1, 1114112, 393217, 1, 1179648, 458753, 2, 1245184, 65537, 1, 983041, 393217, 1, 1048577, 65537, 1, 1114113, 327681, 2, 1179649, 458753, 1, 1245185, 393217, 1, 983042, 458753, 2, 1048578, 458753, 2, 1114114, 65537, 2, 1179650, 65537, 1, 1245186, 327681, 2, 983043, 131073, 1, 1048579, 393217, 2, 1114115, 65537, 1, 1179651, 393217, 1, 1245187, 327681, 2, 983044, 458753, 2, 1048580, 131073, 2, 1114116, 458753, 1, 1179652, 65537, 2, 1245188, 327681, 2, 983045, 327681, 2, 1048581, 393217, 1, 1114117, 65537, 1, 1179653, 393217, 1, 1245189, 458753, 1, 983046, 327681, 2, 1048582, 65537, 1, 1114118, 458753, 1, 1179654, 393217, 2, 1245190, 458753, 1, 1245191, 262145, 4, 1179655, 196609, 2, 1114119, 196609, 1, 1048583, 196609, 2, 196613, 1, 1, 196611, 196609, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider13"]
+visible = false
+position = Vector2(-234.5, 692)
+shape = SubResource("RectangleShape2D_87iw0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider13"]
+visible = false
+position = Vector2(-377.75, 218.5)
+shape = SubResource("RectangleShape2D_rpntm")
+
+[node name="SecretHider12" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-5950, -4448)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider12"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-514, -96)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(4, 131073, 1, 65540, 393217, 1, 131076, 393217, 1, 5, 458753, 1, 65541, 65537, 2, 131077, 327681, 2, 6, 262145, 3, 65542, 262145, 4, 131078, 65537, 2, 7, 65537, 3, 65543, 196609, 0, 131079, 196609, 2, 3, 65537, 1, 65539, 393217, 1, 131075, 458753, 1, 196612, 65537, 3, 196611, 262145, 3, 196613, 327681, 3, 262147, 196609, 1, 327683, 262145, 4, 8, 65537, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider12"]
+visible = false
+position = Vector2(-234.5, 517)
+shape = SubResource("RectangleShape2D_02evd")
+
+[node name="SecretHider10" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-4604, -4024)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider10"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-387, 571)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(65533, 131073, 2, -3, 393217, 2, -65539, 131073, 1, -131075, 393217, 1, -196611, 131073, 0, 65532, 65537, 2, -4, 393217, 1, -65540, 65537, 1, -131076, 327681, 4, -196612, 1, 0, 65531, 65537, 2, -5, 393217, 2, -65541, 65537, 2, -131077, 262145, 4, -196613, 196609, 0, 65530, 458753, 2, -6, 65537, 1, -65542, 65537, 1, -131078, 458753, 1, -196614, 65537, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider10"]
+visible = false
+position = Vector2(-635, 454)
+shape = SubResource("RectangleShape2D_oixbk")
+
+[node name="SecretHider8" parent="SECRET_HIDERS" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-3710, -3521)
+
+[node name="TileMap" type="TileMap" parent="SECRET_HIDERS/SecretHider8"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-67, 1)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(786432, 327681, 2, 720896, 327681, 2, 655360, 131073, 1, 589824, 65537, 2, 851967, 327681, 2, 786431, 393217, 1, 720895, 131073, 2, 655359, 458753, 2, 851966, 458753, 1, 786430, 393217, 1, 720894, 65537, 2, 655358, 458753, 1, 851965, 131073, 2, 786429, 65537, 2, 720893, 65537, 2, 655357, 393217, 1, 851964, 327681, 4, 786428, 327681, 3, 720892, 458753, 1, 655356, 131073, 2, 851963, 1, 0, 786427, 1, 3, 720891, 327681, 3, 655355, 131073, 1, 851968, 131073, 2, 917503, 458753, 2, 917502, 393217, 1, 917501, 131073, 1, 917500, 65537, 1, 917499, 327681, 4, 983036, 393217, 2, 983037, 458753, 1, 983038, 458753, 2, 983039, 131073, 1, 917504, 131073, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECRET_HIDERS/SecretHider8"]
+visible = false
+position = Vector2(-218, 804.5)
+shape = SubResource("RectangleShape2D_163ga")
