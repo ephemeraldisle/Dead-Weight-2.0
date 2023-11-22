@@ -1,5 +1,8 @@
 extends Node2D
 
+const MAGNET_DAMPING = 500
+const MAGNET_MASS = 500
+
 @export var raycasts: Array[RayCast2D]
 @export var magnet_particles: Array[GPUParticles2D]
 
@@ -12,7 +15,9 @@ var magnet_extended = false
 @onready var magnet_open: AudioStreamPlayer2D = %MagnetOpen
 @onready var magnet_close: AudioStreamPlayer2D = %MagnetClose
 @onready var ability_power_controller: Node = $AbilityPowerController as AbilityPowerController
-@onready var parent = get_parent()
+@onready var parent = get_parent() as RigidBody2D
+@onready var original_linear_damp = parent.linear_damp
+@onready var original_mass = parent.mass
 
 func _physics_process(delta):
 	if not ability_power_controller.powered:
@@ -27,6 +32,8 @@ func _physics_process(delta):
 			particles.emitting = true
 			particles.speed_scale = 1.5
 	else:
+		parent.linear_damp = original_linear_damp
+		parent.mass = original_mass
 		magnet_animation(false)
 		for particles in magnet_particles:
 			particles.emitting = false
@@ -37,7 +44,7 @@ func do_magnet(delta: float) -> void:
 	var minimum_distance = INF
 	var chosen_ray
 	for ray in raycasts:
-		if ray.is_coliding():
+		if ray.is_colliding():
 			var distance = global_position.distance_squared_to(ray.get_collision_point())
 			if distance < minimum_distance:
 				minimum_distance = distance
@@ -50,8 +57,12 @@ func do_magnet(delta: float) -> void:
 	var collision_normal = chosen_ray.get_collision_normal()
 	var angle_to_collision_normal = atan2(collision_normal.y, collision_normal.x)+PI/2
 	if minimum_distance <= 250:
-		rotation = angle_to_collision_normal
+		parent.linear_damp = MAGNET_DAMPING
+		parent.mass = MAGNET_MASS
+		parent.rotation = angle_to_collision_normal
 	else:
+		parent.linear_damp = original_linear_damp
+		parent.mass = original_mass
 		parent.angular_velocity = (angle_to_collision_normal - rotation)
 		var direction = global_position.direction_to(collision_point)
 		parent.apply_impulse(direction*1000*delta*magnet_modifier)

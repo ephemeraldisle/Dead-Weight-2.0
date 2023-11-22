@@ -28,8 +28,8 @@ var _save_data_default := {
 		"death": true,
 		"interact": true,
 		"gun": true,
-		"shield": false,
-		"magnet": false
+		"shield": true,
+		"magnet": true,
 	},
 	"local": {},
 }

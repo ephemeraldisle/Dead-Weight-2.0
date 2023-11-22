@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Objects/Environment/wire.gd" id="1_7pwut"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="3_mc1xy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfigc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ep22u"]
 resource_local_to_scene = true
 shader = ExtResource("3_mc1xy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
@@ -15,5 +15,5 @@ shader_parameter/speed_factor = 3.0
 script = ExtResource("1_7pwut")
 
 [node name="WireArt" parent="." instance=ExtResource("1_6c5ey")]
-material = SubResource("ShaderMaterial_xfigc")
+material = SubResource("ShaderMaterial_ep22u")
 points = PackedVector2Array(0, 0, 50, 0)

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const NUMBER_OF_COLORS = 3
+const NUMBER_OF_COLORS = 3.0
 const SPREAD_DEGREES = 360 / NUMBER_OF_COLORS
 const SPREAD_VARIANCE = 15
 

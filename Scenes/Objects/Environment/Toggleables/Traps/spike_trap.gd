@@ -58,7 +58,7 @@ func charge_up():
 	finished_charging.emit()
 
 
-func activate(instant: bool = false) -> void:
+func activate(_instant: bool = false) -> void:
 	light.visible = true
 	light.color.a = 1
 	animated_sprite_2d.play("activeloop")
