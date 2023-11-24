@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cx7yohtobxg3u"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="1_15pvj"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_15pvj")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0

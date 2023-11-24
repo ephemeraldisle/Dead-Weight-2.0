@@ -7,6 +7,7 @@ const FADE_TIME = 0.25
 @export var linked_objects_start_active: Array[Node2D]
 @export var linked_objects_start_deactive: Array[Node2D]
 @export var sound_to_play: AudioStream
+@export var reset_time = -1.0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
 @onready var light: PointLight2D = $PointLight2D
@@ -65,6 +66,7 @@ func make_visible(instant: bool = false) -> void:
 
 func do_action(need_sound: bool = true):
 	if !available_to_act:
+		action_finished.emit()
 		return
 	if need_sound:
 		audio_player.play()
@@ -73,3 +75,7 @@ func do_action(need_sound: bool = true):
 	toggler_component.set_off()
 	set_disabled()
 	available_to_act = false
+	if reset_time >= 0:
+		await get_tree().create_timer(reset_time).timeout
+		toggler_component.set_on()
+		set_enabled()

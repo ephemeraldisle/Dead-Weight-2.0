@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=143 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="Material" uid="uid://ctbaan0qf40hr" path="res://Resources/Materials/tile_shader.tres" id="1_a3mvc"]
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
@@ -15,7 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://nj4paacovlxk" path="res://Scenes/Objects/Environment/Toggleables/Traps/spike_trap.tscn" id="10_i3rmq"]
 [ext_resource type="PackedScene" uid="uid://7blqfr6i1rfj" path="res://Scenes/Objects/Environment/Toggleables/Traps/spin_trap.tscn" id="11_1hoxj"]
 [ext_resource type="PackedScene" uid="uid://bbhc3j087wtxl" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_track.tscn" id="12_f607i"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="13_nowdy"]
 [ext_resource type="PackedScene" uid="uid://b6pqpgnnjyp7p" path="res://Scenes/Objects/Environment/Toggleables/Traps/turret.tscn" id="13_ulx8t"]
+[ext_resource type="PackedScene" uid="uid://drj6k528vq4no" path="res://Scenes/Objects/Pickups/pickup_spawner.tscn" id="20_prrcb"]
+[ext_resource type="PackedScene" uid="uid://cq0bavny1jtr6" path="res://Scenes/Objects/Pickups/energy_pickup.tscn" id="22_8kxxg"]
+[ext_resource type="PackedScene" uid="uid://cax2ot2p37sif" path="res://Scenes/Objects/Pickups/gun_pickup.tscn" id="23_c562g"]
 [ext_resource type="PackedScene" uid="uid://4mcd07bt6gxd" path="res://Scenes/Background/light_holder_thing.tscn" id="24_43n7f"]
 [ext_resource type="PackedScene" uid="uid://2camwyroxen8" path="res://Scenes/Background/secret_hider.tscn" id="24_udsjm"]
 [ext_resource type="TileSet" uid="uid://il7emji1b17m" path="res://Resources/secrettileset.tres" id="25_144ko"]
@@ -42,11 +46,39 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5das"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5xvi"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_24ekj"]
 _data = {
 "points": PackedVector2Array(-96.6408, -43.4509, 96.6408, 43.4509, 461, -828, -34.4611, -11.9865, 34.4611, 11.9865, 851, -823, 53.9391, 29.9661, -53.9391, -29.9661, 844, -593, 0, 0, 0, 0, 771, -607)
 }
 point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo84f"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wm5f"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_yslgn"]
 _data = {
@@ -54,11 +86,39 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv7x7"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ga6uh"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_etkjy"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -49, 36, 21.4057, 13.0813, -21.4057, -13.0813, -57, 6, 48.031, 17.4775, -48.031, -17.4775, -152, 18, 34.9228, 9.52441, -34.9228, -9.52441, -166, -303, 47.622, 76.1952, -47.622, -76.1952, -426, -509, 88.8945, 17.4614, -88.8945, -17.4614, -423, -666)
 }
 point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0autr"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dcui8"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_ehgvf"]
 _data = {
@@ -66,11 +126,39 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8d7b"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulqwk"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_a7fv3"]
 _data = {
 "points": PackedVector2Array(32.1086, 24.9733, -32.1086, -24.9733, 324, -232, 13.0813, 13.0813, -13.0813, -13.0813, 195, -244, 57.6765, 31.514, -57.6765, -31.514, 175, -335)
 }
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mygkn"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2f3a"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_unm8m"]
 _data = {
@@ -78,11 +166,39 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yciy4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_073po"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_twgy5"]
 _data = {
 "points": PackedVector2Array(22.0249, -20.69, -22.0249, 20.69, 0, -81, -24.0271, 2.66968, 24.0271, -2.66968, 25, -37, 21.3574, 14.0158, -21.3574, -14.0158, 70, -83)
 }
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq85m"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btfds"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_le5e6"]
 _data = {
@@ -90,11 +206,39 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmv66"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhj2i"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_hni7h"]
 _data = {
 "points": PackedVector2Array(31.498, 46.6171, -31.498, -46.6171, -102, 69, -39.0576, 18.8988, 39.0576, -18.8988, -32, 1, -39.0575, 32.7579, 39.0575, -32.7579, -40, -119, -41.5774, 15.1191, 41.5774, -15.1191, 2, -197)
 }
 point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqnbv"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odjeh"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_axjej"]
 _data = {
@@ -102,11 +246,39 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtt30"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7asff"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_jacbu"]
 _data = {
 "points": PackedVector2Array(-123.347, 77.4523, 123.347, -77.4523, -109, -77.4579, -84.5044, -42.7924, 84.5044, 42.7924, 191, -435.501, 44.9327, 63.1833, -44.9327, -63.1833, 694, -678.97)
 }
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlodq"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buvtq"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_y24k3"]
 _data = {
@@ -114,11 +286,39 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jklcx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbxg2"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="Curve2D" id="Curve2D_l1ov1"]
 _data = {
 "points": PackedVector2Array(-4.84151, 89.8458, 4.84151, -89.8458, -101, 26, -32.5514, 60.6129, 32.5514, -60.6129, -28, -539, 13.7609, 79.0518, -13.7609, -79.0518, 111, -726, 26.1626, 97.515, -26.1626, -97.515, 315, -1088, -54.7035, 78.4877, 54.7035, -78.4877, 320, -1880, 42.8115, 83.2445, -42.8115, -83.2445, 280, -2765, 26.1626, 73.7308, -26.1626, -73.7308, 442, -3918, 0, 0, 0, 0, 464, -4965)
 }
 point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88q85"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc3hv"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbtnn"]
 size = Vector2(913, 264)
@@ -132,11 +332,45 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ftum"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6alod"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fobs1"]
 size = Vector2(913, 205)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h08wk"]
 size = Vector2(90, 150.5)
+
+[sub_resource type="Curve2D" id="Curve2D_qeu4k"]
+_data = {
+"points": PackedVector2Array(25.4846, 55.6886, -25.4846, -55.6886, 290, -7, 10.3826, 73.6222, -10.3826, -73.6222, 378, -107, 62.2957, 50.0253, -62.2957, -50.0253, 644, -118, 66.0712, 38.6988, -66.0712, -38.6988, 485, -219, 7.937, -30.9543, -7.937, 30.9543, 43, -213, 31.748, 9.52441, -31.748, -9.52441, -44, -22, 3.9685, 32.5417, -3.9685, -32.5417, -173, -9, 57.1464, -10.3181, -57.1464, 10.3181, -211, -68, 39.6427, -8.49487, -39.6427, 8.49487, -254, -101, 34.9233, 40.5866, -34.9233, -40.5866, -219, -326)
+}
+point_count = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6syx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g08c"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecf2g"]
 size = Vector2(608.75, 371)
@@ -146,6 +380,334 @@ size = Vector2(399, 1018)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v73mb"]
 size = Vector2(228.5, 1021)
+
+[sub_resource type="Curve2D" id="Curve2D_stcqi"]
+_data = {
+"points": PackedVector2Array(-57.6014, -13.4543, 57.6014, 13.4543, -92, 13, -40.363, 27.3291, 40.363, -27.3291, 16, -1, -11.7725, 21.8633, 11.7725, -21.8633, 60, -89)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_613cs"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ga37r"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_0vygq"]
+_data = {
+"points": PackedVector2Array(-73.3336, 10.5186, 73.3336, -10.5186, 52, 171, 35.3015, 57.2953, -35.3015, -57.2953, 48, -115, -28.2539, -8.10284, 28.2539, 8.10284, 120, -188)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hsw1"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kal1"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_5e1ns"]
+_data = {
+"points": PackedVector2Array(-57.6014, -13.4543, 57.6014, 13.4543, -477.139, 1837.63, -21.4989, 59.295, 21.4989, -59.295, -512.371, 814.775, -13.4368, 49.9326, 13.4368, -49.9326, -512.371, 559.939, -19.5611, 24.8966, 19.5611, -24.8966, -322.119, 548.249, 9.55234, 41.6858, -9.55234, -41.6858, -257.695, 313.285, 8.07119, 68.7349, -8.07119, -68.7349, -295.947, 177.684, -34.0784, 44.7818, 34.0784, -44.7818, -115.762, 154.305, -23.3239, 50.2408, 23.3239, -50.2408, 126.834, -85.3351, 28.7537, -54.9228, -28.7537, 54.9228, 35.2319, -98.1938)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnwn7"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8jci"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_u85v6"]
+_data = {
+"points": PackedVector2Array(-10.7252, 78.7572, 10.7252, -78.7572, -540.56, 761, -3.86016, 56.8834, 3.86016, -56.8834, -465.062, 607.864, -13.1627, 151.222, 13.1627, -151.222, -51.3394, 306.271, 0, 0, 0, 0, 14.0962, -1095.33)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1qmi"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipg4m"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_ovg6f"]
+_data = {
+"points": PackedVector2Array(0.909097, 86.06, -0.909097, -86.06, -397.021, 912.636, 25.5804, 85.8124, -25.5804, -85.8124, -178.404, 754.008, -73.2782, 99.1681, 73.2782, -99.1681, -51.3394, 306.271, -16.7419, 10.3898, 16.7419, -10.3898, 41.3311, -996.15, 4.74314, 12.0886, -4.74314, -12.0886, -3.52393, -1027.48, -16.7225, 5.7508, 16.7225, -5.7508, 28.6709, -1032.59, -1.25869, 14.3742, 1.25869, -14.3742, 22.6099, -1080.9, 12.3536, -11.8064, -12.3536, 11.8064, 22.731, -1177.78, 28.9837, 23.545, -28.9837, -23.545, 14.0962, -1095.33)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifybb"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3k16"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_0jsck"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, -95, -77, -51.1359, -8.32422, 51.1359, 8.32422, -56, 37, 5.94565, -87.4067, -5.94565, 87.4067, 39, 119)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2xcx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2jri"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_np7we"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, 140, 3.99939, -51.1359, -8.32422, 51.1359, 8.32422, -251, 51.0011)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h474h"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j32o7"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_b6677"]
+_data = {
+"points": PackedVector2Array(57.779, -27.3156, -57.779, 27.3156, -95, -77, -49.0337, -14.2105, 49.0337, 14.2105, -102, 27.0005, 51.252, -1.51437, -51.252, 1.51437, -83.9995, 119)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d0j0"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4le4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_11rva"]
+_data = {
+"points": PackedVector2Array(-69.282, 3.21019, 69.282, -3.21019, -155, -80.9994, -49.0337, -14.2105, 49.0337, 14.2105, -102, 27.0005, 69.0699, -23.3415, -69.0699, 23.3415, -83.999, 182, -24.4995, 42.7632, 24.4995, -42.7632, -192, 143.001)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpb40"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58i8m"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_6ag6e"]
+_data = {
+"points": PackedVector2Array(20.503, -15.8177, -20.503, 15.8177, 86.9952, -718.001, 19.632, -12.3211, -19.632, 12.3211, 27.9951, -723, 49.8701, -13.5812, -49.8701, 13.5812, -31.0051, -765, 69.0699, -23.3415, -69.0699, 23.3415, -192.003, -502.999, -31.5014, -234.237, 31.5014, 234.237, -223.999, 150.001)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfurf"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4iba"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_rnomy"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, -95, -77, 15.6397, -59.9813, -15.6397, 59.9813, -56, 37, 19.8049, -65.9881, -19.8049, 65.9881, 39, 119, 18.2687, -25.1985, -18.2687, 25.1985, 45.0015, 328, -22.0485, 31.4981, 22.0485, -31.4981, -6.99878, 316)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_un85f"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1i2xx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_3uctu"]
+_data = {
+"points": PackedVector2Array(33.8852, -24.0778, -33.8852, 24.0778, -47, 5, 6.48843, -14.0195, -6.48843, 14.0195, -38.0381, 24.6797, -32.6451, 18.234, 32.6451, -18.234, -17, 42)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k8m0"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06s4d"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_62vsl"]
+_data = {
+"points": PackedVector2Array(-22.7179, -4.00904, 22.7179, 4.00904, 339, -88, 38.7541, -3.11814, -38.7541, 3.11814, 307, -39, 18.7089, 11.1362, -18.7089, -11.1362, 222, -31, -8.90899, 22.2725, 8.90899, -22.2725, 199, -89)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vyfy"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi7jd"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_72yae"]
+_data = {
+"points": PackedVector2Array(-10.1045, -38.4858, 10.1045, 38.4858, 338, -143, 38.7541, 3.60903, -38.7541, -3.60903, 287, -56, 25.1984, 18.8988, -25.1984, -18.8988, -244, -46, 18.2689, 11.3393, -18.2689, -11.3393, -244, -156, 13.8591, 10.7093, -13.8591, -10.7093, -298, -153, 20.7887, -0.629961, -20.7887, 0.629961, -300, -56, 44.7272, 19.5288, -44.7272, -19.5288, -389, -42, -36.6273, 51.8806, 36.6273, -51.8806, -556, -85)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_airky"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81tek"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_kx30k"]
+_data = {
+"points": PackedVector2Array(-16.9706, -4.24264, 16.9706, 4.24264, -31, -52, 10.253, 0.707107, -10.253, -0.707107, -26, -13, 13.7886, 11.3137, -13.7886, -11.3137, -66, -9)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jog53"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fidra"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tklc"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds18f"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_joo6c"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa14l"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1eg2i"]
 size = Vector2(257, 94.125)
@@ -227,38 +789,54 @@ flip_h = true
 
 [node name="Objects" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
-[node name="IntroControlPanel" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
-position = Vector2(379, -1241)
-linked_objects_start_active = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3")]
-
-[node name="LaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(192, -1179)
-rotation = 1.57079
-initial_delay = 0.0
-
-[node name="PowerNode" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(39, -1241)
-
-[node name="Door" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
-position = Vector2(836, -448)
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-
-[node name="Door2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
-position = Vector2(-374, -515)
-scale = Vector2(0.7, 0.7)
-
-[node name="Door3" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
-position = Vector2(-258, -65)
-rotation = -1.57079
-scale = Vector2(0.7, 0.7)
-
 [node name="Save Console" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("spawn_position") instance=ExtResource("8_c46gc")]
 position = Vector2(172, -673)
 spawn_position = NodePath("Node2D")
 
 [node name="Node2D" type="Node2D" parent="SECTION_1/INTRO_ROOM/Objects/Save Console"]
 position = Vector2(5, -192)
+
+[node name="IntroControlPanel" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(379, -1241)
+linked_objects_start_active = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3"), NodePath("../../WireHolder/Wire11"), NodePath("../../WireHolder/Wire5"), NodePath("../../WireHolder/Wire4"), NodePath("../../WireHolder/Wire"), NodePath("../../Secrets/SecretHider/Wire"), NodePath("../../WireHolder/Wire2")]
+
+[node name="conTROLLpanel" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_deactive") instance=ExtResource("6_gbw75")]
+position = Vector2(1564, -347)
+scale = Vector2(1, 0.855938)
+linked_objects_start_deactive = [NodePath("../LaserTrap2"), NodePath("../../WireHolder/Wire8")]
+reset_time = 1.0
+
+[node name="Actionable" parent="SECTION_1/INTRO_ROOM/Objects/conTROLLpanel" index="2"]
+repeatable = true
+
+[node name="ControlPanel2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_gbw75")]
+position = Vector2(-1368, -283)
+
+[node name="PowerNode8" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1445, -554)
+rotation = -1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../Barrier"), NodePath("../../WireHolder/Wire7")]
+
+[node name="PowerNode" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(39, -1241)
+linked_objects_start_active = [NodePath("../LaserTrap"), NodePath("../../WireHolder/Wire3")]
+
+[node name="LaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(192, -1179)
+rotation = 1.57079
+initial_delay = 0.0
+
+[node name="Door" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(836, -448)
+rotation = 3.14159
+
+[node name="Door2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-374, -515)
+
+[node name="Door3" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-258, -65)
+rotation = -1.57079
 
 [node name="LaserTrap32" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-765, -127)
@@ -311,14 +889,8 @@ position = Vector2(-600, 0.000610352)
 [node name="LaserTrap8" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-215, 575)
 
-[node name="PowerNode8" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(1445, -554)
-rotation = -1.57079
-scale = Vector2(0.544061, 0.544061)
-
 [node name="LaserTrap9" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1057, -447)
-always_on = true
 initial_delay = 0.0
 
 [node name="Barrier" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("9_kt32a")]
@@ -327,13 +899,8 @@ position = Vector2(1630, -386)
 [node name="LaserTrap2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 z_index = -6
 position = Vector2(1506, -383)
-
-[node name="ControlPanel" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_gbw75")]
-position = Vector2(1564, -347)
-scale = Vector2(1, 0.855938)
-
-[node name="ControlPanel2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_gbw75")]
-position = Vector2(-1368, -283)
+always_on = true
+initial_delay = 0.0
 
 [node name="WireHolder" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
@@ -341,66 +908,94 @@ position = Vector2(-1368, -283)
 z_index = 15
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_hwv2x")
+on_material = SubResource("ShaderMaterial_i5das")
+off_material = SubResource("ShaderMaterial_d5xvi")
 
 [node name="Wire2" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_24ekj")
+on_material = SubResource("ShaderMaterial_vo84f")
+off_material = SubResource("ShaderMaterial_4wm5f")
 
 [node name="Wire3" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 5
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_yslgn")
+on_material = SubResource("ShaderMaterial_bv7x7")
+off_material = SubResource("ShaderMaterial_ga6uh")
 
 [node name="Wire4" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 15
 position = Vector2(889, -546)
 curve = SubResource("Curve2D_etkjy")
+on_material = SubResource("ShaderMaterial_0autr")
+off_material = SubResource("ShaderMaterial_dcui8")
 
 [node name="Wire5" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 15
 position = Vector2(889, -546)
 curve = SubResource("Curve2D_ehgvf")
+on_material = SubResource("ShaderMaterial_u8d7b")
+off_material = SubResource("ShaderMaterial_ulqwk")
 
 [node name="Wire6" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1295, -215)
 curve = SubResource("Curve2D_a7fv3")
+on_material = SubResource("ShaderMaterial_mygkn")
+off_material = SubResource("ShaderMaterial_s2f3a")
 
 [node name="Wire7" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1295, -215)
 curve = SubResource("Curve2D_unm8m")
+on_material = SubResource("ShaderMaterial_yciy4")
+off_material = SubResource("ShaderMaterial_073po")
 
 [node name="Wire8" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1499, -247)
 curve = SubResource("Curve2D_twgy5")
+on_material = SubResource("ShaderMaterial_uq85m")
+off_material = SubResource("ShaderMaterial_btfds")
 
 [node name="Wire9" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-219, 935)
 rotation = 3.14159
 curve = SubResource("Curve2D_le5e6")
+on_material = SubResource("ShaderMaterial_xmv66")
+off_material = SubResource("ShaderMaterial_lhj2i")
 
 [node name="Wire10" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-229, 321)
 rotation = -3.14159
 curve = SubResource("Curve2D_hni7h")
+on_material = SubResource("ShaderMaterial_wqnbv")
+off_material = SubResource("ShaderMaterial_odjeh")
 
 [node name="Wire11" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(0, -5.83997)
 scale = Vector2(1, 0.984)
 curve = SubResource("Curve2D_axjej")
+on_material = SubResource("ShaderMaterial_gtt30")
+off_material = SubResource("ShaderMaterial_7asff")
 
 [node name="Wire12" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(949, -470)
 rotation = -3.14024
 scale = Vector2(1, 1.04736)
 curve = SubResource("Curve2D_jacbu")
+on_material = SubResource("ShaderMaterial_qlodq")
+off_material = SubResource("ShaderMaterial_buvtq")
 
 [node name="Wire13" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-818, 19)
 curve = SubResource("Curve2D_y24k3")
+on_material = SubResource("ShaderMaterial_jklcx")
+off_material = SubResource("ShaderMaterial_cbxg2")
 
 [node name="Wire14" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-668, -215)
 curve = SubResource("Curve2D_l1ov1")
+on_material = SubResource("ShaderMaterial_88q85")
+off_material = SubResource("ShaderMaterial_xc3hv")
 
 [node name="Secrets" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
@@ -429,19 +1024,108 @@ shape = SubResource("RectangleShape2D_im5y0")
 [node name="Wire" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider" instance=ExtResource("8_ls52l")]
 position = Vector2(524, -834)
 curve = SubResource("Curve2D_qek0o")
+on_material = SubResource("ShaderMaterial_3ftum")
+off_material = SubResource("ShaderMaterial_6alod")
 
 [node name="Pickups" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
+[node name="PickupSpawner" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-254, -388)
+initial_delay = 0.0
+
+[node name="PickupSpawner6" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1238, -829)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+
+[node name="PickupSpawner3" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-618, 145)
+initial_delay = 0.0
+
+[node name="PickupSpawner4" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(317, 478)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+
+[node name="PickupSpawner5" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1025, 194)
+initial_delay = 0.0
+
+[node name="PickupSpawner2" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(871, -445)
+initial_delay = 0.0
+
 [node name="SECTION_2" type="Node2D" parent="."]
-visible = false
 position = Vector2(-5046, -1067)
 
 [node name="GUN_ROOM" type="Node2D" parent="SECTION_2"]
 
 [node name="Objects" type="Node2D" parent="SECTION_2/GUN_ROOM"]
 
-[node name="ControlPanel3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_gbw75")]
+[node name="ControlPanel3" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
 position = Vector2(207, -111)
+linked_objects_start_active = [NodePath("../Barrier2"), NodePath("../../WireHolder/Wire8")]
+
+[node name="ControlPanel8" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(1298.6, 401)
+linked_objects_start_active = [NodePath("../Barrier5"), NodePath("../../WireHolder/Wire13")]
+
+[node name="ControlPanel6" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(-618, 82)
+rotation = -3.14159
+scale = Vector2(1, -1)
+linked_objects_start_active = [NodePath("../SpikeTrap19"), NodePath("../SpikeTrap20"), NodePath("../SpikeTrap17"), NodePath("../SpikeTrap18"), NodePath("../../WireHolder/Wire10")]
+
+[node name="PowerNode6" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-627, 906.24)
+rotation = 1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../Turret"), NodePath("../Turret3"), NodePath("../LaserTrap16"), NodePath("../../WireHolder/Wire15")]
+
+[node name="PowerNode2" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(923, -430)
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap13"), NodePath("../../WireHolder/Wire3")]
+
+[node name="PowerNode5" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(847, -699)
+rotation = 3.14159
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap15"), NodePath("../Turret4"), NodePath("../SpikeTrap5"), NodePath("../SpikeTrap6"), NodePath("../../WireHolder/Wire4"), NodePath("../../WireHolder/Wire5"), NodePath("../../WireHolder/Wire6"), NodePath("../../Secrets/SecretHider2/Wire")]
+
+[node name="PowerNode3" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1103, -573)
+rotation = -3.14159
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap12"), NodePath("../../WireHolder/Wire2")]
+
+[node name="PowerNode4" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1367, -430)
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap11"), NodePath("../../WireHolder/Wire")]
+
+[node name="PowerNode9" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-490, -1134)
+linked_objects_start_active = [NodePath("../LaserTrap17"), NodePath("../../WireHolder/Wire17")]
+
+[node name="PowerNode7" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-36, -826)
+rotation = -1.57079
+linked_objects_start_active = [NodePath("../LaserTrap18"), NodePath("../../WireHolder/Wire16")]
+
+[node name="PowerNode" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+z_index = 7
+position = Vector2(30, -257)
+rotation = -1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap22"), NodePath("../Barrier3"), NodePath("../../WireHolder/Wire9"), NodePath("../../WireHolder/Wire7")]
+
+[node name="Save Console2" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("spawn_position") instance=ExtResource("8_c46gc")]
+position = Vector2(533, 75)
+spawn_position = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="SECTION_2/GUN_ROOM/Objects/Save Console2"]
+position = Vector2(18, -180)
 
 [node name="LaserTrap18" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(117, -1181)
@@ -449,18 +1133,31 @@ rotation = -1.57081
 always_on = true
 initial_delay = 0.0
 
-[node name="PowerNode7" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(-36, -826)
-rotation = -1.57079
-
 [node name="LaserTrap11" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1495, -150)
 off_time = 6.0
 initial_delay = 0.0
 
+[node name="LaserTrap16" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-500, -920)
+rotation = 3.14159
+initial_delay = 0.0
+
+[node name="LaserTrap14" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-1228, -245)
+rotation = 1.57079
+off_time = 4.0
+initial_delay = 0.0
+
 [node name="LaserTrap12" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1207, -151)
 off_time = 6.0
+
+[node name="LaserTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-397, -1051)
+rotation = -1.57081
+always_on = true
+initial_delay = 0.0
 
 [node name="LaserTrap13" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(920, -151)
@@ -497,14 +1194,6 @@ position = Vector2(-1225, -497)
 rotation = 1.57079
 off_time = 4.0
 initial_delay = 2.0
-
-[node name="Barrier2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
-position = Vector2(339, -149)
-
-[node name="Barrier3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
-position = Vector2(81, -149)
-rotation = -3.14159
-scale = Vector2(1, -1)
 
 [node name="SpikeTrap" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
 position = Vector2(-1000, -704)
@@ -581,6 +1270,38 @@ off_time = 2.75
 on_time = 4.5
 initial_delay = 1.8
 
+[node name="SpikeTrap5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(1691, -505)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(1691, -442)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(536, -950)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(469, -950)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
 [node name="SpikeTrap15" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
 position = Vector2(33, -631)
 rotation = -1.57079
@@ -596,14 +1317,6 @@ scale = Vector2(0.5, 0.5)
 off_time = 2.75
 on_time = 4.5
 initial_delay = 1.8
-
-[node name="PowerNode" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(30, -257)
-rotation = -1.57079
-scale = Vector2(0.544061, 0.544061)
-
-[node name="Save Console2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("8_c46gc")]
-position = Vector2(533, 75)
 
 [node name="SpikeTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
 position = Vector2(276, 75)
@@ -651,24 +1364,6 @@ initial_delay = 1.0
 off_time = 2.0
 speed_factor = 200
 
-[node name="LaserTrap14" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(-1228, -245)
-rotation = 1.57079
-off_time = 4.0
-initial_delay = 0.0
-
-[node name="LaserTrap23" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(-1358, -148)
-rotation = 3.14159
-always_on = true
-off_time = 4.0
-initial_delay = 0.0
-
-[node name="PowerNode6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(-627, 906.24)
-rotation = 1.57079
-scale = Vector2(0.544061, 0.544061)
-
 [node name="Turret" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
 position = Vector2(-610, 841.24)
 rotation = 1.57079
@@ -676,6 +1371,30 @@ scale = Vector2(0.708333, 0.708333)
 initial_delay = 0.0
 off_time = 4.0
 speed_factor = 150
+
+[node name="Turret2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(916, 280)
+rotation = 3.14159
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 2.0
+off_time = 8.0
+speed_factor = 120
+
+[node name="Turret8" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(670, 589)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 4.0
+off_time = 4.0
+speed_factor = 120
+
+[node name="Turret4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(861, -502)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 120
 
 [node name="Turret3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
 position = Vector2(-610, 967.24)
@@ -716,111 +1435,25 @@ metadata/_edit_use_anchors_ = true
 [node name="EndPoint" parent="SECTION_2/GUN_ROOM/Objects/SawTrack4" index="2"]
 position = Vector2(1348, 0.000976563)
 
-[node name="ControlPanel8" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_gbw75")]
-position = Vector2(1298.6, 401)
-
-[node name="Turret2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
-position = Vector2(916, 280)
-rotation = 3.14159
-scale = Vector2(0.708333, 0.708333)
-initial_delay = 2.0
-off_time = 8.0
-speed_factor = 120
-
-[node name="Turret8" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
-position = Vector2(670, 589)
-rotation = 1.57079
-scale = Vector2(0.708333, 0.708333)
-initial_delay = 4.0
-off_time = 4.0
-speed_factor = 120
-
 [node name="Barrier5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
 position = Vector2(1361.6, 363)
+
+[node name="Barrier2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(339, -149)
+
+[node name="Barrier3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(81, -149)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Barrier6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
 position = Vector2(1048, 362)
 rotation = 3.14159
 scale = Vector2(1, -1)
+starting_mode = 1
 
-[node name="ControlPanel6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_gbw75")]
-position = Vector2(-618, 82)
-rotation = -3.14159
-scale = Vector2(1, -1)
-
-[node name="PowerNode2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(923, -430)
-scale = Vector2(0.544061, 0.544061)
-
-[node name="PowerNode5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(847, -699)
-rotation = 3.14159
-scale = Vector2(0.544061, 0.544061)
-
-[node name="PowerNode3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(1103, -573)
-rotation = -3.14159
-scale = Vector2(0.544061, 0.544061)
-
-[node name="PowerNode4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(1367, -430)
-scale = Vector2(0.544061, 0.544061)
-
-[node name="Turret4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
-position = Vector2(861, -502)
-rotation = 1.57079
-scale = Vector2(0.708333, 0.708333)
-initial_delay = 0.0
-off_time = 4.0
-speed_factor = 120
-
-[node name="LaserTrap16" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(-500, -920)
-rotation = 3.14159
-initial_delay = 0.0
-
-[node name="SpikeTrap5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
-position = Vector2(1691, -505)
-rotation = -1.57079
-scale = Vector2(0.5, 0.5)
-off_time = 2.75
-on_time = 5.0
-initial_delay = 0.25
-
-[node name="SpikeTrap6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
-position = Vector2(1691, -442)
-rotation = -1.57079
-scale = Vector2(0.5, 0.5)
-off_time = 2.75
-on_time = 5.0
-initial_delay = 0.25
-
-[node name="SpikeTrap3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
-position = Vector2(536, -950)
-rotation = -3.14159
-scale = Vector2(0.5, 0.5)
-off_time = 1.0
-on_time = 5.0
-initial_delay = 0.25
-
-[node name="SpikeTrap4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
-position = Vector2(469, -950)
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-off_time = 1.0
-on_time = 5.0
-initial_delay = 0.25
-
-[node name="PowerNode9" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("6_q7au7")]
-position = Vector2(-490, -1134)
-
-[node name="LaserTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(-397, -1051)
-rotation = -1.57081
-always_on = true
-initial_delay = 0.0
-
-[node name="WireHolder" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+[node name="Door" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-1415, -149)
 
 [node name="Secrets" type="Node2D" parent="SECTION_2/GUN_ROOM"]
 
@@ -839,12 +1472,20 @@ layer_0/name = "Secret"
 layer_0/tile_data = PackedInt32Array(-131064, 262145, 3, -196600, 65537, 1, -262136, 65537, 1, -327672, 458753, 2, -131065, 393217, 2, -196601, 131073, 1, -262137, 458753, 2, -327673, 65537, 2, -131066, 458753, 1, -196602, 393217, 1, -262138, 393217, 1, -327674, 65537, 1, -131067, 327681, 2, -196603, 65537, 1, -262139, 65537, 1, -327675, 131073, 2, -131068, 393217, 2, -196604, 327681, 2, -262140, 327681, 2, -327676, 458753, 1, -131069, 131073, 1, -196605, 131073, 1, -262141, 393217, 2, -327677, 458753, 1, -131070, 458753, 2, -196606, 393217, 1, -262142, 131073, 2, -327678, 131073, 2, -131071, 65537, 1, -196607, 131073, 1, -262143, 458753, 1, -327679, 65537, 2, -131072, 327681, 2, -196608, 131073, 1, -262144, 131073, 1, -327680, 393217, 2, -65537, 131073, 2, -131073, 327681, 2, -196609, 458753, 1, -262145, 458753, 1, -65538, 131073, 2, -131074, 458753, 2, -196610, 131073, 2, -262146, 458753, 2, -65539, 327681, 2, -131075, 458753, 1, -196611, 131073, 1, -262147, 458753, 2, -4, 458753, 2, -65540, 131073, 2, -131076, 327681, 2, -196612, 131073, 2, -262148, 393217, 1, -131063, 196609, 3, -196599, 262145, 3, -262135, 458753, 1, -196598, 327681, 3, -131062, 1, 3, -327671, 262145, 4, -262134, 327681, 2, -65530, 393217, 1, -65531, 458753, 2, -65532, 393217, 2, -65533, 65537, 1, -65534, 393217, 1, -65535, 327681, 2, -65536, 458753, 1, -1, 393217, 1, -2, 65537, 1, -3, 65537, 1, -65529, 458753, 2, -65528, 196609, 2, 8, 196609, 3, 7, 262145, 3, -327669, 131073, 0, -262133, 65537, 1, -131061, 131073, 3, -196597, 65537, 1, -327684, 65537, 1, -327683, 65537, 1, -327682, 393217, 2, -393218, 65537, 1, -393219, 65537, 2, -393220, 65537, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2"]
+visible = false
 position = Vector2(252.5, -108.5)
 shape = SubResource("RectangleShape2D_fobs1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2"]
+visible = false
 position = Vector2(-157, -279.25)
 shape = SubResource("RectangleShape2D_h08wk")
+
+[node name="Wire" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2" instance=ExtResource("8_ls52l")]
+position = Vector2(60, -1)
+curve = SubResource("Curve2D_qeu4k")
+on_material = SubResource("ShaderMaterial_q6syx")
+off_material = SubResource("ShaderMaterial_5g08c")
 
 [node name="SecretHider3" parent="SECTION_2/GUN_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
 z_index = 6
@@ -890,7 +1531,193 @@ position = Vector2(120.5, -395.25)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_v73mb")
 
+[node name="WireHolder" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="Wire5" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(653, -633)
+curve = SubResource("Curve2D_stcqi")
+on_material = SubResource("ShaderMaterial_613cs")
+off_material = SubResource("ShaderMaterial_ga37r")
+
+[node name="Wire16" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-64, -992)
+curve = SubResource("Curve2D_0vygq")
+on_material = SubResource("ShaderMaterial_3hsw1")
+off_material = SubResource("ShaderMaterial_3kal1")
+
+[node name="Wire11" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(886, 324)
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_5e1ns")
+flip = true
+on_material = SubResource("ShaderMaterial_vnwn7")
+off_material = SubResource("ShaderMaterial_a8jci")
+
+[node name="Wire14" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-1146, 932)
+rotation = 3.14159
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_u85v6")
+on_material = SubResource("ShaderMaterial_e1qmi")
+off_material = SubResource("ShaderMaterial_ipg4m")
+
+[node name="Wire15" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-775, -26.0002)
+rotation = 2.99483
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_ovg6f")
+on_material = SubResource("ShaderMaterial_ifybb")
+off_material = SubResource("ShaderMaterial_h3k16")
+
+[node name="Wire" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(1403, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_0jsck")
+on_material = SubResource("ShaderMaterial_i2xcx")
+off_material = SubResource("ShaderMaterial_y2jri")
+
+[node name="Wire9" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-196, -200)
+rotation = -3.14159
+curve = SubResource("Curve2D_np7we")
+on_material = SubResource("ShaderMaterial_h474h")
+off_material = SubResource("ShaderMaterial_j32o7")
+
+[node name="Wire3" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(820, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_b6677")
+on_material = SubResource("ShaderMaterial_3d0j0")
+off_material = SubResource("ShaderMaterial_f4le4")
+
+[node name="Wire4" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(664, -580)
+rotation = -3.14159
+curve = SubResource("Curve2D_11rva")
+on_material = SubResource("ShaderMaterial_tpb40")
+off_material = SubResource("ShaderMaterial_58i8m")
+
+[node name="Wire6" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(999, -537)
+rotation = -4.71238
+curve = SubResource("Curve2D_6ag6e")
+on_material = SubResource("ShaderMaterial_dfurf")
+off_material = SubResource("ShaderMaterial_j4iba")
+
+[node name="Wire2" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(1107, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_rnomy")
+on_material = SubResource("ShaderMaterial_un85f")
+off_material = SubResource("ShaderMaterial_1i2xx")
+
+[node name="Wire7" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(42, -201)
+rotation = 2.99415
+curve = SubResource("Curve2D_3uctu")
+on_material = SubResource("ShaderMaterial_7k8m0")
+off_material = SubResource("ShaderMaterial_06s4d")
+
+[node name="Wire8" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+curve = SubResource("Curve2D_62vsl")
+on_material = SubResource("ShaderMaterial_2vyfy")
+off_material = SubResource("ShaderMaterial_oi7jd")
+
+[node name="Wire10" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-64, 187)
+curve = SubResource("Curve2D_72yae")
+on_material = SubResource("ShaderMaterial_airky")
+off_material = SubResource("ShaderMaterial_81tek")
+
+[node name="Wire12" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1079, 475)
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_jog53")
+off_material = SubResource("ShaderMaterial_fidra")
+
+[node name="Wire17" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-521, -1049)
+rotation = 1.9223
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_1tklc")
+off_material = SubResource("ShaderMaterial_ds18f")
+
+[node name="Wire13" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1331, 482)
+rotation = 0.92601
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_joo6c")
+off_material = SubResource("ShaderMaterial_qa14l")
+
 [node name="Pickups" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="PickupSpawner9" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-142, 600)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner12" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-363, -700)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner10" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(186, 1122.24)
+respawn_time = 10
+
+[node name="PickupSpawner11" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-49, 606)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner13" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1361, -449)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner14" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1099, -381)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner15" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1281, -748)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner16" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1211, -809)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="GunPickupSpawner" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-165, -240)
+thing_to_spawn = ExtResource("23_c562g")
+initial_delay = 0.0
+respawn_time = 0
+automatic_respawn = false
+
+[node name="PickupSpawner7" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1498, 314)
+initial_delay = 0.0
+
+[node name="PickupSpawner8" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1603, -473)
+initial_delay = 0.0
 
 [node name="BATTERY_ZONE" type="Node2D" parent="SECTION_2"]
 
@@ -1513,6 +2340,28 @@ shape = SubResource("RectangleShape2D_oixbk")
 
 [node name="Pickups" type="Node2D" parent="SECTION_2/BOSS_APPROACH"]
 
+[node name="PickupSpawner19" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-367, -3097)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner20" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-429, -3096)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner17" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(285, -1948)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner18" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(786, -1950)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
 [node name="BOSS" type="Node2D" parent="SECTION_2"]
 
 [node name="Objects" type="Node2D" parent="SECTION_2/BOSS"]
@@ -1599,6 +2448,17 @@ position = Vector2(82.5, -189.5)
 shape = SubResource("RectangleShape2D_66wrd")
 
 [node name="Pickups" type="Node2D" parent="SECTION_2/BOSS"]
+
+[node name="PickupSpawner21" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(690, -3541)
+initial_delay = 0.0
+respawn_time = 20
+
+[node name="PickupSpawner22" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-55, -4282)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 20
 
 [node name="FOREGROUND" type="Node2D" parent="." groups=["foreground"]]
 z_index = 500
@@ -1722,6 +2582,9 @@ range_item_cull_mask = 32768
 texture = SubResource("PlaceholderTexture2D_ft5ub")
 texture_scale = 50.0
 
+[editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel/TogglerComponent"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/conTROLLpanel"]
 [editable path="SECTION_1/INTRO_ROOM/Objects/SawTrack"]
 [editable path="SECTION_1/INTRO_ROOM/Objects/SawTrack2"]
 [editable path="SECTION_2/GUN_ROOM/Objects/SawTrack3"]

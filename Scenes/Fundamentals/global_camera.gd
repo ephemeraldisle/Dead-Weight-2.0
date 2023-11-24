@@ -2,7 +2,7 @@ extends Camera2D
 
 signal finish_transition
 
-const DEBUG = true
+const DEBUG = false
 const TRANSITION_TIME = 2.0
 const LERP_WEIGHT = 0.2
 const DEFAULT_ZOOM_TIME = 16
@@ -13,7 +13,7 @@ const MAX_ROLL = 0.15
 const TRAUMA_POWER = 2
 const NOISE_FREQUENCY = 0.25
 const ARBITRARY_NOISE_OFFSET = 9999
-const DEBUG_MOVE_MULTIPLIER = 1000
+const DEBUG_MOVE_MULTIPLIER = 1500
 
 
 var aim_node: Node2D

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://drj6k528vq4no"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Pickups/pickup_spawner.gd" id="1_u3wtv"]
+[ext_resource type="PackedScene" uid="uid://d0eeiggg48xvt" path="res://Scenes/Objects/Pickups/water_pot_pickup.tscn" id="2_2oair"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_taoa8"]
+radius = 156.541
+
+[node name="PickupSpawner" type="Node2D"]
+script = ExtResource("1_u3wtv")
+thing_to_spawn = ExtResource("2_2oair")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 36
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_taoa8")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

@@ -2,18 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://b1c5jbbul1yfq" path="res://Scenes/Background/zwire_art.tscn" id="1_6c5ey"]
 [ext_resource type="Script" path="res://Scenes/Objects/Environment/wire.gd" id="1_7pwut"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="3_mc1xy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ep22u"]
-resource_local_to_scene = true
-shader = ExtResource("3_mc1xy")
-shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
-shader_parameter/color_b = Color(0, 0, 0, 1)
-shader_parameter/speed_factor = 3.0
+[ext_resource type="Material" uid="uid://b3kx8na1vwa4s" path="res://Resources/Materials/wire_on_shader.tres" id="2_guyf4"]
+[ext_resource type="Material" uid="uid://cx7yohtobxg3u" path="res://Resources/Materials/wire_off_shader.tres" id="3_f2op3"]
 
 [node name="Wire" type="Path2D"]
 script = ExtResource("1_7pwut")
+on_material = ExtResource("2_guyf4")
+off_material = ExtResource("3_f2op3")
 
 [node name="WireArt" parent="." instance=ExtResource("1_6c5ey")]
-material = SubResource("ShaderMaterial_ep22u")
+material = ExtResource("2_guyf4")
 points = PackedVector2Array(0, 0, 50, 0)

@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=3 uid="uid://d0eeiggg48xvt"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Pickups/water_pot_pickup.gd" id="1_07bee"]
+[ext_resource type="Texture2D" uid="uid://b4hhuujda0uqn" path="res://Art/Pickups/water_pot_item.png" id="2_4nn5j"]
+[ext_resource type="AudioStream" uid="uid://g71ttdtoyhca" path="res://Audio/Objects/Pickups/maximize_008.ogg" id="2_8650p"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="4_4ankn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhmne"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfdm0"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqfcf"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rkof"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glfxy"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg1mn"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhav2"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsnlo"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdwe7"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1spmp"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysue7"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv3nd"]
+atlas = ExtResource("2_4nn5j")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mvod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhmne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfdm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqfcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glfxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg1mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhav2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsnlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdwe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1spmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysue7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv3nd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4i4fw"]
+radius = 38.3275
+
+[node name="WaterPotPickup" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_07bee")
+water_restoration_amount = 1.0
+water_sound = ExtResource("2_8650p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3mvod")
+autoplay = "default"
+frame_progress = 0.435111
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_4i4fw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.25, 0.25)
+color = Color(0.332031, 0.84375, 0.960938, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_4ankn")
