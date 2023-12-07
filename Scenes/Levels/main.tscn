@@ -46,14 +46,14 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5das"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apyj8"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5xvi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frykt"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -66,14 +66,14 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo84f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqxh8"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wm5f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cr02e"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -86,14 +86,14 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv7x7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cu3xl"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ga6uh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af2qq"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -106,14 +106,14 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0autr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pj1h1"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dcui8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuglb"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -126,14 +126,14 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8d7b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7enno"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulqwk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvxt1"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -146,14 +146,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mygkn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocyc2"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2f3a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1g5ra"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -166,14 +166,14 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yciy4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksf7t"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_073po"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_olj04"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -186,14 +186,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq85m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42011"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_btfds"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhs45"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -206,14 +206,14 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmv66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdloi"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhj2i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atuy7"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -226,14 +226,14 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqnbv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5ita"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_odjeh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v8e1"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -246,14 +246,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtt30"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhhnd"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7asff"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u71m"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -266,14 +266,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlodq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dlbwg"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_buvtq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpx6a"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -286,14 +286,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jklcx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7f2g"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbxg2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd3t"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -306,14 +306,14 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_88q85"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1eu18"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc3hv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0lxl"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -332,14 +332,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ftum"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v7j5"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6alod"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3rxv"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -358,14 +358,14 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6syx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yef2j"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g08c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d54dw"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -387,14 +387,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_613cs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8hk0"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ga37r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ha65"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -407,14 +407,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hsw1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibbwh"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kal1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6yxpd"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -427,14 +427,14 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnwn7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_01qr7"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8jci"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsmur"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -447,14 +447,14 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1qmi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbbq7"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipg4m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytv5a"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -467,14 +467,14 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifybb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqtky"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3k16"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvchc"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -487,14 +487,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2xcx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp4f3"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2jri"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ox64"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -507,14 +507,14 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h474h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbfee"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j32o7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdjk4"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -527,14 +527,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d0j0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbw1b"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4le4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvh8o"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -547,14 +547,14 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpb40"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkxbj"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_58i8m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24j1d"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -567,14 +567,14 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfurf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofukw"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4iba"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8stmr"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -587,14 +587,14 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_un85f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywyx3"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1i2xx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mes31"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -607,14 +607,14 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k8m0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hvq1"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_06s4d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xiwut"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -627,14 +627,14 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vyfy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o51i"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi7jd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwtho"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -647,14 +647,14 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_airky"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f85kp"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_81tek"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3437u"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -667,42 +667,42 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jog53"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws50u"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fidra"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8efa"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
 shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tklc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_786ee"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds18f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u26g"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
 shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_joo6c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pfm3u"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
 shader_parameter/color_b = Color(0, 0, 0, 1)
 shader_parameter/speed_factor = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa14l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bcc21"]
 resource_local_to_scene = true
 shader = ExtResource("13_nowdy")
 shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
@@ -908,94 +908,94 @@ initial_delay = 0.0
 z_index = 15
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_hwv2x")
-on_material = SubResource("ShaderMaterial_i5das")
-off_material = SubResource("ShaderMaterial_d5xvi")
+on_material = SubResource("ShaderMaterial_apyj8")
+off_material = SubResource("ShaderMaterial_frykt")
 
 [node name="Wire2" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_24ekj")
-on_material = SubResource("ShaderMaterial_vo84f")
-off_material = SubResource("ShaderMaterial_4wm5f")
+on_material = SubResource("ShaderMaterial_gqxh8")
+off_material = SubResource("ShaderMaterial_cr02e")
 
 [node name="Wire3" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 5
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_yslgn")
-on_material = SubResource("ShaderMaterial_bv7x7")
-off_material = SubResource("ShaderMaterial_ga6uh")
+on_material = SubResource("ShaderMaterial_cu3xl")
+off_material = SubResource("ShaderMaterial_af2qq")
 
 [node name="Wire4" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 15
 position = Vector2(889, -546)
 curve = SubResource("Curve2D_etkjy")
-on_material = SubResource("ShaderMaterial_0autr")
-off_material = SubResource("ShaderMaterial_dcui8")
+on_material = SubResource("ShaderMaterial_pj1h1")
+off_material = SubResource("ShaderMaterial_wuglb")
 
 [node name="Wire5" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 15
 position = Vector2(889, -546)
 curve = SubResource("Curve2D_ehgvf")
-on_material = SubResource("ShaderMaterial_u8d7b")
-off_material = SubResource("ShaderMaterial_ulqwk")
+on_material = SubResource("ShaderMaterial_7enno")
+off_material = SubResource("ShaderMaterial_jvxt1")
 
 [node name="Wire6" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1295, -215)
 curve = SubResource("Curve2D_a7fv3")
-on_material = SubResource("ShaderMaterial_mygkn")
-off_material = SubResource("ShaderMaterial_s2f3a")
+on_material = SubResource("ShaderMaterial_ocyc2")
+off_material = SubResource("ShaderMaterial_1g5ra")
 
 [node name="Wire7" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1295, -215)
 curve = SubResource("Curve2D_unm8m")
-on_material = SubResource("ShaderMaterial_yciy4")
-off_material = SubResource("ShaderMaterial_073po")
+on_material = SubResource("ShaderMaterial_ksf7t")
+off_material = SubResource("ShaderMaterial_olj04")
 
 [node name="Wire8" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1499, -247)
 curve = SubResource("Curve2D_twgy5")
-on_material = SubResource("ShaderMaterial_uq85m")
-off_material = SubResource("ShaderMaterial_btfds")
+on_material = SubResource("ShaderMaterial_42011")
+off_material = SubResource("ShaderMaterial_qhs45")
 
 [node name="Wire9" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-219, 935)
 rotation = 3.14159
 curve = SubResource("Curve2D_le5e6")
-on_material = SubResource("ShaderMaterial_xmv66")
-off_material = SubResource("ShaderMaterial_lhj2i")
+on_material = SubResource("ShaderMaterial_tdloi")
+off_material = SubResource("ShaderMaterial_atuy7")
 
 [node name="Wire10" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-229, 321)
 rotation = -3.14159
 curve = SubResource("Curve2D_hni7h")
-on_material = SubResource("ShaderMaterial_wqnbv")
-off_material = SubResource("ShaderMaterial_odjeh")
+on_material = SubResource("ShaderMaterial_y5ita")
+off_material = SubResource("ShaderMaterial_0v8e1")
 
 [node name="Wire11" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(0, -5.83997)
 scale = Vector2(1, 0.984)
 curve = SubResource("Curve2D_axjej")
-on_material = SubResource("ShaderMaterial_gtt30")
-off_material = SubResource("ShaderMaterial_7asff")
+on_material = SubResource("ShaderMaterial_lhhnd")
+off_material = SubResource("ShaderMaterial_8u71m")
 
 [node name="Wire12" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(949, -470)
 rotation = -3.14024
 scale = Vector2(1, 1.04736)
 curve = SubResource("Curve2D_jacbu")
-on_material = SubResource("ShaderMaterial_qlodq")
-off_material = SubResource("ShaderMaterial_buvtq")
+on_material = SubResource("ShaderMaterial_dlbwg")
+off_material = SubResource("ShaderMaterial_xpx6a")
 
 [node name="Wire13" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-818, 19)
 curve = SubResource("Curve2D_y24k3")
-on_material = SubResource("ShaderMaterial_jklcx")
-off_material = SubResource("ShaderMaterial_cbxg2")
+on_material = SubResource("ShaderMaterial_n7f2g")
+off_material = SubResource("ShaderMaterial_ckd3t")
 
 [node name="Wire14" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-668, -215)
 curve = SubResource("Curve2D_l1ov1")
-on_material = SubResource("ShaderMaterial_88q85")
-off_material = SubResource("ShaderMaterial_xc3hv")
+on_material = SubResource("ShaderMaterial_1eu18")
+off_material = SubResource("ShaderMaterial_g0lxl")
 
 [node name="Secrets" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
@@ -1024,8 +1024,8 @@ shape = SubResource("RectangleShape2D_im5y0")
 [node name="Wire" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider" instance=ExtResource("8_ls52l")]
 position = Vector2(524, -834)
 curve = SubResource("Curve2D_qek0o")
-on_material = SubResource("ShaderMaterial_3ftum")
-off_material = SubResource("ShaderMaterial_6alod")
+on_material = SubResource("ShaderMaterial_0v7j5")
+off_material = SubResource("ShaderMaterial_v3rxv")
 
 [node name="Pickups" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 
@@ -1484,8 +1484,8 @@ shape = SubResource("RectangleShape2D_h08wk")
 [node name="Wire" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2" instance=ExtResource("8_ls52l")]
 position = Vector2(60, -1)
 curve = SubResource("Curve2D_qeu4k")
-on_material = SubResource("ShaderMaterial_q6syx")
-off_material = SubResource("ShaderMaterial_5g08c")
+on_material = SubResource("ShaderMaterial_yef2j")
+off_material = SubResource("ShaderMaterial_d54dw")
 
 [node name="SecretHider3" parent="SECTION_2/GUN_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
 z_index = 6
@@ -1537,15 +1537,15 @@ shape = SubResource("RectangleShape2D_v73mb")
 z_index = 6
 position = Vector2(653, -633)
 curve = SubResource("Curve2D_stcqi")
-on_material = SubResource("ShaderMaterial_613cs")
-off_material = SubResource("ShaderMaterial_ga37r")
+on_material = SubResource("ShaderMaterial_r8hk0")
+off_material = SubResource("ShaderMaterial_0ha65")
 
 [node name="Wire16" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(-64, -992)
 curve = SubResource("Curve2D_0vygq")
-on_material = SubResource("ShaderMaterial_3hsw1")
-off_material = SubResource("ShaderMaterial_3kal1")
+on_material = SubResource("ShaderMaterial_ibbwh")
+off_material = SubResource("ShaderMaterial_6yxpd")
 
 [node name="Wire11" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
@@ -1553,8 +1553,8 @@ position = Vector2(886, 324)
 scale = Vector2(0.993421, 0.855451)
 curve = SubResource("Curve2D_5e1ns")
 flip = true
-on_material = SubResource("ShaderMaterial_vnwn7")
-off_material = SubResource("ShaderMaterial_a8jci")
+on_material = SubResource("ShaderMaterial_01qr7")
+off_material = SubResource("ShaderMaterial_dsmur")
 
 [node name="Wire14" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
@@ -1562,8 +1562,8 @@ position = Vector2(-1146, 932)
 rotation = 3.14159
 scale = Vector2(0.993421, 0.855451)
 curve = SubResource("Curve2D_u85v6")
-on_material = SubResource("ShaderMaterial_e1qmi")
-off_material = SubResource("ShaderMaterial_ipg4m")
+on_material = SubResource("ShaderMaterial_jbbq7")
+off_material = SubResource("ShaderMaterial_ytv5a")
 
 [node name="Wire15" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
@@ -1571,94 +1571,94 @@ position = Vector2(-775, -26.0002)
 rotation = 2.99483
 scale = Vector2(0.993421, 0.855451)
 curve = SubResource("Curve2D_ovg6f")
-on_material = SubResource("ShaderMaterial_ifybb")
-off_material = SubResource("ShaderMaterial_h3k16")
+on_material = SubResource("ShaderMaterial_jqtky")
+off_material = SubResource("ShaderMaterial_fvchc")
 
 [node name="Wire" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(1403, -288)
 rotation = -3.14159
 curve = SubResource("Curve2D_0jsck")
-on_material = SubResource("ShaderMaterial_i2xcx")
-off_material = SubResource("ShaderMaterial_y2jri")
+on_material = SubResource("ShaderMaterial_yp4f3")
+off_material = SubResource("ShaderMaterial_0ox64")
 
 [node name="Wire9" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(-196, -200)
 rotation = -3.14159
 curve = SubResource("Curve2D_np7we")
-on_material = SubResource("ShaderMaterial_h474h")
-off_material = SubResource("ShaderMaterial_j32o7")
+on_material = SubResource("ShaderMaterial_pbfee")
+off_material = SubResource("ShaderMaterial_hdjk4")
 
 [node name="Wire3" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(820, -288)
 rotation = -3.14159
 curve = SubResource("Curve2D_b6677")
-on_material = SubResource("ShaderMaterial_3d0j0")
-off_material = SubResource("ShaderMaterial_f4le4")
+on_material = SubResource("ShaderMaterial_nbw1b")
+off_material = SubResource("ShaderMaterial_jvh8o")
 
 [node name="Wire4" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(664, -580)
 rotation = -3.14159
 curve = SubResource("Curve2D_11rva")
-on_material = SubResource("ShaderMaterial_tpb40")
-off_material = SubResource("ShaderMaterial_58i8m")
+on_material = SubResource("ShaderMaterial_xkxbj")
+off_material = SubResource("ShaderMaterial_24j1d")
 
 [node name="Wire6" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(999, -537)
 rotation = -4.71238
 curve = SubResource("Curve2D_6ag6e")
-on_material = SubResource("ShaderMaterial_dfurf")
-off_material = SubResource("ShaderMaterial_j4iba")
+on_material = SubResource("ShaderMaterial_ofukw")
+off_material = SubResource("ShaderMaterial_8stmr")
 
 [node name="Wire2" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 6
 position = Vector2(1107, -288)
 rotation = -3.14159
 curve = SubResource("Curve2D_rnomy")
-on_material = SubResource("ShaderMaterial_un85f")
-off_material = SubResource("ShaderMaterial_1i2xx")
+on_material = SubResource("ShaderMaterial_ywyx3")
+off_material = SubResource("ShaderMaterial_mes31")
 
 [node name="Wire7" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(42, -201)
 rotation = 2.99415
 curve = SubResource("Curve2D_3uctu")
-on_material = SubResource("ShaderMaterial_7k8m0")
-off_material = SubResource("ShaderMaterial_06s4d")
+on_material = SubResource("ShaderMaterial_5hvq1")
+off_material = SubResource("ShaderMaterial_xiwut")
 
 [node name="Wire8" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 curve = SubResource("Curve2D_62vsl")
-on_material = SubResource("ShaderMaterial_2vyfy")
-off_material = SubResource("ShaderMaterial_oi7jd")
+on_material = SubResource("ShaderMaterial_6o51i")
+off_material = SubResource("ShaderMaterial_pwtho")
 
 [node name="Wire10" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-64, 187)
 curve = SubResource("Curve2D_72yae")
-on_material = SubResource("ShaderMaterial_airky")
-off_material = SubResource("ShaderMaterial_81tek")
+on_material = SubResource("ShaderMaterial_f85kp")
+off_material = SubResource("ShaderMaterial_3437u")
 
 [node name="Wire12" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1079, 475)
 curve = SubResource("Curve2D_kx30k")
-on_material = SubResource("ShaderMaterial_jog53")
-off_material = SubResource("ShaderMaterial_fidra")
+on_material = SubResource("ShaderMaterial_ws50u")
+off_material = SubResource("ShaderMaterial_o8efa")
 
 [node name="Wire17" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(-521, -1049)
 rotation = 1.9223
 curve = SubResource("Curve2D_kx30k")
-on_material = SubResource("ShaderMaterial_1tklc")
-off_material = SubResource("ShaderMaterial_ds18f")
+on_material = SubResource("ShaderMaterial_786ee")
+off_material = SubResource("ShaderMaterial_3u26g")
 
 [node name="Wire13" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 position = Vector2(1331, 482)
 rotation = 0.92601
 curve = SubResource("Curve2D_kx30k")
-on_material = SubResource("ShaderMaterial_joo6c")
-off_material = SubResource("ShaderMaterial_qa14l")
+on_material = SubResource("ShaderMaterial_pfm3u")
+off_material = SubResource("ShaderMaterial_bcc21")
 
 [node name="Pickups" type="Node2D" parent="SECTION_2/GUN_ROOM"]
 

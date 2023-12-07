@@ -131,6 +131,7 @@ locale/translations_pot_files=PackedStringArray("res://Dialogue/interactions.dia
 2d_physics/layer_9="rope"
 2d_physics/layer_10="actionables"
 2d_physics/layer_11="identifiers"
+2d_physics/layer_12="player parts"
 2d_physics/layer_13="moving platform"
 
 [physics]

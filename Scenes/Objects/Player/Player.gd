@@ -7,12 +7,10 @@ extends RigidBody2D
 @onready var ping_animation = $PingAnimation
 @onready var jetpack = $Jetpack
 @onready var action_finder = $ActionFinder
-@onready var skeleton_2d = $Skeleton2D
-@onready var gun = $Skeleton2D/Spine/FrontUpperArmBone/FrontLowerArmBone/Bone2D/Gun
 @onready var head_area: Area2D = $HeadArea
-
 @onready var attachment_point = %AttachmentPoint
 @export var hurt_sounds: AudioStream
+@onready var gun: Sprite2D = %Gun
 
 
 var lil_party = preload("res://Scenes/Particles/power_node_hit_particles.tscn")
@@ -45,7 +43,7 @@ func _ready():
 #		enable_all_ui()
 #	jetpack.jetpacked.connect(jetpacked)
 	await get_tree().create_timer(0.2, false, true).timeout
-	skeleton_2d.set_modification_stack(skeleton_mods)
+#	skeleton_2d.set_modification_stack(skeleton_mods)
 	
 func _physics_process(_delta):
 	pointer.position = get_local_mouse_position()

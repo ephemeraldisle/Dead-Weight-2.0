@@ -1,9 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj7uydye3oc1k"]
+[gd_scene load_steps=18 format=3 uid="uid://bj7uydye3oc1k"]
 
 [ext_resource type="PackedScene" uid="uid://5xkp2n7lbo7x" path="res://Scenes/Objects/Player/Tank.tscn" id="1_6illi"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/player_holder.gd" id="1_twwje"]
 [ext_resource type="PackedScene" uid="uid://chiwh1qrg4g6s" path="res://Scenes/Objects/Player/Ropes/rope_holder.tscn" id="2_b2brt"]
 [ext_resource type="PackedScene" uid="uid://ci67irojgt1k2" path="res://Scenes/Objects/Player/player.tscn" id="3_vt678"]
+[ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="5_3ladk"]
+[ext_resource type="Script" path="res://Scenes/Objects/Player/LowerLeftArm.gd" id="6_7jjd0"]
+[ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="6_esn2o"]
+[ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="7_f1bo3"]
+[ext_resource type="Texture2D" uid="uid://qxfljovc0waj" path="res://Art/Player/Astro/boot.png" id="9_buf4a"]
+[ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="10_7hoto"]
+[ext_resource type="Texture2D" uid="uid://bmxwgjkqlb61k" path="res://Art/Player/Astro/lower leg.png" id="10_qque6"]
+[ext_resource type="Texture2D" uid="uid://bvky6tn4rv1lh" path="res://Art/Player/Astro/upper leg.png" id="11_u6via"]
+[ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="12_dfnn2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yrkh"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqmbc"]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5mu5"]
+radius = 2.99969
+height = 9.99899
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0cyl"]
+radius = 3.99907
+height = 13.9964
 
 [node name="Player Holder" type="Node2D"]
 z_index = 10
@@ -20,3 +45,325 @@ enable_animation = true
 position = Vector2(0, -11)
 tank = NodePath("../Tank")
 rope_holder = NodePath("../RopeHolder")
+
+[node name="PointLight2D" parent="Player" index="18"]
+visible = false
+
+[node name="PointLight2D2" parent="Player" index="19"]
+visible = false
+
+[node name="PointerRotator" type="Node2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-13, -6)
+rotation = -1.83259
+
+[node name="Pointer" type="Node2D" parent="Player/PointerRotator"]
+unique_name_in_owner = true
+position = Vector2(27, 0)
+
+[node name="Icon" type="Sprite2D" parent="Player/PointerRotator/Pointer"]
+z_index = 4096
+z_as_relative = false
+position = Vector2(0, -1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("12_dfnn2")
+
+[node name="PlayerParts" type="Node2D" parent="."]
+
+[node name="LeftArm" type="Node2D" parent="PlayerParts"]
+modulate = Color(1, 0, 1, 1)
+z_index = 6
+position = Vector2(-13, -17)
+
+[node name="UpperLeftArm" type="RigidBody2D" parent="PlayerParts/LeftArm"]
+rotation = -1.57079
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+angular_damp = 5.0
+
+[node name="UpperLeftArmSprite" type="Sprite2D" parent="PlayerParts/LeftArm/UpperLeftArm"]
+light_mask = 2
+position = Vector2(0.720566, 7.15262)
+rotation = -0.349831
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_3ladk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/LeftArm/UpperLeftArm"]
+position = Vector2(0.486385, 6.73611)
+shape = SubResource("CapsuleShape2D_1yrkh")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="PlayerParts/LeftArm"]
+node_a = NodePath("../../../Player")
+node_b = NodePath("../UpperLeftArm")
+
+[node name="LowerLeftArm" type="RigidBody2D" parent="PlayerParts/LeftArm"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.91684
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+angular_damp = 2.0
+script = ExtResource("6_7jjd0")
+
+[node name="LowerLeftArmSprite" type="Sprite2D" parent="PlayerParts/LeftArm/LowerLeftArm"]
+light_mask = 2
+position = Vector2(1.20001, 4)
+rotation = -1.57079
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_esn2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/LeftArm/LowerLeftArm"]
+z_index = 1
+position = Vector2(1.20001, 4.00001)
+shape = SubResource("CapsuleShape2D_gqmbc")
+
+[node name="Hand" type="Sprite2D" parent="PlayerParts/LeftArm/LowerLeftArm"]
+light_mask = 2
+z_index = 6
+position = Vector2(0.200012, 8.00001)
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_f1bo3")
+flip_h = true
+
+[node name="Gun" type="Sprite2D" parent="PlayerParts/LeftArm/LowerLeftArm/Hand"]
+show_behind_parent = true
+light_mask = 2
+position = Vector2(-24.6697, -38.4224)
+rotation = -1.57079
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("10_7hoto")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="PlayerParts/LeftArm"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+node_a = NodePath("../UpperLeftArm")
+node_b = NodePath("../LowerLeftArm")
+
+[node name="RightArm" type="Node2D" parent="PlayerParts"]
+modulate = Color(0.580392, 0, 0.341176, 1)
+position = Vector2(20, -13)
+
+[node name="UpperArm" type="RigidBody2D" parent="PlayerParts/RightArm"]
+rotation = -1.57079
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/RightArm/UpperArm"]
+light_mask = 2
+position = Vector2(0.720566, 7.15262)
+rotation = -0.349831
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_3ladk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/RightArm/UpperArm"]
+position = Vector2(0.486385, 6.73611)
+shape = SubResource("CapsuleShape2D_1yrkh")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="PlayerParts/RightArm"]
+node_a = NodePath("../../../Player")
+node_b = NodePath("../UpperArm")
+
+[node name="LowerArm" type="RigidBody2D" parent="PlayerParts/RightArm"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/RightArm/LowerArm"]
+light_mask = 2
+position = Vector2(1.20001, 4)
+rotation = -1.57079
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_esn2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/RightArm/LowerArm"]
+z_index = 1
+position = Vector2(1.20001, 4.00001)
+shape = SubResource("CapsuleShape2D_gqmbc")
+
+[node name="Hand" type="Sprite2D" parent="PlayerParts/RightArm/LowerArm"]
+light_mask = 2
+z_index = 1
+position = Vector2(0.200012, 8.00001)
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_f1bo3")
+flip_h = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="PlayerParts/RightArm"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+node_a = NodePath("../UpperArm")
+node_b = NodePath("../LowerArm")
+
+[node name="RightLeg" type="Node2D" parent="PlayerParts"]
+position = Vector2(8, -2)
+rotation = 1.49148
+
+[node name="Boot" type="RigidBody2D" parent="PlayerParts/RightLeg"]
+position = Vector2(21.9921, 0.587608)
+rotation = -3.00362
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/RightLeg/Boot"]
+light_mask = 2
+position = Vector2(0.957138, 3.01395)
+rotation = 2.00356
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_buf4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/RightLeg/Boot"]
+z_index = 1
+position = Vector2(0.957145, 3.01395)
+shape = SubResource("CapsuleShape2D_n5mu5")
+
+[node name="LowerLeg" type="RigidBody2D" parent="PlayerParts/RightLeg"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/RightLeg/LowerLeg"]
+light_mask = 2
+position = Vector2(1.20001, 4)
+rotation = 0.376753
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_qque6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/RightLeg/LowerLeg"]
+z_index = 1
+position = Vector2(1.21186, 4.99868)
+shape = SubResource("CapsuleShape2D_j0cyl")
+
+[node name="UpperLeg" type="RigidBody2D" parent="PlayerParts/RightLeg"]
+position = Vector2(0.999642, 0.0267067)
+rotation = -1.57079
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/RightLeg/UpperLeg"]
+light_mask = 2
+position = Vector2(1.33514e-05, 6)
+rotation = -0.0316862
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_u6via")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/RightLeg/UpperLeg"]
+position = Vector2(0.486385, 6.73611)
+shape = SubResource("CapsuleShape2D_1yrkh")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="PlayerParts/RightLeg"]
+visible = false
+node_a = NodePath("../../../Player")
+node_b = NodePath("../UpperLeg")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="PlayerParts/RightLeg"]
+visible = false
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+node_a = NodePath("../UpperLeg")
+node_b = NodePath("../LowerLeg")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="PlayerParts/RightLeg"]
+position = Vector2(20.9925, 0.560904)
+node_a = NodePath("../LowerLeg")
+node_b = NodePath("../Boot")
+
+[node name="LeftLeg" type="Node2D" parent="PlayerParts"]
+z_index = 4
+position = Vector2(-10, -3)
+rotation = 1.89287
+
+[node name="Boot" type="RigidBody2D" parent="PlayerParts/LeftLeg"]
+position = Vector2(21.9921, 0.587608)
+rotation = -3.00362
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/LeftLeg/Boot"]
+light_mask = 2
+position = Vector2(0.957138, 3.01395)
+rotation = 2.00356
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_buf4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/LeftLeg/Boot"]
+z_index = 1
+position = Vector2(0.957145, 3.01395)
+shape = SubResource("CapsuleShape2D_n5mu5")
+
+[node name="LowerLeg" type="RigidBody2D" parent="PlayerParts/LeftLeg"]
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/LeftLeg/LowerLeg"]
+light_mask = 2
+position = Vector2(1.20001, 4)
+rotation = 0.376753
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_qque6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/LeftLeg/LowerLeg"]
+z_index = 1
+position = Vector2(1.21186, 4.99868)
+shape = SubResource("CapsuleShape2D_j0cyl")
+
+[node name="UpperLeg" type="RigidBody2D" parent="PlayerParts/LeftLeg"]
+position = Vector2(0.999642, 0.0267067)
+rotation = -1.57079
+collision_layer = 2048
+collision_mask = 2087
+gravity_scale = 0.0
+angular_damp = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerParts/LeftLeg/UpperLeg"]
+light_mask = 2
+position = Vector2(1.33514e-05, 6)
+rotation = -0.0316862
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_u6via")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerParts/LeftLeg/UpperLeg"]
+position = Vector2(0.486385, 6.73611)
+shape = SubResource("CapsuleShape2D_1yrkh")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="PlayerParts/LeftLeg"]
+visible = false
+node_a = NodePath("../../../Player")
+node_b = NodePath("../UpperLeg")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="PlayerParts/LeftLeg"]
+visible = false
+position = Vector2(11.9866, 1.14947)
+rotation = -1.55833
+node_a = NodePath("../UpperLeg")
+node_b = NodePath("../LowerLeg")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="PlayerParts/LeftLeg"]
+position = Vector2(20.9925, 0.560904)
+node_a = NodePath("../LowerLeg")
+node_b = NodePath("../Boot")
+
+[editable path="Player"]
+[editable path="Player/PingAnimation"]
