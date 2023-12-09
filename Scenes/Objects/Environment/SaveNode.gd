@@ -22,5 +22,4 @@ func do_action():
 	balloon.start(resource, title)
 	await DialogueManager.dialogue_ended
 	#print("dialogue is over now!")
-	GameState.update_spawn_position(spawn_position)
 	action_finished.emit()

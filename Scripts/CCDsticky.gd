@@ -1,10 +1,9 @@
 extends Node2D
 
 @export var root_node: Node2D
-@export_range(-360, 360) var minimum_rotation = -360.0
-@export_range(-360, 360) var maximum_rotation = 360.0
 var bones : Array[Node2D]
 var distances: Array
+var target_node : Node2D
 var target : Vector2
 var iterations: int = 10
 var tolerance := 0.5
@@ -14,9 +13,14 @@ func _ready():
 	collect_bones(self)
 	for dist in distances:
 		_max_length += dist
+	if root_node.target != null:
+		target_node = root_node.target
 
 func _process(delta: float) -> void:
-	target = get_global_mouse_position()
+	if target_node != null:
+		target = target_node.global_position
+	else:
+		target = get_global_mouse_position()
 	solve()
 
 func collect_bones(bone: Node2D):
@@ -36,15 +40,10 @@ func solve():
 			var bone_position = bones[i].global_position
 			var to_end = bone_position.direction_to(self.global_position)
 			var to_target = bone_position.direction_to(target)
-			var cos_theta = to_target.dot(to_end)
-			var angle = acos(cos_theta)
-			if to_end.cross(to_target) < 0:
-				angle = -angle
-			angle += bones[i].rotation
-			angle = fmod(angle + 2*PI, 2*PI)
+			var angle = bones[i].rotation + to_end.angle_to(to_target)
+			angle = fmod(angle+2*PI, 2*PI)
 			var minimum = bones[i].minimum_rotation
 			var maximum = bones[i].maximum_rotation
-			
 			if minimum > maximum:
 				if angle < minimum and angle > maximum:
 					if abs(minimum - angle) < abs(maximum - angle):
@@ -54,6 +53,6 @@ func solve():
 			else:
 				angle = clamp(angle, minimum, maximum)
 			bones[i].rotation = angle
-
+	
 			if self.global_position.distance_squared_to(target) < tolerance * tolerance:
 				return
