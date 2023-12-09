@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bp4xcrakwe6wl"]
+[gd_scene load_steps=15 format=3 uid="uid://bp4xcrakwe6wl"]
 
 [ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
@@ -8,9 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://dx1eo3urkx2de" path="res://Audio/Hurt Sounds/Robot/robohit4.mp3" id="6_mjwwd"]
 [ext_resource type="AudioStream" uid="uid://ceaninhcg8cet" path="res://Audio/Hurt Sounds/Robot/robohit3.mp3" id="7_vix1u"]
 [ext_resource type="AudioStream" uid="uid://b6snd40lca4dy" path="res://Audio/Hurt Sounds/Robot/robohit2.mp3" id="8_w4nov"]
-[ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/player_ui.tscn" id="9_bp3ua"]
+[ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/Player/player_ui.tscn" id="9_bp3ua"]
 [ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="10_jtc8m"]
 [ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="11_wlsew"]
+[ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="12_ld8n6"]
+[ext_resource type="PackedScene" uid="uid://gygvknc042gv" path="res://Scenes/Components/Player/activator.tscn" id="13_w8l0v"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
 streams_count = 6
@@ -29,11 +31,14 @@ stream_5/stream = ExtResource("8_w4nov")
 stream_5/weight = 1.0
 
 [node name="SharedPlayerManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_shdlt")
 
 [node name="WaterManager" parent="." instance=ExtResource("10_jtc8m")]
+unique_name_in_owner = true
 
 [node name="EnergyManager" parent="." instance=ExtResource("11_wlsew")]
+unique_name_in_owner = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
@@ -61,9 +66,23 @@ collision_mask = 4139
 [node name="PlayerUI" parent="." instance=ExtResource("9_bp3ua")]
 
 [node name="WaterMeter" parent="PlayerUI" index="0" node_paths=PackedStringArray("water_manager")]
+visible = false
 water_manager = NodePath("../../WaterManager")
 
+[node name="EKG" parent="PlayerUI" index="1"]
+visible = false
+
 [node name="BatteryMeter" parent="PlayerUI" index="2" node_paths=PackedStringArray("energy_manager")]
+visible = false
 energy_manager = NodePath("../../EnergyManager")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -12)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_ld8n6")
+
+[node name="Activator" parent="." instance=ExtResource("13_w8l0v")]
+visible = false
 
 [editable path="PlayerUI"]

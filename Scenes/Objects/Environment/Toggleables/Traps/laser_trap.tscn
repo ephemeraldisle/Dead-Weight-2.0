@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cjm41y1w5y4lv" path="res://Audio/Objects/Traps/Laser Trap/laser disengage.mp3" id="9_twr1j"]
 [ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="10_dum20"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="11_vp2rf"]
+[ext_resource type="PackedScene" uid="uid://hh36uyi1alel" path="res://Scenes/Components/Universal/identifier.tscn" id="16_tfymd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndrmj"]
 atlas = ExtResource("1_0p8b0")
@@ -769,13 +770,12 @@ random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("8_k33tm")
 stream_0/weight = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dj831"]
-
 [node name="LaserTrap" type="Node2D"]
 script = ExtResource("1_s3tmy")
 sound_enabled = true
 
 [node name="PowerController" parent="." instance=ExtResource("2_6v3uc")]
+activatable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
@@ -841,12 +841,8 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("11_vp2rf")
 
-[node name="Identifier" type="StaticBody2D" parent="." groups=["danger"]]
-collision_layer = 1024
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Identifier"]
-position = Vector2(-1, 0)
-shape = SubResource("CircleShape2D_dj831")
+[node name="Identifier" parent="." node_paths=PackedStringArray("power_controller") instance=ExtResource("16_tfymd")]
+position = Vector2(0, 0)
+power_controller = NodePath("../PowerController")
 
 [connection signal="body_entered" from="DamagingZone" to="DamagingZone" method="_on_body_entered"]

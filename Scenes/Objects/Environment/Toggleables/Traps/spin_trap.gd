@@ -14,13 +14,11 @@ const LIGHT_FADE_TIME = 1.0
 
 @onready var damaging_zone = $DamagingZone
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var timer = $Timer
 @onready var charge_sound = %ChargeSound as AudioStreamPlayer2D
 @onready var fire_sound = %FireSound as AudioStreamPlayer2D
 @onready var loop_sound = %LoopSound as AudioStreamPlayer2D
 @onready var discharge_sound = %DischargeSound as AudioStreamPlayer2D
 @onready var light: PointLight2D = %Light
-@onready var pressure_zone: Area2D = %PressureZone
 
 @onready var pressure_activator: Area2D = $PressureActivator
 @onready var timer_component: Timer = $TimerComponent
@@ -61,7 +59,7 @@ func charge_up():
 	finished_charging.emit()
 
 
-func activate(instant: bool = false) -> void:
+func activate(_instant: bool = false) -> void:
 	light.visible = true
 	light.color.a = 1
 	animated_sprite_2d.play("activeloop")

@@ -5,13 +5,14 @@ signal bars_changed
 
 const BARS_PER_BATTERY = 4.0
 const ENERGY_RECHARGE_RATE = 0.005
+const MIN_ENERGY = -0.9999
 
 var current_batteries
 var max_bars
 var current_bars
 var max_energy
 var current_energy
-var previous_bars
+var previous_bars: int
 
 func _ready():
 	_calculate_battery_energy()
@@ -31,19 +32,20 @@ func _ready():
 		
 func _physics_process(_delta: float) -> void:
 	_adjust_bars()
-	if current_bars > 0 and current_energy < max_energy:
+	if current_bars >= 0 and current_energy < max_energy and current_energy > 0:
 		change_energy(ENERGY_RECHARGE_RATE)
-	change_energy(-ENERGY_RECHARGE_RATE*0.99)
+
 
 
 func _adjust_bars() -> void:
+	previous_bars = current_bars
 	current_bars = floor(current_energy)
 	if current_bars != previous_bars:
 		bars_changed.emit()
 
 
 func change_energy(percent: float):
-	current_energy = clamp(current_energy + percent, 0.0, current_bars+0.9999)
+	current_energy = clamp(current_energy + percent, MIN_ENERGY, current_bars+0.9999)
 	energy_changed.emit()
 
 func _calculate_battery_energy() -> void:

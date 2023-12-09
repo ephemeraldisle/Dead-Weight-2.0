@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://buspvjbjglvn7"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/2darc.gdshader" id="1_6o1xw"]
+
+[resource]
+shader = ExtResource("1_6o1xw")
+shader_parameter/center = Vector2(640, 360)
+shader_parameter/force = -1.0
+shader_parameter/size = 300.0
+shader_parameter/blast = 50.0
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/aperture = 1.5
+shader_parameter/red_offset = 0.5
+shader_parameter/green_offset = 0.5
+shader_parameter/blue_offset = 0.5
+shader_parameter/alpha = 1.0

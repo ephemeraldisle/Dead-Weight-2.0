@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bhqw0w2hp5x4t"]
+
+[ext_resource type="FontFile" uid="uid://brjucymfesu5x" path="res://Themes and UI/Saira-ExtraBold.woff2" id="1_hipob"]
+
+[resource]
+font = ExtResource("1_hipob")
+font_size = 32
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)

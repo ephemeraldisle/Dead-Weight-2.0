@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+const NUMBER_OF_COLORS = 3.0
+const SPREAD_DEGREES = 360 / NUMBER_OF_COLORS
+const SPREAD_VARIANCE = 15
+
 signal transitioned_halfway
 signal after_pause
 
@@ -22,7 +26,7 @@ func transition(speed: float = 1, pause_time: float = 0):
 func random_directions():
 	var direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	color_rect.material.set_shader_parameter("direction_r", direction)
-	direction = direction.rotated(deg_to_rad(randfn(120, 15)))
+	direction = direction.rotated(deg_to_rad(randfn(SPREAD_DEGREES, SPREAD_VARIANCE)))
 	color_rect.material.set_shader_parameter("direction_g", direction)
-	direction = direction.rotated(deg_to_rad(randfn(120, 15)))
+	direction = direction.rotated(deg_to_rad(randfn(SPREAD_DEGREES, SPREAD_VARIANCE)))
 	color_rect.material.set_shader_parameter("direction_b", direction)

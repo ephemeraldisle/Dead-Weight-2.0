@@ -25,6 +25,13 @@ GameEvents="*res://Scripts/Autoload/game_events.gd"
 ScreenTransition="*res://Scenes/Fundamentals/screen_transition.tscn"
 GlobalCamera="*res://Scenes/Fundamentals/global_camera.tscn"
 SharedPlayerManager="*res://Scenes/Fundamentals/shared_player_manager.tscn"
+AudioManager="*res://Scenes/Fundamentals/audio_manager.tscn"
+FlowController="*res://Scripts/Autoload/flow_controller.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+general/states=["AudioManager", "FlowController", "SharedPlayerManager", "ScreenTransition", "GlobalCamera", "GameEvents", "GameState", "SaveManager"]
 
 [display]
 
@@ -38,7 +45,7 @@ window/size/mode.debug=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/previous-tab/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/previous-tab/plugin.cfg")
 
 [gui]
 
@@ -96,6 +103,20 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
 }
+"zoom in"={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
+]
+}
+"zoom out"={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogue/interactions.dialogue", "res://Dialogue/MainScene.dialogue")
 
 [layer_names]
 
@@ -110,6 +131,7 @@ interact={
 2d_physics/layer_9="rope"
 2d_physics/layer_10="actionables"
 2d_physics/layer_11="identifiers"
+2d_physics/layer_12="player parts"
 2d_physics/layer_13="moving platform"
 
 [physics]

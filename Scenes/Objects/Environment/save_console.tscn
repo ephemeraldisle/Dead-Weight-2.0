@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://w3figqlpg8kd"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Environment/save_console.gd" id="1_ns488"]
+[ext_resource type="Texture2D" uid="uid://0rj8d74fhe6h" path="res://Art/Environment/Objects/decor_4.png" id="2_8v4tp"]
+[ext_resource type="Texture2D" uid="uid://cinkax1gv2c2v" path="res://Art/Environment/Objects/decor_5.png" id="2_oo1ru"]
+[ext_resource type="Texture2D" uid="uid://bog2p4xmvgjiq" path="res://Art/saw.png" id="3_iuepq"]
+[ext_resource type="PackedScene" uid="uid://bjq6vhj5x2ygy" path="res://Scenes/Components/Environment/actionable.tscn" id="4_01ool"]
+[ext_resource type="PackedScene" uid="uid://b6kse0v2im4vx" path="res://Scenes/Components/Universal/interactable_prompt.tscn" id="5_id5y5"]
+[ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="8_p5q77"]
+[ext_resource type="Texture2D" uid="uid://bsj3hqmqg01l" path="res://Art/Faces/zoomconsole.png" id="9_dxu4o"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="10_a3cb8"]
+[ext_resource type="AudioStream" uid="uid://b7rm26wrpmwci" path="res://Audio/UI/UI_Buttonconfirm_Stereo_01.wav" id="11_tslq2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ik5s"]
+radius = 150.0
+
+[node name="Save Console" type="StaticBody2D" node_paths=PackedStringArray("dialogue_placer", "audio") groups=["SAVR"]]
+collision_layer = 2
+collision_mask = 279
+script = ExtResource("1_ns488")
+dialogue_placer = NodePath("Control")
+audio = NodePath("AudioStreamPlayer2D")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -77.0
+offset_right = 113.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_iuepq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(36, -15)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_oo1ru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -24)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_8v4tp")
+
+[node name="Actionable" parent="." node_paths=PackedStringArray("action_holder", "input_prompt") instance=ExtResource("4_01ool")]
+action_holder = NodePath("..")
+input_prompt = NodePath("../InteractablePrompt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+visible = false
+position = Vector2(-1, -45)
+shape = SubResource("CircleShape2D_3ik5s")
+
+[node name="InteractablePrompt" parent="." instance=ExtResource("5_id5y5")]
+visible = false
+position = Vector2(13, -85)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -27.0
+offset_top = 127.0
+offset_right = 13.0
+offset_bottom = 167.0
+
+[node name="PingAnimation" parent="." instance=ExtResource("8_p5q77")]
+position = Vector2(-29, -45)
+rotation = -2.23347
+scale = Vector2(0.4, 0.4)
+portrait_texture = Array[Texture]([ExtResource("9_dxu4o")])
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(53, -15)
+scale = Vector2(0.22, 0.22)
+color = Color(0.4, 1, 0.4, 1)
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("10_a3cb8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("11_tslq2")
+volume_db = 5.0
+pitch_scale = 0.7
+max_distance = 1000.0
+panning_strength = 3.0
+bus = &"Sounds"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-47, 33, -44, -56, -3, -56, -3, -63, 81, -63, 77, -48, 78, 14, 82, 32)
+
+[editable path="PingAnimation"]

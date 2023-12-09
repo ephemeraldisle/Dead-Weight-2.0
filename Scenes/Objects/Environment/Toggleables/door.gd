@@ -3,17 +3,21 @@ extends Toggleable
 const ANIMATION_TIME = 0.4
 
 @export var start_closed = true
+@export var use_pressure = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var pressure_activator: Area2D = $PressureActivator
-
+@onready var light: PointLight2D = $PointLight2D
 @onready var ajar = not start_closed
 
 
 func _ready() -> void:
 	super()
-	pressure_activator.pressure_activated.connect(on_pressure_activated)
+	if use_pressure:
+		pressure_activator.pressure_activated.connect(on_pressure_activated)
+	else:
+		pressure_activator.queue_free()
 	if not power_controller.powered or not start_closed:
 		deactivate(true)
 
@@ -40,6 +44,8 @@ func deactivate(instant: bool = false) -> void:
 
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
 	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
@@ -47,6 +53,8 @@ func make_invisible(instant: bool = false) -> void:
 
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
 	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()

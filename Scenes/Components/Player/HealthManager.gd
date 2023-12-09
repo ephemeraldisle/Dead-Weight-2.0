@@ -1,5 +1,6 @@
 extends Node
 
+const HEAL_WATER_DRAIN = 0.00025
 
 var health = 3
 signal health_changed
@@ -17,10 +18,10 @@ func _ready():
 #	await get_tree().create_timer(2).timeout
 #	on_damage()
 
-func _process(delta):
+func _process(_delta):
 #	print(timer.time_left)
 	if timer.time_left > 0:
-		water_manager.change_water(-0.00025)
+		GameEvents.emit_water_collected(-HEAL_WATER_DRAIN)
 	if health == 3:
 		timer.stop()
 
@@ -33,7 +34,7 @@ func on_damage():
 	health -=1
 	damaged.emit()
 	if health > 0:
-		SharedPlayerManager.player.play_hurt_sounds()
+#		SharedPlayerManager.player.play_hurt_sounds()
 		health_changed.emit()
 		GameEvents.emit_health_changed(health)
 		if timer.time_left > 0:

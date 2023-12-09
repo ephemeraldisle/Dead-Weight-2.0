@@ -84,5 +84,5 @@ func toggle_power(reset = false) -> void:
 		deactivate()
 
 
-func _on_damaging_zone_body_entered(body: Node2D) -> void:
+func _on_damaging_zone_body_entered(_body: Node2D) -> void:
 	hurt_sound.play()

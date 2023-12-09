@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cjm41y1w5y4lv" path="res://Audio/Objects/Traps/Laser Trap/laser disengage.mp3" id="9_7p6ss"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="10_icdgg"]
 [ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="11_fxq1d"]
+[ext_resource type="PackedScene" uid="uid://hh36uyi1alel" path="res://Scenes/Components/Universal/identifier.tscn" id="11_v20hl"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="12_g5qw6"]
 [ext_resource type="PackedScene" uid="uid://b18jambxofrj0" path="res://Scenes/Components/Environment/pressure_activator.tscn" id="13_uuj2n"]
 
@@ -231,8 +232,6 @@ random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("8_pcas6")
 stream_0/weight = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ushgl"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlc2m"]
 size = Vector2(110, 13)
 
@@ -297,18 +296,13 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("10_icdgg")
 
-[node name="Identifier" type="StaticBody2D" parent="." groups=["danger"]]
-position = Vector2(2, 53)
-collision_layer = 1024
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Identifier"]
-position = Vector2(-1, 0)
-shape = SubResource("CircleShape2D_ushgl")
+[node name="Identifier" parent="." node_paths=PackedStringArray("power_controller") instance=ExtResource("11_v20hl")]
+power_controller = NodePath("../PowerController")
 
 [node name="TimerComponent" parent="." instance=ExtResource("11_fxq1d")]
 
 [node name="PowerController" parent="." instance=ExtResource("12_g5qw6")]
+activatable = true
 
 [node name="PressureActivator" parent="." instance=ExtResource("13_uuj2n")]
 

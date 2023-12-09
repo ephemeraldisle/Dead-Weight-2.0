@@ -17,7 +17,7 @@ func _ready() -> void:
 func make_activatable() -> void:
 	_activatable = true
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if not _activatable: return
 	_activatable = false
 	pressure_activated.emit()

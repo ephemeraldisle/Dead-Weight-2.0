@@ -332,7 +332,6 @@ size = Vector2(40, 112)
 
 [node name="Barrier" type="Node2D"]
 script = ExtResource("1_d84bt")
-starting_mode = 1
 
 [node name="PowerController" parent="." instance=ExtResource("2_6tgpx")]
 

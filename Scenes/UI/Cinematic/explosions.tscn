@@ -1,0 +1,160 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuhn864tg1may"]
+
+[ext_resource type="Gradient" uid="uid://ctosotousrxnt" path="res://Resources/Textures/fire gradient.tres" id="1_bv0nj"]
+[ext_resource type="Texture2D" uid="uid://dhprixgts5fai" path="res://Art/Particles/scorch_01.png" id="2_h34oi"]
+[ext_resource type="Texture2D" uid="uid://dl1nnqr2qk3fx" path="res://Art/Particles/scorch_02.png" id="3_u15ru"]
+[ext_resource type="Texture2D" uid="uid://uwadh5sgqvn3" path="res://Art/Particles/scorch_03.png" id="4_2m8rc"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b6iqi"]
+gradient = ExtResource("1_bv0nj")
+
+[sub_resource type="Curve" id="Curve_kvd6j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2vq5s"]
+curve = SubResource("Curve_kvd6j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ehxtf"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 66.03
+initial_velocity_max = 122.07
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.35
+scale_curve = SubResource("CurveTexture_2vq5s")
+color_ramp = SubResource("GradientTexture1D_b6iqi")
+hue_variation_min = -0.1
+hue_variation_max = 0.04
+anim_speed_min = 1.42
+anim_speed_max = 2.27
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bg2x4"]
+frames = 3
+frame_0/texture = ExtResource("2_h34oi")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("3_u15ru")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("4_2m8rc")
+frame_2/duration = 0.2
+
+[sub_resource type="Gradient" id="Gradient_etxgs"]
+offsets = PackedFloat32Array(0, 0.684492)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qsdyv"]
+gradient = SubResource("Gradient_etxgs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_jyiri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xyfvx"]
+resource_name = "default"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.35, 0.4, 0.45, 0.9),
+"transitions": PackedFloat32Array(0.707107, 1.86607, 1, 1, 1.51572, 1, 1, 1.86607, 1),
+"update": 0,
+"values": [4.0, 25.0, 10.0, 4.0, 8.0, 0.0, 4.0, 4.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvxae"]
+_data = {
+"RESET": SubResource("Animation_jyiri"),
+"default": SubResource("Animation_xyfvx")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(519, 450)
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_ehxtf")
+texture = SubResource("AnimatedTexture_bg2x4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+randomness = 0.65
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.502886, 0.502886)
+color = Color(1, 0.886275, 0.780392, 1)
+energy = 16.0
+range_z_max = 0
+range_layer_min = -100
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_qsdyv")
+texture_scale = 17.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_qvxae")
+}

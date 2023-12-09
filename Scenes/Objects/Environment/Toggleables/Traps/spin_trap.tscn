@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://7blqfr6i1rfj"]
+[gd_scene load_steps=43 format=3 uid="uid://7blqfr6i1rfj"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/spin_trap.gd" id="1_fi858"]
 [ext_resource type="Texture2D" uid="uid://cci34tu340nh1" path="res://Art/Environment/Objects/wall_blades.png" id="1_jbhcw"]
 [ext_resource type="AudioStream" uid="uid://cy65sariikr36" path="res://Audio/Objects/Traps/Laser Trap/laserchargeNEW.mp3" id="7_51p5y"]
 [ext_resource type="AudioStream" uid="uid://bhy00yhx6na7x" path="res://Audio/Objects/Traps/Laser Trap/laserfire.mp3" id="8_hjflv"]
 [ext_resource type="PackedScene" uid="uid://dklu45t3cxodm" path="res://Scenes/Components/Environment/damaging_zone.tscn" id="8_ljyaf"]
+[ext_resource type="Script" path="res://Scenes/Components/Universal/identifier.gd" id="8_lvlc5"]
 [ext_resource type="AudioStream" uid="uid://b1qkth1vm8h63" path="res://Audio/Objects/Traps/Laser Trap/laser repeat hopefully.mp3" id="9_6p3r4"]
 [ext_resource type="PackedScene" uid="uid://b18jambxofrj0" path="res://Scenes/Components/Environment/pressure_activator.tscn" id="9_31xro"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="10_f6mw8"]
@@ -275,10 +276,12 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("11_vr51t")
 
-[node name="Identifier" type="StaticBody2D" parent="." groups=["danger"]]
+[node name="Identifier" type="StaticBody2D" parent="." node_paths=PackedStringArray("power_controller") groups=["danger"]]
 position = Vector2(2, -2)
 collision_layer = 1024
 collision_mask = 0
+script = ExtResource("8_lvlc5")
+power_controller = NodePath("../PowerController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Identifier"]
 position = Vector2(-1, 0)
@@ -297,5 +300,6 @@ position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_qj5qn")
 
 [node name="PowerController" parent="." instance=ExtResource("10_f6mw8")]
+activatable = true
 
 [node name="TimerComponent" parent="." instance=ExtResource("11_oo3lx")]

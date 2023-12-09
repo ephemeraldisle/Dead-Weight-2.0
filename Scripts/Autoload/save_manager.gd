@@ -5,7 +5,7 @@ const CURRENT_VERSION = 0.2
 
 var _save_data_default := {
 	"version": CURRENT_VERSION,
-	"spawn_point": Vector2(166, 84),
+	"spawn_point": null,
 	"options":
 	{
 		"screenshake": true,
@@ -23,12 +23,13 @@ var _save_data_default := {
 	},
 	"abilities":
 	{
-		"jetpack": false,
-		"rotation": false,
-		"death": false,
-		"gun": false,
-		"shield": false,
-		"magnet": false
+		"jetpack": true,
+		"rotation": true,
+		"death": true,
+		"interact": true,
+		"gun": true,
+		"shield": true,
+		"magnet": true,
 	},
 	"local": {},
 }
@@ -77,8 +78,8 @@ func update_heart_beep(enabled: bool) -> void:
 	save()
 
 
-func update_spawn_point(spawn_point: Vector2) -> void:
-	save_data.spawn_point = spawn_point
+func update_spawn_point(spawn_point: Node2D) -> void:
+	save_data.spawn_point = spawn_point.get_path()
 	save()
 
 

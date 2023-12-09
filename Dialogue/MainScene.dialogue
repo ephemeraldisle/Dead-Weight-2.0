@@ -1,0 +1,159 @@
+~ computer_intro
+
+BUDDY: Surprise everyone, I'm saying hi! Who's that, you ask? Your BUDDY friend, the ship-wide AI!
+do alternate_face = 6
+BUDDY: We always have such fun together, this unscheduled extra time is sure to be a blast!
+do alternate_face = 1
+BUDDY: Oh... Command informs me I'm here to talk about the, uh, explosive situation.
+do alternate_face = 3
+BUDDY: Time for my [wait=0.25][color=chartreuse]serious face. 
+do alternate_face = 4
+BUDDY: [font_size=24][color=red]First of all, this is a big one...
+do alternate_face = 2
+BUDDY: [font_size=30][color=orange_red][shake rate=10.0 level=3 connected=0]Our structural integrity has been compromised!
+do alternate_face = 8
+BUDDY: [font_size=16]Don't worry, remain calm! Remember your training! 
+do alternate_face = 1
+BUDDY: [font_size=10][speed=0.75]They get training, right?
+do alternate_face = 2
+BUDDY: [font_size=12][speed=2]They don't? ...No training? Okay...
+do alternate_face = 6
+BUDDY: [font_size=16][speed=1.25]Please remain calm! You may or may not have had any training, but you are all very handsome and beautiful and each and every one of you has a deadly™ can do attitude!
+do alternate_face = 4
+BUDDY: [font_size=26][color=red]HOLY GUACAMOLE THIS IS BAD!
+do alternate_face = 2
+BUDDY: [font_size=32][color=orange_red][shake rate=15.0 level=4 connected=0]Multiple hull breaches detected! Decks 3, 8, and 27 are totally obliterated! Done-zo!
+do alternate_face = 1
+BUDDY: [font_size=14][speed=2][tornado radius=1.0 freq=3.0 connected=0]Is this helping everyone calm down?
+do alternate_face = 4
+BUDDY: [font_size=30][color=red]DANG DUDE! A REAL BUMMER OF AN UPDATE! 
+do alternate_face = 2
+BUDDY: [font_size=36][color=orange_red][shake rate=15.0 level=5 connected=0]Life support is completely offline! You are all going to die! 
+do alternate_face = 9
+BUDDY:  [font_size=34][color=orange_red][shake rate=15.0 level=5 connected=0]If you're hearing this you're probably already dead! 
+do alternate_face = 1
+BUDDY: [font_size=16][speed=0.5]Wait, that doesn't make sense...
+do alternate_face = 9
+BUDDY: [speed=1.25][font_size=34][color=orange_red][shake rate=15.0 level=5 connected=0]If you're hearing this you're probably just about dead! What a buzzkill!
+do alternate_face = 1
+BUDDY: [font_size=10]..what's that thing you want me to say..?
+do alternate_face = 0
+BUDDY: [font_size=20]It was an honor to serve with you all. Each and every one of you will be remembered, probably, by someone, I'd guess.
+do alternate_face = 8
+BUDDY: I've even been authorized to offer one lucky person a free Family Notification Prize Package!
+do alternate_face = 3
+BUDDY: Somebody's going to have to write your family to inform them of your death, so you'll definitely be remembered!
+do alternate_face=2
+BUDDY: We'll even send your family 60 credits, a full year's worth of pay!
+do alternate_face = 8
+BUDDY: [font_size=24]To be eligible for this rare Family Notification Prize Package, all you have to do is submit your feedback on Dead Weight Delivery Service's website. Let Command know what a great job I've done keeping everyone calm!
+do alternate_face = 5
+BUDDY: [font_size=24]I'm sure someone will adjust our language learning model to better calm you based on your valuable feedback, and you get a chance to have your family notified of your imminent demise!
+do alternate_face = 8
+BUDDY: [font_size=24]We here at DWDS recognize the importance of communication with our loyal employees.
+do alternate_face=0
+BUDDY: Command's being extra generous with an [shake rate=20 level=10]explosive[/shake] discount! For the next 10 minutes, feedback forms will only cost 5 credits!
+do alternate_face = 6
+BUDDY: [font_size=24]Remember, if your cargo's just sitting in port, it's nothing but dead weight.
+do alternate_face = 3
+BUDDY: [font_size=24]Choose Dead Weight Delivery Service for your next delivery's needs.
+do alternate_face = 1
+BUDDY:  Phew, glad that's over. 
+do alternate_face=0
+BUDDY: To conserve power to what systems remain functional, I am signing off now! Shipwide communications will be shut down.
+do alternate_face = 2
+BUDDY: Not like any of you are still alive to use them.
+do alternate_face = 6
+BUDDY: Ha, I kid, I kid. Keep on trucking!
+do alternate_face = 0
+BUDDY: Don't forget to spend your last living moments filling out that feedback form!
+=> END
+
+
+~ screenshake_warning
+Hi there! It seems you haven't visited the options menu. That's okay, we'll get right to the game in a moment.
+This game has screenshake, like so... [do add_trauma(0.5)][wait=0.5] ...which some people absolutely hate.
+Would you like to leave screenshake enabled?
+- No screenshake, please. ❌ 	
+	Good call!
+	do toggle_screenshake(false)
+- Let's shake things up! ✔
+	do add_trauma(0.5)
+	A bold choice!
+	do toggle_screenshake(true)
+Okay, enjoy! 
+=> END
+
+
+
+
+~ game_started
+do pause_game()
+do alternate_face = 0
+SML-E: ...what... what happened? The ship... [font_size=14]exploded?
+SUITS.U.: Yeah... my passenger's training kept us alive and functional.
+SUITS.U.: We'll need to repay the favor if we plan on staying that way.
+do alternate_face = 1
+SML-E: No problem, I'll keep supplying him with oxygen!
+SUITS.U.: Insufficient. I've rewired your mobility controls to rotate my intake port.
+do alternate_face = 8
+SML-E: Won't that twist and destroy the hose?
+SUITS.U.: No way!
+Hose: You whippersnappers are always worrying about us, we're stronger than steel!
+do alternate_face = 6
+SML-E: Does steel have much torsional str—[next=0.2]
+Hose A: [speed=2]Yeah we're super tough! ...what's steel?
+Hose B: [speed=1.5]I don't know but we're definitely better, we're the best!
+Hose C: [speed=2]Who's wearing a vest?
+Hose D: [speed=2]I'm not taking your investment advice again, Hose C!
+Hose E: [speed=2.5]We talking money? Tell Hose C they still owe me credits.
+Hose C: [speed=2.5]No I don't, more importantly [shake rate=10 level=5]who is wearing a vest?[/shake]
+Hose B: [speed=2.5]Avast? Are there [font_size=20][shake rate=20 level=5]pirates?
+Hose B: [speed=3][font_size=22][shake rate=20 level=5]I LOVE PIRATES!
+Hose A: [speed=2.5]Do you see any? Take it easy. What is steel?
+Hose C: [speed=2.5]No way, Hose A! I didn't steal from Hose E!
+Hose D: [speed=2.5]Shut up everyone, Hose Prime was saying something important!
+Hose Prime: [speed=2.5] Was I?... [wait=0.5]...[wait=0.5] ...
+Hose A: ?
+Hose B: ? 
+Hose C: ?
+Hose D: ?
+Hose E: ?
+do alternate_face = 2
+SML-E: ?
+SUITS.U.: ? 
+Hose Prime: Oh! [wait=0.5] ... [wait=1]Right!
+Hose Prime: ... [wait=0.25][speed=2][wave amp=10 freq=3]I guess I must've forgot![/wave] 
+SUITS.U.: I forgot, they never have anything useful to say.
+SUITS.U.: Press A and D to engage rotation commands.
+do unpause_game()
+=> END
+
+~ after_rotation
+do alternate_face = 7
+SML-E: That was easier than I thought.
+SUITS.U.: Keep an eye on our battery usage, it'll get real hard without the extra power.
+do alternate_face = 1
+SML-E: Yeah yeah yeah, how is this going to help though?
+SUITS.U.: Hey, one step at a time.
+SUITS.U.: Press SPACEBAR to supercharge your water delivery, it should bypass life support and activate the jetpack now.
+=> END
+
+~ after_jetpack
+Hose Prime: Oooh, that tickled!
+SUITS.U.: Heck yeah! I can't believe that worked.
+do alternate_face = 4
+SML-E: Seriously? Let me know if we're doing something risky!
+SUITS.U.: Sorry, I didn't want you to have performance anxiety.
+SUITS.U.: There is a [font_size=24]save computer[/font_size] above us.
+SUITS.U.: Bring either of us next to the computer and press E to activate it, and flood my TCU with save juice.
+do alternate_face = 0
+SML-E: Huh? I was distracted... did you say the R button?
+SUITS.U.: No. That will immediately vent all my air, killing my passenger. 
+do alternate_face = 5
+SML-E: Yikes!
+SUITS.U.: Don't worry, my temporal control unit should automatically send us back in time if that happens.
+SUITS.U.: I've still got a little save juice left, but please proceed to the save computer so we don't have to have this conversation again.
+do unlock_ability("death")
+=> END
+

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cax2ot2p37sif"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Pickups/gun_pickup.gd" id="1_8xnar"]
+[ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="1_u5m1e"]
+[ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="3_i3x0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffrkx"]
+radius = 137.058
+
+[node name="GunPickup" type="Node2D"]
+script = ExtResource("1_8xnar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("1_u5m1e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ffrkx")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.25, 0.25)
+color = Color(0.957031, 0.707031, 0.109375, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("3_i3x0i")

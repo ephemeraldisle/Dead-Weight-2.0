@@ -1,43 +1,2593 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=143 format=3 uid="uid://dmvkm5ouu0lnd"]
 
+[ext_resource type="Material" uid="uid://ctbaan0qf40hr" path="res://Resources/Materials/tile_shader.tres" id="1_a3mvc"]
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
+[ext_resource type="Script" path="res://Scenes/Levels/main.gd" id="1_ji81j"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
-[ext_resource type="PackedScene" uid="uid://crl3cbdt0b741" path="res://Scenes/Fundamentals/global_camera.tscn" id="3_2l16h"]
 [ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
 [ext_resource type="PackedScene" uid="uid://vef6tdll8ra3" path="res://Scenes/Objects/Environment/Togglers/power_node.tscn" id="6_q7au7"]
 [ext_resource type="PackedScene" uid="uid://bfi1wqf0pfmuw" path="res://Scenes/Objects/Environment/Toggleables/Traps/laser_trap.tscn" id="7_ela7u"]
-[ext_resource type="PackedScene" uid="uid://bf75lquvw7wae" path="res://Scenes/Objects/Environment/Toggleables/barrier.tscn" id="8_vqn2n"]
+[ext_resource type="PackedScene" uid="uid://w3figqlpg8kd" path="res://Scenes/Objects/Environment/save_console.tscn" id="8_c46gc"]
+[ext_resource type="PackedScene" uid="uid://bovathl82chfr" path="res://Scenes/Objects/Environment/wire.tscn" id="8_ls52l"]
+[ext_resource type="Texture2D" uid="uid://bxjgyoih0uyq8" path="res://Art/UI/input tilemap.png" id="8_uk1ne"]
+[ext_resource type="PackedScene" uid="uid://bf75lquvw7wae" path="res://Scenes/Objects/Environment/Toggleables/barrier.tscn" id="9_kt32a"]
+[ext_resource type="PackedScene" uid="uid://nj4paacovlxk" path="res://Scenes/Objects/Environment/Toggleables/Traps/spike_trap.tscn" id="10_i3rmq"]
+[ext_resource type="PackedScene" uid="uid://7blqfr6i1rfj" path="res://Scenes/Objects/Environment/Toggleables/Traps/spin_trap.tscn" id="11_1hoxj"]
+[ext_resource type="PackedScene" uid="uid://bbhc3j087wtxl" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_track.tscn" id="12_f607i"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="13_nowdy"]
+[ext_resource type="PackedScene" uid="uid://b6pqpgnnjyp7p" path="res://Scenes/Objects/Environment/Toggleables/Traps/turret.tscn" id="13_ulx8t"]
+[ext_resource type="PackedScene" uid="uid://drj6k528vq4no" path="res://Scenes/Objects/Pickups/pickup_spawner.tscn" id="20_prrcb"]
+[ext_resource type="PackedScene" uid="uid://cq0bavny1jtr6" path="res://Scenes/Objects/Pickups/energy_pickup.tscn" id="22_8kxxg"]
+[ext_resource type="PackedScene" uid="uid://cax2ot2p37sif" path="res://Scenes/Objects/Pickups/gun_pickup.tscn" id="23_c562g"]
+[ext_resource type="PackedScene" uid="uid://4mcd07bt6gxd" path="res://Scenes/Background/light_holder_thing.tscn" id="24_43n7f"]
+[ext_resource type="PackedScene" uid="uid://2camwyroxen8" path="res://Scenes/Background/secret_hider.tscn" id="24_udsjm"]
+[ext_resource type="TileSet" uid="uid://il7emji1b17m" path="res://Resources/secrettileset.tres" id="25_144ko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01usf"]
+atlas = ExtResource("8_uk1ne")
+region = Rect2(306, 187, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmhtb"]
+atlas = ExtResource("8_uk1ne")
+region = Rect2(341, 188, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c13rd"]
+atlas = ExtResource("8_uk1ne")
+region = Rect2(544, 239, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tn48"]
+atlas = ExtResource("8_uk1ne")
+region = Rect2(528, 239, 15, 14)
+
+[sub_resource type="Curve2D" id="Curve2D_hwv2x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 40, -53.9716, 22.2236, 53.9716, -22.2236, 41, -235, -23.0173, 25.3984, 23.0173, -25.3984, 419, -417, -22.2236, 43.6535, 22.2236, -43.6535, 495, -426, -44.2001, 78.6611, 44.2001, -78.6611, 496, -574, -96.6408, -43.4509, 96.6408, 43.4509, 461, -828)
+}
+point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mceev"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb77t"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_24ekj"]
+_data = {
+"points": PackedVector2Array(-96.6408, -43.4509, 96.6408, 43.4509, 461, -828, -34.4611, -11.9865, 34.4611, 11.9865, 851, -823, 53.9391, 29.9661, -53.9391, -29.9661, 844, -593, 0, 0, 0, 0, 771, -607)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5j2o3"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nrcy"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_yslgn"]
+_data = {
+"points": PackedVector2Array(21, -86, -21, 86, 408, -600, 0, 0, 0, 0, 517, -563)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_niie2"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehbgd"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_etkjy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -49, 36, 21.4057, 13.0813, -21.4057, -13.0813, -57, 6, 48.031, 17.4775, -48.031, -17.4775, -152, 18, 34.9228, 9.52441, -34.9228, -9.52441, -166, -303, 47.622, 76.1952, -47.622, -76.1952, -426, -509, 88.8945, 17.4614, -88.8945, -17.4614, -423, -666)
+}
+point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg0ne"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrl0e"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_ehgvf"]
+_data = {
+"points": PackedVector2Array(-58.8628, -45.4084, 58.8628, 45.4084, -1085, 482, -25.6845, 31.581, 25.6845, -31.581, -977, 429, 20.9388, 50.7768, -20.9388, -50.7768, -945, 27, -83.4435, -29.4316, 83.4435, 29.4316, -480, -68, 47.622, 76.1952, -47.622, -76.1952, -483, -438, -41.4582, 65.4072, 41.4582, -65.4072, -415, -600)
+}
+point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjjds"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7boy4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_a7fv3"]
+_data = {
+"points": PackedVector2Array(32.1086, 24.9733, -32.1086, -24.9733, 324, -232, 13.0813, 13.0813, -13.0813, -13.0813, 195, -244, 57.6765, 31.514, -57.6765, -31.514, 175, -335)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxvdv"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_if0v8"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_unm8m"]
+_data = {
+"points": PackedVector2Array(-19.5998, -97.9989, 23.1634, 37.4177, -63, 1338, -32.9641, 48.994, 32.9641, -48.994, -51, 685, -30.5884, 31.1665, 30.5884, -31.1665, -54, 73, 18.9638, 44.8915, -18.9638, -44.8915, 113, -114, 69.7982, 36.4105, -69.7982, -36.4105, 195, -244)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oycth"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vysgm"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_twgy5"]
+_data = {
+"points": PackedVector2Array(22.0249, -20.69, -22.0249, 20.69, 0, -81, -24.0271, 2.66968, 24.0271, -2.66968, 25, -37, 21.3574, 14.0158, -21.3574, -14.0158, 70, -83)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37tke"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca8fg"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_le5e6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3, 305, 0, 0, 0, 0, 14, -259)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avx0d"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njt5l"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_hni7h"]
+_data = {
+"points": PackedVector2Array(31.498, 46.6171, -31.498, -46.6171, -102, 69, -39.0576, 18.8988, 39.0576, -18.8988, -32, 1, -39.0575, 32.7579, 39.0575, -32.7579, -40, -119, -41.5774, 15.1191, 41.5774, -15.1191, 2, -197)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwe7k"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uppr4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_axjej"]
+_data = {
+"points": PackedVector2Array(11.5817, 33.4992, -11.5817, -33.4992, 414, -365, 32.9633, 11.77, -32.9633, -11.77, 436, -521, -39.1995, 37.4177, 39.1995, -37.4177, 418, -615)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rv0e"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e82f"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_jacbu"]
+_data = {
+"points": PackedVector2Array(-123.347, 77.4523, 123.347, -77.4523, -109, -77.4579, -84.5044, -42.7924, 84.5044, 42.7924, 191, -435.501, 44.9327, 63.1833, -44.9327, -63.1833, 694, -678.97)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4v80"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv77a"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_y24k3"]
+_data = {
+"points": PackedVector2Array(-78.5723, 8.9797, 78.5723, -8.9797, -84, 6, -32.5514, 60.6129, 32.5514, -60.6129, 37, 3, -31.4289, 50.5108, 31.4289, -50.5108, 46, -89)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fvdy"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lok66"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_l1ov1"]
+_data = {
+"points": PackedVector2Array(-4.84151, 89.8458, 4.84151, -89.8458, -101, 26, -32.5514, 60.6129, 32.5514, -60.6129, -28, -539, 13.7609, 79.0518, -13.7609, -79.0518, 111, -726, 26.1626, 97.515, -26.1626, -97.515, 315, -1088, -54.7035, 78.4877, 54.7035, -78.4877, 320, -1880, 42.8115, 83.2445, -42.8115, -83.2445, 280, -2765, 26.1626, 73.7308, -26.1626, -73.7308, 442, -3918, 0, 0, 0, 0, 464, -4965)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_foiri"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5sap"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbtnn"]
+size = Vector2(913, 264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im5y0"]
+size = Vector2(141, 205)
+
+[sub_resource type="Curve2D" id="Curve2D_qek0o"]
+_data = {
+"points": PackedVector2Array(-7.24455, -10.7093, 7.24455, 10.7093, 34, 24, 0, 0, 0, 0, 27, -204, 2.10224, -5.46583, -2.10224, 5.46583, 31, -306)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqidn"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc4lt"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fobs1"]
+size = Vector2(913, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h08wk"]
+size = Vector2(90, 150.5)
+
+[sub_resource type="Curve2D" id="Curve2D_qeu4k"]
+_data = {
+"points": PackedVector2Array(25.4846, 55.6886, -25.4846, -55.6886, 290, -7, 10.3826, 73.6222, -10.3826, -73.6222, 378, -107, 62.2957, 50.0253, -62.2957, -50.0253, 644, -118, 66.0712, 38.6988, -66.0712, -38.6988, 485, -219, 7.937, -30.9543, -7.937, 30.9543, 43, -213, 31.748, 9.52441, -31.748, -9.52441, -44, -22, 3.9685, 32.5417, -3.9685, -32.5417, -173, -9, 57.1464, -10.3181, -57.1464, 10.3181, -211, -68, 39.6427, -8.49487, -39.6427, 8.49487, -254, -101, 34.9233, 40.5866, -34.9233, -40.5866, -219, -326)
+}
+point_count = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qtlb"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuabn"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecf2g"]
+size = Vector2(608.75, 371)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id7nr"]
+size = Vector2(399, 1018)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v73mb"]
+size = Vector2(228.5, 1021)
+
+[sub_resource type="Curve2D" id="Curve2D_stcqi"]
+_data = {
+"points": PackedVector2Array(-57.6014, -13.4543, 57.6014, 13.4543, -92, 13, -40.363, 27.3291, 40.363, -27.3291, 16, -1, -11.7725, 21.8633, 11.7725, -21.8633, 60, -89)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vocd1"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbm3e"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_0vygq"]
+_data = {
+"points": PackedVector2Array(-73.3336, 10.5186, 73.3336, -10.5186, 52, 171, 35.3015, 57.2953, -35.3015, -57.2953, 48, -115, -28.2539, -8.10284, 28.2539, 8.10284, 120, -188)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjcj5"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seiqx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_5e1ns"]
+_data = {
+"points": PackedVector2Array(-57.6014, -13.4543, 57.6014, 13.4543, -477.139, 1837.63, -21.4989, 59.295, 21.4989, -59.295, -512.371, 814.775, -13.4368, 49.9326, 13.4368, -49.9326, -512.371, 559.939, -19.5611, 24.8966, 19.5611, -24.8966, -322.119, 548.249, 9.55234, 41.6858, -9.55234, -41.6858, -257.695, 313.285, 8.07119, 68.7349, -8.07119, -68.7349, -295.947, 177.684, -34.0784, 44.7818, 34.0784, -44.7818, -115.762, 154.305, -23.3239, 50.2408, 23.3239, -50.2408, 126.834, -85.3351, 28.7537, -54.9228, -28.7537, 54.9228, 35.2319, -98.1938)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nh2n"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsafc"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_u85v6"]
+_data = {
+"points": PackedVector2Array(-10.7252, 78.7572, 10.7252, -78.7572, -540.56, 761, -3.86016, 56.8834, 3.86016, -56.8834, -465.062, 607.864, -13.1627, 151.222, 13.1627, -151.222, -51.3394, 306.271, 0, 0, 0, 0, 14.0962, -1095.33)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w0gi"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpd7d"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_ovg6f"]
+_data = {
+"points": PackedVector2Array(0.909097, 86.06, -0.909097, -86.06, -397.021, 912.636, 25.5804, 85.8124, -25.5804, -85.8124, -178.404, 754.008, -73.2782, 99.1681, 73.2782, -99.1681, -51.3394, 306.271, -16.7419, 10.3898, 16.7419, -10.3898, 41.3311, -996.15, 4.74314, 12.0886, -4.74314, -12.0886, -3.52393, -1027.48, -16.7225, 5.7508, 16.7225, -5.7508, 28.6709, -1032.59, -1.25869, 14.3742, 1.25869, -14.3742, 22.6099, -1080.9, 12.3536, -11.8064, -12.3536, 11.8064, 22.731, -1177.78, 28.9837, 23.545, -28.9837, -23.545, 14.0962, -1095.33)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xke4n"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy5w7"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_0jsck"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, -95, -77, -51.1359, -8.32422, 51.1359, 8.32422, -56, 37, 5.94565, -87.4067, -5.94565, 87.4067, 39, 119)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3unl"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmyt5"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_np7we"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, 140, 3.99939, -51.1359, -8.32422, 51.1359, 8.32422, -251, 51.0011)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjr66"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n03r5"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_b6677"]
+_data = {
+"points": PackedVector2Array(57.779, -27.3156, -57.779, 27.3156, -95, -77, -49.0337, -14.2105, 49.0337, 14.2105, -102, 27.0005, 51.252, -1.51437, -51.252, 1.51437, -83.9995, 119)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5485h"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_velfu"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_11rva"]
+_data = {
+"points": PackedVector2Array(-69.282, 3.21019, 69.282, -3.21019, -155, -80.9994, -49.0337, -14.2105, 49.0337, 14.2105, -102, 27.0005, 69.0699, -23.3415, -69.0699, 23.3415, -83.999, 182, -24.4995, 42.7632, 24.4995, -42.7632, -192, 143.001)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0t0hj"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gr8k3"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_6ag6e"]
+_data = {
+"points": PackedVector2Array(20.503, -15.8177, -20.503, 15.8177, 86.9952, -718.001, 19.632, -12.3211, -19.632, 12.3211, 27.9951, -723, 49.8701, -13.5812, -49.8701, 13.5812, -31.0051, -765, 69.0699, -23.3415, -69.0699, 23.3415, -192.003, -502.999, -31.5014, -234.237, 31.5014, 234.237, -223.999, 150.001)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k48x4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2qfw"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_rnomy"]
+_data = {
+"points": PackedVector2Array(14.8325, -77.3408, -14.8325, 77.3408, -95, -77, 15.6397, -59.9813, -15.6397, 59.9813, -56, 37, 19.8049, -65.9881, -19.8049, 65.9881, 39, 119, 18.2687, -25.1985, -18.2687, 25.1985, 45.0015, 328, -22.0485, 31.4981, 22.0485, -31.4981, -6.99878, 316)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylwwg"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyppx"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_3uctu"]
+_data = {
+"points": PackedVector2Array(33.8852, -24.0778, -33.8852, 24.0778, -47, 5, 6.48843, -14.0195, -6.48843, 14.0195, -38.0381, 24.6797, -32.6451, 18.234, 32.6451, -18.234, -17, 42)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhrg4"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qypnb"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_62vsl"]
+_data = {
+"points": PackedVector2Array(-22.7179, -4.00904, 22.7179, 4.00904, 339, -88, 38.7541, -3.11814, -38.7541, 3.11814, 307, -39, 18.7089, 11.1362, -18.7089, -11.1362, 222, -31, -8.90899, 22.2725, 8.90899, -22.2725, 199, -89)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25n6a"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1pkv"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_72yae"]
+_data = {
+"points": PackedVector2Array(-10.1045, -38.4858, 10.1045, 38.4858, 338, -143, 38.7541, 3.60903, -38.7541, -3.60903, 287, -56, 25.1984, 18.8988, -25.1984, -18.8988, -244, -46, 18.2689, 11.3393, -18.2689, -11.3393, -244, -156, 13.8591, 10.7093, -13.8591, -10.7093, -298, -153, 20.7887, -0.629961, -20.7887, 0.629961, -300, -56, 44.7272, 19.5288, -44.7272, -19.5288, -389, -42, -36.6273, 51.8806, 36.6273, -51.8806, -556, -85)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hsep"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_raw3i"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="Curve2D" id="Curve2D_kx30k"]
+_data = {
+"points": PackedVector2Array(-16.9706, -4.24264, 16.9706, 4.24264, -31, -52, 10.253, 0.707107, -10.253, -0.707107, -26, -13, 13.7886, 11.3137, -13.7886, -11.3137, -66, -9)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skunw"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7brje"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqg3b"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28gu8"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqknv"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dakey"]
+resource_local_to_scene = true
+shader = ExtResource("13_nowdy")
+shader_parameter/color_a = Color(0.0627451, 0.109804, 0.0666667, 1)
+shader_parameter/color_b = Color(0.0784314, 0.0784314, 0.0745098, 1)
+shader_parameter/speed_factor = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eg2i"]
+size = Vector2(257, 94.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_163ga"]
+size = Vector2(334, 221)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot53u"]
+size = Vector2(314.5, 366)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87iw0"]
+size = Vector2(453, 924)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpntm"]
+size = Vector2(233.5, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02evd"]
+size = Vector2(453, 1274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oixbk"]
+size = Vector2(236, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66wrd"]
+size = Vector2(191, 261)
+
+[sub_resource type="Gradient" id="Gradient_167c3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w447r"]
+gradient = SubResource("Gradient_167c3")
+width = 256
+fill = 1
+fill_from = Vector2(0.0683761, 0.474359)
+fill_to = Vector2(1, 0.384937)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ft5ub"]
+size = Vector2(1000, 1000)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ji81j")
 
 [node name="ParallaxBackgroundSpace" parent="." instance=ExtResource("1_a8rnd")]
 
 [node name="TileMap" parent="." instance=ExtResource("2_skake")]
 
-[node name="GlobalCamera" parent="." instance=ExtResource("3_2l16h")]
-position = Vector2(30, -222)
-debug = true
+[node name="APrompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(23, 37)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_01usf")
 
-[node name="Door" parent="." instance=ExtResource("5_6bcy1")]
-position = Vector2(836, -447)
+[node name="BPrompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(290, 38)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_vmhtb")
+
+[node name="SpacePrompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(163, 20)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_c13rd")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpacePrompt"]
+position = Vector2(-14.8, 0)
+texture = SubResource("AtlasTexture_3tn48")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpacePrompt"]
+position = Vector2(15.6, 0)
+texture = SubResource("AtlasTexture_3tn48")
+flip_h = true
+
+[node name="SECTION_1" type="Node2D" parent="."]
+
+[node name="INTRO_ROOM" type="Node2D" parent="SECTION_1"]
+
+[node name="Objects" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
+
+[node name="Save Console" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("spawn_position") instance=ExtResource("8_c46gc")]
+position = Vector2(172, -673)
+spawn_position = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="SECTION_1/INTRO_ROOM/Objects/Save Console"]
+position = Vector2(5, -192)
+
+[node name="IntroControlPanel" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(379, -1241)
+linked_objects_start_active = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3"), NodePath("../../WireHolder/Wire11"), NodePath("../../WireHolder/Wire5"), NodePath("../../WireHolder/Wire4"), NodePath("../../WireHolder/Wire"), NodePath("../../Secrets/SecretHider/Wire"), NodePath("../../WireHolder/Wire2")]
+
+[node name="conTROLLpanel" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_deactive") instance=ExtResource("6_gbw75")]
+position = Vector2(1564, -347)
+scale = Vector2(1, 0.855938)
+linked_objects_start_deactive = [NodePath("../LaserTrap2"), NodePath("../../WireHolder/Wire8")]
+reset_time = 1.0
+
+[node name="Actionable" parent="SECTION_1/INTRO_ROOM/Objects/conTROLLpanel" index="2"]
+repeatable = true
+
+[node name="ControlPanel2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("6_gbw75")]
+position = Vector2(-1368, -283)
+
+[node name="PowerNode8" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1445, -554)
+rotation = -1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../Barrier"), NodePath("../../WireHolder/Wire7")]
+
+[node name="PowerNode" parent="SECTION_1/INTRO_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(39, -1241)
+linked_objects_start_active = [NodePath("../LaserTrap"), NodePath("../../WireHolder/Wire3")]
+
+[node name="LaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(192, -1179)
+rotation = 1.57079
+initial_delay = 0.0
+
+[node name="Door" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(836, -448)
 rotation = 3.14159
-scale = Vector2(0.7, 0.7)
 
-[node name="LaserTrap" parent="." instance=ExtResource("7_ela7u")]
-position = Vector2(134, -284)
+[node name="Door2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-374, -515)
 
-[node name="PowerNode" parent="." instance=ExtResource("6_q7au7")]
-position = Vector2(161, -155)
-scale = Vector2(0.544, 0.544)
+[node name="Door3" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-258, -65)
+rotation = -1.57079
 
-[node name="ControlPanel" parent="." node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
-position = Vector2(87, -154)
-linked_objects_start_active = [NodePath("../Door"), NodePath("../LaserTrap"), NodePath("../Barrier")]
+[node name="LaserTrap32" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-765, -127)
+always_on = true
+initial_delay = 0.0
 
-[node name="Barrier" parent="." instance=ExtResource("8_vqn2n")]
-position = Vector2(-68, -193)
-starting_mode = 0
+[node name="LaserTrap33" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-962, 30)
+rotation = 1.57079
+scale = Vector2(0.8, 1)
+always_on = true
+initial_delay = 0.0
 
-[node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
+[node name="SawTrack" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("12_f607i")]
+position = Vector2(106, 251)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+blade_travel_time = 2
+off_time = 2
+
+[node name="NinePatchRect" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack" index="0"]
+offset_left = -427.0
+offset_top = -10.0
+offset_bottom = 20.0
+
+[node name="StartPoint" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack" index="1"]
+position = Vector2(-376, 0.000610352)
+
+[node name="SawHolder" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack" index="3"]
+position = Vector2(-376, 0.000610352)
+
+[node name="SawTrack2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("12_f607i")]
+position = Vector2(-181, 322)
+scale = Vector2(0.5, 0.5)
+delay_time = 1.0
+blade_travel_time = 4
+
+[node name="NinePatchRect" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack2" index="0"]
+offset_left = -656.0
+offset_top = -10.0
+offset_right = 612.0
+offset_bottom = 20.0
+
+[node name="StartPoint" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack2" index="1"]
+position = Vector2(-580, 0.000610352)
+
+[node name="SawHolder" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack2" index="3"]
+position = Vector2(-600, 0.000610352)
+
+[node name="LaserTrap8" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-215, 575)
+
+[node name="LaserTrap9" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(1057, -447)
+initial_delay = 0.0
+
+[node name="Barrier" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(1630, -386)
+
+[node name="LaserTrap2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
+z_index = -6
+position = Vector2(1506, -383)
+always_on = true
+initial_delay = 0.0
+
+[node name="WireHolder" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
+
+[node name="Wire" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 15
+position = Vector2(-386, -620)
+curve = SubResource("Curve2D_hwv2x")
+on_material = SubResource("ShaderMaterial_mceev")
+off_material = SubResource("ShaderMaterial_wb77t")
+
+[node name="Wire2" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-386, -620)
+curve = SubResource("Curve2D_24ekj")
+on_material = SubResource("ShaderMaterial_5j2o3")
+off_material = SubResource("ShaderMaterial_1nrcy")
+
+[node name="Wire3" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 5
+position = Vector2(-386, -620)
+curve = SubResource("Curve2D_yslgn")
+on_material = SubResource("ShaderMaterial_niie2")
+off_material = SubResource("ShaderMaterial_ehbgd")
+
+[node name="Wire4" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 15
+position = Vector2(889, -546)
+curve = SubResource("Curve2D_etkjy")
+on_material = SubResource("ShaderMaterial_yg0ne")
+off_material = SubResource("ShaderMaterial_rrl0e")
+
+[node name="Wire5" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 15
+position = Vector2(889, -546)
+curve = SubResource("Curve2D_ehgvf")
+on_material = SubResource("ShaderMaterial_mjjds")
+off_material = SubResource("ShaderMaterial_7boy4")
+
+[node name="Wire6" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1295, -215)
+curve = SubResource("Curve2D_a7fv3")
+on_material = SubResource("ShaderMaterial_bxvdv")
+off_material = SubResource("ShaderMaterial_if0v8")
+
+[node name="Wire7" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1295, -215)
+curve = SubResource("Curve2D_unm8m")
+on_material = SubResource("ShaderMaterial_oycth")
+off_material = SubResource("ShaderMaterial_vysgm")
+
+[node name="Wire8" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1499, -247)
+curve = SubResource("Curve2D_twgy5")
+on_material = SubResource("ShaderMaterial_37tke")
+off_material = SubResource("ShaderMaterial_ca8fg")
+
+[node name="Wire9" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-219, 935)
+rotation = 3.14159
+curve = SubResource("Curve2D_le5e6")
+on_material = SubResource("ShaderMaterial_avx0d")
+off_material = SubResource("ShaderMaterial_njt5l")
+
+[node name="Wire10" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-229, 321)
+rotation = -3.14159
+curve = SubResource("Curve2D_hni7h")
+on_material = SubResource("ShaderMaterial_kwe7k")
+off_material = SubResource("ShaderMaterial_uppr4")
+
+[node name="Wire11" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(0, -5.83997)
+scale = Vector2(1, 0.984)
+curve = SubResource("Curve2D_axjej")
+on_material = SubResource("ShaderMaterial_3rv0e")
+off_material = SubResource("ShaderMaterial_7e82f")
+
+[node name="Wire12" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(949, -470)
+rotation = -3.14024
+scale = Vector2(1, 1.04736)
+curve = SubResource("Curve2D_jacbu")
+on_material = SubResource("ShaderMaterial_i4v80")
+off_material = SubResource("ShaderMaterial_xv77a")
+
+[node name="Wire13" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-818, 19)
+curve = SubResource("Curve2D_y24k3")
+on_material = SubResource("ShaderMaterial_5fvdy")
+off_material = SubResource("ShaderMaterial_lok66")
+
+[node name="Wire14" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-668, -215)
+curve = SubResource("Curve2D_l1ov1")
+on_material = SubResource("ShaderMaterial_foiri")
+off_material = SubResource("ShaderMaterial_u5sap")
+
+[node name="Secrets" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
+
+[node name="SecretHider" parent="SECTION_1/INTRO_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-62, -376)
+things_to_hide = [NodePath("../../Objects/IntroControlPanel"), NodePath("../../Objects/LaserTrap"), NodePath("../../Objects/PowerNode")]
+
+[node name="TileMap" type="TileMap" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider"]
+material = ExtResource("1_a3mvc")
+position = Vector2(62, -456)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-458748, 131073, 2, -524284, 393217, 1, -589820, 458753, 2, -458749, 393217, 1, -524285, 131073, 1, -589821, 393217, 2, -458750, 393217, 1, -524286, 65537, 1, -589822, 131073, 2, -458751, 131073, 1, -524287, 458753, 1, -589823, 131073, 2, -458752, 327681, 2, -524288, 393217, 2, -589824, 327681, 2, -393217, 131073, 1, -458753, 458753, 1, -524289, 393217, 2, -327673, 327681, 2, -393209, 458753, 2, -458745, 458753, 2, -524281, 393217, 1, -589817, 327681, 2, -655353, 65537, 2, -327674, 458753, 2, -393210, 327681, 2, -458746, 393217, 1, -524282, 131073, 1, -589818, 458753, 2, -655354, 131073, 2, -327675, 393217, 2, -393211, 327681, 2, -458747, 65537, 2, -524283, 131073, 1, -589819, 327681, 2, -655355, 458753, 2, -327676, 327681, 3, -393212, 458753, 2, -655356, 458753, 2, -327677, 262145, 3, -393213, 131073, 2, -655357, 131073, 2, -327678, 327681, 3, -393214, 65537, 1, -655358, 327681, 2, -327679, 262145, 3, -393215, 393217, 1, -655359, 393217, 2, -327680, 65537, 1, -393216, 131073, 2, -655360, 458753, 1, -262145, 458753, 1, -327681, 131073, 1, -589825, 327681, 2, -262146, 65537, 2, -327682, 327681, 2, -393218, 458753, 1, -458754, 65537, 2, -524290, 458753, 1, -589826, 458753, 2, -262140, 1, 3, -262141, 196609, 3, -262142, 1, 3, -262143, 196609, 3, -262144, 65537, 6, -262139, 131073, 6, -196608, 65537, 7, -196603, 131073, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider"]
+position = Vector2(256, -932)
+shape = SubResource("RectangleShape2D_bbtnn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider"]
+position = Vector2(256, -751)
+shape = SubResource("RectangleShape2D_im5y0")
+
+[node name="Wire" parent="SECTION_1/INTRO_ROOM/Secrets/SecretHider" instance=ExtResource("8_ls52l")]
+position = Vector2(524, -834)
+curve = SubResource("Curve2D_qek0o")
+on_material = SubResource("ShaderMaterial_aqidn")
+off_material = SubResource("ShaderMaterial_lc4lt")
+
+[node name="Pickups" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
+
+[node name="PickupSpawner" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-254, -388)
+initial_delay = 0.0
+
+[node name="PickupSpawner6" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1238, -829)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+
+[node name="PickupSpawner3" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-618, 145)
+initial_delay = 0.0
+
+[node name="PickupSpawner4" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(317, 478)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+
+[node name="PickupSpawner5" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1025, 194)
+initial_delay = 0.0
+
+[node name="PickupSpawner2" parent="SECTION_1/INTRO_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(871, -445)
+initial_delay = 0.0
+
+[node name="SECTION_2" type="Node2D" parent="."]
+position = Vector2(-5046, -1067)
+
+[node name="GUN_ROOM" type="Node2D" parent="SECTION_2"]
+
+[node name="Objects" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="ControlPanel3" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(207, -111)
+linked_objects_start_active = [NodePath("../Barrier2"), NodePath("../../WireHolder/Wire8")]
+
+[node name="ControlPanel8" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(1298.6, 401)
+linked_objects_start_active = [NodePath("../Barrier5"), NodePath("../../WireHolder/Wire13")]
+
+[node name="ControlPanel6" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_gbw75")]
+position = Vector2(-618, 82)
+rotation = -3.14159
+scale = Vector2(1, -1)
+linked_objects_start_active = [NodePath("../SpikeTrap19"), NodePath("../SpikeTrap20"), NodePath("../SpikeTrap17"), NodePath("../SpikeTrap18"), NodePath("../../WireHolder/Wire10")]
+
+[node name="PowerNode6" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-627, 906.24)
+rotation = 1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../Turret"), NodePath("../Turret3"), NodePath("../LaserTrap16"), NodePath("../../WireHolder/Wire15")]
+
+[node name="PowerNode2" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(923, -430)
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap13"), NodePath("../../WireHolder/Wire3")]
+
+[node name="PowerNode5" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(847, -699)
+rotation = 3.14159
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap15"), NodePath("../Turret4"), NodePath("../SpikeTrap5"), NodePath("../SpikeTrap6"), NodePath("../../WireHolder/Wire4"), NodePath("../../WireHolder/Wire5"), NodePath("../../WireHolder/Wire6"), NodePath("../../Secrets/SecretHider2/Wire")]
+
+[node name="PowerNode3" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1103, -573)
+rotation = -3.14159
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap12"), NodePath("../../WireHolder/Wire2")]
+
+[node name="PowerNode4" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(1367, -430)
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap11"), NodePath("../../WireHolder/Wire")]
+
+[node name="PowerNode9" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-490, -1134)
+linked_objects_start_active = [NodePath("../LaserTrap17"), NodePath("../../WireHolder/Wire17")]
+
+[node name="PowerNode7" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+position = Vector2(-36, -826)
+rotation = -1.57079
+linked_objects_start_active = [NodePath("../LaserTrap18"), NodePath("../../WireHolder/Wire16")]
+
+[node name="PowerNode" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("linked_objects_start_active") instance=ExtResource("6_q7au7")]
+z_index = 7
+position = Vector2(30, -257)
+rotation = -1.57079
+scale = Vector2(0.544061, 0.544061)
+linked_objects_start_active = [NodePath("../LaserTrap22"), NodePath("../Barrier3"), NodePath("../../WireHolder/Wire9"), NodePath("../../WireHolder/Wire7")]
+
+[node name="Save Console2" parent="SECTION_2/GUN_ROOM/Objects" node_paths=PackedStringArray("spawn_position") instance=ExtResource("8_c46gc")]
+position = Vector2(533, 75)
+spawn_position = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="SECTION_2/GUN_ROOM/Objects/Save Console2"]
+position = Vector2(18, -180)
+
+[node name="LaserTrap18" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(117, -1181)
+rotation = -1.57081
+always_on = true
+initial_delay = 0.0
+
+[node name="LaserTrap11" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(1495, -150)
+off_time = 6.0
+initial_delay = 0.0
+
+[node name="LaserTrap16" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-500, -920)
+rotation = 3.14159
+initial_delay = 0.0
+
+[node name="LaserTrap14" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-1228, -245)
+rotation = 1.57079
+off_time = 4.0
+initial_delay = 0.0
+
+[node name="LaserTrap12" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(1207, -151)
+off_time = 6.0
+
+[node name="LaserTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-397, -1051)
+rotation = -1.57081
+always_on = true
+initial_delay = 0.0
+
+[node name="LaserTrap13" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(920, -151)
+off_time = 6.0
+initial_delay = 1.0
+
+[node name="LaserTrap15" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(499, -618)
+rotation = 1.57079
+always_on = true
+initial_delay = 0.0
+
+[node name="LaserTrap22" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-339, -148)
+rotation = 3.14159
+always_on = true
+off_time = 4.0
+initial_delay = 0.0
+
+[node name="LaserTrap20" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-139, -472)
+rotation = 1.57079
+off_time = 4.0
+initial_delay = 0.0
+
+[node name="LaserTrap21" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-272, -596)
+rotation = 3.14159
+off_time = 4.0
+initial_delay = 3.0
+
+[node name="LaserTrap19" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-1225, -497)
+rotation = 1.57079
+off_time = 4.0
+initial_delay = 2.0
+
+[node name="SpikeTrap" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1000, -704)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 0.4
+
+[node name="SpikeTrap2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-651, -554)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.4
+
+[node name="SpikeTrap7" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-845, -704)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 0.8
+
+[node name="SpikeTrap8" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1068, -620)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 0.2
+
+[node name="SpikeTrap9" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-556, -642)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.6
+
+[node name="SpikeTrap10" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-950, -618)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 0.6
+
+[node name="SpikeTrap11" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1126, -705)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 0.0
+
+[node name="SpikeTrap12" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-841, -554)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.0
+
+[node name="SpikeTrap13" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-746, -641)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.2
+
+[node name="SpikeTrap14" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-459, -555)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(1691, -505)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(1691, -442)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(536, -950)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(469, -950)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap15" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(33, -631)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap16" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(33, -569)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(276, 75)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap18" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(276, 75)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap19" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-365, 75)
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="SpikeTrap20" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-365, 75)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.75
+on_time = 4.5
+initial_delay = 1.8
+
+[node name="Turret9" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-1373, -373)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 2.0
+speed_factor = 200
+
+[node name="Turret10" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-1076, -438)
+rotation = -1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 1.0
+off_time = 2.0
+speed_factor = 200
+
+[node name="Turret" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-610, 841.24)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 150
+
+[node name="Turret2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(916, 280)
+rotation = 3.14159
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 2.0
+off_time = 8.0
+speed_factor = 120
+
+[node name="Turret8" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(670, 589)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 4.0
+off_time = 4.0
+speed_factor = 120
+
+[node name="Turret4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(861, -502)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 120
+
+[node name="Turret3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-610, 967.24)
+rotation = 1.57079
+scale = Vector2(0.708333, 0.708333)
+initial_delay = 2.0
+off_time = 4.0
+speed_factor = 150
+
+[node name="SawTrack3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("12_f607i")]
+position = Vector2(-886, 312)
+rotation = 0.463774
+scale = Vector2(0.5, 0.5)
+blade_travel_time = 7
+tween_ease = 3
+tween_trans = 0
+
+[node name="NinePatchRect" parent="SECTION_2/GUN_ROOM/Objects/SawTrack3" index="0"]
+offset_right = 1095.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EndPoint" parent="SECTION_2/GUN_ROOM/Objects/SawTrack3" index="2"]
+position = Vector2(1062, 0)
+
+[node name="SawTrack4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("12_f607i")]
+position = Vector2(-476, 350)
+rotation = -2.67734
+scale = Vector2(0.5, 0.5)
+blade_travel_time = 4
+off_time = 3
+tween_ease = 3
+tween_trans = 0
+
+[node name="NinePatchRect" parent="SECTION_2/GUN_ROOM/Objects/SawTrack4" index="0"]
+offset_right = 1383.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EndPoint" parent="SECTION_2/GUN_ROOM/Objects/SawTrack4" index="2"]
+position = Vector2(1348, 0.000976563)
+
+[node name="Barrier5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(1361.6, 363)
+
+[node name="Barrier2" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(339, -149)
+
+[node name="Barrier3" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(81, -149)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Barrier6" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(1048, 362)
+rotation = 3.14159
+scale = Vector2(1, -1)
+starting_mode = 1
+
+[node name="Door" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-1415, -149)
+
+[node name="Secrets" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="SecretHider2" parent="SECTION_2/GUN_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(1014, -397)
+things_to_hide = [NodePath("../../Objects/Turret4"), NodePath("../../Objects/SpikeTrap5"), NodePath("../../Objects/SpikeTrap6"), NodePath("../../Objects/PowerNode3"), NodePath("../../Objects/PowerNode5"), NodePath("../../Objects/PowerNode4"), NodePath("../../Objects/PowerNode2")]
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131064, 262145, 3, -196600, 65537, 1, -262136, 65537, 1, -327672, 458753, 2, -131065, 393217, 2, -196601, 131073, 1, -262137, 458753, 2, -327673, 65537, 2, -131066, 458753, 1, -196602, 393217, 1, -262138, 393217, 1, -327674, 65537, 1, -131067, 327681, 2, -196603, 65537, 1, -262139, 65537, 1, -327675, 131073, 2, -131068, 393217, 2, -196604, 327681, 2, -262140, 327681, 2, -327676, 458753, 1, -131069, 131073, 1, -196605, 131073, 1, -262141, 393217, 2, -327677, 458753, 1, -131070, 458753, 2, -196606, 393217, 1, -262142, 131073, 2, -327678, 131073, 2, -131071, 65537, 1, -196607, 131073, 1, -262143, 458753, 1, -327679, 65537, 2, -131072, 327681, 2, -196608, 131073, 1, -262144, 131073, 1, -327680, 393217, 2, -65537, 131073, 2, -131073, 327681, 2, -196609, 458753, 1, -262145, 458753, 1, -65538, 131073, 2, -131074, 458753, 2, -196610, 131073, 2, -262146, 458753, 2, -65539, 327681, 2, -131075, 458753, 1, -196611, 131073, 1, -262147, 458753, 2, -4, 458753, 2, -65540, 131073, 2, -131076, 327681, 2, -196612, 131073, 2, -262148, 393217, 1, -131063, 196609, 3, -196599, 262145, 3, -262135, 458753, 1, -196598, 327681, 3, -131062, 1, 3, -327671, 262145, 4, -262134, 327681, 2, -65530, 393217, 1, -65531, 458753, 2, -65532, 393217, 2, -65533, 65537, 1, -65534, 393217, 1, -65535, 327681, 2, -65536, 458753, 1, -1, 393217, 1, -2, 65537, 1, -3, 65537, 1, -65529, 458753, 2, -65528, 196609, 2, 8, 196609, 3, 7, 262145, 3, -327669, 131073, 0, -262133, 65537, 1, -131061, 131073, 3, -196597, 65537, 1, -327684, 65537, 1, -327683, 65537, 1, -327682, 393217, 2, -393218, 65537, 1, -393219, 65537, 2, -393220, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2"]
+visible = false
+position = Vector2(252.5, -108.5)
+shape = SubResource("RectangleShape2D_fobs1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2"]
+visible = false
+position = Vector2(-157, -279.25)
+shape = SubResource("RectangleShape2D_h08wk")
+
+[node name="Wire" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider2" instance=ExtResource("8_ls52l")]
+position = Vector2(60, -1)
+curve = SubResource("Curve2D_qeu4k")
+on_material = SubResource("ShaderMaterial_5qtlb")
+off_material = SubResource("ShaderMaterial_fuabn")
+
+[node name="SecretHider3" parent="SECTION_2/GUN_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-266, -589)
+things_to_hide = [NodePath("../../Objects/LaserTrap17"), NodePath("../../Objects/PowerNode7"), NodePath("../../Objects/LaserTrap16")]
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider3"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-327676, 65537, 2, -393212, 131073, 1, -393213, 458753, 1, -393214, 131073, 1, -393215, 393217, 2, -393216, 458753, 1, -327680, 131073, 2, -327677, 131073, 2, -327678, 65537, 1, -327679, 458753, 2, -327681, 393217, 2, -262145, 327681, 3, -262146, 131073, 3, -327682, 393217, 2, -262147, 262145, 3, -327683, 327681, 2, -262148, 327681, 2, -327684, 393217, 1, -262140, 65537, 2, -262141, 458753, 1, -262142, 393217, 1, -262143, 393217, 1, -262144, 393217, 1, -196609, 1, 1, -196610, 262145, 2, -196611, 196609, 2, -196612, 393217, 1, -196613, 458753, 2, -262149, 65537, 2, -327685, 458753, 1, -458748, 131073, 1, -393221, 327681, 2, -393220, 458753, 2, -393219, 393217, 1, -393218, 65537, 1, -393217, 327681, 2, -458752, 131073, 1, -458751, 393217, 2, -524287, 65537, 1, -589823, 458753, 2, -524288, 458753, 2, -589824, 393217, 1, -458753, 65537, 2, -524289, 327681, 4, -458754, 458753, 1, -524290, 65537, 0, -458755, 327681, 2, -524291, 65537, 0, -458756, 65537, 2, -524292, 65537, 0, -458757, 327681, 2, -524293, 262145, 4, -458750, 458753, 2, -262150, 131073, 1, -327686, 65537, 1, -393222, 65537, 1, -458749, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider3"]
+visible = false
+position = Vector2(-19.625, -320.5)
+shape = SubResource("RectangleShape2D_ecf2g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider3"]
+visible = false
+position = Vector2(-458.5, -740)
+shape = SubResource("RectangleShape2D_id7nr")
+
+[node name="SecretHider4" parent="SECTION_2/GUN_ROOM/Secrets" node_paths=PackedStringArray("things_to_hide") instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-266, 435)
+things_to_hide = [NodePath("../../Objects/SpikeTrap17"), NodePath("../../Objects/SpikeTrap18"), NodePath("../../Objects/SpikeTrap19"), NodePath("../../Objects/SpikeTrap20"), NodePath("../../Objects/ControlPanel6")]
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider4"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-524291, 65537, 0, -524292, 1, 0, -524293, 262145, 0, -524294, 196609, 0, -327687, 65537, 1, -393223, 65537, 2, -458759, 65537, 1, -524295, 131073, 0, -393207, 262145, 4, -458743, 196609, 0, -524279, 196609, 3, -458758, 262145, 4, -393222, 131073, 2, -327686, 131073, 1, -458757, 65537, 0, -393221, 393217, 2, -327685, 65537, 1, -458756, 327681, 4, -393220, 131073, 2, -327684, 393217, 1, -458755, 65537, 1, -393219, 327681, 2, -327683, 458753, 1, -458754, 393217, 1, -393218, 393217, 2, -327682, 65537, 1, -458753, 458753, 1, -393217, 458753, 2, -327681, 131073, 1, -524288, 65537, 1, -458752, 65537, 2, -393216, 65537, 1, -524287, 131073, 1, -458751, 131073, 2, -393215, 131073, 1, -524286, 65537, 1, -458750, 131073, 2, -393214, 65537, 1, -524285, 393217, 1, -458749, 327681, 2, -393213, 393217, 1, -524284, 458753, 1, -458748, 327681, 2, -393212, 458753, 1, -524283, 393217, 1, -458747, 393217, 2, -393211, 393217, 1, -524282, 458753, 1, -458746, 458753, 2, -393210, 458753, 1, -524281, 65537, 1, -458745, 65537, 2, -393209, 65537, 1, -524280, 262145, 3, -458744, 262145, 4, -393208, 131073, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_2/GUN_ROOM/Secrets/SecretHider4"]
+visible = false
+position = Vector2(120.5, -395.25)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_v73mb")
+
+[node name="WireHolder" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="Wire5" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(653, -633)
+curve = SubResource("Curve2D_stcqi")
+on_material = SubResource("ShaderMaterial_vocd1")
+off_material = SubResource("ShaderMaterial_wbm3e")
+
+[node name="Wire16" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-64, -992)
+curve = SubResource("Curve2D_0vygq")
+on_material = SubResource("ShaderMaterial_bjcj5")
+off_material = SubResource("ShaderMaterial_seiqx")
+
+[node name="Wire11" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(886, 324)
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_5e1ns")
+flip = true
+on_material = SubResource("ShaderMaterial_5nh2n")
+off_material = SubResource("ShaderMaterial_tsafc")
+
+[node name="Wire14" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-1146, 932)
+rotation = 3.14159
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_u85v6")
+on_material = SubResource("ShaderMaterial_6w0gi")
+off_material = SubResource("ShaderMaterial_gpd7d")
+
+[node name="Wire15" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-775, -26.0002)
+rotation = 2.99483
+scale = Vector2(0.993421, 0.855451)
+curve = SubResource("Curve2D_ovg6f")
+on_material = SubResource("ShaderMaterial_xke4n")
+off_material = SubResource("ShaderMaterial_sy5w7")
+
+[node name="Wire" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(1403, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_0jsck")
+on_material = SubResource("ShaderMaterial_m3unl")
+off_material = SubResource("ShaderMaterial_fmyt5")
+
+[node name="Wire9" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(-196, -200)
+rotation = -3.14159
+curve = SubResource("Curve2D_np7we")
+on_material = SubResource("ShaderMaterial_kjr66")
+off_material = SubResource("ShaderMaterial_n03r5")
+
+[node name="Wire3" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(820, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_b6677")
+on_material = SubResource("ShaderMaterial_5485h")
+off_material = SubResource("ShaderMaterial_velfu")
+
+[node name="Wire4" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(664, -580)
+rotation = -3.14159
+curve = SubResource("Curve2D_11rva")
+on_material = SubResource("ShaderMaterial_0t0hj")
+off_material = SubResource("ShaderMaterial_gr8k3")
+
+[node name="Wire6" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(999, -537)
+rotation = -4.71238
+curve = SubResource("Curve2D_6ag6e")
+on_material = SubResource("ShaderMaterial_k48x4")
+off_material = SubResource("ShaderMaterial_w2qfw")
+
+[node name="Wire2" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+z_index = 6
+position = Vector2(1107, -288)
+rotation = -3.14159
+curve = SubResource("Curve2D_rnomy")
+on_material = SubResource("ShaderMaterial_ylwwg")
+off_material = SubResource("ShaderMaterial_gyppx")
+
+[node name="Wire7" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(42, -201)
+rotation = 2.99415
+curve = SubResource("Curve2D_3uctu")
+on_material = SubResource("ShaderMaterial_bhrg4")
+off_material = SubResource("ShaderMaterial_qypnb")
+
+[node name="Wire8" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+curve = SubResource("Curve2D_62vsl")
+on_material = SubResource("ShaderMaterial_25n6a")
+off_material = SubResource("ShaderMaterial_a1pkv")
+
+[node name="Wire10" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-64, 187)
+curve = SubResource("Curve2D_72yae")
+on_material = SubResource("ShaderMaterial_5hsep")
+off_material = SubResource("ShaderMaterial_raw3i")
+
+[node name="Wire12" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1079, 475)
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_skunw")
+off_material = SubResource("ShaderMaterial_7brje")
+
+[node name="Wire17" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(-521, -1049)
+rotation = 1.9223
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_rqg3b")
+off_material = SubResource("ShaderMaterial_28gu8")
+
+[node name="Wire13" parent="SECTION_2/GUN_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
+position = Vector2(1331, 482)
+rotation = 0.92601
+curve = SubResource("Curve2D_kx30k")
+on_material = SubResource("ShaderMaterial_tqknv")
+off_material = SubResource("ShaderMaterial_dakey")
+
+[node name="Pickups" type="Node2D" parent="SECTION_2/GUN_ROOM"]
+
+[node name="PickupSpawner9" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-142, 600)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner12" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-363, -700)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner10" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(186, 1122.24)
+respawn_time = 10
+
+[node name="PickupSpawner11" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-49, 606)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner13" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1361, -449)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner14" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1099, -381)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner15" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1281, -748)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner16" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-1211, -809)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="GunPickupSpawner" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-165, -240)
+thing_to_spawn = ExtResource("23_c562g")
+initial_delay = 0.0
+respawn_time = 0
+automatic_respawn = false
+
+[node name="PickupSpawner7" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1498, 314)
+initial_delay = 0.0
+
+[node name="PickupSpawner8" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(1603, -473)
+initial_delay = 0.0
+
+[node name="BATTERY_ZONE" type="Node2D" parent="SECTION_2"]
+
+[node name="Objects" type="Node2D" parent="SECTION_2/BATTERY_ZONE"]
+
+[node name="PowerNode10" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-1204, -1838)
+rotation = 1.57079
+
+[node name="PowerNode11" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(464, -1519)
+rotation = 1.57079
+
+[node name="PowerNode12" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(1179, -1581)
+
+[node name="Turret5" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-816, -1771)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 4.0
+
+[node name="Turret6" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-751, -1770)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 1.0
+off_time = 2.0
+
+[node name="Turret7" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-686, -1771)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="Turret11" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(1227, -1719)
+rotation = -1.57081
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="Turret12" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(1227, -1649)
+rotation = -1.57081
+scale = Vector2(0.708, 0.708)
+initial_delay = 2.0
+off_time = 4.0
+
+[node name="LaserTrap29" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-459, -1592)
+rotation = -1.57079
+off_time = 6.0
+initial_delay = 0.0
+
+[node name="LaserTrap25" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(1100, -1686)
+rotation = 3.14159
+always_on = true
+initial_delay = 0.0
+
+[node name="LaserTrap24" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-458, -1334)
+rotation = -1.57081
+always_on = true
+initial_delay = 0.0
+
+[node name="Barrier7" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("9_kt32a")]
+position = Vector2(563, -1586)
+rotation = -1.57079
+
+[node name="SpikeTrap21" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(153, -1263)
+rotation = -1.57081
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap22" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(146, -1407)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap24" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(404, -1407)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap25" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(81, -1341)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap28" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(276, -1327)
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap31" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(594, -1398)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap32" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(594, -1336)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpinTrap" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-560, -1686)
+off_time = 2.0
+on_time = 3.0
+initial_delay = 0.05
+
+[node name="SpinTrap2" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-362, -1686)
+off_time = 2.0
+on_time = 3.0
+initial_delay = 0.05
+
+[node name="SpinTrap3" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(564, -1461)
+rotation = -1.57079
+off_time = 1.0
+on_time = 3.0
+initial_delay = 0.01
+
+[node name="PowerNode13" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(924, -2160)
+
+[node name="PowerNode14" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(78, -2363)
+rotation = -3.14159
+
+[node name="LaserTrap26" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(393, -1941)
+rotation = 3.14159
+always_on = true
+initial_delay = 0.0
+
+[node name="LaserTrap27" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(657, -1941)
+rotation = 3.14159
+always_on = true
+initial_delay = 0.0
+
+[node name="SpikeTrap33" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(342, -2165)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap34" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(342, -2165)
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap35" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(723, -2357)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap36" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(723, -2357)
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="ControlPanel7" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_gbw75")]
+position = Vector2(-1311, -2287)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="PowerNode17" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-57, -2044)
+rotation = -1.57078
+
+[node name="Turret14" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-844, -2301)
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 2.0
+speed_factor = 50
+
+[node name="LaserTrap30" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-458, -2106)
+rotation = -1.57079
+off_time = 6.0
+
+[node name="LaserTrap31" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(-459, -1916)
+rotation = -1.57079
+off_time = 6.0
+initial_delay = 1.0
+
+[node name="Door4" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-918, -2325)
+scale = Vector2(0.67, 0.67)
+
+[node name="Turret13" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("13_ulx8t")]
+position = Vector2(-456, -2477)
+rotation = 3.14159
+scale = Vector2(0.708, 0.708)
+initial_delay = 0.0
+off_time = 4.0
+speed_factor = 13
+
+[node name="WireHolder" type="Node2D" parent="SECTION_2/BATTERY_ZONE"]
+
+[node name="Secrets" type="Node2D" parent="SECTION_2/BATTERY_ZONE"]
+
+[node name="SecretHider4" parent="SECTION_2/BATTERY_ZONE/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-970, -1229)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider4"]
+material = ExtResource("1_a3mvc")
+position = Vector2(0, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-720897, 327681, 2, -655361, 131073, 1, -589825, 131073, 2, -524289, 65537, 1, -458753, 393217, 2, -393217, 393217, 2, -327681, 65537, 1, -262145, 131073, 2, -196609, 131073, 1, -131073, 327681, 2, -65537, 458753, 1, -1, 65537, 1, 65535, 327681, 2, 131071, 131073, 2, 196607, 65537, 1, 262143, 131073, 1, 327679, 131073, 1, 393215, 65537, 2, -786432, 458753, 1, -720896, 65537, 2, -655360, 393217, 1, -589824, 393217, 2, -524288, 131073, 1, -458752, 327681, 2, -393216, 131073, 2, -327680, 65537, 2, -262144, 393217, 2, -196608, 327681, 2, -131072, 65537, 2, -65536, 65537, 2, 0, 65537, 2, 65536, 131073, 1, 131072, 327681, 2, 196608, 458753, 1, 262144, 65537, 1, 327680, 458753, 1, -786431, 458753, 1, -720895, 327681, 2, -655359, 65537, 2, -589823, 65537, 2, -524287, 393217, 1, -458751, 65537, 1, -393215, 458753, 1, -327679, 393217, 2, -262143, 393217, 1, -196607, 65537, 1, -131071, 393217, 1, -65535, 458753, 1, 1, 327681, 2, 65537, 131073, 2, 131073, 327681, 2, 196609, 458753, 2, 262145, 458753, 2, 327681, 131073, 1, -786430, 65537, 2, -720894, 131073, 1, -655358, 65537, 2, -589822, 458753, 2, -524286, 458753, 2, -458750, 458753, 2, -393214, 393217, 1, -327678, 458753, 2, -262142, 458753, 1, -196606, 131073, 2, -131070, 65537, 1, -65534, 393217, 2, 2, 393217, 2, 65538, 131073, 1, 131074, 327681, 2, 196610, 65537, 1, 262146, 65537, 1, 327682, 393217, 1, -786429, 131073, 2, -720893, 458753, 1, -655357, 393217, 1, -589821, 131073, 1, -524285, 131073, 1, -458749, 393217, 2, -393213, 393217, 2, -327677, 65537, 1, -262141, 131073, 2, -196605, 458753, 1, -131069, 65537, 1, -65533, 65537, 1, 3, 65537, 1, 65539, 393217, 2, 131075, 393217, 2, 196611, 131073, 2, 262147, 65537, 2, 327683, 327681, 2, -786428, 458753, 1, -720892, 458753, 1, -655356, 131073, 1, -589820, 262145, 3, -524284, 262145, 4, -458748, 393217, 1, -393212, 393217, 2, -327676, 65537, 1, -262140, 393217, 2, -196604, 65537, 2, -131068, 65537, 1, -65532, 458753, 1, 4, 393217, 2, 65540, 65537, 2, 131076, 65537, 2, 196612, 131073, 1, 262148, 65537, 2, 327684, 393217, 2, -655355, 262145, 3, -589819, 196609, 3, -524283, 196609, 0, -458747, 262145, 4, -393218, 458753, 2, -458754, 327681, 2, -524290, 131073, 2, -589826, 327681, 2, -655362, 458753, 2, -720898, 458753, 2, -393219, 65537, 1, -458755, 65537, 2, -524291, 131073, 1, -589827, 458753, 2, -655363, 458753, 2, -720899, 458753, 2, -393220, 393217, 1, -458756, 393217, 2, -524292, 458753, 2, -589828, 393217, 2, -655364, 393217, 2, -720900, 458753, 1, -393221, 65537, 1, -458757, 65537, 2, -524293, 65537, 2, -589829, 65537, 2, -655365, 458753, 1, -720901, 131073, 2, 131077, 65537, 1, 65541, 65537, 1, 5, 65537, 1, -65531, 65537, 1, -131067, 65537, 1, -196603, 65537, 1, -262139, 65537, 1, -327675, 65537, 1, -393211, 65537, 1, -720891, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider4"]
+visible = false
+position = Vector2(181.5, -57.5)
+shape = SubResource("RectangleShape2D_id7nr")
+
+[node name="SecretHider6" parent="SECTION_2/BATTERY_ZONE/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(890, -3149)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider6"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(851967, 196609, 2, 786431, 196609, 2, 720895, 262145, 3, 851966, 131073, 2, 786430, 131073, 1, 720894, 131073, 2, 851965, 327681, 4, 786429, 1, 1, 720893, 327681, 3, 851964, 1, 0, 786428, 327681, 0, 720892, 1, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider6"]
+visible = false
+position = Vector2(-132.5, 794.938)
+shape = SubResource("RectangleShape2D_1eg2i")
+
+[node name="SecretHider7" parent="SECTION_2/BATTERY_ZONE/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(442, -2957)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider7"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(851967, 196609, 0, 786431, 458753, 0, 720895, 196609, 3, 851966, 262145, 4, 786430, 196609, 1, 720894, 262145, 3, 851965, 131073, 2, 786429, 393217, 2, 720893, 131073, 2, 851964, 393217, 2, 786428, 131073, 2, 720892, 393217, 2, 720891, 1, 1, 786427, 1, 1, 851963, 327681, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider7"]
+visible = false
+position = Vector2(-132.5, 794.938)
+shape = SubResource("RectangleShape2D_1eg2i")
+
+[node name="SecretHider8" parent="SECTION_2/BATTERY_ZONE/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(1338, -2454)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider8"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-67, 1)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(786432, 327681, 2, 720896, 327681, 2, 655360, 131073, 1, 589824, 65537, 2, 851967, 327681, 2, 786431, 393217, 1, 720895, 131073, 2, 655359, 458753, 2, 851966, 458753, 1, 786430, 393217, 1, 720894, 65537, 2, 655358, 458753, 1, 851965, 131073, 2, 786429, 65537, 2, 720893, 65537, 2, 655357, 393217, 1, 851964, 327681, 4, 786428, 327681, 3, 720892, 458753, 1, 655356, 131073, 2, 851963, 1, 0, 786427, 1, 3, 720891, 327681, 3, 655355, 131073, 1, 851968, 131073, 2, 917503, 458753, 2, 917502, 393217, 1, 917501, 131073, 1, 917500, 65537, 1, 917499, 327681, 4, 983036, 393217, 2, 983037, 458753, 1, 983038, 458753, 2, 983039, 131073, 1, 917504, 131073, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BATTERY_ZONE/Secrets/SecretHider8"]
+visible = false
+position = Vector2(-218, 804.5)
+shape = SubResource("RectangleShape2D_163ga")
+
+[node name="Pickups" type="Node2D" parent="SECTION_2/BATTERY_ZONE"]
+
+[node name="BOSS_APPROACH" type="Node2D" parent="SECTION_2"]
+
+[node name="Objects" type="Node2D" parent="SECTION_2/BOSS_APPROACH"]
+
+[node name="ControlPanel5" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("6_gbw75")]
+position = Vector2(-164, -2411)
+
+[node name="PowerNode15" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(14, -3056)
+rotation = 1.57081
+
+[node name="PowerNode16" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-1127, -3185)
+
+[node name="SpikeTrap37" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(276, -2872)
+rotation = 1.57081
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap38" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(276, -2872)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 1.0
+on_time = 5.0
+initial_delay = 0.25
+
+[node name="SpikeTrap39" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1004, -3381)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 0.0
+
+[node name="SpikeTrap40" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1004, -3381)
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 2.5
+
+[node name="SpikeTrap41" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1229, -3188)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 0.0
+
+[node name="SpikeTrap43" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1229, -2996)
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 0.0
+
+[node name="SpikeTrap45" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1138, -2806)
+rotation = 1.57081
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 0.0
+
+[node name="SpikeTrap46" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1126, -2663)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 2.5
+
+[node name="SpikeTrap42" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1324, -3095)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 2.5
+
+[node name="SpikeTrap44" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("10_i3rmq")]
+position = Vector2(-1126, -2929)
+rotation = -1.57081
+scale = Vector2(0.5, 0.5)
+off_time = 2.0
+initial_delay = 2.5
+
+[node name="SawTrack5" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("12_f607i")]
+z_index = 7
+position = Vector2(-67, -2642)
+scale = Vector2(0.5, 0.5)
+delay_time = 0.0
+blade_travel_time = 8
+
+[node name="NinePatchRect" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5" index="0"]
+offset_left = -656.0
+offset_top = -10.0
+offset_right = 1136.0
+offset_bottom = 20.0
+
+[node name="StartPoint" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5" index="1"]
+position = Vector2(-580, 0.000610352)
+
+[node name="EndPoint" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5" index="2"]
+position = Vector2(1084, 0)
+
+[node name="SawHolder" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5" index="3"]
+position = Vector2(-600, 0.000610352)
+
+[node name="SawTrack6" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("12_f607i")]
+z_index = 7
+position = Vector2(-82, -2773)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+delay_time = 0.0
+blade_travel_time = 4
+off_time = 4
+tween_trans = 11
+
+[node name="NinePatchRect" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6" index="0"]
+offset_left = -656.0
+offset_top = -10.0
+offset_right = 631.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StartPoint" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6" index="1"]
+position = Vector2(-580, 0.000610352)
+
+[node name="EndPoint" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6" index="2"]
+position = Vector2(554, 0.00195313)
+
+[node name="SawHolder" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6" index="3"]
+position = Vector2(-600, 0.000610352)
+
+[node name="SpinTrap4" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-202, -2560)
+rotation = 1.5708
+off_time = 1.0
+on_time = 3.0
+initial_delay = 0.01
+
+[node name="SpinTrap5" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-843, -2615)
+rotation = 1.5708
+off_time = 1.0
+on_time = 20.0
+
+[node name="SpinTrap9" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-495, -2709)
+rotation = 3.14159
+off_time = 1.0
+on_time = 20.0
+
+[node name="SpinTrap6" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-843, -2938)
+rotation = 1.5708
+off_time = 1.0
+on_time = 20.0
+
+[node name="SpinTrap7" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
+position = Vector2(-843, -3194)
+rotation = 1.5708
+off_time = 1.0
+on_time = 20.0
+
+[node name="Door3" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-395, -3234)
+rotation = -1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door13" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(-589, -3349)
+scale = Vector2(0.67, 0.67)
+start_closed = false
+
+[node name="PowerNode18" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(1244, -3383)
+rotation = -1.57079
+scale = Vector2(0.544061, 0.544061)
+
+[node name="Save Console3" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("8_c46gc")]
+position = Vector2(805, -2870)
+
+[node name="LaserTrap28" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("7_ela7u")]
+position = Vector2(691, -2808)
+rotation = -1.5708
+off_time = 5.55556e+14
+on_time = 0.0
+initial_delay = 5.55556e+11
+
+[node name="Door" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(617, -3093)
+scale = Vector2(0.67, 0.67)
+
+[node name="Door5" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(830, -2582)
+rotation = -3.14159
+scale = Vector2(0.67, 0.67)
+start_closed = false
+
+[node name="Door6" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(950, -2581)
+rotation = -3.14159
+scale = Vector2(0.67, 0.67)
+
+[node name="Door2" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(501, -3267)
+rotation = -1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="WireHolder" type="Node2D" parent="SECTION_2/BOSS_APPROACH"]
+
+[node name="Secrets" type="Node2D" parent="SECTION_2/BOSS_APPROACH"]
+
+[node name="SecretHider9" parent="SECTION_2/BOSS_APPROACH/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(442, -2957)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider9"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-4, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(131070, 1, 3, 65534, 327681, 3, -2, 131073, 1, -65538, 131073, 2, -131074, 393217, 1, -196610, 393217, 2, 131069, 131073, 8, 65533, 65537, 3, -3, 131073, 2, -65539, 327681, 2, -131075, 393217, 1, -196611, 458753, 1, 65532, 262145, 3, -4, 458753, 1, -65540, 131073, 1, -131076, 131073, 2, -196612, 458753, 2, 65531, 65537, 1, -5, 327681, 2, -65541, 65537, 1, -131077, 458753, 1, -196613, 65537, 1, 65530, 393217, 1, -6, 393217, 2, -65542, 327681, 4, -131078, 1, 1, -196614, 327681, 3, 131068, 196609, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider9"]
+visible = false
+position = Vector2(-230.75, -8)
+shape = SubResource("RectangleShape2D_ot53u")
+
+[node name="SecretHider11" parent="SECTION_2/BOSS_APPROACH/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(442, -2957)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider11"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-523, -72)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131079, 65537, 1, -65543, 65537, 1, -7, 327681, 2, 65529, 131073, 1, -131078, 262145, 4, -65542, 65537, 2, -6, 131073, 1, 65530, 327681, 2, -131077, 327681, 4, -65541, 393217, 2, -5, 393217, 1, 65531, 458753, 2, -131076, 393217, 2, -65540, 393217, 1, -4, 131073, 2, 65532, 393217, 2, -131075, 458753, 1, -65539, 65537, 1, -3, 131073, 2, 65533, 65537, 2, -196615, 65537, 0, -196612, 131073, 0, -196614, 196609, 0, -196613, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider11"]
+visible = false
+position = Vector2(-821, -144)
+shape = SubResource("RectangleShape2D_ot53u")
+
+[node name="SecretHider13" parent="SECTION_2/BOSS_APPROACH/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-904, -3381)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider13"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-514, -96)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(262147, 196609, 1, 327683, 262145, 4, 196608, 131073, 2, 262144, 393217, 1, 327680, 393217, 1, 393216, 458753, 1, 458752, 131073, 2, 196609, 327681, 2, 262145, 393217, 1, 327681, 393217, 2, 393217, 131073, 1, 458753, 327681, 2, 196610, 131073, 1, 262146, 327681, 2, 327682, 458753, 2, 393218, 393217, 2, 458754, 131073, 2, 524288, 327681, 2, 589824, 393217, 1, 655360, 458753, 1, 720896, 65537, 1, 786432, 393217, 1, 851968, 458753, 1, 917504, 458753, 2, 524289, 65537, 1, 589825, 393217, 1, 655361, 458753, 1, 720897, 131073, 1, 786433, 65537, 1, 851969, 327681, 2, 917505, 65537, 2, 524290, 65537, 2, 589826, 65537, 2, 655362, 131073, 1, 720898, 393217, 1, 786434, 393217, 2, 851970, 458753, 1, 917506, 458753, 2, 393219, 393217, 2, 458755, 393217, 1, 524291, 131073, 2, 589827, 65537, 1, 655363, 393217, 1, 720899, 65537, 2, 786435, 65537, 2, 851971, 458753, 2, 917507, 458753, 2, 393220, 131073, 2, 458756, 393217, 1, 524292, 458753, 2, 589828, 393217, 1, 655364, 131073, 1, 720900, 393217, 2, 786436, 65537, 2, 851972, 65537, 1, 917508, 458753, 1, 393221, 65537, 2, 458757, 327681, 2, 524293, 327681, 2, 589829, 131073, 1, 655365, 458753, 2, 720901, 65537, 1, 786437, 65537, 1, 851973, 65537, 2, 917509, 65537, 2, 983040, 131073, 2, 1048576, 393217, 1, 1114112, 393217, 1, 1179648, 458753, 2, 1245184, 65537, 1, 983041, 393217, 1, 1048577, 65537, 1, 1114113, 327681, 2, 1179649, 458753, 1, 1245185, 393217, 1, 983042, 458753, 2, 1048578, 458753, 2, 1114114, 65537, 2, 1179650, 65537, 1, 1245186, 327681, 2, 983043, 131073, 1, 1048579, 393217, 2, 1114115, 65537, 1, 1179651, 393217, 1, 1245187, 327681, 2, 983044, 458753, 2, 1048580, 131073, 2, 1114116, 458753, 1, 1179652, 65537, 2, 1245188, 327681, 2, 983045, 327681, 2, 1048581, 393217, 1, 1114117, 65537, 1, 1179653, 393217, 1, 1245189, 458753, 1, 983046, 327681, 2, 1048582, 65537, 1, 1114118, 458753, 1, 1179654, 393217, 2, 1245190, 458753, 1, 1245191, 262145, 4, 1179655, 196609, 2, 1114119, 196609, 1, 1048583, 196609, 2, 196613, 1, 1, 196611, 196609, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider13"]
+visible = false
+position = Vector2(-234.5, 692)
+shape = SubResource("RectangleShape2D_87iw0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider13"]
+visible = false
+position = Vector2(-377.75, 218.5)
+shape = SubResource("RectangleShape2D_rpntm")
+
+[node name="SecretHider12" parent="SECTION_2/BOSS_APPROACH/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(-904, -3381)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider12"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-514, -96)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(4, 131073, 1, 65540, 393217, 1, 131076, 393217, 1, 5, 458753, 1, 65541, 65537, 2, 131077, 327681, 2, 6, 262145, 3, 65542, 262145, 4, 131078, 65537, 2, 7, 65537, 3, 65543, 196609, 0, 131079, 196609, 2, 3, 65537, 1, 65539, 393217, 1, 131075, 458753, 1, 196612, 65537, 3, 196611, 262145, 3, 196613, 327681, 3, 262147, 196609, 1, 327683, 262145, 4, 8, 65537, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider12"]
+visible = false
+position = Vector2(-234.5, 517)
+shape = SubResource("RectangleShape2D_02evd")
+
+[node name="SecretHider10" parent="SECTION_2/BOSS_APPROACH/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(442, -2960)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider10"]
+material = ExtResource("1_a3mvc")
+position = Vector2(-387, 571)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(65533, 131073, 2, -3, 393217, 2, -65539, 131073, 1, -131075, 393217, 1, -196611, 131073, 0, 65532, 65537, 2, -4, 393217, 1, -65540, 65537, 1, -131076, 327681, 4, -196612, 1, 0, 65531, 65537, 2, -5, 393217, 2, -65541, 65537, 2, -131077, 262145, 4, -196613, 196609, 0, 65530, 458753, 2, -6, 65537, 1, -65542, 65537, 1, -131078, 458753, 1, -196614, 65537, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS_APPROACH/Secrets/SecretHider10"]
+visible = false
+position = Vector2(-635, 454)
+shape = SubResource("RectangleShape2D_oixbk")
+
+[node name="Pickups" type="Node2D" parent="SECTION_2/BOSS_APPROACH"]
+
+[node name="PickupSpawner19" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-367, -3097)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner20" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-429, -3096)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner17" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(285, -1948)
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="PickupSpawner18" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(786, -1950)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 10
+
+[node name="BOSS" type="Node2D" parent="SECTION_2"]
+
+[node name="Objects" type="Node2D" parent="SECTION_2/BOSS"]
+
+[node name="PowerNode19" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(1231, -3707)
+rotation = -3.14159
+scale = Vector2(0.544061, 0.544061)
+
+[node name="PowerNode20" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(1243, -3887)
+scale = Vector2(0.544061, 0.544061)
+
+[node name="PowerNode21" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-562, -3834)
+rotation = -3.14157
+scale = Vector2(0.544061, 0.544061)
+
+[node name="PowerNode22" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-753, -3947)
+rotation = 1.57077
+scale = Vector2(0.544061, 0.544061)
+
+[node name="PowerNode23" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(-753, -4462)
+rotation = 1.57077
+scale = Vector2(0.544061, 0.544061)
+
+[node name="PowerNode24" parent="SECTION_2/BOSS/Objects" instance=ExtResource("6_q7au7")]
+position = Vector2(1039, -4477)
+rotation = -3.14157
+scale = Vector2(0.544061, 0.544061)
+
+[node name="Door7" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4384)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door8" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4448)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door9" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4512)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door10" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4576)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door11" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4640)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="Door12" parent="SECTION_2/BOSS/Objects" instance=ExtResource("5_6bcy1")]
+position = Vector2(309, -4704)
+rotation = 1.57079
+scale = Vector2(0.67, 0.67)
+
+[node name="WireHolder" type="Node2D" parent="SECTION_2/BOSS"]
+
+[node name="Secrets" type="Node2D" parent="SECTION_2/BOSS"]
+
+[node name="SecretHider14" parent="SECTION_2/BOSS/Secrets" instance=ExtResource("24_udsjm")]
+z_index = 6
+position = Vector2(442, -2957)
+
+[node name="TileMap" type="TileMap" parent="SECTION_2/BOSS/Secrets/SecretHider14"]
+material = ExtResource("1_a3mvc")
+position = Vector2(60, 56)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("25_144ko")
+format = 2
+layer_0/name = "Secret"
+layer_0/tile_data = PackedInt32Array(-131071, 196609, 1, -196607, 196609, 2, -262143, 196609, 1, -327679, 262145, 3, -393215, 131073, 0, -131072, 458753, 2, -196608, 458753, 2, -262144, 393217, 1, -327680, 458753, 2, -393216, 65537, 0, -65537, 327681, 2, -131073, 393217, 1, -196609, 131073, 1, -262145, 393217, 2, -327681, 131073, 0, -65538, 65537, 2, -131074, 393217, 1, -196610, 458753, 1, -262146, 458753, 1, -327682, 65537, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SECTION_2/BOSS/Secrets/SecretHider14"]
+visible = false
+position = Vector2(82.5, -189.5)
+shape = SubResource("RectangleShape2D_66wrd")
+
+[node name="Pickups" type="Node2D" parent="SECTION_2/BOSS"]
+
+[node name="PickupSpawner21" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(690, -3541)
+initial_delay = 0.0
+respawn_time = 20
+
+[node name="PickupSpawner22" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
+position = Vector2(-55, -4282)
+thing_to_spawn = ExtResource("22_8kxxg")
+initial_delay = 0.0
+respawn_time = 20
+
+[node name="FOREGROUND" type="Node2D" parent="." groups=["foreground"]]
 z_index = 500
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-230, -451)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="Lights" type="Node2D" parent="CanvasModulate"]
+position = Vector2(-66, -385)
+
+[node name="LightHolderThing" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-255, -356)
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+
+[node name="LightHolderThing3" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-527, -254)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+
+[node name="LightHolderThing6" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(248, -122)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+light_color = Color(1, 0.878431, 0.796078, 1)
+light_mode = 1
+
+[node name="LightHolderThing7" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(575, 790)
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+light_color = Color(1, 0.878431, 0.796078, 1)
+light_mode = 1
+
+[node name="LightHolderThing8" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(1280, 751)
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+light_color = Color(1, 0.878431, 0.796078, 1)
+light_mode = 1
+
+[node name="LightHolderThing9" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-648, 767)
+rotation = -1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+light_color = Color(1, 0.878431, 0.796078, 1)
+light_mode = 1
+
+[node name="LightHolderThing10" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-3578, -361)
+rotation = -3.14159
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+light_color = Color(1, 0.878431, 0.796078, 1)
+light_mode = 1
+
+[node name="LightHolderThing4" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(1348, -258)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+
+[node name="LightHolderThing5" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-1090, -254)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+
+[node name="LightHolderThing11" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-4319, -963)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.25
+
+[node name="LightHolderThing12" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-4164, -266)
+rotation = -3.14159
+scale = Vector2(0.1, 0.1)
+delay_time = 0.3
+
+[node name="LightHolderThing13" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-5926, -904)
+rotation = -1.57079
+scale = Vector2(0.1, 0.1)
+delay_time = 0.1
+
+[node name="LightHolderThing14" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(-5250, -1001)
+rotation = -3.14159
+scale = Vector2(0.1, 0.1)
+delay_time = 0.8
+
+[node name="LightHolderThing2" parent="CanvasModulate/Lights" instance=ExtResource("24_43n7f")]
+position = Vector2(763, -302)
+scale = Vector2(0.1, 0.1)
+delay_time = 1.0
+
+[node name="AsteroidLight" type="PointLight2D" parent="CanvasModulate"]
+position = Vector2(-2480, -2340)
+rotation = -1.57079
+scale = Vector2(30.3537, 32.3313)
+color = Color(1, 0.823529, 0.768627, 1)
+energy = 3.23
+range_item_cull_mask = 512
+texture = SubResource("GradientTexture2D_w447r")
+
+[node name="WireLight" type="PointLight2D" parent="CanvasModulate"]
+visible = false
+position = Vector2(-1856, -951)
+rotation = -1.57079
+scale = Vector2(30.3537, 32.3313)
+energy = 0.75
+range_item_cull_mask = 32768
+texture = SubResource("PlaceholderTexture2D_ft5ub")
+texture_scale = 50.0
+
+[editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel/TogglerComponent"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/conTROLLpanel"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/SawTrack"]
+[editable path="SECTION_1/INTRO_ROOM/Objects/SawTrack2"]
+[editable path="SECTION_2/GUN_ROOM/Objects/SawTrack3"]
+[editable path="SECTION_2/GUN_ROOM/Objects/SawTrack4"]
+[editable path="SECTION_2/BOSS_APPROACH/Objects/SawTrack5"]
+[editable path="SECTION_2/BOSS_APPROACH/Objects/SawTrack6"]

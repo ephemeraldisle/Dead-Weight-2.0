@@ -6,4 +6,4 @@
 shader = ExtResource("1_2aal6")
 shader_parameter/color_a = Color(1, 1, 1, 1)
 shader_parameter/color_b = Color(1, 0, 0, 1)
-shader_parameter/speed_factor = 5.0
+shader_parameter/speed_factor = 3.0

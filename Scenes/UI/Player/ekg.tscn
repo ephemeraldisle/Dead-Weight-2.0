@@ -1,0 +1,345 @@
+[gd_scene load_steps=26 format=3 uid="uid://dvl23gobvxmx"]
+
+[ext_resource type="Texture2D" uid="uid://5elhfg0itwc" path="res://Art/UI/ECG/ECG.svg" id="1_dqm1l"]
+[ext_resource type="Script" path="res://Scenes/UI/Player/ekg.gd" id="1_gx1eo"]
+[ext_resource type="AudioStream" uid="uid://js2qt7tmsc6j" path="res://Audio/UI/ECG/beeper.wav" id="2_4vqxk"]
+[ext_resource type="Texture2D" uid="uid://bes5oflofx3dd" path="res://Art/UI/ECG/ecg window.svg" id="2_jwwk8"]
+[ext_resource type="Texture2D" uid="uid://bgdg00v7sqhv4" path="res://Art/UI/ECG/glassPanel_cornerTL.png" id="2_ofqay"]
+[ext_resource type="Texture2D" uid="uid://bh5or72da1jsv" path="res://Art/UI/ECG/ecg background.svg" id="3_cmaej"]
+[ext_resource type="FontFile" uid="uid://2afp3lo5y5sf" path="res://Resources/Fonts/Saira-Regular.woff2" id="6_scac3"]
+[ext_resource type="Texture2D" uid="uid://qg4bhq4w0qdt" path="res://Art/Particles/heart-plus.svg" id="8_lr666"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pu4s2"]
+
+[sub_resource type="Gradient" id="Gradient_1l2x2"]
+interpolation_mode = 1
+colors = PackedColorArray(0.0399, 0.167475, 0.21, 1, 0.654902, 0.737255, 0.760784, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rkq11"]
+gradient = SubResource("Gradient_1l2x2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb53y"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("2_ofqay")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ba1d"]
+font = ExtResource("6_scac3")
+font_size = 60
+font_color = Color(0.45098, 1, 0.541176, 1)
+
+[sub_resource type="Animation" id="Animation_cn57k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer/TextureRect/TextureRect/EkgLine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cx7ed"]
+resource_name = "pulse"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer/TextureRect/TextureRect/EkgLine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-225, 17), Vector2(-1675, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.7, 3.2, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EventPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["beat", -1, 1.0, false],
+"method": &"play"
+}, {
+"args": ["beat", -1, 1.0, false],
+"method": &"play"
+}, {
+"args": ["beat", -1, 1.0, false],
+"method": &"play"
+}, {
+"args": ["beat", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brwiu"]
+_data = {
+"RESET": SubResource("Animation_cn57k"),
+"pulse": SubResource("Animation_cx7ed")
+}
+
+[sub_resource type="Animation" id="Animation_7mg1w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisionController/Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cjjyb"]
+resource_name = "beat"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisionController/Node2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5, 0.6, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15),
+"transitions": PackedFloat32Array(1, 1, -2, 0.732043, 1.86607, 2.46229, 0.366021, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.025, 0.95), Vector2(0.95, 1.05), Vector2(1.075, 1.075), Vector2(0.975, 0.975), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_osy2c"]
+resource_name = "statuschange"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisionController/Node2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, -2, 0.732043, 1.86607, 0.5, 2.2974, 0.353553),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.161, 0.95), Vector2(0.8, 1.6), Vector2(1.3, 1.3), Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htg0v"]
+_data = {
+"RESET": SubResource("Animation_7mg1w"),
+"beat": SubResource("Animation_cjjyb"),
+"statuschange": SubResource("Animation_osy2c")
+}
+
+[sub_resource type="Gradient" id="Gradient_x8flh"]
+offsets = PackedFloat32Array(0, 0.79798, 1)
+colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0.784314, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aj4q0"]
+gradient = SubResource("Gradient_x8flh")
+
+[sub_resource type="Curve" id="Curve_4h4fa"]
+_data = [Vector2(0.00914634, 0.442105), 0.0, 0.0, 0, 0, Vector2(0.844512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0421052), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3orlr"]
+curve = SubResource("Curve_4h4fa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ycyd"]
+lifetime_randomness = 0.05
+emission_shape = 3
+emission_box_extents = Vector3(150, 20, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 20.0
+flatness = 1.0
+gravity = Vector3(0, 980, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 54.0
+damping_max = 85.0
+angle_min = -20.0
+angle_max = 20.0
+scale_min = 0.07
+scale_max = 0.11
+scale_curve = SubResource("CurveTexture_3orlr")
+color = Color(1, 0.0705882, 0.533333, 1)
+color_ramp = SubResource("GradientTexture1D_aj4q0")
+hue_variation_min = -0.01
+hue_variation_max = 0.01
+
+[node name="EKG" type="CanvasLayer"]
+script = ExtResource("1_gx1eo")
+
+[node name="VisionController" type="Node2D" parent="."]
+position = Vector2(-15, -55)
+scale = Vector2(1.5, 1.5)
+
+[node name="Node2D" type="Node2D" parent="VisionController"]
+position = Vector2(155, 131)
+
+[node name="MarginContainer" type="MarginContainer" parent="VisionController/Node2D"]
+offset_left = -123.0
+offset_top = -88.0
+offset_right = 477.0
+offset_bottom = 312.0
+scale = Vector2(0.44, 0.44)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VisionController/Node2D/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -30
+
+[node name="PanelContainer" type="PanelContainer" parent="VisionController/Node2D/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pu4s2")
+
+[node name="TextureRect" type="TextureRect" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer"]
+z_index = 4
+z_as_relative = false
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("2_jwwk8")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer/TextureRect"]
+clip_children = 1
+z_as_relative = false
+clip_contents = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 45.0
+offset_right = 575.0
+offset_bottom = 445.0
+texture = SubResource("GradientTexture1D_rkq11")
+
+[node name="EkgLine" type="TextureRect" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer/TextureRect/TextureRect"]
+unique_name_in_owner = true
+modulate = Color(0.329412, 0.870588, 0.376471, 1)
+z_as_relative = false
+texture_repeat = 2
+layout_mode = 0
+offset_top = 16.0
+offset_right = 2800.0
+offset_bottom = 293.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_dqm1l")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer/TextureRect"]
+self_modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+show_behind_parent = true
+clip_children = 2
+z_index = -9
+clip_contents = true
+layout_mode = 0
+offset_left = 20.4547
+offset_top = -13.6364
+offset_right = 580.455
+offset_bottom = 411.364
+texture = ExtResource("3_cmaej")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="VisionController/Node2D/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb53y")
+
+[node name="TextureRect" type="TextureRect" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer2"]
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("3_cmaej")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ConditionLabel" type="Label" parent="VisionController/Node2D/MarginContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Condition: CRITICAL!"
+label_settings = SubResource("LabelSettings_2ba1d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_brwiu")
+}
+
+[node name="EventPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_htg0v")
+}
+
+[node name="BeepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4vqxk")
+volume_db = -80.0
+bus = &"Sounds"
+
+[node name="Hearts" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 5
+position = Vector2(226, 275)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_7ycyd")
+texture = ExtResource("8_lr666")
+explosiveness = 0.14
+randomness = 0.55
+fixed_fps = 60

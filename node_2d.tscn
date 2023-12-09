@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjwybgtgxt8wj"]
+
+[ext_resource type="PackedScene" uid="uid://bne6lem03sgxs" path="res://Scenes/Objects/Player/GunArm.tscn" id="1_e4okk"]
+
+[node name="FabrikTester" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-24.0]
+
+[node name="ArmPivot" parent="." instance=ExtResource("1_e4okk")]

@@ -348,7 +348,6 @@ panning_strength = 3.0
 bus = &"Sounds"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 scale = Vector2(0.25, 0.25)
 color = Color(0.996078, 0, 0, 1)
 energy = 0.75

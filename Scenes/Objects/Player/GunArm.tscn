@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bne6lem03sgxs"]
+
+[ext_resource type="Script" path="res://Scripts/CCDRotator.gd" id="1_nq8ir"]
+[ext_resource type="Script" path="res://Scenes/Objects/Player/GunArm.gd" id="1_sc7wp"]
+[ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="2_ictul"]
+[ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="3_gy4xg"]
+[ext_resource type="Script" path="res://Scripts/CCD.gd" id="5_214qg"]
+[ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="5_yuk0u"]
+[ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="6_54kop"]
+
+[node name="GunArm" type="Node2D"]
+position = Vector2(5.4, 0)
+script = ExtResource("1_sc7wp")
+minimum_rotation = -120.0
+maximum_rotation = 195.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(20.6, 1)
+rotation = 1.22133
+texture = ExtResource("2_ictul")
+
+[node name="BoneNode" type="Node2D" parent="."]
+position = Vector2(47.6, 1)
+script = ExtResource("1_nq8ir")
+minimum_rotation = -150.0
+maximum_rotation = 15.0
+
+[node name="LowerArmRight" type="Sprite2D" parent="BoneNode"]
+z_index = -2
+position = Vector2(18.6, 1)
+texture = ExtResource("3_gy4xg")
+
+[node name="BoneNode2" type="Node2D" parent="BoneNode"]
+position = Vector2(40, -1)
+rotation = -0.261799
+script = ExtResource("1_nq8ir")
+minimum_rotation = -15.0
+maximum_rotation = -5.0
+
+[node name="FinalBone" type="Node2D" parent="BoneNode/BoneNode2" node_paths=PackedStringArray("root_node")]
+position = Vector2(88.9531, 4.16464)
+script = ExtResource("5_214qg")
+root_node = NodePath("../../..")
+
+[node name="HandArt" type="Sprite2D" parent="BoneNode/BoneNode2"]
+position = Vector2(-0.776466, 2.89778)
+rotation = 0.261799
+texture = ExtResource("5_yuk0u")
+
+[node name="Gun" type="Sprite2D" parent="BoneNode/BoneNode2/HandArt"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(41.4, -26)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_54kop")

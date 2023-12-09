@@ -1,0 +1,61 @@
+[gd_resource type="SkeletonModificationStack2D" load_steps=7 format=3 uid="uid://bs35ni46du37s"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_nxr1q"]
+target_nodepath = NodePath("../Pointer")
+flip_bend_direction = true
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("Spine/FrontUpperArmBone")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("Spine/FrontUpperArmBone/FrontLowerArmBone")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1445x"]
+target_nodepath = NodePath("../Pointer")
+flip_bend_direction = true
+joint_one_bone_idx = 4
+joint_one_bone2d_node = NodePath("Spine/BackUpperArmBone")
+joint_two_bone_idx = 5
+joint_two_bone2d_node = NodePath("Spine/BackUpperArmBone/BackLowerArmBone")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_dqi4d"]
+target_nodepath = NodePath("../FrontLegTarget")
+joint_one_bone_idx = 6
+joint_one_bone2d_node = NodePath("Spine/FrontLegUp")
+joint_two_bone_idx = 7
+joint_two_bone2d_node = NodePath("Spine/FrontLegUp/FrontLegBot")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_r2tan"]
+target_nodepath = NodePath("../BackLegTarget")
+joint_one_bone_idx = 9
+joint_one_bone2d_node = NodePath("Spine/BackLegUp")
+joint_two_bone_idx = 10
+joint_two_bone2d_node = NodePath("Spine/BackLegUp/BackLegBot")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_njohl"]
+bone_index = 8
+bone2d_node = NodePath("Spine/FrontLegUp/FrontLegBot/Boot")
+target_nodepath = NodePath("../FrontLegTarget")
+enable_constraint = true
+constraint_angle_min = -48.157
+constraint_angle_max = 11.134
+constraint_angle_invert = true
+constraint_in_localspace = true
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_vfu67"]
+bone_index = 11
+bone2d_node = NodePath("Spine/BackLegUp/BackLegBot/OtherBoot")
+target_nodepath = NodePath("../BackLegTarget")
+enable_constraint = true
+constraint_angle_min = -48.157
+constraint_angle_max = 11.134
+constraint_angle_invert = true
+constraint_in_localspace = true
+
+[resource]
+enabled = true
+modification_count = 6
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_nxr1q")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_1445x")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_dqi4d")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_r2tan")
+modifications/4 = SubResource("SkeletonModification2DLookAt_njohl")
+modifications/5 = SubResource("SkeletonModification2DLookAt_vfu67")
