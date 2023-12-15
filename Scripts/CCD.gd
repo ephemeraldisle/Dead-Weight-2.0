@@ -13,12 +13,10 @@ func _ready():
 	collect_bones(self)
 	for dist in distances:
 		_max_length += dist
-	if root_node.target != null:
-		target_node = root_node.target
 
-func _process(delta: float) -> void:
-	if target_node != null:
-		target = target_node.global_position
+func _process(_delta: float) -> void:
+	if root_node.target != null:
+		target = root_node.target.global_position
 	else:
 		target = get_global_mouse_position()
 	solve()

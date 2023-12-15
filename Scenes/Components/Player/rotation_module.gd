@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const POWERED_TURN_SPEED = 500
 const BASIC_TURN_SPEED = 250
@@ -20,6 +20,7 @@ var rotating = false
 @onready var parent = get_parent() as RigidBody2D
 @onready var ability_power_controller: Node = $AbilityPowerController
 @onready var original_damp = parent.angular_damp
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _physics_process(_delta):
 	if GameState.introduction_running or not ability_power_controller.powered:
@@ -52,8 +53,11 @@ func _physics_process(_delta):
 			parent.apply_torque_impulse(BASIC_TURN_SPEED)
 	else:
 		right_multiplier = DEFAULT_MULTIPLIER
-		
-	if !rotating:
+	
+	if rotating:
+		audio_stream_player_2d.play()
+	else:
+		audio_stream_player_2d.stop()
 		parent.angular_damp = original_damp
 	
 	if monitoring_rotation and left_rotation and right_rotation:

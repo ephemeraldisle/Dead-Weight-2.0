@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bp4xcrakwe6wl"]
+[gd_scene load_steps=19 format=3 uid="uid://bp4xcrakwe6wl"]
 
 [ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
@@ -10,8 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://b6snd40lca4dy" path="res://Audio/Hurt Sounds/Robot/robohit2.mp3" id="8_w4nov"]
 [ext_resource type="PackedScene" uid="uid://b4cvhtj61ohis" path="res://Scenes/UI/Player/player_ui.tscn" id="9_bp3ua"]
 [ext_resource type="PackedScene" uid="uid://s6qv3ly3vwii" path="res://Scenes/Components/Player/water_manager.tscn" id="10_jtc8m"]
+[ext_resource type="AudioStream" uid="uid://cb7uc2kp64oa" path="res://Audio/Hurt Sounds/kick drum thump.mp3" id="11_upvq4"]
 [ext_resource type="PackedScene" uid="uid://bdopuq8nt6j05" path="res://Scenes/Components/Player/energy_manager.tscn" id="11_wlsew"]
 [ext_resource type="Texture2D" uid="uid://1k7tnk3hprs2" path="res://Resources/Textures/slime texture.tres" id="12_ld8n6"]
+[ext_resource type="AudioStream" uid="uid://ctkh1hqh6fhxd" path="res://Audio/Hurt Sounds/kick drum thump2.mp3" id="12_lf5od"]
+[ext_resource type="AudioStream" uid="uid://bjcmlv5370vyo" path="res://Audio/Hurt Sounds/kick drum thump3.mp3" id="13_0syl4"]
 [ext_resource type="PackedScene" uid="uid://gygvknc042gv" path="res://Scenes/Components/Player/activator.tscn" id="13_w8l0v"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
@@ -29,6 +32,18 @@ stream_4/stream = ExtResource("7_vix1u")
 stream_4/weight = 1.0
 stream_5/stream = ExtResource("8_w4nov")
 stream_5/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mlapg"]
+streams_count = 3
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 1.0
+stream_0/stream = ExtResource("11_upvq4")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("12_lf5od")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("13_0syl4")
+stream_2/weight = 1.0
 
 [node name="SharedPlayerManager" type="Node2D"]
 process_mode = 3
@@ -50,6 +65,13 @@ texture = ExtResource("2_2scta")
 [node name="HitSounds" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8nnmg")
 volume_db = 5.0
+max_polyphony = 5
+bus = &"Sounds"
+
+[node name="ThumpSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_mlapg")
+volume_db = -5.0
+pitch_scale = 0.75
 max_polyphony = 5
 bus = &"Sounds"
 

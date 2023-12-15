@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+const RECENT_CONTACT_TIME = 0.5
+
 @export var tank: PhysicsBody2D
 @export var rope_holder: RopeHolder
 @onready var pointer = $Pointer
@@ -16,7 +18,6 @@ extends RigidBody2D
 
 var lil_party = preload("res://Scenes/Particles/power_node_hit_particles.tscn")
 
-
 signal player_rotated
 signal player_jetpacked
 var left_rotation = false
@@ -31,6 +32,7 @@ var right_multiplier = 1
 
 func getgun():
 	gun.visible = true
+	gun_arm.target = null
 	
 func _ready():
 	#GlobalCamera.follow_node(self)
@@ -58,6 +60,8 @@ func _on_body_entered(other: Node2D):
 		party.global_position = head_area.global_position
 		party.emitting = true
 		player_take_damage(Vector2.ZERO)
+
+
 
 func player_take_damage(impulse: Vector2):
 	if recent_damage: return

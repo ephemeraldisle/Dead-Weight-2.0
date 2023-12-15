@@ -13,6 +13,7 @@ signal damaged
 
 func _ready():
 	GameEvents.full_heal.connect(full_heal)
+	full_heal()
 	timer.timeout.connect(on_timer_timeout)
 	controller.player_damaged.connect(on_damage)
 #	await get_tree().create_timer(2).timeout

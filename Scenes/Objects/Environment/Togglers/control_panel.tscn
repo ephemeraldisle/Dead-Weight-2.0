@@ -342,7 +342,6 @@ visible = false
 position = Vector2(0, -45)
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-volume_db = 20.0
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"Sounds"

@@ -30,6 +30,7 @@ func toggle_off() -> void:
 	toggled = false
 	if objects_that_start_activated.size() > 0:
 		for object in objects_that_start_activated:
+#			print("%s toggling off" % object)
 			object.change_power(false)
 	if objects_that_start_deactivated.size() > 0:
 		for object in objects_that_start_deactivated:
@@ -45,7 +46,7 @@ func toggle_on() -> void:
 			object.change_power(false)
 
 func check_save_data() -> void:
-	if !save_data.get_data("toggled"):
+	if not save_data.get_data("toggled"):
 		toggle_off()
 	else:
 		toggle_on()

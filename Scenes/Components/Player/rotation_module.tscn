@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ipi0t2mj5em2"]
+[gd_scene load_steps=4 format=3 uid="uid://ipi0t2mj5em2"]
 
 [ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="1_bu5a6"]
 [ext_resource type="Script" path="res://Scenes/Components/Player/rotation_module.gd" id="1_cdrev"]
+[ext_resource type="AudioStream" uid="uid://brwld0jxocmon" path="res://Audio/Objects/Player/Astro/rotatorsounds.mp3" id="3_et58e"]
 
-[node name="RotationModule" type="Node"]
+[node name="RotationModule" type="Node2D"]
 script = ExtResource("1_cdrev")
 
 [node name="AbilityPowerController" parent="." instance=ExtResource("1_bu5a6")]
 ability_name = "rotation"
 powered = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_et58e")
+attenuation = 1.6245
+panning_strength = 3.0
+bus = &"Sounds"

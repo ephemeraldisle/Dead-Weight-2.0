@@ -10,10 +10,10 @@ var target
 @onready var parent = get_parent()
 @onready var foreground = get_tree().get_first_node_in_group("foreground")
 @export var fire_point: Node2D
-@export var laser_sounds: PackedScene
 @export var gun_animator: AnimationPlayer
 var gpu_particles_2d = preload("res://Scenes/Projectiles/bullet sparks.tscn")
 @onready var ability_power_controller: Node = $AbilityPowerController
+@onready var player_lasers: AudioStreamPlayer2D = $PlayerLasers
 
 func _physics_process(_delta):
 	look_at(get_global_mouse_position())
@@ -36,7 +36,5 @@ func _input(event):
 		parts.emitting = true
 		new_bullet.global_position = fire_point.global_position
 		new_bullet.apply_central_impulse(-direction * BULLET_POWER)
-		var sounds = laser_sounds.instantiate()
-		foreground.add_child(sounds)
-		sounds.global_position = fire_point.global_position
+		player_lasers.play()
 		GameEvents.emit_energy_percent_changed(-ENERGY_COST)

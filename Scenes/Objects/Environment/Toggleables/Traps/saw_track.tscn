@@ -22,6 +22,7 @@ radius = 54.0833
 
 [node name="SawTrack" type="Node2D"]
 script = ExtResource("1_5enud")
+delay_time = 5.0
 off_time = 0
 tween_ease = 0
 tween_trans = 3
@@ -62,13 +63,12 @@ frame_progress = 0.0
 [node name="SawHitbox" type="Area2D" parent="SawHolder"]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 292
+collision_mask = 36
 monitoring = false
 monitorable = false
 script = ExtResource("4_ei5vv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SawHolder/SawHitbox"]
-visible = false
 shape = SubResource("CircleShape2D_3xq3j")
 
 [node name="ImpactSoundForPlayer" parent="SawHolder/SawHitbox" instance=ExtResource("6_vlul4")]
@@ -112,4 +112,4 @@ activatable = true
 
 [node name="TimerComponent" parent="." instance=ExtResource("9_o0seq")]
 
-[connection signal="body_entered" from="SawHolder/SawHitbox" to="." method="_on_saw_hitbox_body_entered"]
+[connection signal="body_entered" from="SawHolder/SawHitbox" to="SawHolder/SawHitbox" method="_on_body_entered"]

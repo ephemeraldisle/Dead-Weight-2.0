@@ -1,7 +1,6 @@
 extends Timer
 
 @onready var parent = get_parent() as Toggleable
-
 @onready var _off_time = parent.off_time
 
 func _ready() -> void:
@@ -14,6 +13,6 @@ func begin_timer() -> void:
 func change_time(time: float) -> void:
 	if not is_stopped():
 		var time_difference = _off_time - time
-		var new_time = max(time_left - time_difference,0)
+		var new_time = max(time_left - time_difference, 0)
 		start(new_time)
 	_off_time = time

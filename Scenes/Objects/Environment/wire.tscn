@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://cx7yohtobxg3u" path="res://Resources/Materials/wire_off_shader.tres" id="3_f2op3"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="5_ti5as"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wbh1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5hfh"]
 resource_local_to_scene = true
 shader = ExtResource("5_ti5as")
 shader_parameter/color_a = Color(0.521569, 0.00392157, 0.141176, 1)
@@ -19,5 +19,5 @@ on_material = ExtResource("2_guyf4")
 off_material = ExtResource("3_f2op3")
 
 [node name="WireArt" parent="." instance=ExtResource("1_6c5ey")]
-material = SubResource("ShaderMaterial_6wbh1")
+material = SubResource("ShaderMaterial_m5hfh")
 points = PackedVector2Array(0, 0, 50, 0)

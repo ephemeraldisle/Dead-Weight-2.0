@@ -17,6 +17,7 @@ var dying = false
 @onready var water_manager: Node = %WaterManager
 @onready var energy_manager: Node2D = %EnergyManager
 @onready var player_ui: CanvasLayer = $PlayerUI
+@onready var thump_sounds: AudioStreamPlayer2D = $ThumpSounds
 
 #var _bad_count: int = 0
 
@@ -94,6 +95,8 @@ func clean_up_pickups() -> void:
 			pickup.tween.kill()
 			pickup.queue_free()
 
+func play_thump_sound():
+	thump_sounds.play()
 
 func die():
 	if dying:

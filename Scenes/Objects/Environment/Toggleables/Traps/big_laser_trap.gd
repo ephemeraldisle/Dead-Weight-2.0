@@ -23,10 +23,7 @@ const SOUND_FADE_TIME = FADE_TIME * 2.0
 var looping = false
 var _initializing = false
 
-
 func _ready():
-	if always_on:
-		off_time = -1
 	super()
 	timer_component.timeout.connect(on_timer_timeout)
 	if not power_controller.powered:
@@ -64,7 +61,7 @@ func charge_up():
 func activate(instant: bool = false) -> void:
 	light.visible = true
 	light.color.a = 1
-	animated_sprite_2d.play("Active")
+	animated_sprite_2d.play("big active")
 
 	if instant and sound_enabled:
 		loop_sound.play()
@@ -75,7 +72,7 @@ func activate(instant: bool = false) -> void:
 
 
 func charge_down():
-	animated_sprite_2d.play("Deactivate")
+	animated_sprite_2d.play("big deactivate")
 	var light_tween = create_tween() as Tween
 	light_tween.tween_property(light, "color:a", 0, 1)
 	damaging_zone.monitoring = false
@@ -84,7 +81,7 @@ func charge_down():
 
 
 func deactivate(_instant: bool = false) -> void:
-	animated_sprite_2d.play("Inactive")
+	animated_sprite_2d.play("big deactivate")
 	light.visible = false
 	damaging_zone.monitoring = false
 	looping = false
@@ -140,11 +137,11 @@ func make_visible(instant: bool = false) -> void:
 
 
 func on_power_changed(powered: bool) -> void:
-#	print("%s power turned %s" % [get_path(), powered])
+	
 	if powered and always_on:
 		activate()
 	elif not _initializing:
-
+#		print("%s power turned %s" % [name, powered])
 		deactivate()
 
 

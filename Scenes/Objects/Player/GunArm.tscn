@@ -50,6 +50,7 @@ texture = ExtResource("5_yuk0u")
 
 [node name="Gun" type="Sprite2D" parent="BoneNode/BoneNode2/HandArt"]
 unique_name_in_owner = true
+visible = false
 z_index = -1
 position = Vector2(41.4, -26)
 scale = Vector2(0.5, 0.5)

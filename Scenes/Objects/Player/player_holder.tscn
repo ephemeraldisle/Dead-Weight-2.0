@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj7uydye3oc1k"]
+[gd_scene load_steps=7 format=3 uid="uid://bj7uydye3oc1k"]
 
 [ext_resource type="PackedScene" uid="uid://5xkp2n7lbo7x" path="res://Scenes/Objects/Player/Tank.tscn" id="1_6illi"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/player_holder.gd" id="1_twwje"]
 [ext_resource type="PackedScene" uid="uid://chiwh1qrg4g6s" path="res://Scenes/Objects/Player/Ropes/rope_holder.tscn" id="2_b2brt"]
 [ext_resource type="PackedScene" uid="uid://ci67irojgt1k2" path="res://Scenes/Objects/Player/player.tscn" id="3_vt678"]
-[ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="12_dfnn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5d78"]
 size = Vector2(4.5, 20)
@@ -28,11 +27,8 @@ position = Vector2(0, -11)
 tank = NodePath("../Tank")
 rope_holder = NodePath("../RopeHolder")
 
-[node name="PointLight2D" parent="Player" index="18"]
-visible = false
-
-[node name="PointLight2D2" parent="Player" index="19"]
-visible = false
+[node name="GunArm" parent="Player" index="20" node_paths=PackedStringArray("target")]
+target = NodePath("../../PlayerParts/RigidBody2D5/ArmTarget")
 
 [node name="RightArm" parent="Player" index="21" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/ArmTarget")
@@ -42,22 +38,6 @@ target = NodePath("../../PlayerParts/RigidBody2D5/RightLegTarget")
 
 [node name="RightLeg2" parent="Player" index="23" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/LeftLegTarget")
-
-[node name="PointerRotator" type="Node2D" parent="Player"]
-unique_name_in_owner = true
-position = Vector2(-13, -6)
-rotation = -1.83259
-
-[node name="Pointer" type="Node2D" parent="Player/PointerRotator"]
-unique_name_in_owner = true
-position = Vector2(27, 0)
-
-[node name="Icon" type="Sprite2D" parent="Player/PointerRotator/Pointer"]
-z_index = 4096
-z_as_relative = false
-position = Vector2(0, -1)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("12_dfnn2")
 
 [node name="PlayerParts" type="Node2D" parent="."]
 
@@ -105,3 +85,6 @@ bias = 0.9
 [editable path="Player"]
 [editable path="Player/PingAnimation"]
 [editable path="Player/GunArm"]
+[editable path="Player/RightArm"]
+[editable path="Player/RightLeg"]
+[editable path="Player/RightLeg2"]

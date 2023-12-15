@@ -9,8 +9,9 @@ const ANIMATION_TIME = 0.4
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var pressure_activator: Area2D = $PressureActivator
 @onready var light: PointLight2D = $PointLight2D
-@onready var ajar = not start_closed
+@onready var light_occluder_2d: LightOccluder2D = $LightOccluder2D as LightOccluder2D
 
+@onready var ajar = not start_closed
 
 func _ready() -> void:
 	super()
@@ -24,7 +25,9 @@ func _ready() -> void:
 
 func activate(instant: bool = false) -> void:
 	animation_player.speed_scale = 99 if instant else 1
-	animation_player.play_backwards("open")
+	animation_player.play_backwards("open")	
+	light_occluder_2d.visible = true
+	light.visible = true
 	if !instant:
 		await get_tree().create_timer(ANIMATION_TIME).timeout
 	collision_shape_2d.set_deferred("disabled", false)
@@ -38,6 +41,8 @@ func deactivate(instant: bool = false) -> void:
 	if !instant:
 		await get_tree().create_timer(ANIMATION_TIME).timeout
 	collision_shape_2d.set_deferred("disabled", true)
+	light_occluder_2d.visible = false
+	light.visible = false
 	ajar = true
 	deactivated.emit()
 

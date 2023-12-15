@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://5xkp2n7lbo7x"]
+[gd_scene load_steps=75 format=3 uid="uid://5xkp2n7lbo7x"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_j445f"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/Tank.gd" id="1_rjyx0"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="24_1rugv"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/ExpressionManager.gd" id="31_36umq"]
 [ext_resource type="PackedScene" uid="uid://bayla3pm7wq78" path="res://Scenes/Components/Player/shield_module.tscn" id="34_sjcxy"]
+[ext_resource type="PackedScene" uid="uid://d4elk6omn8qmt" path="res://Scenes/Components/Player/bumper.tscn" id="35_aoivn"]
 [ext_resource type="PackedScene" uid="uid://d0i0vf4geewcj" path="res://Scenes/Components/Player/magnet_module.tscn" id="37_cpaf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er0hi"]
@@ -1856,6 +1857,9 @@ hue_variation_max = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5dkr"]
 radius = 300.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di5pc"]
+size = Vector2(44, 27)
+
 [node name="Tank" type="RigidBody2D" groups=["SML-E", "Tank", "tank"]]
 process_mode = 3
 collision_layer = 32
@@ -2103,3 +2107,9 @@ texture = ExtResource("24_1rugv")
 
 [node name="ShieldModule" parent="." node_paths=PackedStringArray("shield_animator") instance=ExtResource("34_sjcxy")]
 shield_animator = NodePath("../Art/Body/ShieldAnimator")
+
+[node name="Bumper" parent="." instance=ExtResource("35_aoivn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bumper"]
+position = Vector2(4, -4.5)
+shape = SubResource("RectangleShape2D_di5pc")

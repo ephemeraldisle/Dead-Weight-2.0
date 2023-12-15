@@ -25,4 +25,5 @@ func do_action():
 	await DialogueManager.dialogue_ended
 	#print("dialogue is over now!")
 	GameState.update_spawn_position(spawn_position)
+	GameState.total_save()
 	action_finished.emit()

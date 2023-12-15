@@ -23,16 +23,16 @@ const LIGHT_FADE_TIME = 1.0
 @onready var first_position = start_point.position
 @onready var second_position = end_point.position
 
+var _acting = false
 
 func _ready() -> void:
 	super()
 	timer_component.timeout.connect(on_timer_timeout)
 	saw_holder.position = start_point.position
 	if power_controller.powered:
-		do_saw()
+		do_saw(true)
 	else:
 		deactivate(true)
-	await get_tree().create_timer(delay_time, false, true).timeout
 
 
 func activate(instant: bool = false) -> void:
@@ -58,13 +58,17 @@ func deactivate(instant: bool = false) -> void:
 		await saw_blade.animation_finished
 	saw_blade.play("inactive")
 	saw_sound.stop()
+	_acting = false
 	deactivated.emit()
 
 
-func do_saw(from_spot: Vector2 = first_position, to_spot: Vector2 = second_position) -> void:
-	var position_a = from_spot
-	var position_b = to_spot
-
+func do_saw(delayed = false) -> void:
+	var position_a = first_position
+	var position_b = second_position
+	_acting = true
+	if delayed:
+		await get_tree().create_timer(delay_time, false, true).timeout
+	
 	if off_time <= 0:
 		activate(true)
 	else:
@@ -76,8 +80,8 @@ func do_saw(from_spot: Vector2 = first_position, to_spot: Vector2 = second_posit
 	var the_tween = create_tween()
 	(
 		the_tween
-		. tween_property(saw_holder, "position", to_spot, blade_travel_time)
-		. from(from_spot)
+		. tween_property(saw_holder, "position", position_b, blade_travel_time)
+		. from(position_a)
 		. set_ease(tween_ease if use_ease else Tween.EASE_IN_OUT)
 		. set_trans(tween_trans if use_trans else Tween.TRANS_LINEAR)
 	)
@@ -117,12 +121,12 @@ func make_visible(instant: bool = false) -> void:
 
 
 func on_power_changed(powered: bool) -> void:
-	if powered:
-		do_saw()
+	if powered and not _acting:
+		do_saw(true)
 	else:
 		deactivate()
 
 
 func on_timer_timeout() -> void:
-	if power_controller.powered:
+	if power_controller.powered and not _acting:
 		do_saw()
