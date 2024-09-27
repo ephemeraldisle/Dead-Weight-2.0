@@ -757,16 +757,14 @@ animations = [{
 size = Vector2(21, 374)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3uvdd"]
-streams_count = 1
 random_pitch = 1.05
-random_volume_offset_db = 0.0
+streams_count = 1
 stream_0/stream = ExtResource("12_0uemf")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_khfxh"]
-streams_count = 1
 random_pitch = 1.05
-random_volume_offset_db = 0.0
+streams_count = 1
 stream_0/stream = ExtResource("13_xpref")
 stream_0/weight = 1.0
 

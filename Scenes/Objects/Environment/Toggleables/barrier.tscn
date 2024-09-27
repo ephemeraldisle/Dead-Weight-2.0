@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bf75lquvw7wae"]
+[gd_scene load_steps=57 format=3 uid="uid://bf75lquvw7wae"]
 
 [ext_resource type="Texture2D" uid="uid://nq0u7l2nkp67" path="res://Art/Environment/Objects/barrier_idle.png" id="1_14ark"]
 [ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/barrier.gd" id="1_d84bt"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dgnmyk0vuje7m" path="res://Audio/Objects/Traps/Barrier/231657__david_werecat__low-hum.wav" id="6_5c2ut"]
 [ext_resource type="AudioStream" uid="uid://bf44jva7yxuee" path="res://Audio/Objects/Traps/Barrier/barrier power down.mp3" id="7_4yuyn"]
 [ext_resource type="PackedScene" uid="uid://dklu45t3cxodm" path="res://Scenes/Components/Environment/damaging_zone.tscn" id="8_wtefc"]
+[ext_resource type="PackedScene" uid="uid://hh36uyi1alel" path="res://Scenes/Components/Universal/identifier.tscn" id="10_gb4xh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxlsx"]
 atlas = ExtResource("1_yl0uj")
@@ -323,7 +324,6 @@ size = Vector2(60, 9)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l84uj"]
 streams_count = 1
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("5_y5fos")
 stream_0/weight = 1.0
 
@@ -386,5 +386,8 @@ bus = &"Sounds"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingZone"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_01w5r")
+
+[node name="Identifier" parent="." instance=ExtResource("10_gb4xh")]
+position = Vector2(2, 0)
 
 [connection signal="body_entered" from="DamagingZone" to="." method="_on_damaging_zone_body_entered"]

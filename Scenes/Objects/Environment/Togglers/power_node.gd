@@ -39,6 +39,7 @@ func update_appearance_and_hitbox() -> void:
 
 
 func check_save_data() -> void:
+#	print("%s checking save" %get_path())
 	if toggler_component.toggled:
 		_times_hit = 0
 		_damageable = true
@@ -61,6 +62,7 @@ func on_damage() -> void:
 
 	if _times_hit == MAX_HITS:
 		toggler_component.set_off()
+		_damageable = false
 	else:
 		invicibilty_frames()
 

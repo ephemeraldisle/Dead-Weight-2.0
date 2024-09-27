@@ -1,5 +1,8 @@
 extends StaticBody2D
 
+signal action_finished
+signal action_reset
+
 const DISABLED_COLOR = Color("00fefeff")
 const ENABLED_COLOR = Color("fe0000ff")
 const FADE_TIME = 0.25
@@ -8,15 +11,13 @@ const FADE_TIME = 0.25
 @export var linked_objects_start_deactive: Array[Node2D]
 @export var sound_to_play: AudioStream
 @export var reset_time = -1.0
-@onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
-@onready var light: PointLight2D = $PointLight2D
-@onready var toggler_component: Node2D = $TogglerComponent as Toggler
 
 var available_to_act = true
 
-signal action_finished
-signal action_reset
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
+@onready var light: PointLight2D = $PointLight2D
+@onready var toggler_component: Node2D = $TogglerComponent as Toggler
 
 
 func _ready():

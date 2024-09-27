@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="24_1rugv"]
 [ext_resource type="Script" path="res://Scenes/Objects/Player/ExpressionManager.gd" id="31_36umq"]
 [ext_resource type="PackedScene" uid="uid://bayla3pm7wq78" path="res://Scenes/Components/Player/shield_module.tscn" id="34_sjcxy"]
-[ext_resource type="PackedScene" uid="uid://d4elk6omn8qmt" path="res://Scenes/Components/Player/bumper.tscn" id="35_aoivn"]
+[ext_resource type="PackedScene" uid="uid://d4elk6omn8qmt" path="res://Scenes/Components/Player/player_bump_noise_trigger.tscn" id="35_fw5iy"]
 [ext_resource type="PackedScene" uid="uid://d0i0vf4geewcj" path="res://Scenes/Components/Player/magnet_module.tscn" id="37_cpaf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er0hi"]
@@ -1829,24 +1829,22 @@ gradient = SubResource("Gradient_csxss")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_afhbq"]
 lifetime_randomness = 0.01
-emission_shape = 1
-emission_sphere_radius = 25.64
 particle_flag_align_y = true
 particle_flag_rotate_y = true
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 25.64
+angle_min = -720.0
+angle_max = 720.0
 direction = Vector3(0, 1, 0)
 spread = 180.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 54.55
 initial_velocity_max = 143.18
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 radial_accel_min = -6.82
 radial_accel_max = 11.36
 damping_min = 50.0
 damping_max = 100.0
-angle_min = -720.0
-angle_max = 720.0
 scale_min = 0.02
 scale_max = 0.04
 color = Color(0.332031, 0.863281, 0.996094, 1)
@@ -1890,10 +1888,10 @@ autoplay = "rest"
 
 [node name="ShieldAnimator" type="AnimationPlayer" parent="Art/Body"]
 unique_name_in_owner = true
-autoplay = "no_shield"
 libraries = {
 "": SubResource("AnimationLibrary_mn03v")
 }
+autoplay = "no_shield"
 
 [node name="EyeHolders" type="Node2D" parent="Art"]
 position = Vector2(2, -11)
@@ -2020,10 +2018,10 @@ libraries = {
 
 [node name="EyeBobber" type="AnimationPlayer" parent="Art"]
 root_node = NodePath("../..")
-autoplay = "eye movement"
 libraries = {
 "": SubResource("AnimationLibrary_eln2e")
 }
+autoplay = "eye movement"
 
 [node name="AttachmentPiece" type="Sprite2D" parent="Art"]
 visible = false
@@ -2108,7 +2106,7 @@ texture = ExtResource("24_1rugv")
 [node name="ShieldModule" parent="." node_paths=PackedStringArray("shield_animator") instance=ExtResource("34_sjcxy")]
 shield_animator = NodePath("../Art/Body/ShieldAnimator")
 
-[node name="Bumper" parent="." instance=ExtResource("35_aoivn")]
+[node name="Bumper" parent="." instance=ExtResource("35_fw5iy")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bumper"]
 position = Vector2(4, -4.5)

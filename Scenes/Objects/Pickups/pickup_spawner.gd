@@ -16,7 +16,7 @@ var _waiting_to_spawn = false
 func _ready() -> void:
 	if not automatic_respawn:
 		spawn_pickup()
-		GameEvents.player_died.connect(spawn_pickup)
+		GameEvents.unsaved_reset.connect(spawn_pickup)
 	timer.timeout.connect(timer_done)
 	await get_tree().create_timer(initial_delay, false, true).timeout
 	while automatic_respawn == true:

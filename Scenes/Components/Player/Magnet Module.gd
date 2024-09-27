@@ -1,3 +1,4 @@
+class_name MagnetModule
 extends Node2D
 
 const MAGNET_DAMPING = 500

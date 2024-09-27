@@ -12,7 +12,7 @@ var _hiding = false
 func _ready() -> void:
 	timer.wait_time = RECHECK_TIME
 	timer.timeout.connect(_on_timer_timeout)
-	GameEvents.player_died.connect(hiding_routine)
+	GameEvents.unsaved_reset.connect(hiding_routine)
 	hiding_routine()
 
 

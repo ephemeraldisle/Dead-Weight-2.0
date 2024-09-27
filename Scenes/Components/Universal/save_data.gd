@@ -11,7 +11,7 @@ signal save_updated
 @onready var parent_id = get_parent().get_path()
 
 func _ready() -> void:
-	GameEvents.player_died.connect(on_player_died)
+	GameEvents.unsaved_reset.connect(_on_unsaved_reset)
 	reset()
 	
 func reset() -> void:
@@ -28,6 +28,6 @@ func update_data(key, value) -> void:
 	save_data[key] = value
 	GameState.register_local_save(parent_id, save_data)
 
-func on_player_died() -> void:
+func _on_unsaved_reset() -> void:
 	await get_tree().create_timer(randfn(RANDOM_DELAY, RANDOM_DELAY*0.5)).timeout
 	reset()

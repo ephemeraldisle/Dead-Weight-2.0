@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://7blqfr6i1rfj"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/spin_trap.gd" id="1_fi858"]
+[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/long_spike_trap.gd" id="1_fi858"]
 [ext_resource type="Texture2D" uid="uid://cci34tu340nh1" path="res://Art/Environment/Objects/wall_blades.png" id="1_jbhcw"]
 [ext_resource type="AudioStream" uid="uid://cy65sariikr36" path="res://Audio/Objects/Traps/Laser Trap/laserchargeNEW.mp3" id="7_51p5y"]
 [ext_resource type="AudioStream" uid="uid://bhy00yhx6na7x" path="res://Audio/Objects/Traps/Laser Trap/laserfire.mp3" id="8_hjflv"]
@@ -200,16 +200,14 @@ animations = [{
 }]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kfuvf"]
-streams_count = 1
 random_pitch = 1.05
-random_volume_offset_db = 0.0
+streams_count = 1
 stream_0/stream = ExtResource("8_hjflv")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gyo12"]
-streams_count = 1
 random_pitch = 1.05
-random_volume_offset_db = 0.0
+streams_count = 1
 stream_0/stream = ExtResource("9_6p3r4")
 stream_0/weight = 1.0
 
@@ -221,16 +219,16 @@ size = Vector2(83, 132)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qj5qn"]
 size = Vector2(121, 132)
 
-[node name="SpinTrap" type="Node2D"]
+[node name="LongSpikeTrap" type="Node2D"]
 script = ExtResource("1_fi858")
 always_on = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_d543x")
-animation = &"activate"
+animation = &"deactivate"
 autoplay = "deactivate"
-frame = 10
+frame = 4
 frame_progress = 1.0
 
 [node name="ChargeSound" type="AudioStreamPlayer2D" parent="."]

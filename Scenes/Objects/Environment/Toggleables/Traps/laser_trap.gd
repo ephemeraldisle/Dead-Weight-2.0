@@ -1,9 +1,17 @@
 extends Toggleable
+class_name LaserTrap
 
 signal finished_charging
 signal finished_discharging
 
-const SOUND_FADE_TIME = FADE_TIME * 2.0
+const SOUND_FADE_TIME := FADE_TIME * 2.0
+const OFF_TIME_OVERRIDE := -1
+const LIGHT_CHARGE_TIME := 1
+const CHARGING_ANIMATION := "Activate"
+const CHARGE_SOUND_TIME := 1.15
+const LOOPING_SOUND_TIME := 3
+const DISCHARGE_SOUND_TIME := 0.25
+
 
 @export var always_on = false
 @export var sound_enabled = false
@@ -11,22 +19,28 @@ const SOUND_FADE_TIME = FADE_TIME * 2.0
 @export var on_time: float = 2
 @export var initial_delay: float = 0.5
 
+var _looping = false
+var _initializing = false
+var _active_animation := "Active"
+var _deactivate_animation := "Deactivate"
+var _off_animation := "Inactive"
+
+
+
 @onready var damaging_zone: Area2D = $DamagingZone
-@onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var charge_sound = %ChargeSound as AudioStreamPlayer2D
-@onready var fire_sound = %FireSound as AudioStreamPlayer2D
-@onready var loop_sound = %LoopSound as AudioStreamPlayer2D
-@onready var discharge_sound = %DischargeSound as AudioStreamPlayer2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var charge_sound: AudioStreamPlayer2D = %ChargeSound
+@onready var fire_sound: AudioStreamPlayer2D = %FireSound
+@onready var loop_sound: AudioStreamPlayer2D = %LoopSound
+@onready var discharge_sound: AudioStreamPlayer2D = %DischargeSound
 @onready var light: PointLight2D = %Light
 @onready var timer_component: Timer = $TimerComponent
 
-var looping = false
-var _initializing = false
 
 
-func _ready():
+func _ready() -> void:
 	if always_on:
-		off_time = -1
+		off_time = OFF_TIME_OVERRIDE
 	super()
 	timer_component.timeout.connect(on_timer_timeout)
 	if not power_controller.powered:
@@ -50,91 +64,95 @@ func fire_laser() -> void:
 		deactivate()
 
 
-func charge_up():
+func charge_up() -> void:
 	light.visible = true
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, "color:a", 1, 1)
+	light_tween.tween_property(light, LIGHT_OPACITY, FULL_OPACITY, LIGHT_CHARGE_TIME)
 	if sound_enabled:
 		synced_sound_coroutine()
-	animated_sprite_2d.play("Activate")
+	animated_sprite_2d.play(CHARGING_ANIMATION)
 	await animated_sprite_2d.animation_finished
 	finished_charging.emit()
 
 
 func activate(instant: bool = false) -> void:
 	light.visible = true
-	light.color.a = 1
-	animated_sprite_2d.play("Active")
+	light.color.a = FULL_OPACITY
+	animated_sprite_2d.play(_active_animation)
 
 	if instant and sound_enabled:
 		loop_sound.play()
 
 	damaging_zone.monitoring = true
-	looping = true
+	_looping = true
 	activated.emit()
 
 
-func charge_down():
-	animated_sprite_2d.play("Deactivate")
+func charge_down() -> void:
+	animated_sprite_2d.play(_deactivate_animation)
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, "color:a", 0, 1)
+	light_tween.tween_property(light, LIGHT_OPACITY, NO_OPACITY, LIGHT_CHARGE_TIME)
 	damaging_zone.monitoring = false
 	await animated_sprite_2d.animation_finished
 	finished_discharging.emit()
 
 
 func deactivate(_instant: bool = false) -> void:
-	animated_sprite_2d.play("Inactive")
+	animated_sprite_2d.play(_off_animation)
 	light.visible = false
 	damaging_zone.monitoring = false
-	looping = false
+	_looping = false
 	if sound_enabled:
 		loop_sound.stop()
 	_initializing = false
 	deactivated.emit()
 
 
-func synced_sound_coroutine():
+func synced_sound_coroutine() -> void:
 	var remaining_time = on_time
 	charge_sound.play()
-	await get_tree().create_timer(1.15, false, true).timeout
+	await get_tree().create_timer(CHARGE_SOUND_TIME, false, true).timeout
 	charge_sound.stop()
 	fire_sound.play()
-	if remaining_time > 3:
-		await get_tree().create_timer(3, false, true).timeout
-		remaining_time -= 3
+	if remaining_time > LOOPING_SOUND_TIME:
+		await get_tree().create_timer(LOOPING_SOUND_TIME, false, true).timeout
+		remaining_time -= LOOPING_SOUND_TIME
 		loop_sound.play()
 		await get_tree().create_timer(remaining_time, false, true).timeout
 		loop_sound.stop()
 	else:
 		await get_tree().create_timer(remaining_time, false, true).timeout
 	discharge_sound.play()
-	await get_tree().create_timer(0.25, false, true).timeout
+	await get_tree().create_timer(DISCHARGE_SOUND_TIME, false, true).timeout
 	fire_sound.stop()
 
 
 func make_invisible(instant: bool = false) -> void:
+	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var sound_tween_time = INSTANT_TIME if instant else SOUND_FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(loop_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(charge_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(fire_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(discharge_sound, "volume_db", -80, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, LIGHT_POWER, NO_LIGHT_POWER,tween_time).from_current()
+	tween.tween_property(loop_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
+	tween.tween_property(charge_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
+	tween.tween_property(fire_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
+	tween.tween_property(discharge_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
+	tween.tween_property(self, OPACITY, NO_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_invisible.emit()
 
 
 func make_visible(instant: bool = false) -> void:
+	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var sound_tween_time = INSTANT_TIME if instant else SOUND_FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(loop_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(charge_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(fire_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(discharge_sound, "volume_db", 0, 0.01 if instant else SOUND_FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, LIGHT_POWER, FULL_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(loop_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(charge_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(fire_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(discharge_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(self, OPACITY, FULL_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_visible.emit()
 
@@ -144,10 +162,9 @@ func on_power_changed(powered: bool) -> void:
 	if powered and always_on:
 		activate()
 	elif not _initializing:
-
 		deactivate()
 
 
-func on_timer_timeout():
+func on_timer_timeout() -> void:
 	if power_controller.powered:
 		fire_laser()

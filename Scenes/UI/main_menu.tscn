@@ -218,10 +218,10 @@ texture = SubResource("GradientTexture1D_4642b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-autoplay = "enter"
 libraries = {
 "": SubResource("AnimationLibrary_g2t8l")
 }
+autoplay = "enter"
 
 [node name="RumbleLooper" parent="." instance=ExtResource("8_yygft")]
 autoplay = false

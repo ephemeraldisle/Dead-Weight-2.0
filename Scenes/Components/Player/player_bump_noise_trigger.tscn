@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4elk6omn8qmt"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/bumper.gd" id="1_in851"]
+[ext_resource type="Script" path="res://Scenes/Components/Player/player_bump_noise_trigger.gd" id="1_cn6n0"]
 
-[node name="Bumper" type="Area2D"]
+[node name="PlayerBumpNoiseTrigger" type="Area2D"]
 collision_layer = 0
 collision_mask = 4235
-script = ExtResource("1_in851")
+script = ExtResource("1_cn6n0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

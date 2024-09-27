@@ -1,11 +1,12 @@
+class_name EnergyManager
 extends Node2D
 
 signal energy_changed
 signal bars_changed
 
-const BARS_PER_BATTERY = 4.0
-const ENERGY_RECHARGE_RATE = 0.005
-const MIN_ENERGY = -0.9999
+const BARS_PER_BATTERY := 4.0
+const ENERGY_RECHARGE_RATE := 0.005
+const MIN_ENERGY := -0.9999
 
 var current_batteries
 var max_bars
@@ -19,6 +20,7 @@ func _ready():
 	GameEvents.battery_collected.connect(_on_battery_collected)
 	GameEvents.energy_collected.connect(_on_energy_pickup_collected)
 	GameEvents.energy_percent_changed.connect(change_energy)
+	SharedPlayerManager.player_spawned.connect(_on_player_spawned)
 #	change_energy(-1)
 #	while true:
 #		print(current_energy)
@@ -63,3 +65,8 @@ func _on_battery_collected():
 
 func _on_energy_pickup_collected(number: float):
 	change_energy(number)
+
+func _on_player_spawned() -> void:
+	current_bars = max_bars
+	current_energy = max_energy
+	energy_changed.emit()

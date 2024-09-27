@@ -27,9 +27,9 @@ var _save_data_default := {
 		"rotation": true,
 		"death": true,
 		"interact": true,
-		"gun": true,
-		"shield": true,
-		"magnet": true,
+		"gun": false,
+		"shield": false,
+		"magnet": false,
 	},
 	"local": {},
 }

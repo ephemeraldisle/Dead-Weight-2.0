@@ -19,7 +19,6 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
 streams_count = 6
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("3_1txdn")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("4_me8qp")
@@ -34,10 +33,10 @@ stream_5/stream = ExtResource("8_w4nov")
 stream_5/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mlapg"]
-streams_count = 3
 playback_mode = 1
 random_pitch = 1.2
 random_volume_offset_db = 1.0
+streams_count = 3
 stream_0/stream = ExtResource("11_upvq4")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("12_lf5od")
@@ -105,6 +104,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_ld8n6")
 
 [node name="Activator" parent="." instance=ExtResource("13_w8l0v")]
-visible = false
+monitoring = false
 
 [editable path="PlayerUI"]

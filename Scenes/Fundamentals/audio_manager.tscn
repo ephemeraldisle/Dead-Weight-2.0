@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://6unuf83lk04q"]
+[gd_scene load_steps=9 format=3 uid="uid://6unuf83lk04q"]
 
 [ext_resource type="Script" path="res://Scenes/Fundamentals/audio_manager.gd" id="1_3b3tp"]
 [ext_resource type="PackedScene" uid="uid://dincghve3gda0" path="res://Scenes/Audio/generic_player.tscn" id="2_2awp6"]
-[ext_resource type="PackedScene" uid="uid://2mvjxi6npuqm" path="res://Scenes/Background/Audio/ui_affirmative_clicks.tscn" id="3_iq4pf"]
-[ext_resource type="AudioStream" uid="uid://c2h0okqcw3tlx" path="res://Audio/Music/Comic Game Loop - Mischief.mp3" id="4_i3353"]
+[ext_resource type="PackedScene" uid="uid://2mvjxi6npuqm" path="res://Scenes/Audio/ui_affirmative_clicks.tscn" id="3_iq4pf"]
+[ext_resource type="AudioStream" uid="uid://28sr40haoyp4" path="res://Audio/Music/silly start song.mp3" id="4_wtika"]
 [ext_resource type="AudioStream" uid="uid://c0nwfxwtfwo36" path="res://Audio/Music/Sci_Fi_Alarm_Loop_15.wav" id="5_gshdy"]
 [ext_resource type="AudioStream" uid="uid://bbfw63w7seuvp" path="res://Audio/Music/(Soft Loop For Dialogues, Pause or Other Things) 9.mp3" id="6_hp4dl"]
-[ext_resource type="AudioStream" uid="uid://b1bhwhop63mug" path="res://Audio/Music/Shooter Synthwave 1.mp3" id="7_si7km"]
+[ext_resource type="AudioStream" uid="uid://tnlsnpiwdat6" path="res://Audio/Music/dead weight main song.mp3" id="7_k7s5b"]
+[ext_resource type="AudioStream" uid="uid://cqdsunpm5mwdu" path="res://Audio/Music/dead weight intro.mp3" id="8_uf2s0"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -16,7 +17,7 @@ ui_clicks = ExtResource("3_iq4pf")
 
 [node name="IntroMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("4_i3353")
+stream = ExtResource("4_wtika")
 bus = &"Music"
 
 [node name="AlarmLooper" type="AudioStreamPlayer" parent="."]
@@ -31,5 +32,10 @@ bus = &"Music"
 
 [node name="MainSong" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("7_si7km")
+stream = ExtResource("7_k7s5b")
+bus = &"Music"
+
+[node name="MenuSong" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_uf2s0")
 bus = &"Music"

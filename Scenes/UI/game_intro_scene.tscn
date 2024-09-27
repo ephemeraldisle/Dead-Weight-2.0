@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://inrrhdjlx1pg"]
+
+[ext_resource type="Script" path="res://Scenes/UI/game_intro_scene.gd" id="1_epbx6"]
+
+[sub_resource type="Animation" id="Animation_h0xjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.898039)]
+}
+
+[sub_resource type="Animation" id="Animation_wgtv1"]
+resource_name = "new_animation"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.960784)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcs28"]
+_data = {
+"RESET": SubResource("Animation_h0xjb"),
+"new_animation": SubResource("Animation_wgtv1")
+}
+
+[node name="GameIntroScene" type="Node2D"]
+script = ExtResource("1_epbx6")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(2000, 2000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -607.0
+offset_right = 1664.0
+offset_bottom = 1393.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.898039)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mcs28")
+}
+autoplay = "new_animation"

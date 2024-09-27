@@ -42,7 +42,6 @@ var introduction_running = false
 
 func _ready() -> void:
 	state = SaveManager.get_game_states()
-	GameEvents.player_died.connect(reset_unsaved_actions)
 	_set_volume_states()
 
 
@@ -113,7 +112,6 @@ func reset_unsaved_actions() -> void:
 	for thing in state.local:
 		if !SaveManager.save_data.local.has(thing):
 			state.local.erase(thing)
-#	GameEvents.emit_player_died()
 	for ability in SaveManager.save_data.abilities:
 		if SaveManager.save_data.abilities[ability] == false:
 			state.abilities[ability] = false

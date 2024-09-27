@@ -2,7 +2,10 @@ extends Toggleable
 
 enum Mode { on, off }
 
-const BARRIER_FADE_TIME = 1.0
+const BARRIER_FADE_TIME := 1.0
+const ACTIVATE_ANIMATION := "on"
+const DEACTIVATE_ANIMATION := "deactivate"
+const OFF_ANIMATION := "off"
 
 @export var starting_mode = Mode.on
 
@@ -26,12 +29,11 @@ func _ready() -> void:
 func activate(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else BARRIER_FADE_TIME)
-	tween.tween_property(on_hum, "volume_db", 0, 0.01 if instant else BARRIER_FADE_TIME).from(-80)
+	tween.tween_property(light, LIGHT_POWER, FULL_LIGHT_POWER, INSTANT_TIME if instant else BARRIER_FADE_TIME)
+	tween.tween_property(on_hum, DB_PROPERTY, NORMAL_DB, INSTANT_TIME if instant else BARRIER_FADE_TIME).from(SILENT_DB_LEVEL)
 	on_hum.play()
-	animated_sprite_2d.play("on")
+	animated_sprite_2d.play(ACTIVATE_ANIMATION)
 	damaging_zone.monitoring = true
-	light.energy = 1
 	current_mode = Mode.on
 	activated.emit()
 
@@ -40,13 +42,13 @@ func deactivate(instant: bool = false) -> void:
 	damaging_zone.monitoring = false
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else BARRIER_FADE_TIME)
-	tween.tween_property(on_hum, "volume_db", -80, 0.01 if instant else BARRIER_FADE_TIME)
+	tween.tween_property(light, LIGHT_POWER, NO_LIGHT_POWER, INSTANT_TIME if instant else BARRIER_FADE_TIME)
+	tween.tween_property(on_hum, DB_PROPERTY, SILENT_DB_LEVEL, INSTANT_TIME if instant else BARRIER_FADE_TIME)
 	if !instant:
 		power_down.play()
-		animated_sprite_2d.play("deactivate")
+		animated_sprite_2d.play(DEACTIVATE_ANIMATION)
 		await animated_sprite_2d.animation_finished
-	animated_sprite_2d.play("off")
+	animated_sprite_2d.play(OFF_ANIMATION)
 	on_hum.stop()
 	current_mode = Mode.off
 	deactivated.emit()
@@ -55,9 +57,9 @@ func deactivate(instant: bool = false) -> void:
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME)
-	tween.tween_property(on_hum, "volume_db", -80, 0.01 if instant else FADE_TIME)
+	tween.tween_property(self, OPACITY, NO_OPACITY, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(light, LIGHT_POWER, NO_LIGHT_POWER, INSTANT_TIME if instant else FADE_TIME)
+	tween.tween_property(on_hum, DB_PROPERTY, SILENT_DB_LEVEL, INSTANT_TIME if instant else FADE_TIME)
 	await tween.finished
 	made_invisible.emit()
 
@@ -65,9 +67,9 @@ func make_invisible(instant: bool = false) -> void:
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME)
-	tween.tween_property(on_hum, "volume_db", 0, 0.01 if instant else FADE_TIME)
+	tween.tween_property(self, OPACITY, FULL_OPACITY, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(light, LIGHT_POWER, FULL_LIGHT_POWER, INSTANT_TIME if instant else FADE_TIME)
+	tween.tween_property(on_hum, DB_PROPERTY, NORMAL_DB, INSTANT_TIME if instant else FADE_TIME)
 	await tween.finished
 	made_visible.emit()
 
@@ -80,7 +82,7 @@ func on_power_changed(powered: bool) -> void:
 
 
 func toggle_power(reset = false) -> void:
-	if current_mode == Mode.on && !reset:
+	if current_mode == Mode.on and !reset:
 		deactivate()
 
 

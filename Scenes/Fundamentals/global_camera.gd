@@ -14,7 +14,8 @@ const TRAUMA_POWER = 2
 const NOISE_FREQUENCY = 0.25
 const ARBITRARY_NOISE_OFFSET = 9999
 const DEBUG_MOVE_MULTIPLIER = 1500
-
+const MAX_ZOOM = 5
+const MIN_ZOOM = 0.05
 
 var aim_node: Node2D
 var trauma := 0.0
@@ -59,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		var direction = Input.get_vector("left", "right", "up", "down")
 		global_position += direction * delta * DEBUG_MOVE_MULTIPLIER
 		var zoom_axis = Input.get_axis("zoom out", "zoom in")
-		var new_zoom = clamp(zoom.x + zoom_axis * delta, 0.05, 5)
+		var new_zoom = clamp(zoom.x + zoom_axis * delta, MIN_ZOOM, MAX_ZOOM)
 		zoom = Vector2(new_zoom, new_zoom)
 
 

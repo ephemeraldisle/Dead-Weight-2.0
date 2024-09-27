@@ -1,3 +1,4 @@
+class_name ShieldModule
 extends Node2D
 
 const ENERGY_COST_PER_FRAME = 0.0055

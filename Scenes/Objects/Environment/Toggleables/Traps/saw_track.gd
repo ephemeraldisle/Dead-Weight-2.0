@@ -1,15 +1,26 @@
 extends Toggleable
 
-const DEACTIVATED_FRAME = 7
-const LIGHT_FADE_TIME = 1.0
+const DEACTIVATED_FRAME := 7
+const LIGHT_FADE_TIME := 1.0
+const MAX_LIGHT_POWER := 0.75
+const ACTIVATION_TWEEN_TIME := 0.75
+const DEACTIVATION_LIGHT_TWEEN_TIME := 0.25
+const DEACTIVATION_SOUND_TWEEN_TIME := 1
+const ACTIVATE_ANIMATION := "activate"
+const DEACTIVATE_ANIMATION := "deactivate"
+const INACTIVE_ANIMATION := "inactive"
+const BLADE_ACTIVE_ANIMATION := "active"
+const POSITION := "position"
 
-@export var delay_time = 0.5
-@export var blade_travel_time = 5
-@export var off_time = 1
-@export var use_ease = true
-@export var tween_ease = Tween.EASE_IN_OUT
-@export var use_trans = true
-@export var tween_trans = Tween.TRANS_EXPO
+@export var delay_time := 0.5
+@export var blade_travel_time := 5
+@export var off_time := 1
+@export var use_ease := true
+@export var tween_ease := Tween.EASE_IN_OUT
+@export var use_trans := true
+@export var tween_trans := Tween.TRANS_EXPO
+
+var _acting := false
 
 @onready var start_point: Node2D = %StartPoint
 @onready var end_point: Node2D = %EndPoint
@@ -20,10 +31,9 @@ const LIGHT_FADE_TIME = 1.0
 @onready var saw_light: PointLight2D = %SawLight
 @onready var identifier: AnimatableBody2D = %Identifier
 @onready var timer_component: Timer = $TimerComponent
-@onready var first_position = start_point.position
-@onready var second_position = end_point.position
+@onready var first_position := start_point.position
+@onready var second_position := end_point.position
 
-var _acting = false
 
 func _ready() -> void:
 	super()
@@ -36,27 +46,29 @@ func _ready() -> void:
 
 
 func activate(instant: bool = false) -> void:
+	var tween_time = INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
 	var the_tween = create_tween()
 	the_tween.set_parallel()
-	the_tween.tween_property(saw_sound, "volume_db", 0, 0.01 if instant else 0.75)
-	the_tween.tween_property(saw_light, "energy", 0.75, 0.01 if instant else 0.75)
+	the_tween.tween_property(saw_sound, DB_PROPERTY, SILENT_DB_LEVEL, tween_time)
+	the_tween.tween_property(saw_light, LIGHT_POWER, MAX_LIGHT_POWER, tween_time)
 	saw_sound.play()
 	if not instant:
-		saw_blade.play("activate")
+		saw_blade.play(ACTIVATE_ANIMATION)
 		await saw_blade.animation_finished
 	activated.emit()
 
 
 func deactivate(instant: bool = false) -> void:
-	saw_blade.play("deactivate")
+	var tween_time = INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
+	saw_blade.play(DEACTIVATE_ANIMATION)
 	var the_tween = create_tween()
 	the_tween.set_parallel()
-	the_tween.tween_property(saw_light, "energy", 0, 0.01 if instant else 0.25)
-	the_tween.tween_property(saw_sound, "volume_db", -80, 0.01 if instant else 1.0).from(0)
+	the_tween.tween_property(saw_light, LIGHT_POWER, NO_LIGHT_POWER, tween_time)
+	the_tween.tween_property(saw_sound, DB_PROPERTY, NORMAL_DB, tween_time).from(NORMAL_DB)
 	saw_hitbox.monitoring = false
 	if not instant:
 		await saw_blade.animation_finished
-	saw_blade.play("inactive")
+	saw_blade.play(INACTIVE_ANIMATION)
 	saw_sound.stop()
 	_acting = false
 	deactivated.emit()
@@ -75,12 +87,12 @@ func do_saw(delayed = false) -> void:
 		activate()
 		await activated
 
-	saw_blade.play("active")
+	saw_blade.play(BLADE_ACTIVE_ANIMATION)
 	saw_hitbox.monitoring = true
 	var the_tween = create_tween()
 	(
 		the_tween
-		. tween_property(saw_holder, "position", position_b, blade_travel_time)
+		. tween_property(saw_holder, POSITION, position_b, blade_travel_time)
 		. from(position_a)
 		. set_ease(tween_ease if use_ease else Tween.EASE_IN_OUT)
 		. set_trans(tween_trans if use_trans else Tween.TRANS_LINEAR)
@@ -101,21 +113,23 @@ func _physics_process(_delta: float) -> void:
 
 
 func make_invisible(instant: bool = false) -> void:
+	var tween_time = INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(saw_light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(saw_sound, "volume_db", -80, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(saw_light, LIGHT_POWER, NO_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(saw_sound, DB_PROPERTY, SILENT_DB_LEVEL, tween_time).from_current()
+	tween.tween_property(self, OPACITY, NO_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_invisible.emit()
 
 
 func make_visible(instant: bool = false) -> void:
+	var tween_time = INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(saw_light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(saw_sound, "volume_db", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(saw_light, LIGHT_POWER, MAX_LIGHT_POWER,tween_time).from_current()
+	tween.tween_property(saw_sound, DB_PROPERTY, NORMAL_DB, tween_time).from_current()
+	tween.tween_property(self, OPACITY, FULL_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_visible.emit()
 

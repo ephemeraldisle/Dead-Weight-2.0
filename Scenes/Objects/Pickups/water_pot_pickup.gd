@@ -1,5 +1,8 @@
 extends Node2D
 
+
+
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 @export var water_restoration_amount: float = 0.33

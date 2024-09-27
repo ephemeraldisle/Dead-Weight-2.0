@@ -1,10 +1,13 @@
 extends Node
 class_name PowerController
+
 signal power_changed
 
 @export var powered := true
 @export var activatable := false
+
 @onready var _stored_state = powered
+
 var activated = false
 
 func power_on() -> void:

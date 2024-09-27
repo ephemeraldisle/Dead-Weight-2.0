@@ -8,7 +8,8 @@ func _ready() -> void:
 		parent.deactivated.connect(begin_timer)
 
 func begin_timer() -> void:
-	start(_off_time)
+	if is_inside_tree():
+		start(_off_time)
 
 func change_time(time: float) -> void:
 	if not is_stopped():

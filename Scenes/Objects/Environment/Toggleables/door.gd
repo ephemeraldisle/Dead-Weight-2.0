@@ -1,6 +1,8 @@
 extends Toggleable
 
 const ANIMATION_TIME = 0.4
+const INSTANT_SPEED = 99
+const NORMAL_SPEED = 1
 
 @export var start_closed = true
 @export var use_pressure = false
@@ -24,7 +26,7 @@ func _ready() -> void:
 
 
 func activate(instant: bool = false) -> void:
-	animation_player.speed_scale = 99 if instant else 1
+	animation_player.speed_scale = INSTANT_SPEED if instant else NORMAL_SPEED
 	animation_player.play_backwards("open")	
 	light_occluder_2d.visible = true
 	light.visible = true
@@ -36,7 +38,7 @@ func activate(instant: bool = false) -> void:
 
 
 func deactivate(instant: bool = false) -> void:
-	animation_player.speed_scale = 99 if instant else 1
+	animation_player.speed_scale = INSTANT_SPEED if instant else NORMAL_SPEED
 	animation_player.play("open")
 	if !instant:
 		await get_tree().create_timer(ANIMATION_TIME).timeout
@@ -50,8 +52,8 @@ func deactivate(instant: bool = false) -> void:
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, "energy", 0, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, "modulate:a", 0, INSTANT_TIME if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
 
@@ -59,8 +61,8 @@ func make_invisible(instant: bool = false) -> void:
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, "energy", 1, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, "modulate:a", 1, INSTANT_TIME if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
 

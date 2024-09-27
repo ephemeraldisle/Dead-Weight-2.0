@@ -1,5 +1,7 @@
 extends Node2D
 
+signal player_spawned
+
 const PAUSE_FRAME_TIME = 0.05
 const MAX_SEPARATION_DISTANCE = 400
 const DEATH_FADE_TIME = 1
@@ -18,6 +20,7 @@ var dying = false
 @onready var energy_manager: Node2D = %EnergyManager
 @onready var player_ui: CanvasLayer = $PlayerUI
 @onready var thump_sounds: AudioStreamPlayer2D = $ThumpSounds
+@onready var activator: Area2D = $Activator
 
 #var _bad_count: int = 0
 
@@ -44,6 +47,7 @@ func register_connections():
 #			tank.tank_hurt.connect(play_hit_sound)
 			tank_connected = true
 		await get_tree().process_frame
+	activator.monitoring = true
 	GlobalCamera.follow_node(self)
 
 
@@ -53,7 +57,11 @@ func _physics_process(_delta):
 	var distance = player.global_position - tank.global_position
 	if distance.length() > MAX_SEPARATION_DISTANCE:
 		die()
+		
+	# Place self halfway between the two characters.
 	global_position = tank.global_position + distance * 0.5
+	
+	#Kill player if characters too far apart:
 #	tank_ray.global_position = player.global_position
 #	player_ray.global_position = tank.global_position
 #	player_ray.look_at(player.global_position)
@@ -72,9 +80,11 @@ func spawn_player() -> void:
 	var new_player = player_holder.instantiate()
 	get_tree().current_scene.add_child(new_player)
 	new_player.global_position = GameState.get_spawn_position()
+	player_spawned.emit()
 	register_connections()
 
 func despawn_player() -> void:
+	activator.monitoring = false
 	player.get_parent().queue_free()
 	GlobalCamera.follow_position(Vector2.ZERO)
 	
@@ -105,6 +115,7 @@ func die():
 #	player.play_hurt_sounds()
 	dying = true
 	
+	activator.monitoring = false
 	ScreenTransition.transition(DEATH_FADE_TIME, DEATH_PAUSE_TIME)
 	clean_up_pickups()
 	await ScreenTransition.after_pause
@@ -130,6 +141,6 @@ func request_water_percentage() -> float:
 
 
 func request_pause_frames() -> void:
-	get_tree().paused = true
+	FlowController.pause_game()
 	await get_tree().create_timer(PAUSE_FRAME_TIME).timeout
-	get_tree().paused = false
+	FlowController.unpause_game()

@@ -8,7 +8,6 @@ signal energy_collected(number: float)
 signal gun_collected
 signal beep_toggled
 signal full_heal
-signal player_died
 signal energy_percent_changed
 signal health_changed
 signal dialogue_started
@@ -42,10 +41,6 @@ func emit_ability_access_changed(ability: String) -> void:
 
 func emit_player_damaged() -> void:
 	player_damaged.emit()
-
-
-func emit_player_died() -> void:
-	player_died.emit()
 
 
 func emit_battery_collected() -> void:

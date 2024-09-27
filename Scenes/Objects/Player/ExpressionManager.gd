@@ -1,118 +1,130 @@
 extends Area2D
 
-const MINIMUM_INTEREST_THRESHOLD = 200
-const DEFAULT_MAX_INTEREST = 400
-const DANGER_MULTIPLIER = 2
-const SAFE_MULTIPLIER = 0.5
-const PROJECTILE_PHYSICS_LAYER = 4
-const PROJECTILE_MULTIPLIER = 1.5
-const NON_PROJECTILE_MULTIPLIER = 0.75
+const MINIMUM_INTEREST_THRESHOLD := 200
+const DEFAULT_MAX_INTEREST := 400
+const PROJECTILE_PHYSICS_LAYER := 4
 
-const DANGER_EYE_SCALE = Vector2(1.1, 1.1)
-const SAFE_EYE_SCALE = Vector2.ONE
-const DANGER_PUPIL_SCALE = Vector2.ONE
-const SAFE_PUPIL_SCALE = Vector2(0.9, 0.9)
+const DANGER_MULTIPLIER := 2.0
+const SAFE_MULTIPLIER := 0.5
+const PROJECTILE_MULTIPLIER := 1.5
+const NON_PROJECTILE_MULTIPLIER := 0.75
 
-const HURT_THRESHOLD = 1
-const DAMAGE_ADDED_AGITATION = 1.5
-const NON_DAMAGE_MAXIMUM = 0.99
+const DANGER_EYE_SCALE := Vector2(1.1, 1.1)
+const SAFE_EYE_SCALE := Vector2.ONE
+const DANGER_PUPIL_SCALE := Vector2.ONE
+const SAFE_PUPIL_SCALE := Vector2(0.9, 0.9)
 
-const LERP_PERCENTAGE = 0.65
-const MAGNET_TARGET_OFFSET = 100
+const HURT_THRESHOLD := 1
+const DAMAGE_ADDED_AGITATION := 1.5
+const NON_DAMAGE_MAXIMUM := 0.99
+
+const LERP_PERCENTAGE := 0.65
+const MAGNET_TARGET_OFFSET := 100
 
 @export var target_tracker: Node2D
 
-var target_eye_size = SAFE_EYE_SCALE
-var target_pupil_size = SAFE_PUPIL_SCALE
-var desired_target_position = Vector2.ZERO
-var current_target_position = Vector2.ZERO
-var agitation = 0
+var _target_eye_size := SAFE_EYE_SCALE
+var _target_pupil_size := SAFE_PUPIL_SCALE
+var _desired_target_position := Vector2.ZERO
+var _current_target_position := Vector2.ZERO
+var _agitation := 0.0
 
-@onready var tank: RigidBody2D = $".."
-@onready var right_eye_holder = %RightEyeHolder
-@onready var left_eye_holder = %LeftEyeHolder
-@onready var eye_ball: Sprite2D = %EyeBall
-@onready var eye_ball_2: Sprite2D = %EyeBall2
-@onready var right_eye_complex: Node2D = %RightEyeComplex
-@onready var left_eye_complex: Node2D = %LeftEyeComplex
-@onready var expressions: AnimationPlayer = %Expressions
+@onready var _tank: RigidBody2D = $".."
+@onready var _right_eye_holder := %RightEyeHolder
+@onready var _left_eye_holder := %LeftEyeHolder
+@onready var _eye_ball: Sprite2D = %EyeBall
+@onready var _eye_ball_2: Sprite2D = %EyeBall2
+@onready var _right_eye_complex: Node2D = %RightEyeComplex
+@onready var _left_eye_complex: Node2D = %LeftEyeComplex
+@onready var _expressions: AnimationPlayer = %Expressions
 
 
 func _ready() -> void:
-	tank.tank_hurt.connect(try_emotion.bind("hurt"))
-#	get_tree().get_first_node_in_group("player").player_damaged.connect(try_emotion.bind("hurt"))
-
-
-func get_closest_thing_of_interest() -> Vector2:
-	var best_priority = MINIMUM_INTEREST_THRESHOLD
-	var chosen_location = Vector2.ZERO
-	var chosen_body
-	var bodies = get_overlapping_bodies()
-	if bodies.size() > 0:
-		for body in bodies:
-			var body_priority = (
-				DEFAULT_MAX_INTEREST - body.global_position.distance_to(global_position)
-			)
-			if body.is_in_group("danger"):
-				body_priority *= DANGER_MULTIPLIER
-			else:
-				body_priority *= SAFE_MULTIPLIER
-			if body.get_collision_layer_value(PROJECTILE_PHYSICS_LAYER):
-				body_priority *= PROJECTILE_MULTIPLIER
-			else:
-				body_priority *= NON_PROJECTILE_MULTIPLIER
-			if body_priority > best_priority:
-				best_priority = body_priority
-				chosen_location = body.global_position
-				chosen_body = body
-	if !chosen_body:
-		return chosen_location
-	if chosen_body.is_in_group("danger"):
-		target_eye_size = DANGER_EYE_SCALE
-		target_pupil_size = DANGER_PUPIL_SCALE
-		try_emotion("worried")
-	else:
-		target_eye_size = SAFE_EYE_SCALE
-		target_pupil_size = SAFE_PUPIL_SCALE
-	return chosen_location
-
-
-func try_emotion(animation_name: String) -> void:
-	if animation_name == "hurt":
-		agitation = DAMAGE_ADDED_AGITATION
-	elif agitation <= HURT_THRESHOLD:
-		agitation = NON_DAMAGE_MAXIMUM
+	_tank.tank_hurt.connect(_try_emotion.bind("hurt"))
+	get_tree().get_first_node_in_group("player").player_damaged.connect(_try_emotion.bind("hurt"))
 
 
 func _physics_process(delta: float) -> void:
-	var target = get_closest_thing_of_interest()
+	_update_target_position()
+	_update_eye_appearance()
+	_update_expressions(delta)
+	target_tracker.global_position = _current_target_position
+
+
+func _update_target_position() -> void:
+	var target = _get_closest_thing_of_interest()
 	if target == Vector2.ZERO:
 		target = to_global(get_local_mouse_position())
-
-	eye_ball.look_at(Vector2.UP)
-	eye_ball_2.look_at(Vector2.UP)
-	right_eye_complex.scale = lerp(right_eye_complex.scale, target_eye_size, LERP_PERCENTAGE)
-	left_eye_complex.scale = lerp(left_eye_complex.scale, target_eye_size, LERP_PERCENTAGE)
-	eye_ball.scale = lerp(eye_ball.scale, target_pupil_size, LERP_PERCENTAGE)
-	eye_ball_2.scale = lerp(eye_ball_2.scale, target_pupil_size, LERP_PERCENTAGE)
-	target_tracker.global_position = current_target_position
-
-	if tank.magnet_module.magnet_modifier > 0:
-		expressions.play("concentrating")
-		target = tank.global_position + tank.transform.y * MAGNET_TARGET_OFFSET
-	elif agitation > 0:
-		if agitation >= HURT_THRESHOLD:
-			expressions.play("hurt")
-		else:
-			expressions.play("worried")
-		agitation = max(agitation - delta, 0.0)
-	else:
-		expressions.play("RESET")
-
-	desired_target_position = target
-	current_target_position = lerp(
-		current_target_position, desired_target_position, LERP_PERCENTAGE
+	
+	if _tank.magnet_module.magnet_modifier > 0:
+		target = _tank.global_position + _tank.transform.y * MAGNET_TARGET_OFFSET
+	
+	_desired_target_position = target
+	_current_target_position = lerp(
+		_current_target_position, _desired_target_position, LERP_PERCENTAGE
 	)
 
-	right_eye_holder.look_at(current_target_position)
-	left_eye_holder.look_at(current_target_position)
+
+func _get_closest_thing_of_interest() -> Vector2:
+	var best_priority = MINIMUM_INTEREST_THRESHOLD
+	var chosen_location = Vector2.ZERO
+	var chosen_body = null
+	var bodies = get_overlapping_bodies()
+	
+	for body in bodies:
+		var body_priority = _calculate_body_priority(body)
+		if body_priority > best_priority:
+			best_priority = body_priority
+			chosen_location = body.global_position
+			chosen_body = body
+			
+	if chosen_body:
+		_update_eye_state(chosen_body)
+
+	return chosen_location
+
+func _calculate_body_priority(body: Node) -> float:
+	var distance_priority = DEFAULT_MAX_INTEREST - body.global_position.distance_to(global_position)
+	var danger_multiplier = DANGER_MULTIPLIER if body.is_in_group("danger") else SAFE_MULTIPLIER
+	var projectile_multiplier = PROJECTILE_MULTIPLIER if body.get_collision_layer_value(PROJECTILE_PHYSICS_LAYER) else NON_PROJECTILE_MULTIPLIER
+	return distance_priority * danger_multiplier * projectile_multiplier
+
+
+func _update_eye_state(body: Node) -> void:
+	if body.is_in_group("danger"):
+		_target_eye_size = DANGER_EYE_SCALE
+		_target_pupil_size = DANGER_PUPIL_SCALE
+		_try_emotion("worried")
+	else:
+		_target_eye_size = SAFE_EYE_SCALE
+		_target_pupil_size = SAFE_PUPIL_SCALE
+
+
+func _try_emotion(animation_name: String) -> void:
+	match animation_name:
+		"hurt":
+			_agitation = DAMAGE_ADDED_AGITATION
+		_:
+			if _agitation <= HURT_THRESHOLD:
+				_agitation = NON_DAMAGE_MAXIMUM
+
+
+func _update_eye_appearance() -> void:
+	_eye_ball.look_at(Vector2.UP)
+	_eye_ball_2.look_at(Vector2.UP)
+	_right_eye_complex.scale = lerp(_right_eye_complex.scale, _target_eye_size, LERP_PERCENTAGE)
+	_left_eye_complex.scale = lerp(_left_eye_complex.scale, _target_eye_size, LERP_PERCENTAGE)
+	_eye_ball.scale = lerp(_eye_ball.scale, _target_pupil_size, LERP_PERCENTAGE)
+	_eye_ball_2.scale = lerp(_eye_ball_2.scale, _target_pupil_size, LERP_PERCENTAGE)
+	_right_eye_holder.look_at(_current_target_position)
+	_left_eye_holder.look_at(_current_target_position)
+
+
+func _update_expressions(delta: float) -> void:
+	if _tank.magnet_module.magnet_modifier > 0:
+		_expressions.play("concentrating")
+	elif _agitation > 0:
+		_expressions.play("hurt" if _agitation >= HURT_THRESHOLD else "worried")
+		_agitation = max(_agitation - delta, 0.0)
+	else:
+		_expressions.play("RESET")

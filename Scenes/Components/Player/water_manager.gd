@@ -1,11 +1,11 @@
 extends Node
 
+signal water_changed
+
 const SECONDS_PER_TICK = 1
 const TICK_LOSS = 0.005
 const TICK_DAMAGE_TRIGGER_AMOUNT = 5
 const EFFECTIVELY_EMPTY_WATER_AMOUNT = 0.005
-
-signal water_changed
 
 @export var health_manager: Node
 
@@ -18,6 +18,7 @@ var _waterActive = false
 func _ready() -> void:
 	_timer.wait_time = SECONDS_PER_TICK
 	GameEvents.water_collected.connect(_change_water)
+	SharedPlayerManager.player_spawned.connect(_on_player_spawned)
 	_timer.timeout.connect(_on_timer_timeout)
 	water_changed.emit()
 
@@ -36,4 +37,8 @@ func _on_timer_timeout() -> void:
 
 func _change_water(value: float) -> void:
 	water_percent = clamp(water_percent+value, 0, 1)
+	water_changed.emit()
+
+func _on_player_spawned() -> void:
+	water_percent = 1.0
 	water_changed.emit()
