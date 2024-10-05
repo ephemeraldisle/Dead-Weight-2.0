@@ -25,7 +25,7 @@ var _visible := true
 
 
 func _ready() -> void:
-	off_time = max(off_time - ANIMATION_TIME, INSTANT_TIME)
+	off_time = max(off_time - ANIMATION_TIME, g.INSTANT_TIME)
 	timer_component.change_time(off_time)
 	timer_component.timeout.connect(on_timer_timeout)
 	super()
@@ -89,14 +89,14 @@ func on_timer_timeout() -> void:
 
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
-	tween.tween_property(self, OPACITY, NO_OPACITY, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, g.OPACITY, g.NO_OPACITY, g.INSTANT_TIME if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_invisible.emit()
 	_visible = false
 
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
-	tween.tween_property(self, OPACITY, FULL_OPACITY, INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, g.OPACITY, g.FULL_OPACITY, g.INSTANT_TIME if instant else FADE_TIME).from_current()
 	await tween.finished
 	made_visible.emit()
 	_visible = true

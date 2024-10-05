@@ -3,21 +3,25 @@ extends StaticBody2D
 signal action_finished
 signal action_reset
 
-const DISABLED_COLOR = Color("00fefeff")
-const ENABLED_COLOR = Color("fe0000ff")
-const FADE_TIME = 0.25
+const DISABLED_COLOR := Color("00fefeff")
+const ENABLED_COLOR := Color("fe0000ff")
+const FADE_TIME := 0.25
+const ENABLED_ANIMATION = "Active"
+const BEGIN_DEACTIVATE_ANIM = "DeactivateStart"
+const INACTIVE_LOOP_ANIM = "DeactivateLoop"
+
 
 @export var linked_objects_start_active: Array[Node2D]
 @export var linked_objects_start_deactive: Array[Node2D]
 @export var sound_to_play: AudioStream
-@export var reset_time = -1.0
+@export var reset_time := -1.0
 
-var available_to_act = true
+var available_to_act := true
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
 @onready var light: PointLight2D = $PointLight2D
-@onready var toggler_component: Node2D = $TogglerComponent as Toggler
+@onready var toggler_component: Toggler = $TogglerComponent
 
 
 func _ready():
@@ -37,7 +41,7 @@ func check_save_data(instant: bool = false) -> void:
 
 func set_enabled() -> void:
 	light.color = ENABLED_COLOR
-	animated_sprite_2d.play("Active")
+	animated_sprite_2d.play(ENABLED_ANIMATION)
 	action_reset.emit()
 	available_to_act = true
 
@@ -46,23 +50,23 @@ func set_disabled(instant: bool = false) -> void:
 	light.color = DISABLED_COLOR
 	action_finished.emit()
 	if !instant:
-		animated_sprite_2d.play("DeactivateStart")
+		animated_sprite_2d.play(BEGIN_DEACTIVATE_ANIM)
 		await animated_sprite_2d.animation_finished
-	animated_sprite_2d.play("DeactivateLoop")
+	animated_sprite_2d.play(INACTIVE_LOOP_ANIM)
 
 
 func make_invisible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 0, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 0, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.NO_LIGHT_POWER, g.INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, g.OPACITY, g.NO_OPACITY, g.INSTANT_TIME if instant else FADE_TIME).from_current()
 
 
 func make_visible(instant: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, "energy", 1, 0.01 if instant else FADE_TIME).from_current()
-	tween.tween_property(self, "modulate:a", 1, 0.01 if instant else FADE_TIME).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.FULL_LIGHT_POWER, g.INSTANT_TIME if instant else FADE_TIME).from_current()
+	tween.tween_property(self, g.OPACITY, g.FULL_OPACITY, g.INSTANT_TIME if instant else FADE_TIME).from_current()
 
 
 func do_action(need_sound: bool = true):

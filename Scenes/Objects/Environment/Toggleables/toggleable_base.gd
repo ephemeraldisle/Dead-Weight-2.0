@@ -7,17 +7,6 @@ signal made_invisible
 signal made_visible
 
 const FADE_TIME := 0.4
-const INSTANT_TIME := 0.01
-const NO_OPACITY := 0
-const FULL_OPACITY := 1
-const NO_LIGHT_POWER := 0
-const FULL_LIGHT_POWER := 1
-const SILENT_DB_LEVEL := -80
-const NORMAL_DB := 0
-const OPACITY := "modulate:a"
-const DB_PROPERTY := "volume_db"
-const LIGHT_OPACITY := "color:a"
-const LIGHT_POWER := "energy"
 
 @onready var power_controller = $PowerController as PowerController
 

@@ -140,21 +140,6 @@ radius = 63.0079
 [sub_resource type="CircleShape2D" id="CircleShape2D_c844w"]
 radius = 150.0
 
-[sub_resource type="Animation" id="Animation_0w47n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BoneNode/BoneNode2/HandArt/Gun:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
-}
-
 [sub_resource type="Animation" id="Animation_hw2b5"]
 resource_name = "Fire"
 length = 0.25
@@ -170,6 +155,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2.2974, 0.615572, 2, 1.6245, 1),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.32, 0.72), Vector2(0.56, 0.32), Vector2(0.4, 0.54), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_0w47n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoneNode/BoneNode2/HandArt/Gun:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_52b0x"]
@@ -343,7 +343,6 @@ position = Vector2(-8, 7)
 scale = Vector2(0.25, 0.25)
 
 [node name="Bumper" parent="." instance=ExtResource("21_e5t2l")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bumper"]
 z_index = 9

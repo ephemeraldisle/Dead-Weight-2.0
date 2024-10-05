@@ -1,8 +1,9 @@
 extends Node2D
 
-const ENERGY_COST = 0.25
-const KICKBACK_POWER = 5000
-const BULLET_POWER = 500
+const ENERGY_COST := 0.25
+const KICKBACK_POWER := 5000
+const BULLET_POWER := 500
+const NO_ENERGY := 0.0
 const FIRE_ANIMATION = "Fire"
 const FIRE_ACTION = "click"
 const RESET_ANIMATION = "RESET"
@@ -26,7 +27,7 @@ func _input(event):
 	if not ability_power_controller.powered:
 		return
 		
-	if event.is_action_pressed(FIRE_ACTION) and SharedPlayerManager.request_energy_percentage() > 0:
+	if event.is_action_pressed(FIRE_ACTION) and SharedPlayerManager.request_energy_percentage() > NO_ENERGY:
 		if gun_animator.is_playing():
 			gun_animator.play(RESET_ANIMATION)	
 		gun_animator.play(FIRE_ANIMATION)

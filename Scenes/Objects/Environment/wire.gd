@@ -1,6 +1,6 @@
 extends Path2D
 
-@export var flip = false
+@export var flip := false
 @export var on_material: ShaderMaterial
 @export var off_material: ShaderMaterial
 

@@ -5,6 +5,9 @@ const INITIAL_DELAY := 0.5
 const ANIMATION_DELAY := 0.25
 const SEGMENT_DELAY := 0.1
 
+const SEGMENT_NAME := "RopeSegment"
+const START_ANIMATION_METHOD := "start_animation"
+
 @export var origin_attach: PhysicsBody2D
 @export var end_attach: PhysicsBody2D
 @export var enable_animation := false
@@ -32,10 +35,10 @@ func set_end_attach(node_path: NodePath) -> void:
 	end_pin.set_node_b(node_path)
 
 func animate_segments() -> void:
-	var segments = find_children("", "RopeSegment")
+	var segments = find_children("", SEGMENT_NAME)
 	segments.reverse()
 	await get_tree().create_timer(ANIMATION_DELAY, false, true).timeout
 	for segment in segments:		
-		if segment.has_method("start_animation"):
+		if segment.has_method(START_ANIMATION_METHOD):
 			segment.start_animation()
 		await get_tree().create_timer(SEGMENT_DELAY, false, true).timeout

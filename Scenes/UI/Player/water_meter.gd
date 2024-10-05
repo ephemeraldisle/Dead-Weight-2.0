@@ -64,7 +64,7 @@ func fade_visibility(vis: bool, fade_time: float) -> void:
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if vis == false:
 		_water_drops.emitting = false
-		tween.tween_property(_vision_controller, "modulate:a", 0.0, fade_time).from(1.0)
+		tween.tween_property(_vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(1.0)
 	else:
 		_water_drops.emitting = true
-		tween.tween_property(_vision_controller, "modulate:a", 1.0, fade_time).from(0.0)	
+		tween.tween_property(_vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(0.0)	

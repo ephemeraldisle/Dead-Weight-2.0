@@ -8,6 +8,12 @@ const BASE_ENERGY_COST := 0.0015
 const MAX_ENERGY_COST := 0.01
 const MAX_MULTIPLIER := 10.0
 const DEFAULT_MULTIPLIER := 1.0
+const NEUTRAL_INPUT := 0.0
+const NO_ANGULAR_DAMP := 0.0
+const NO_ENERGY := 0.0
+const MULTIPLIER_GAIN_PER_FRAME := 1
+const LEFT_BUTTON := "left"
+const RIGHT_BUTTON := "right"
 
 var _rotation_multiplier := DEFAULT_MULTIPLIER
 var _is_rotating := false
@@ -24,9 +30,9 @@ func _physics_process(_delta: float) -> void:
 	if GameState.introduction_running or not _ability_power_controller.powered:
 		return
 
-	var rotation_input := Input.get_axis("left", "right")
+	var rotation_input := Input.get_axis(LEFT_BUTTON, RIGHT_BUTTON)
 	
-	if rotation_input != 0:
+	if rotation_input != NEUTRAL_INPUT:
 		_handle_rotation(rotation_input)
 	else:
 		_reset_rotation()
@@ -34,19 +40,20 @@ func _physics_process(_delta: float) -> void:
 	_check_tutorial_rotation(rotation_input)
 
 func _handle_rotation(input: float) -> void:
-	_parent.angular_damp = 0
+	_parent.angular_damp = NO_ANGULAR_DAMP
 	_is_rotating = true
 	
-	if SharedPlayerManager.request_energy_percentage() > 0:
+	if SharedPlayerManager.request_energy_percentage() > NO_ENERGY:
 		_apply_powered_rotation(input)
 	else:
 		_parent.apply_torque_impulse(BASIC_TURN_SPEED * input)
 	
-	_audio_player.play()
+	if not _audio_player.playing:
+		_audio_player.play()
 
 func _apply_powered_rotation(input: float) -> void:
 	_parent.apply_torque_impulse(POWERED_TURN_SPEED * _rotation_multiplier * input)
-	_rotation_multiplier = min(_rotation_multiplier + 1, MAX_MULTIPLIER)
+	_rotation_multiplier = min(_rotation_multiplier + MULTIPLIER_GAIN_PER_FRAME, MAX_MULTIPLIER)
 	var energy_cost: float = min(_rotation_multiplier * BASE_ENERGY_COST, MAX_ENERGY_COST)
 	GameEvents.emit_energy_percent_changed(-energy_cost)
 
@@ -57,17 +64,19 @@ func _reset_rotation() -> void:
 	_audio_player.stop()
 
 func _check_tutorial_rotation(input: float) -> void:
-	if _monitoring_rotation:
-		if input < 0:
-			_rotated_left = true
-		elif input > 0:
-			_rotated_right = true
+	if not _monitoring_rotation: 
+		return
 		
-		if _rotated_left and _rotated_right:
-			player_rotated.emit()
-			_monitoring_rotation = false
-			_rotated_left = false
-			_rotated_right = false
+	if input < NEUTRAL_INPUT:
+		_rotated_left = true
+	elif input > NEUTRAL_INPUT:
+		_rotated_right = true
+	
+	if _rotated_left and _rotated_right:
+		player_rotated.emit()
+		_monitoring_rotation = false
+		_rotated_left = false
+		_rotated_right = false
 
 func start_monitoring_rotation() -> void:
 	_monitoring_rotation = true

@@ -71,6 +71,6 @@ func fade_visibility(vis: bool, fade_time: float) -> void:
 	var tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if vis == false:
-		tween.tween_property(vision_controller, "modulate:a", 0.0, fade_time).from(1.0)
+		tween.tween_property(vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(1.0)
 	else:
-		tween.tween_property(vision_controller, "modulate:a", 1.0, fade_time).from(0.0)	
+		tween.tween_property(vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(0.0)	

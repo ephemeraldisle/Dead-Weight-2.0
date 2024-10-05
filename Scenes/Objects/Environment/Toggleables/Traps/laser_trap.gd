@@ -67,7 +67,7 @@ func fire_laser() -> void:
 func charge_up() -> void:
 	light.visible = true
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, LIGHT_OPACITY, FULL_OPACITY, LIGHT_CHARGE_TIME)
+	light_tween.tween_property(light, g.LIGHT_OPACITY, g.FULL_OPACITY, LIGHT_CHARGE_TIME)
 	if sound_enabled:
 		synced_sound_coroutine()
 	animated_sprite_2d.play(CHARGING_ANIMATION)
@@ -77,7 +77,7 @@ func charge_up() -> void:
 
 func activate(instant: bool = false) -> void:
 	light.visible = true
-	light.color.a = FULL_OPACITY
+	light.color.a = g.FULL_OPACITY
 	animated_sprite_2d.play(_active_animation)
 
 	if instant and sound_enabled:
@@ -91,7 +91,7 @@ func activate(instant: bool = false) -> void:
 func charge_down() -> void:
 	animated_sprite_2d.play(_deactivate_animation)
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, LIGHT_OPACITY, NO_OPACITY, LIGHT_CHARGE_TIME)
+	light_tween.tween_property(light, g.LIGHT_OPACITY, g.NO_OPACITY, LIGHT_CHARGE_TIME)
 	damaging_zone.monitoring = false
 	await animated_sprite_2d.animation_finished
 	finished_discharging.emit()
@@ -128,31 +128,31 @@ func synced_sound_coroutine() -> void:
 
 
 func make_invisible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
-	var sound_tween_time = INSTANT_TIME if instant else SOUND_FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
+	var sound_tween_time = g.INSTANT_TIME if instant else SOUND_FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, LIGHT_POWER, NO_LIGHT_POWER,tween_time).from_current()
-	tween.tween_property(loop_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
-	tween.tween_property(charge_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
-	tween.tween_property(fire_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
-	tween.tween_property(discharge_sound, DB_PROPERTY, SILENT_DB_LEVEL, sound_tween_time).from_current()
-	tween.tween_property(self, OPACITY, NO_OPACITY, tween_time).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.NO_LIGHT_POWER,tween_time).from_current()
+	tween.tween_property(loop_sound, g.DB_PROPERTY, g.SILENT_DB, sound_tween_time).from_current()
+	tween.tween_property(charge_sound, g.DB_PROPERTY, g.SILENT_DB, sound_tween_time).from_current()
+	tween.tween_property(fire_sound, g.DB_PROPERTY, g.SILENT_DB, sound_tween_time).from_current()
+	tween.tween_property(discharge_sound, g.DB_PROPERTY, g.SILENT_DB, sound_tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.NO_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_invisible.emit()
 
 
 func make_visible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
-	var sound_tween_time = INSTANT_TIME if instant else SOUND_FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
+	var sound_tween_time = g.INSTANT_TIME if instant else SOUND_FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, LIGHT_POWER, FULL_LIGHT_POWER, tween_time).from_current()
-	tween.tween_property(loop_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
-	tween.tween_property(charge_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
-	tween.tween_property(fire_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
-	tween.tween_property(discharge_sound, DB_PROPERTY, NORMAL_DB, sound_tween_time).from_current()
-	tween.tween_property(self, OPACITY, FULL_OPACITY, tween_time).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.FULL_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(loop_sound, g.DB_PROPERTY, g.NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(charge_sound, g.DB_PROPERTY, g.NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(fire_sound, g.DB_PROPERTY, g.NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(discharge_sound, g.DB_PROPERTY, g.NORMAL_DB, sound_tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.FULL_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_visible.emit()
 

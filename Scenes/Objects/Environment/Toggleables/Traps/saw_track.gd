@@ -46,11 +46,11 @@ func _ready() -> void:
 
 
 func activate(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
+	var tween_time = g.INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
 	var the_tween = create_tween()
 	the_tween.set_parallel()
-	the_tween.tween_property(saw_sound, DB_PROPERTY, SILENT_DB_LEVEL, tween_time)
-	the_tween.tween_property(saw_light, LIGHT_POWER, MAX_LIGHT_POWER, tween_time)
+	the_tween.tween_property(saw_sound, g.DB_PROPERTY, g.SILENT_DB, tween_time)
+	the_tween.tween_property(saw_light, g.LIGHT_POWER, MAX_LIGHT_POWER, tween_time)
 	saw_sound.play()
 	if not instant:
 		saw_blade.play(ACTIVATE_ANIMATION)
@@ -59,12 +59,12 @@ func activate(instant: bool = false) -> void:
 
 
 func deactivate(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
+	var tween_time = g.INSTANT_TIME if instant else ACTIVATION_TWEEN_TIME
 	saw_blade.play(DEACTIVATE_ANIMATION)
 	var the_tween = create_tween()
 	the_tween.set_parallel()
-	the_tween.tween_property(saw_light, LIGHT_POWER, NO_LIGHT_POWER, tween_time)
-	the_tween.tween_property(saw_sound, DB_PROPERTY, NORMAL_DB, tween_time).from(NORMAL_DB)
+	the_tween.tween_property(saw_light, g.LIGHT_POWER, g.NO_LIGHT_POWER, tween_time)
+	the_tween.tween_property(saw_sound, g.DB_PROPERTY, g.NORMAL_DB, tween_time).from(g.NORMAL_DB)
 	saw_hitbox.monitoring = false
 	if not instant:
 		await saw_blade.animation_finished
@@ -113,23 +113,23 @@ func _physics_process(_delta: float) -> void:
 
 
 func make_invisible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(saw_light, LIGHT_POWER, NO_LIGHT_POWER, tween_time).from_current()
-	tween.tween_property(saw_sound, DB_PROPERTY, SILENT_DB_LEVEL, tween_time).from_current()
-	tween.tween_property(self, OPACITY, NO_OPACITY, tween_time).from_current()
+	tween.tween_property(saw_light, g.LIGHT_POWER, g.NO_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(saw_sound, g.DB_PROPERTY, g.SILENT_DB, tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.NO_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_invisible.emit()
 
 
 func make_visible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(saw_light, LIGHT_POWER, MAX_LIGHT_POWER,tween_time).from_current()
-	tween.tween_property(saw_sound, DB_PROPERTY, NORMAL_DB, tween_time).from_current()
-	tween.tween_property(self, OPACITY, FULL_OPACITY, tween_time).from_current()
+	tween.tween_property(saw_light, g.LIGHT_POWER, MAX_LIGHT_POWER,tween_time).from_current()
+	tween.tween_property(saw_sound, g.DB_PROPERTY, g.NORMAL_DB, tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.FULL_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_visible.emit()
 

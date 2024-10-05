@@ -46,7 +46,6 @@ radius = 7.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tgxp8"]
 streams_count = 1
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("3_1o8yh")
 stream_0/weight = 1.0
 
@@ -56,7 +55,7 @@ collision_layer = 8
 collision_mask = 309
 sync_to_physics = false
 script = ExtResource("1_wjc14")
-_hit_effect = ExtResource("2_ohcmf")
+hit_effect_scene = ExtResource("2_ohcmf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

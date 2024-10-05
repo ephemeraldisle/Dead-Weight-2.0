@@ -60,7 +60,7 @@ func eject_spikes() -> void:
 func charge_up():
 	light.visible = true
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, LIGHT_OPACITY, FULL_OPACITY, LIGHT_FADE_TIME)
+	light_tween.tween_property(light, g.LIGHT_OPACITY, g.FULL_OPACITY, LIGHT_FADE_TIME)
 	animated_sprite_2d.play(CHARGE_UP_ANIMATION)
 	await animated_sprite_2d.animation_finished
 	finished_charging.emit()
@@ -68,7 +68,7 @@ func charge_up():
 
 func activate(_instant: bool = false) -> void:
 	light.visible = true
-	light.color.a = FULL_OPACITY
+	light.color.a = g.FULL_OPACITY
 	animated_sprite_2d.play(ACTIVE_ANIMATION)
 	if sound_enabled:
 		loop_sound.play()
@@ -79,7 +79,7 @@ func activate(_instant: bool = false) -> void:
 
 func deactivate(instant: bool = false) -> void:
 	var light_tween = create_tween() as Tween
-	light_tween.tween_property(light, LIGHT_OPACITY, NO_OPACITY, INSTANT_TIME if instant else LIGHT_FADE_TIME)
+	light_tween.tween_property(light, g.LIGHT_OPACITY, g.NO_OPACITY, g.INSTANT_TIME if instant else LIGHT_FADE_TIME)
 	animated_sprite_2d.play(DEACTIVATE_ANIMATION)
 	if instant:
 		animated_sprite_2d.set_frame_and_progress(_deactivated_frame, FULL_FRAME_PROGRESS)
@@ -91,23 +91,23 @@ func deactivate(instant: bool = false) -> void:
 
 
 func make_invisible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, LIGHT_POWER, NO_LIGHT_POWER, tween_time).from_current()
-	tween.tween_property(loop_sound, DB_PROPERTY, SILENT_DB_LEVEL, tween_time).from_current()
-	tween.tween_property(self, OPACITY, NO_OPACITY, tween_time).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.NO_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(loop_sound, g.DB_PROPERTY, g.SILENT_DB, tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.NO_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_invisible.emit()
 
 
 func make_visible(instant: bool = false) -> void:
-	var tween_time = INSTANT_TIME if instant else FADE_TIME
+	var tween_time = g.INSTANT_TIME if instant else FADE_TIME
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(light, LIGHT_POWER, FULL_LIGHT_POWER, tween_time).from_current()
-	tween.tween_property(loop_sound, DB_PROPERTY, NORMAL_DB, tween_time).from_current()
-	tween.tween_property(self, OPACITY, FULL_OPACITY, tween_time).from_current()
+	tween.tween_property(light, g.LIGHT_POWER, g.FULL_LIGHT_POWER, tween_time).from_current()
+	tween.tween_property(loop_sound, g.DB_PROPERTY, g.NORMAL_DB, tween_time).from_current()
+	tween.tween_property(self, g.OPACITY, g.FULL_OPACITY, tween_time).from_current()
 	await tween.finished
 	made_visible.emit()
 

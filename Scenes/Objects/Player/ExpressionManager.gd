@@ -21,6 +21,15 @@ const NON_DAMAGE_MAXIMUM := 0.99
 const LERP_PERCENTAGE := 0.65
 const MAGNET_TARGET_OFFSET := 100
 
+
+const PLAYER_GROUP := &"player"
+const DANGER_GROUP := &"danger"
+
+const EMOTION_HURT := &"hurt"
+const EMOTION_WORRIED := &"worried"
+const EMOTION_CONCENTRATING := &"concentrating"
+const EMOTION_RESET := &"RESET"
+
 @export var target_tracker: Node2D
 
 var _target_eye_size := SAFE_EYE_SCALE
@@ -38,10 +47,9 @@ var _agitation := 0.0
 @onready var _left_eye_complex: Node2D = %LeftEyeComplex
 @onready var _expressions: AnimationPlayer = %Expressions
 
-
 func _ready() -> void:
-	_tank.tank_hurt.connect(_try_emotion.bind("hurt"))
-	get_tree().get_first_node_in_group("player").player_damaged.connect(_try_emotion.bind("hurt"))
+	_tank.tank_hurt.connect(_try_emotion.bind(EMOTION_HURT))
+	get_tree().get_first_node_in_group(PLAYER_GROUP).player_damaged.connect(_try_emotion.bind(EMOTION_HURT))
 
 
 func _physics_process(delta: float) -> void:
@@ -49,7 +57,6 @@ func _physics_process(delta: float) -> void:
 	_update_eye_appearance()
 	_update_expressions(delta)
 	target_tracker.global_position = _current_target_position
-
 
 func _update_target_position() -> void:
 	var target = _get_closest_thing_of_interest()
@@ -60,16 +67,14 @@ func _update_target_position() -> void:
 		target = _tank.global_position + _tank.transform.y * MAGNET_TARGET_OFFSET
 	
 	_desired_target_position = target
-	_current_target_position = lerp(
-		_current_target_position, _desired_target_position, LERP_PERCENTAGE
-	)
+	_current_target_position = lerp(_current_target_position, _desired_target_position, LERP_PERCENTAGE)
 
 
 func _get_closest_thing_of_interest() -> Vector2:
-	var best_priority = MINIMUM_INTEREST_THRESHOLD
-	var chosen_location = Vector2.ZERO
-	var chosen_body = null
-	var bodies = get_overlapping_bodies()
+	var best_priority := MINIMUM_INTEREST_THRESHOLD
+	var chosen_location := Vector2.ZERO
+	var chosen_body: Node = null
+	var bodies := get_overlapping_bodies()
 	
 	for body in bodies:
 		var body_priority = _calculate_body_priority(body)
@@ -85,16 +90,16 @@ func _get_closest_thing_of_interest() -> Vector2:
 
 func _calculate_body_priority(body: Node) -> float:
 	var distance_priority = DEFAULT_MAX_INTEREST - body.global_position.distance_to(global_position)
-	var danger_multiplier = DANGER_MULTIPLIER if body.is_in_group("danger") else SAFE_MULTIPLIER
+	var danger_multiplier = DANGER_MULTIPLIER if body.is_in_group(DANGER_GROUP) else SAFE_MULTIPLIER
 	var projectile_multiplier = PROJECTILE_MULTIPLIER if body.get_collision_layer_value(PROJECTILE_PHYSICS_LAYER) else NON_PROJECTILE_MULTIPLIER
 	return distance_priority * danger_multiplier * projectile_multiplier
 
 
 func _update_eye_state(body: Node) -> void:
-	if body.is_in_group("danger"):
+	if body.is_in_group(DANGER_GROUP):
 		_target_eye_size = DANGER_EYE_SCALE
 		_target_pupil_size = DANGER_PUPIL_SCALE
-		_try_emotion("worried")
+		_try_emotion(EMOTION_WORRIED)
 	else:
 		_target_eye_size = SAFE_EYE_SCALE
 		_target_pupil_size = SAFE_PUPIL_SCALE
@@ -102,7 +107,7 @@ func _update_eye_state(body: Node) -> void:
 
 func _try_emotion(animation_name: String) -> void:
 	match animation_name:
-		"hurt":
+		EMOTION_HURT:
 			_agitation = DAMAGE_ADDED_AGITATION
 		_:
 			if _agitation <= HURT_THRESHOLD:
@@ -122,9 +127,10 @@ func _update_eye_appearance() -> void:
 
 func _update_expressions(delta: float) -> void:
 	if _tank.magnet_module.magnet_modifier > 0:
-		_expressions.play("concentrating")
+		_expressions.play(EMOTION_CONCENTRATING)
 	elif _agitation > 0:
-		_expressions.play("hurt" if _agitation >= HURT_THRESHOLD else "worried")
+		_expressions.play(EMOTION_HURT if _agitation >= HURT_THRESHOLD else EMOTION_WORRIED)
 		_agitation = max(_agitation - delta, 0.0)
 	else:
-		_expressions.play("RESET")
+		_expressions.play(EMOTION_RESET)
+

@@ -28,6 +28,7 @@ SharedPlayerManager="*res://Scenes/Fundamentals/shared_player_manager.tscn"
 AudioManager="*res://Scenes/Fundamentals/audio_manager.tscn"
 FlowController="*res://Scripts/Autoload/flow_controller.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+g="*res://Scripts/Autoload/global_consts.gd"
 
 [dialogue_manager]
 

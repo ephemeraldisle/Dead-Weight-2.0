@@ -1,9 +1,11 @@
 extends StaticBody2D
 
-const FIRST_Y_ADJUSTMENT = 50
-const SECOND_Y_ADJUSTMENT = 70
-const MAX_HITS = 4
-const INVINCIBILITY_TIME = 0.5
+const FIRST_Y_ADJUSTMENT := 50
+const SECOND_Y_ADJUSTMENT := 70
+const UNHARMED := 0
+const INJURED_THRESHOLD := 2
+const MAX_HITS := 4
+const INVINCIBILITY_TIME := 0.5
 
 @export var linked_objects_start_active: Array[Node2D]
 @export var linked_objects_start_deactive: Array[Node2D]
@@ -15,9 +17,9 @@ var _damageable := true
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var particles = preload("res://Scenes/Particles/power_node_hit_particles.tscn")
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var toggler_component = $TogglerComponent as Toggler
+@onready var toggler_component: Toggler = $TogglerComponent
 
-@onready var original_shape_position = collision_shape_2d.position
+@onready var original_shape_position := collision_shape_2d.position
 
 
 func _ready() -> void:
@@ -30,9 +32,9 @@ func _ready() -> void:
 func update_appearance_and_hitbox() -> void:
 	animated_sprite_2d.frame = _times_hit
 	match _times_hit:
-		0:
+		UNHARMED:
 			collision_shape_2d.position = original_shape_position
-		2:
+		INJURED_THRESHOLD:
 			collision_shape_2d.position.y = original_shape_position.y + FIRST_Y_ADJUSTMENT
 		MAX_HITS:
 			collision_shape_2d.position.y = original_shape_position.y + SECOND_Y_ADJUSTMENT

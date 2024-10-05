@@ -24,6 +24,7 @@ var _damageable := true
 @onready var _water_drops: GPUParticles2D = %WaterDrops
 @onready var _shield_module: ShieldModule = $ShieldModule
 
+@onready var action_finder: Area2D = $ActionFinder
 func _ready() -> void:
 	SharedPlayerManager.tank = self
 	GameEvents.dialogue_started.connect(_on_dialogue_started)

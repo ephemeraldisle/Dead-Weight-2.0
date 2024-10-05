@@ -2,6 +2,7 @@ extends Node
 class_name SaveData
 
 const RANDOM_DELAY = 0.01
+const RANDOM_MULTIPLIER = 0.5
 
 signal save_updated
 
@@ -29,5 +30,5 @@ func update_data(key, value) -> void:
 	GameState.register_local_save(parent_id, save_data)
 
 func _on_unsaved_reset() -> void:
-	await get_tree().create_timer(randfn(RANDOM_DELAY, RANDOM_DELAY*0.5)).timeout
+	await get_tree().create_timer(randfn(RANDOM_DELAY, RANDOM_DELAY * RANDOM_MULTIPLIER)).timeout
 	reset()

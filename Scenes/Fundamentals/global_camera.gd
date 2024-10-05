@@ -16,6 +16,15 @@ const ARBITRARY_NOISE_OFFSET = 9999
 const DEBUG_MOVE_MULTIPLIER = 1500
 const MAX_ZOOM = 5
 const MIN_ZOOM = 0.05
+const MINIMAL_TRAUMA = 0
+
+const LEFT_BUTTON = "left"
+const RIGHT_BUTTON = "right"
+const UP_BUTTON = "up"
+const DOWN_BUTTON = "down"
+const ZOOM_IN_BUTTON = "zoom in"
+const ZOOM_OUT_BUTTON = "zoom out"
+const ZOOM_PROPERTY = "zoom"
 
 var aim_node: Node2D
 var trauma := 0.0
@@ -52,14 +61,14 @@ func _physics_process(delta: float) -> void:
 			aim_position= aim_node.global_position
 		global_position = lerp(global_position, aim_position, LERP_WEIGHT)
 	if trauma:
-		trauma = max(trauma - DECAY * delta, 0)
+		trauma = max(trauma - DECAY * delta, MINIMAL_TRAUMA)
 		shake()
 	else:
 		rotation = base_rotation
 	if DEBUG:
-		var direction = Input.get_vector("left", "right", "up", "down")
+		var direction = Input.get_vector(LEFT_BUTTON, RIGHT_BUTTON, UP_BUTTON, DOWN_BUTTON)
 		global_position += direction * delta * DEBUG_MOVE_MULTIPLIER
-		var zoom_axis = Input.get_axis("zoom out", "zoom in")
+		var zoom_axis = Input.get_axis(ZOOM_OUT_BUTTON, ZOOM_IN_BUTTON)
 		var new_zoom = clamp(zoom.x + zoom_axis * delta, MIN_ZOOM, MAX_ZOOM)
 		zoom = Vector2(new_zoom, new_zoom)
 
@@ -94,7 +103,7 @@ func change_zoom_level(
 	zoom_tween = create_tween()
 	(
 		zoom_tween
-		. tween_property(self, "zoom", new_zoom, transition_time)
+		. tween_property(self, ZOOM_PROPERTY, new_zoom, transition_time)
 		. set_ease(Tween.EASE_OUT)
 		. set_trans(Tween.TRANS_BACK)
 	)
@@ -110,8 +119,8 @@ func shake() -> void:
 	var amount = pow(trauma, TRAUMA_POWER)
 
 	rotation = base_rotation + MAX_ROLL * amount * noise.get_noise_1d(noise_y)
-	offset[0] = MAX_OFFSET[0] * amount * noise.get_noise_1d(noise_y)
-	offset[1] = MAX_OFFSET[1] * amount * noise.get_noise_1d(noise_y + ARBITRARY_NOISE_OFFSET)
+	offset.x = MAX_OFFSET.x * amount * noise.get_noise_1d(noise_y)
+	offset.y = MAX_OFFSET.y * amount * noise.get_noise_1d(noise_y + ARBITRARY_NOISE_OFFSET)
 
 	noise_y += 1
 

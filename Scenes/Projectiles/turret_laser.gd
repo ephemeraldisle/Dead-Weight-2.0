@@ -1,45 +1,60 @@
+class_name TurretLaser
 extends AnimatableBody2D
 
-const HIT_EFFECT_SCALE = 0.708
+const HIT_EFFECT_SCALE := 0.708
+const PLAYER_DAMAGE_METHOD := &"player_take_damage"
+const VECTOR_SNAP := Vector2.ONE
+const ROTATION_STEPS := 4
 
+@export var speed_factor: float = 10.0
+@export var hit_power: float = 30000.0
+@export var hit_effect_scene: PackedScene
 
-@export var _speed_factor: float = 10
-@export var hit_power = 30_000
-@export var _hit_effect: PackedScene
-@onready var _hit_sound: AudioStreamPlayer2D = $"Hit Sound"
+var _velocity := Vector2.ZERO
+var _light: Light2D
 
-var _my_velocity = Vector2.ZERO
-var _my_light
-
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+@onready var hit_sound: AudioStreamPlayer2D = $"Hit Sound"
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func program_projectile(velocity: Vector2, new_light: Light2D) -> void:
 	constant_linear_velocity = velocity
-	_my_velocity = velocity
-	_my_light = new_light
-	_my_light.position = collision_shape_2d.position
-
+	_velocity = velocity
+	_light = new_light
+	_light.position = collision_shape.position
 
 func _physics_process(delta: float) -> void:
-	if _my_velocity != Vector2.ZERO:
-		var collision = move_and_collide(_my_velocity * delta * _speed_factor)
-		if collision:
-			var collidee = collision.get_collider()
-			if collidee.has_method("player_take_damage"):
-				_my_velocity = (
-					Vector2
-					. RIGHT
-					. rotated(round(_my_velocity.angle() / TAU * 4) * TAU / 4)
-					. snapped(Vector2.ONE)
-				)
-				collidee.player_take_damage(_my_velocity * hit_power)
-			_hit_sound.play()
-			var hit_effect_instance = _hit_effect.instantiate()
-			hit_effect_instance.scale *= HIT_EFFECT_SCALE
-			get_parent().add_child(hit_effect_instance)
-			_hit_sound.reparent(get_parent())
-			hit_effect_instance.rotation = rotation
-			hit_effect_instance.global_position = collision.get_position() - _my_velocity * _speed_factor * delta
-			hit_effect_instance.take_care_of_light(_my_light)
-			queue_free()
+	if _velocity == Vector2.ZERO:
+		return
+	
+	var collision := move_and_collide(_velocity * delta * speed_factor)
+	if collision:
+		_handle_collision(collision, delta)
+
+func _handle_collision(collision: KinematicCollision2D, delta: float) -> void:
+	var collider := collision.get_collider()
+	if collider.has_method(PLAYER_DAMAGE_METHOD):
+		_apply_damage_to_player(collider)
+	
+	_spawn_hit_effect(collision, delta)
+	queue_free()
+
+func _apply_damage_to_player(collider: Node) -> void:
+	var damage_direction := _calculate_damage_direction()
+	collider.call(PLAYER_DAMAGE_METHOD, damage_direction * hit_power)
+
+func _calculate_damage_direction() -> Vector2:
+	var angle = round(_velocity.angle() / TAU * ROTATION_STEPS) * TAU / ROTATION_STEPS
+	return Vector2.RIGHT.rotated(angle).snapped(VECTOR_SNAP)
+
+func _spawn_hit_effect(collision: KinematicCollision2D, delta: float) -> void:
+	var hit_effect := hit_effect_scene.instantiate()
+	hit_effect.scale *= HIT_EFFECT_SCALE
+	hit_effect.rotation = rotation
+	hit_effect.global_position = collision.get_position() - _velocity * speed_factor * delta
+	
+	var parent := get_parent()
+	parent.add_child(hit_effect)
+	hit_sound.reparent(parent)
+	hit_sound.play()
+	
+	hit_effect.take_care_of_light(_light)

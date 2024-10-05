@@ -1,61 +1,69 @@
 extends Node2D
 class_name Toggler
-# The assumption here is that we start "on" with toggled as "true."
 
 signal toggled_from_save
 
+const TOGGLED_KEY := "toggled"
+
 var objects_that_start_activated: Array[Node2D]
 var objects_that_start_deactivated: Array[Node2D]
-var toggled = true
-var objects_registered = false
+var toggled := true
+var _objects_registered := false
 
-@onready var save_data = $SaveData as SaveData
+@onready var _save_data: SaveData = $SaveData
+
 
 func _ready() -> void:
-	while objects_registered == false:
-		await get_tree().process_frame
-	check_save_data()
-	save_data.save_updated.connect(check_save_data)
+	await _wait_for_objects_registration()
+	_check_save_data()
+	_save_data.save_updated.connect(_check_save_data)
+
 
 func set_off() -> void:
-	toggle_off()
-	save_data.update_data("toggled", false)
-	
+	_deactivate()
+	_save_data.update_data(TOGGLED_KEY, false)
+
+
 func set_on() -> void:
-	toggle_on()
-	save_data.update_data("toggled", true)
-	
-	
-func toggle_off() -> void:
+	_activate()
+	_save_data.update_data(TOGGLED_KEY, true)
+
+
+func _deactivate() -> void:
 	toggled = false
-	if objects_that_start_activated.size() > 0:
-		for object in objects_that_start_activated:
-#			print("%s toggling off" % object)
-			object.change_power(false)
-	if objects_that_start_deactivated.size() > 0:
-		for object in objects_that_start_deactivated:
-			object.change_power(true)
+	_change_object_power(objects_that_start_activated, false)
+	_change_object_power(objects_that_start_deactivated, true)
 
-func toggle_on() -> void:
+
+func _activate() -> void:
 	toggled = true
-	if objects_that_start_activated.size() > 0:
-		for object in objects_that_start_activated:
-			object.change_power(true)
-	if objects_that_start_deactivated.size() > 0:
-		for object in objects_that_start_deactivated:
-			object.change_power(false)
+	_change_object_power(objects_that_start_activated, true)
+	_change_object_power(objects_that_start_deactivated, false)
 
-func check_save_data() -> void:
-	if not save_data.get_data("toggled"):
-		toggle_off()
+
+func _check_save_data() -> void:
+	if not _save_data.get_data(TOGGLED_KEY):
+		_deactivate()
 	else:
-		toggle_on()
+		_activate()
 	toggled_from_save.emit()
 
-func register_active_objects(objects: Array) -> void:
-	objects_registered = true
+
+func register_active_objects(objects: Array[Node2D]) -> void:
+	_objects_registered = true
 	objects_that_start_activated = objects
 
-func register_inactive_objects(objects: Array) -> void:
-	objects_registered = true
+
+func register_inactive_objects(objects: Array[Node2D]) -> void:
+	_objects_registered = true
 	objects_that_start_deactivated = objects
+
+
+func _wait_for_objects_registration() -> void:
+	while not _objects_registered:
+		await get_tree().process_frame
+
+
+func _change_object_power(objects: Array[Node2D], power_state: bool) -> void:
+	for object in objects:
+		object.change_power(power_state)

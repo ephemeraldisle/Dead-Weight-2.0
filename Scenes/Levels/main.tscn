@@ -1356,6 +1356,9 @@ position = Vector2(-376, 0.000610352)
 [node name="SawHolder" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack" index="3"]
 position = Vector2(-376, 0.000610352)
 
+[node name="SawHitbox" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack/SawHolder" index="1"]
+knockback_power = 500.0
+
 [node name="SawTrack2" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("12_f607i")]
 position = Vector2(-181, 322)
 scale = Vector2(0.5, 0.5)
@@ -1373,6 +1376,9 @@ position = Vector2(-580, 0.000610352)
 
 [node name="SawHolder" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack2" index="3"]
 position = Vector2(-600, 0.000610352)
+
+[node name="SawHitbox" parent="SECTION_1/INTRO_ROOM/Objects/SawTrack2/SawHolder" index="1"]
+knockback_power = 500.0
 
 [node name="LaserTrap8" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-215, 575)
@@ -1990,6 +1996,9 @@ metadata/_edit_use_anchors_ = true
 [node name="EndPoint" parent="SECTION_2/GUN_ROOM/Objects/SawTrack3" index="2"]
 position = Vector2(1062, 0)
 
+[node name="SawHitbox" parent="SECTION_2/GUN_ROOM/Objects/SawTrack3/SawHolder" index="1"]
+knockback_power = 500.0
+
 [node name="SawTrack4" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("12_f607i")]
 position = Vector2(-476, 350)
 rotation = -2.67734
@@ -2005,6 +2014,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EndPoint" parent="SECTION_2/GUN_ROOM/Objects/SawTrack4" index="2"]
 position = Vector2(1348, 0.000976563)
+
+[node name="SawHitbox" parent="SECTION_2/GUN_ROOM/Objects/SawTrack4/SawHolder" index="1"]
+knockback_power = 500.0
 
 [node name="Barrier5" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("9_kt32a")]
 position = Vector2(1361.6, 363)
@@ -2253,50 +2265,41 @@ off_material = SubResource("ShaderMaterial_x5a4s")
 [node name="PickupSpawner9" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-142, 600)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner12" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-363, -700)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner10" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(186, 1122.24)
-respawn_time = 10
 
 [node name="PickupSpawner11" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-49, 606)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner13" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-1361, -449)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner14" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-1099, -381)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner15" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-1281, -748)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner16" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-1211, -809)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="GunPickupSpawner" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-120, -190)
 thing_to_spawn = ExtResource("23_c562g")
 initial_delay = 0.0
-respawn_time = 0
 automatic_respawn = false
 
 [node name="PickupSpawner7" parent="SECTION_2/GUN_ROOM/Pickups" instance=ExtResource("20_prrcb")]
@@ -2844,6 +2847,9 @@ position = Vector2(1084, 0)
 [node name="SawHolder" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5" index="3"]
 position = Vector2(-600, 0.000610352)
 
+[node name="SawHitbox" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack5/SawHolder" index="1"]
+knockback_power = 500.0
+
 [node name="SawTrack6" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("12_f607i")]
 z_index = 7
 position = Vector2(-82, -2773)
@@ -2869,6 +2875,9 @@ position = Vector2(554, 0.00195313)
 
 [node name="SawHolder" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6" index="3"]
 position = Vector2(-600, 0.000610352)
+
+[node name="SawHitbox" parent="SECTION_2/BOSS_APPROACH/Objects/SawTrack6/SawHolder" index="1"]
+knockback_power = 500.0
 
 [node name="LongSpikeTrap1" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("11_1hoxj")]
 position = Vector2(-202, -2560)
@@ -3077,24 +3086,20 @@ shape = SubResource("RectangleShape2D_oixbk")
 [node name="PickupSpawner19" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-367, -3097)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner20" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-429, -3096)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner17" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(285, -1948)
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="PickupSpawner18" parent="SECTION_2/BOSS_APPROACH/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(786, -1950)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 10
 
 [node name="BOSS" type="Node2D" parent="SECTION_2"]
 
@@ -3235,13 +3240,11 @@ shape = SubResource("RectangleShape2D_66wrd")
 [node name="PickupSpawner21" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(690, -3541)
 initial_delay = 0.0
-respawn_time = 20
 
 [node name="PickupSpawner22" parent="SECTION_2/BOSS/Pickups" instance=ExtResource("20_prrcb")]
 position = Vector2(-55, -4282)
 thing_to_spawn = ExtResource("22_8kxxg")
 initial_delay = 0.0
-respawn_time = 20
 
 [node name="Glass2" type="Sprite2D" parent="SECTION_2/BOSS"]
 z_index = -20
