@@ -3,7 +3,6 @@ extends Node2D
 
 const MAGNET_DAMPING := 500.0
 const MAGNET_MASS := 500.0
-const MAGNET_BUTTON := "down"
 const ENERGY_COST := 0.0055
 const MAGNET_RANGE := 250.0
 const MAGNET_FORCE := 1000.0
@@ -34,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	if not ability_power_controller.powered:
 		return
 		
-	if Input.is_action_pressed(MAGNET_BUTTON) and SharedPlayerManager.request_energy_percentage() > NO_ENERGY:
+	if Input.is_action_pressed(g.MAGNET_BUTTON) and SharedPlayerManager.request_energy_percentage() > NO_ENERGY:
 		do_magnet(delta)
 		magnet_modifier += MODIFIER_PER_FRAME
 		GameEvents.emit_energy_percent_changed(-ENERGY_COST)

@@ -1,18 +1,20 @@
 extends Camera2D
 
-var direction = Vector2.UP*5
-var original_position
-var distance
+const DIRECTION = Vector2.UP*5
+
+var _original_position
+var _distance
+
 @onready var intro_screen = $".."
 
-func _ready():
+func _ready() -> void:
 	GlobalCamera.follow_node(self)
-	original_position = global_position
+	_original_position = global_position
 	
-func do_shake():
+func do_shake() -> void:
 	GlobalCamera.add_trauma(1)
 
-func _process(delta):
-	global_position += direction
-	distance = global_position.y - original_position.y
-	intro_screen.offset.y = distance
+func _process(delta) -> void:
+	global_position += DIRECTION
+	_distance = global_position.y - _original_position.y
+	intro_screen.offset.y = _distance

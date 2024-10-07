@@ -1,5 +1,8 @@
 extends Node2D
 
+#Unused for now
+
+
 var chain_nodes = [] # Array to hold the nodes in the chain
 var distances = [] # Array to hold the distances between nodes
 var max_angle = -PI # Maximum angle a node can rotate

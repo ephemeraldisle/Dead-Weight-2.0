@@ -1,5 +1,8 @@
 extends Node2D
 
+#Unused for now.
+
+
 @export var root_node: Node2D
 var bones : Array[Node2D]
 var distances: Array

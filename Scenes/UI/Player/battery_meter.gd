@@ -1,8 +1,9 @@
 extends CanvasLayer
 
-const BARS_PER_BATTERY = 4
-const MINIMUM_ANIMATION_FRAMES = 20
-
+const BARS_PER_BATTERY := 4
+const MINIMUM_ANIMATION_FRAMES := 20
+const ON_ANIMATION := "poweron"
+const OFF_ANIMATION := "poweroff"
 
 @export var energy_manager: Node
 
@@ -36,7 +37,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if _active_battery == null:
 		return
-	_current_percent = clamp(energy_manager.current_energy - energy_manager.current_bars, 0, 1)
+	_current_percent = clamp(energy_manager.current_energy - energy_manager.current_bars, g.EMPTY, g.FULL)
 	_update_progress_bar_fill()
 	if _current_percent < _previous_percent:
 		_power_on_ticks = 0
@@ -59,7 +60,6 @@ func _update_available_batteries() -> void:
 
 func _update_battery_texture_frames() -> void:
 	var available_bars = energy_manager.current_bars
-#	print(available_bars)
 	for battery in _current_batteries:
 		if available_bars >= 0:
 			if available_bars >= BARS_PER_BATTERY:
@@ -84,12 +84,12 @@ func _animation_on():
 		for battery in _current_batteries:
 			battery.sparks.emitting = true
 		_animating = true
-		_power_indicator_animator.play("poweron")
+		_power_indicator_animator.play(ON_ANIMATION)
 
 
 func _animation_off():
 	_animating = false
-	_power_indicator_animator.play_backwards("poweroff")
+	_power_indicator_animator.play_backwards(OFF_ANIMATION)
 	for battery in _current_batteries:
 		battery.sparks.emitting = false
 
@@ -98,6 +98,6 @@ func fade_visibility(vis: bool, fade_time: float) -> void:
 	var tween = create_tween()	
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if vis == false:
-		tween.tween_property(vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(1.0)
+		tween.tween_property(vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(g.FULL_OPACITY)
 	else:
-		tween.tween_property(vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(0.0)	
+		tween.tween_property(vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(g.NO_OPACITY)	

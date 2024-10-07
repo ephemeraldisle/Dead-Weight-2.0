@@ -1,105 +1,62 @@
 extends Node
 
-const SAVE_FILE_PATH = "user://game.save"
-const CURRENT_VERSION = 0.2
-
-var _save_data_default := {
-	"version": CURRENT_VERSION,
-	"spawn_point": null,
-	"options":
-	{
-		"screenshake": true,
-		"master_volume": 0.5,
-		"music_volume": 0.5,
-		"sound_volume": 0.5,
-		"heart_beep": true,
-	},
-	"progression":
-	{
-		"tutorial_complete": false,
-		"options_visited": false,
-		"introduction_watched": false,
-		"batteries": 1,
-	},
-	"abilities":
-	{
-		"jetpack": true,
-		"rotation": true,
-		"death": true,
-		"interact": true,
-		"gun": false,
-		"shield": false,
-		"magnet": false,
-	},
-	"local": {},
-}
-
 var save_data := {}
-var _initliazed := false
-
+var _initialized := false
 
 func _ready() -> void:
-#	print(_save_data_default.options.screenshake)
 	load_save_file()
-	_initliazed = true
-
+	_initialized = true
 
 func load_save_file() -> void:
-	if !FileAccess.file_exists(SAVE_FILE_PATH):
-		save_data = _save_data_default.duplicate(true)
+	if not FileAccess.file_exists(g.SAVE_FILE_PATH):
+		save_data = GlobalConsts.get_default_game_state()
 		return
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	var file := FileAccess.open(g.SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
-	print(save_data)
+# 	_migrate_save_data_if_needed()
 
+# func _migrate_save_data_if_needed() -> void:
+# 	if save_data.version < g.CURRENT_VERSION:
+# 		# Implement migration logic here
+# 		save_data.version = g.CURRENT_VERSION
+# 		save()
 
 func save() -> void:
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	var file := FileAccess.open(g.SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_var(save_data)
 
-
 func update_volume(bus: String, percent: float) -> void:
-	if bus == "Master":
-		save_data.options.master_volume = percent
-	if bus == "Sounds":
-		save_data.options.sound_volume = percent
-	if bus == "Music":
-		save_data.options.music_volume = percent
-#	print(save_data.options)
+	match bus:
+		g.MASTER_BUS: save_data.options.master_volume = percent
+		g.SOUND_BUS: save_data.options.sound_volume = percent
+		g.MUSIC_BUS: save_data.options.music_volume = percent
 	save()
-
 
 func update_screenshake(enabled: bool) -> void:
 	save_data.options.screenshake = enabled
 	save()
 
-
 func update_heart_beep(enabled: bool) -> void:
 	save_data.options.heart_beep = enabled
 	save()
-
 
 func update_spawn_point(spawn_point: Node2D) -> void:
 	save_data.spawn_point = spawn_point.get_path()
 	save()
 
-
 func update_progress(key: String, value: bool) -> void:
 	save_data.progression[key] = value
 	save()
-
 
 func update_abilities(key: String, value: bool) -> void:
 	save_data.abilities[key] = value
 	save()
 
-
 func update_save_data() -> void:
 	save_data = GameState.state.duplicate(true)
 	save()
 
-
 func get_game_states() -> Dictionary:
-	if not _initliazed:
+	if not _initialized:
 		printerr("GameState requested data before SaveManager is ready")
 	return save_data.duplicate(true)

@@ -28,8 +28,6 @@ const STYLE_SETTINGS = {
 	},
 	}
 
-const SILENT_DB = -80
-
 var can_beep = false
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
@@ -49,11 +47,11 @@ func _ready() -> void:
 func _on_beep_toggled() -> void:
 	if not can_beep:
 		return
-	beep_sound.volume_db = 0 if GameState.state.options.heart_beep else SILENT_DB
+	beep_sound.volume_db = g.NORMAL_DB if GameState.state.options.heart_beep else g.SILENT_DB
 
 
 func set_status(health):
-	if health == 0 or health > Health.MAX_HEALTH:
+	if health == g.EMPTY or health > Health.MAX_HEALTH:
 		return
 	ekg_line.modulate = STYLE_SETTINGS[health].COLOR
 	condition_label.label_settings.font_color = STYLE_SETTINGS[health].COLOR
@@ -63,7 +61,7 @@ func set_status(health):
 	beep_sound.pitch_scale =STYLE_SETTINGS[health].BEEP_PITCH
 	
 	if health != Health.MAX_HEALTH:
-		hearts.emitting = SharedPlayerManager.request_water_percentage() > 0
+		hearts.emitting = SharedPlayerManager.request_water_percentage() > g.EMPTY
 	else:
 		hearts.emitting = false
 
@@ -71,6 +69,6 @@ func fade_visibility(vis: bool, fade_time: float) -> void:
 	var tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if vis == false:
-		tween.tween_property(vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(1.0)
+		tween.tween_property(vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(g.FULL_OPACITY)
 	else:
-		tween.tween_property(vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(0.0)	
+		tween.tween_property(vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(g.NO_OPACITY)	

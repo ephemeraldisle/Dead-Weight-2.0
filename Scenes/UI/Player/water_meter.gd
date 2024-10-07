@@ -9,6 +9,8 @@ const MID_HEALTH := 2
 const MID_PARTICLE_MULTIPLIER := 2
 const LOW_HEALTH := 1
 const LOW_PARTICLE_MULTIPLIER := 4
+const SQUEEZE_PARAMETER := "material:shader_parameter/squeeze_amount"
+const PROGRESS_PARAMETER := "material:shader_parameter/progress"
 
 @export var water_manager: Node
 
@@ -33,20 +35,20 @@ func _physics_process(_delta: float) -> void:
 		_water_drops.emitting = true
 	if not GameState.state.abilities.jetpack:
 		return
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed(g.JETPACK_BUTTON):
 		_squeeze_bar(true)
-	elif Input.is_action_just_released("jump"):
+	elif Input.is_action_just_released(g.JETPACK_BUTTON):
 		_squeeze_bar(false)
 
 
 func _squeeze_bar(should_squeeze: bool) -> void:
 	_squeeze_tween = create_tween()
-	_squeeze_tween.tween_property(_squeezer, "material:shader_parameter/squeeze_amount", int(should_squeeze), SQUEEZE_TWEEN_TIME).from_current()
+	_squeeze_tween.tween_property(_squeezer, SQUEEZE_PARAMETER, int(should_squeeze), SQUEEZE_TWEEN_TIME).from_current()
 
 
 func _update_progress() -> void:
 	_tween = create_tween()
-	_tween.tween_property(_fill_bar, "material:shader_parameter/progress", SharedPlayerManager.request_water_percentage(), FILL_TWEEN_TIME)
+	_tween.tween_property(_fill_bar, PROGRESS_PARAMETER, SharedPlayerManager.request_water_percentage(), FILL_TWEEN_TIME)
 
 
 func _update_particles(health: int) -> void:
@@ -56,7 +58,7 @@ func _update_particles(health: int) -> void:
 	if health == LOW_HEALTH:
 		particle_amount = STANDARD_PARTICLES * LOW_PARTICLE_MULTIPLIER
 	_particle_tween = create_tween()
-	_particle_tween.tween_property(_water_drops, "amount", particle_amount, PARTICLE_TWEEN_TIME).from_current()
+	_particle_tween.tween_property(_water_drops, g.PARTICLE_AMOUNT, particle_amount, PARTICLE_TWEEN_TIME).from_current()
 
 
 func fade_visibility(vis: bool, fade_time: float) -> void:
@@ -64,7 +66,7 @@ func fade_visibility(vis: bool, fade_time: float) -> void:
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if vis == false:
 		_water_drops.emitting = false
-		tween.tween_property(_vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(1.0)
+		tween.tween_property(_vision_controller, g.OPACITY, g.NO_OPACITY, fade_time).from(g.FULL)
 	else:
 		_water_drops.emitting = true
-		tween.tween_property(_vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(0.0)	
+		tween.tween_property(_vision_controller, g.OPACITY, g.FULL_OPACITY, fade_time).from(g.EMPTY)	

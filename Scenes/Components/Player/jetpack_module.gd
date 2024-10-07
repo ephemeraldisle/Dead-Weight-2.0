@@ -5,7 +5,6 @@ signal jetpacked
 const WATER_COST_PER_FRAME = 0.00025
 const JETPACK_POWER = 300
 const IMPULSE_OFFSET = Vector2(0,0)
-const JETPACK_BUTTON = "jump"
 
 @export var water_manager: Node
 
@@ -19,7 +18,7 @@ var never_jetpacked_before = true
 func _physics_process(_delta):
 	if not _ability_power_controller.powered:
 		return
-	if Input.is_action_pressed(JETPACK_BUTTON) and SharedPlayerManager.request_water_percentage() > 0:
+	if Input.is_action_pressed(g.JETPACK_BUTTON) and SharedPlayerManager.request_water_percentage() > g.EMPTY:
 			if never_jetpacked_before:
 				never_jetpacked_before = false
 				jetpacked.emit()

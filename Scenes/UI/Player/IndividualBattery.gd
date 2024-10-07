@@ -15,6 +15,6 @@ func adjust_progress_bar_position(number_of_bars: int) -> void:
 	texture_progress_bar.position.x = PROGRESS_BAR_X_BASE + BATTERY_BAR_SEPARATION * number_of_bars
 
 
-func adjust_progress_bar_fill(percent: float):
+func adjust_progress_bar_fill(percent: float) -> void:
 	texture_progress_bar.value = percent
 

@@ -12,8 +12,6 @@ const NEUTRAL_INPUT := 0.0
 const NO_ANGULAR_DAMP := 0.0
 const NO_ENERGY := 0.0
 const MULTIPLIER_GAIN_PER_FRAME := 1
-const LEFT_BUTTON := "left"
-const RIGHT_BUTTON := "right"
 
 var _rotation_multiplier := DEFAULT_MULTIPLIER
 var _is_rotating := false
@@ -30,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 	if GameState.introduction_running or not _ability_power_controller.powered:
 		return
 
-	var rotation_input := Input.get_axis(LEFT_BUTTON, RIGHT_BUTTON)
+	var rotation_input := Input.get_axis(g.LEFT_BUTTON, g.RIGHT_BUTTON)
 	
 	if rotation_input != NEUTRAL_INPUT:
 		_handle_rotation(rotation_input)
