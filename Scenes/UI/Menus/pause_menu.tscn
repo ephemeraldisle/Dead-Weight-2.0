@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bevh20socrq5h"]
 
-[ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_osmk8"]
+[ext_resource type="Script" path="res://Scripts/UI/Menus/pause_menu.gd" id="1_osmk8"]
 [ext_resource type="Texture2D" uid="uid://dorsg0fspa5jg" path="res://Art/Environment/Background/bkgd_0.png" id="2_qjl56"]
 [ext_resource type="Theme" uid="uid://cexmcmmcmil1d" path="res://Resources/UI/kenneyUI.tres" id="4_h4erd"]
 

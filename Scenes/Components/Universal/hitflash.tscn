@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgeh48bgco303"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Universal/hitflash.gd" id="1_ktcyi"]
+[ext_resource type="Script" path="res://Scripts/Objects/hitflash.gd" id="1_ktcyi"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/hitflash.gdshader" id="2_tnm0j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37ean"]

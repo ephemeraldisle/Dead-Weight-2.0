@@ -69,10 +69,10 @@ const DEFAULT_GAME_STATE := {
 		"batteries": 1,
 	},
 	"abilities": {
-		"jetpack": false,
-		"rotation": false,
-		"death": false,
-		"interact": false,
+		"jetpack": true,
+		"rotation": true,
+		"death": true,
+		"interact": true,
 		"gun": false,
 		"shield": false,
 		"magnet": false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://ci67irojgt1k2"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Player/Player.gd" id="1_5bc4x"]
+[ext_resource type="Script" path="res://Scripts/Player/Astro/Player.gd" id="1_5bc4x"]
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_k54aa"]
 [ext_resource type="AudioStream" uid="uid://bfy6v5jrvv3r3" path="res://Resources/Audio/hurt_sounds.tres" id="2_gqq08"]
 [ext_resource type="PackedScene" uid="uid://cfldpt74nosda" path="res://Scenes/Components/Player/health_manager.tscn" id="2_jhuq7"]

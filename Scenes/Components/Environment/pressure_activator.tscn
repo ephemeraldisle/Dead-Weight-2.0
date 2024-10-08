@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b18jambxofrj0"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Environment/pressure_activator.gd" id="1_mc3tb"]
+[ext_resource type="Script" path="res://Scripts/Objects/Components/pressure_activator.gd" id="1_mc3tb"]
 
 [node name="PressureActivator" type="Area2D"]
 collision_layer = 0

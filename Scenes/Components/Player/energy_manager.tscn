@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdopuq8nt6j05"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/energy_manager.gd" id="1_d5cfn"]
+[ext_resource type="Script" path="res://Scripts/Player/energy_manager.gd" id="1_d5cfn"]
 
 [node name="EnergyManager" type="Node2D"]
 script = ExtResource("1_d5cfn")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://gygvknc042gv"]
 
-[ext_resource type="Script" path="res://Scenes/Fundamentals/Activator.gd" id="1_27jjr"]
+[ext_resource type="Script" path="res://Scripts/Player/Activator.gd" id="1_27jjr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o01my"]
 radius = 2000.0

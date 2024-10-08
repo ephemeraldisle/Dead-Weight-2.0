@@ -1,6 +1,6 @@
 [gd_scene load_steps=69 format=3 uid="uid://cq0bavny1jtr6"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Pickups/energy_pickup.gd" id="1_a7vdv"]
+[ext_resource type="Script" path="res://Scripts/Objects/Pickups/energy_pickup.gd" id="1_a7vdv"]
 [ext_resource type="Texture2D" uid="uid://btoj14vq414fo" path="res://Art/Pickups/battery_25x50px-Sheet.png" id="1_sbayy"]
 [ext_resource type="AudioStream" uid="uid://dwj2e3brvyrx6" path="res://Audio/Objects/Pickups/electircpickupsound.wav" id="2_75bqe"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="4_kyb1c"]

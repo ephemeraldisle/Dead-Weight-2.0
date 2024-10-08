@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://chiwh1qrg4g6s"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Player/Ropes/rope_holder.gd" id="1_jcq2k"]
+[ext_resource type="Script" path="res://Scripts/Player/Rope/rope_holder.gd" id="1_jcq2k"]
 [ext_resource type="PackedScene" uid="uid://bxg6gpwbl1rgr" path="res://Scenes/Objects/Player/Ropes/rope_segment.tscn" id="2_6fvv8"]
 [ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="3_3qfhb"]
 [ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="3_gol0s"]

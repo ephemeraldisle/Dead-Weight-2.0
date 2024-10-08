@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp32vddosk1jf"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/restart_module.gd" id="1_4rdmp"]
-[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="2_0cq4i"]
+[ext_resource type="Script" path="res://Scripts/Player/Modules/restart_module.gd" id="1_4rdmp"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Player/ability_power_controller.tscn" id="2_0cq4i"]
 
 [node name="RestartModule" type="Node"]
 script = ExtResource("1_4rdmp")

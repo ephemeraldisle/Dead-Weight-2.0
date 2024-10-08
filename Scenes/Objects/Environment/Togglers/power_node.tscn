@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://vef6tdll8ra3"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Togglers/power_node.gd" id="1_vw2gk"]
+[ext_resource type="Script" path="res://Scripts/Objects/Togglers/power_node.gd" id="1_vw2gk"]
 [ext_resource type="Texture2D" uid="uid://bv4g3t6nddt1b" path="res://Art/Environment/Objects/power node.png" id="3_wajpj"]
 [ext_resource type="AudioStream" uid="uid://cg4orrw4gqgev" path="res://Audio/Objects/Togglers/power node crystal shatter.mp3" id="4_8x28o"]
 [ext_resource type="PackedScene" uid="uid://dspe86sj8v0ex" path="res://Scenes/Components/Environment/toggler_component.tscn" id="4_dy054"]

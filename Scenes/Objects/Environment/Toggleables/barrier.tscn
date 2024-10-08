@@ -1,7 +1,7 @@
 [gd_scene load_steps=57 format=3 uid="uid://bf75lquvw7wae"]
 
 [ext_resource type="Texture2D" uid="uid://nq0u7l2nkp67" path="res://Art/Environment/Objects/barrier_idle.png" id="1_14ark"]
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/barrier.gd" id="1_d84bt"]
+[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/barrier.gd" id="1_d84bt"]
 [ext_resource type="Texture2D" uid="uid://cbaldd6eabpx0" path="res://Art/Environment/Objects/barrier_deactivate.png" id="1_yl0uj"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_6tgpx"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="2_wl305"]

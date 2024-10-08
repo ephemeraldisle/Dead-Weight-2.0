@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bovathl82chfr"]
 
-[ext_resource type="PackedScene" uid="uid://b1c5jbbul1yfq" path="res://Scenes/Background/zwire_art.tscn" id="1_6c5ey"]
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/wire.gd" id="1_7pwut"]
+[ext_resource type="PackedScene" uid="uid://b1c5jbbul1yfq" path="res://Scenes/Environment/zwire_art.tscn" id="1_6c5ey"]
+[ext_resource type="Script" path="res://Scripts/Objects/wire.gd" id="1_7pwut"]
 [ext_resource type="Material" uid="uid://b3kx8na1vwa4s" path="res://Resources/Materials/wire_on_shader.tres" id="2_guyf4"]
 [ext_resource type="Material" uid="uid://cx7yohtobxg3u" path="res://Resources/Materials/wire_off_shader.tres" id="3_f2op3"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="5_ti5as"]

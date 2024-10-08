@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drj6k528vq4no"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Pickups/pickup_spawner.gd" id="1_u3wtv"]
+[ext_resource type="Script" path="res://Scripts/Objects/Pickups/pickup_spawner.gd" id="1_u3wtv"]
 [ext_resource type="PackedScene" uid="uid://d0eeiggg48xvt" path="res://Scenes/Objects/Pickups/water_pot_pickup.tscn" id="2_2oair"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_taoa8"]

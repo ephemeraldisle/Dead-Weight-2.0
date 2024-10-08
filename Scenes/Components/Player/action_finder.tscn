@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf2m6g8fuvyo5"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/action_finder.gd" id="1_k6jiw"]
+[ext_resource type="Script" path="res://Scripts/Player/action_finder.gd" id="1_k6jiw"]
 
 [node name="ActionFinder" type="Area2D"]
 collision_layer = 0

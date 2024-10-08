@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cywuss6hgdpb7"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Universal/timer_component.gd" id="1_6s6pv"]
+[ext_resource type="Script" path="res://Scripts/Objects/timer_component.gd" id="1_6s6pv"]
 
 [node name="TimerComponent" type="Timer"]
 process_callback = 0

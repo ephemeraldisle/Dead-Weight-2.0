@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dspe86sj8v0ex"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Environment/toggler_component.gd" id="1_h6hnm"]
+[ext_resource type="Script" path="res://Scripts/Objects/Components/toggler_component.gd" id="1_h6hnm"]
 [ext_resource type="PackedScene" uid="uid://dwlq8k2espun1" path="res://Scenes/Components/Universal/save_data.tscn" id="2_me7bl"]
 
 [node name="TogglerComponent" type="Node2D"]

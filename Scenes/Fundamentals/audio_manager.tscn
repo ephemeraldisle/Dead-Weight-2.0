@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://6unuf83lk04q"]
 
-[ext_resource type="Script" path="res://Scenes/Fundamentals/audio_manager.gd" id="1_3b3tp"]
+[ext_resource type="Script" path="res://Scripts/Autoload/audio_manager.gd" id="1_3b3tp"]
 [ext_resource type="PackedScene" uid="uid://dincghve3gda0" path="res://Scenes/Audio/generic_player.tscn" id="2_2awp6"]
 [ext_resource type="PackedScene" uid="uid://2mvjxi6npuqm" path="res://Scenes/Audio/ui_affirmative_clicks.tscn" id="3_iq4pf"]
 [ext_resource type="AudioStream" uid="uid://28sr40haoyp4" path="res://Audio/Music/silly start song.mp3" id="4_wtika"]

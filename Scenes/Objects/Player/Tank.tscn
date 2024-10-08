@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=3 uid="uid://5xkp2n7lbo7x"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_j445f"]
-[ext_resource type="Script" path="res://Scenes/Objects/Player/Tank.gd" id="1_rjyx0"]
+[ext_resource type="Script" path="res://Scripts/Player/Tank/Tank.gd" id="1_rjyx0"]
 [ext_resource type="Texture2D" uid="uid://bo6j26vrkq6s5" path="res://Art/Player/Tank/LILGUYS.svg" id="2_can6j"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline.gdshader" id="3_5583u"]
 [ext_resource type="Texture2D" uid="uid://docx0qqt25n3k" path="res://Art/Player/Tank/mouth2.png" id="3_h8kbu"]
@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://demu11mu3a5b1" path="res://Art/Player/Tank/mouth1.png" id="16_upsqu"]
 [ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="19_pcqb3"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="24_1rugv"]
-[ext_resource type="Script" path="res://Scenes/Objects/Player/ExpressionManager.gd" id="31_36umq"]
+[ext_resource type="Script" path="res://Scripts/Player/Tank/ExpressionManager.gd" id="31_36umq"]
 [ext_resource type="PackedScene" uid="uid://bayla3pm7wq78" path="res://Scenes/Components/Player/shield_module.tscn" id="34_sjcxy"]
 [ext_resource type="PackedScene" uid="uid://d4elk6omn8qmt" path="res://Scenes/Components/Player/player_bump_noise_trigger.tscn" id="35_fw5iy"]
 [ext_resource type="PackedScene" uid="uid://d0i0vf4geewcj" path="res://Scenes/Components/Player/magnet_module.tscn" id="37_cpaf8"]

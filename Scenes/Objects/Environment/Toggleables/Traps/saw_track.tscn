@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://bbhc3j087wtxl"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_track.gd" id="1_5enud"]
+[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/Traps/saw_track.gd" id="1_5enud"]
 [ext_resource type="Texture2D" uid="uid://c5ao8ujxfmmt5" path="res://Art/Environment/Objects/saw track.png" id="1_yejhl"]
 [ext_resource type="PackedScene" uid="uid://dmsyy6q14ruhv" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_blade.tscn" id="2_bn2c8"]
-[ext_resource type="Script" path="res://Scenes/Components/Environment/damaging_zone.gd" id="4_ei5vv"]
+[ext_resource type="Script" path="res://Scripts/Objects/Components/damaging_zone.gd" id="4_ei5vv"]
 [ext_resource type="AudioStream" uid="uid://bq8yjai6egkfh" path="res://Audio/Objects/Traps/Saw/saw sound.mp3" id="4_xrxxg"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="5_p1pb3"]
 [ext_resource type="Texture2D" uid="uid://bwne30q5i102u" path="res://Art/Faces/scared face.png" id="6_iv6lh"]
 [ext_resource type="PackedScene" uid="uid://cktj00bqwqqud" path="res://Scenes/Audio/impact_sound_for_player.tscn" id="6_vlul4"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="8_iwej4"]
-[ext_resource type="Script" path="res://Scenes/Components/Universal/identifier.gd" id="8_qf4j5"]
+[ext_resource type="Script" path="res://Scripts/Objects/identifier.gd" id="8_qf4j5"]
 [ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="9_o0seq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thtvm"]

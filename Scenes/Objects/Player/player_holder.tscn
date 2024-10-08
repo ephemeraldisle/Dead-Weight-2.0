@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj7uydye3oc1k"]
 
 [ext_resource type="PackedScene" uid="uid://5xkp2n7lbo7x" path="res://Scenes/Objects/Player/Tank.tscn" id="1_6illi"]
-[ext_resource type="Script" path="res://Scenes/Objects/Player/player_holder.gd" id="1_twwje"]
+[ext_resource type="Script" path="res://Scripts/Player/player_holder.gd" id="1_twwje"]
 [ext_resource type="PackedScene" uid="uid://chiwh1qrg4g6s" path="res://Scenes/Objects/Player/Ropes/rope_holder.tscn" id="2_b2brt"]
 [ext_resource type="PackedScene" uid="uid://ci67irojgt1k2" path="res://Scenes/Objects/Player/player.tscn" id="3_vt678"]
 

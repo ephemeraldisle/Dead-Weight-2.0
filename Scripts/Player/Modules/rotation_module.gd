@@ -12,6 +12,7 @@ const NEUTRAL_INPUT := 0.0
 const NO_ANGULAR_DAMP := 0.0
 const NO_ENERGY := 0.0
 const MULTIPLIER_GAIN_PER_FRAME := 1
+const MULTIPLIER_LOSS_PER_FRAME := 0.5
 
 var _rotation_multiplier := DEFAULT_MULTIPLIER
 var _is_rotating := false
@@ -27,7 +28,8 @@ var _rotated_right := false
 func _physics_process(_delta: float) -> void:
 	if GameState.introduction_running or not _ability_power_controller.powered:
 		return
-
+	
+	print(_rotation_multiplier)
 	var rotation_input := Input.get_axis(g.LEFT_BUTTON, g.RIGHT_BUTTON)
 	
 	if rotation_input != NEUTRAL_INPUT:
@@ -57,8 +59,8 @@ func _apply_powered_rotation(input: float) -> void:
 
 func _reset_rotation() -> void:
 	_is_rotating = false
-	_rotation_multiplier = DEFAULT_MULTIPLIER
-	_parent.angular_damp = _original_damp
+	_rotation_multiplier = max(_rotation_multiplier * MULTIPLIER_LOSS_PER_FRAME, DEFAULT_MULTIPLIER)
+	_parent.angular_damp = _original_damp * _rotation_multiplier
 	_audio_player.stop()
 
 func _check_tutorial_rotation(input: float) -> void:

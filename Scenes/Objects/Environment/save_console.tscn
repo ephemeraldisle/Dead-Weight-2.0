@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://w3figqlpg8kd"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/save_console.gd" id="1_ns488"]
+[ext_resource type="Script" path="res://Scripts/Objects/save_console.gd" id="1_ns488"]
 [ext_resource type="Texture2D" uid="uid://0rj8d74fhe6h" path="res://Art/Environment/Objects/decor_4.png" id="2_8v4tp"]
 [ext_resource type="Texture2D" uid="uid://cinkax1gv2c2v" path="res://Art/Environment/Objects/decor_5.png" id="2_oo1ru"]
 [ext_resource type="Texture2D" uid="uid://bog2p4xmvgjiq" path="res://Art/saw.png" id="3_iuepq"]

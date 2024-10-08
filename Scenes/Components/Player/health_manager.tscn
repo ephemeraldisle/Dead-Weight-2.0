@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfldpt74nosda"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/HealthManager.gd" id="1_vuufa"]
+[ext_resource type="Script" path="res://Scripts/Player/HealthManager.gd" id="1_vuufa"]
 
 [node name="HealthManager" type="Node"]
 script = ExtResource("1_vuufa")

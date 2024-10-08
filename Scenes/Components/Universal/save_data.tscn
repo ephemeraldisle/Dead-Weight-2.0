@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwlq8k2espun1"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Universal/save_data.gd" id="1_klsho"]
+[ext_resource type="Script" path="res://Scripts/Objects/save_data.gd" id="1_klsho"]
 
 [node name="SaveData" type="Node" groups=["savers"]]
 script = ExtResource("1_klsho")

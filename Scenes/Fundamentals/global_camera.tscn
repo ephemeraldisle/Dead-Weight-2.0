@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crl3cbdt0b741"]
 
-[ext_resource type="Script" path="res://Scenes/Fundamentals/global_camera.gd" id="1_wmld7"]
+[ext_resource type="Script" path="res://Scripts/Autoload/global_camera.gd" id="1_wmld7"]
 
 [node name="GlobalCamera" type="Camera2D"]
 ignore_rotation = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0eeiggg48xvt"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Pickups/water_pot_pickup.gd" id="1_07bee"]
+[ext_resource type="Script" path="res://Scripts/Objects/Pickups/water_pot_pickup.gd" id="1_07bee"]
 [ext_resource type="Texture2D" uid="uid://b4hhuujda0uqn" path="res://Art/Pickups/water_pot_item.png" id="2_4nn5j"]
 [ext_resource type="AudioStream" uid="uid://g71ttdtoyhca" path="res://Audio/Objects/Pickups/maximize_008.ogg" id="2_8650p"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="4_4ankn"]

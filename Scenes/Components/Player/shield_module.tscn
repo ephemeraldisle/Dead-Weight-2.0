@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bayla3pm7wq78"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Player/Shield Module.gd" id="1_0qxpu"]
+[ext_resource type="Script" path="res://Scripts/Player/Modules/Shield Module.gd" id="1_0qxpu"]
 [ext_resource type="AudioStream" uid="uid://derfs2gmyr7o" path="res://Audio/Objects/Player/Tank/shield charge.mp3" id="2_2fan6"]
 [ext_resource type="AudioStream" uid="uid://cn7uelhcqwpic" path="res://Audio/Objects/Player/Tank/shieldrecharge.mp3" id="3_054u1"]
 [ext_resource type="AudioStream" uid="uid://3683cg1d36r0" path="res://Audio/Objects/Player/Tank/shiledubrst.mp3" id="4_qwtie"]
 [ext_resource type="Texture2D" uid="uid://igcxemyvhpwg" path="res://Art/Particles/electric.svg" id="5_3y8f0"]
-[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="6_xx24b"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Player/ability_power_controller.tscn" id="6_xx24b"]
 
 [sub_resource type="Gradient" id="Gradient_5pbub"]
 offsets = PackedFloat32Array(0, 0.127946, 0.141414, 0.188552, 0.242424, 0.323232, 0.40404, 1)

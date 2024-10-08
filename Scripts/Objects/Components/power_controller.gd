@@ -3,7 +3,7 @@ class_name PowerController
 
 signal power_changed(is_powered: bool)
 
-@export var initial_power_state := false
+@export var initial_power_state := true
 @export var activatable := false
 
 var powered := false

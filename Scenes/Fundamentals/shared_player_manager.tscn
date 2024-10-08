@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bp4xcrakwe6wl"]
 
-[ext_resource type="Script" path="res://Scenes/Fundamentals/shared player manager.gd" id="1_shdlt"]
+[ext_resource type="Script" path="res://Scripts/Autoload/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
 [ext_resource type="AudioStream" uid="uid://d1k12deehk832" path="res://Audio/Hurt Sounds/Robot/robohit.mp3" id="3_1txdn"]
 [ext_resource type="AudioStream" uid="uid://cavnptp542jp4" path="res://Audio/Hurt Sounds/Robot/robohit7.mp3" id="4_me8qp"]

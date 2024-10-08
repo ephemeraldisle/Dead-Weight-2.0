@@ -1,8 +1,8 @@
 [gd_scene load_steps=219 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="Material" uid="uid://ctbaan0qf40hr" path="res://Resources/Materials/tile_shader.tres" id="1_a3mvc"]
-[ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Background/parallax_background_space.tscn" id="1_a8rnd"]
-[ext_resource type="Script" path="res://Scenes/Levels/main.gd" id="1_ji81j"]
+[ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Environment/parallax_background_space.tscn" id="1_a8rnd"]
+[ext_resource type="Script" path="res://Scripts/Environment/main.gd" id="1_ji81j"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
 [ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
@@ -24,8 +24,8 @@
 [ext_resource type="Material" uid="uid://cx7yohtobxg3u" path="res://Resources/Materials/wire_off_shader.tres" id="22_6y1cs"]
 [ext_resource type="PackedScene" uid="uid://cq0bavny1jtr6" path="res://Scenes/Objects/Pickups/energy_pickup.tscn" id="22_8kxxg"]
 [ext_resource type="PackedScene" uid="uid://cax2ot2p37sif" path="res://Scenes/Objects/Pickups/gun_pickup.tscn" id="23_c562g"]
-[ext_resource type="PackedScene" uid="uid://4mcd07bt6gxd" path="res://Scenes/Background/light_holder_thing.tscn" id="24_43n7f"]
-[ext_resource type="PackedScene" uid="uid://2camwyroxen8" path="res://Scenes/Background/secret_hider.tscn" id="24_udsjm"]
+[ext_resource type="PackedScene" uid="uid://4mcd07bt6gxd" path="res://Scenes/Environment/light_holder_thing.tscn" id="24_43n7f"]
+[ext_resource type="PackedScene" uid="uid://2camwyroxen8" path="res://Scenes/Environment/secret_hider.tscn" id="24_udsjm"]
 [ext_resource type="TileSet" uid="uid://il7emji1b17m" path="res://Resources/secrettileset.tres" id="25_144ko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01usf"]
@@ -3241,6 +3241,7 @@ z_index = 500
 position = Vector2(-230, -451)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [node name="Lights" type="Node2D" parent="CanvasModulate"]

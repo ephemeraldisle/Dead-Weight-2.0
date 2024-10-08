@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ce7rh3vtcmies"]
 
-[ext_resource type="Script" path="res://Scenes/Components/Universal/ping_animation.gd" id="1_3qdl6"]
+[ext_resource type="Script" path="res://Scripts/Objects/ping_animation.gd" id="1_3qdl6"]
 [ext_resource type="Texture2D" uid="uid://30dm8ruytp3n" path="res://Art/UI/ping line 1.png" id="1_patbo"]
 [ext_resource type="Texture2D" uid="uid://e3o6ren8xbk7" path="res://Art/UI/ping line 2.png" id="2_7lyg3"]
 [ext_resource type="Texture2D" uid="uid://c5auxll8o2gs8" path="res://Art/Faces/cool face.png" id="2_nw151"]

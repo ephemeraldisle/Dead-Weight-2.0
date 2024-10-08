@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://inrrhdjlx1pg"]
 
-[ext_resource type="Script" path="res://Scenes/UI/game_intro_scene.gd" id="1_epbx6"]
+[ext_resource type="Script" path="res://Scripts/UI/Scenes/game_intro_scene.gd" id="1_epbx6"]
 
 [sub_resource type="Animation" id="Animation_h0xjb"]
 length = 0.001

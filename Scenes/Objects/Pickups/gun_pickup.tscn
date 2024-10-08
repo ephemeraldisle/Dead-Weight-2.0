@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cax2ot2p37sif"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Pickups/gun_pickup.gd" id="1_8xnar"]
+[ext_resource type="Script" path="res://Scripts/Objects/Pickups/gun_pickup.gd" id="1_8xnar"]
 [ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="1_u5m1e"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="3_i3x0i"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://br23stoowal76"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/basic_bullet.gd" id="1_q8qee"]
+[ext_resource type="Script" path="res://Scripts/Objects/Projectiles/basic_bullet.gd" id="1_q8qee"]
 [ext_resource type="Texture2D" uid="uid://bc3g1d7artd16" path="res://Art/Particles/trace_06.png" id="2_j5xgf"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="3_16njj"]
 [ext_resource type="AudioStream" uid="uid://s5qt0p5fw4t" path="res://Audio/Objects/Player/Astro/trybounce.mp3" id="4_1agm1"]

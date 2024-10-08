@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bi4dytxp16uuc"]
 
 [ext_resource type="Texture2D" uid="uid://dn6j34dh8csvj" path="res://Art/Projectiles/pulse - Copy-Sheet.png" id="1_j7kxa"]
-[ext_resource type="Script" path="res://Scenes/Projectiles/turret_laser.gd" id="1_wjc14"]
-[ext_resource type="PackedScene" uid="uid://ne2t50ej8jod" path="res://Scenes/Projectiles/laser_hit_effect.tscn" id="2_ohcmf"]
+[ext_resource type="Script" path="res://Scripts/Objects/Projectiles/turret_laser.gd" id="1_wjc14"]
+[ext_resource type="PackedScene" uid="uid://ne2t50ej8jod" path="res://Scenes/Particles/laser_hit_effect.tscn" id="2_ohcmf"]
 [ext_resource type="AudioStream" uid="uid://suwmtowe581u" path="res://Audio/Objects/Traps/Turret/laserhit.mp3" id="3_1o8yh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6s5ne"]

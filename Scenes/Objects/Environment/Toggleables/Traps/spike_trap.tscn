@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://nj4paacovlxk"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/Traps/spike_trap.gd" id="1_07cmf"]
+[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/Traps/spike_trap.gd" id="1_07cmf"]
 [ext_resource type="Texture2D" uid="uid://besqnj8qgrsvf" path="res://Art/Environment/Objects/laser_spikes_activate.png" id="1_28xcm"]
 [ext_resource type="Texture2D" uid="uid://cayhiocxlhs55" path="res://Art/Environment/Objects/laser_spikes_idle.png" id="2_m06iv"]
 [ext_resource type="Texture2D" uid="uid://ykp1vqs4xrt7" path="res://Art/Environment/Objects/laser_spikes_deactivate.png" id="3_e0q4n"]

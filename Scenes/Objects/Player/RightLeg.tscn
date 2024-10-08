@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bofbbrdd2lt6p"]
 
 [ext_resource type="Texture2D" uid="uid://bvky6tn4rv1lh" path="res://Art/Player/Astro/upper leg.png" id="2_r5523"]
-[ext_resource type="Script" path="res://Scripts/CCDRotator.gd" id="3_bbrbu"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCDRotator.gd" id="3_bbrbu"]
 [ext_resource type="Texture2D" uid="uid://bmxwgjkqlb61k" path="res://Art/Player/Astro/lower leg.png" id="4_v4a6w"]
-[ext_resource type="Script" path="res://Scripts/CCD.gd" id="5_ktpaf"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCD.gd" id="5_ktpaf"]
 [ext_resource type="Texture2D" uid="uid://qxfljovc0waj" path="res://Art/Player/Astro/boot.png" id="6_4tguv"]
 
 [node name="RightLeg" type="Node2D"]

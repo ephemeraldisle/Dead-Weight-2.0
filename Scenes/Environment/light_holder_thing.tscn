@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://4mcd07bt6gxd"]
 
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="1_3lvuk"]
-[ext_resource type="Script" path="res://Scenes/Background/light_holder_thing.gd" id="1_qu1t5"]
+[ext_resource type="Script" path="res://Scripts/Environment/light_holder_thing.gd" id="1_qu1t5"]
 [ext_resource type="Texture2D" uid="uid://duf3pdaxvryvs" path="res://Art/Environment/Background/scifilightcageback.png" id="2_iilkf"]
 [ext_resource type="Texture2D" uid="uid://c77oiwfbbtxox" path="res://Art/Environment/Background/scifilightbulbwithshine.png" id="3_tk467"]
 [ext_resource type="Texture2D" uid="uid://cixsqk1se0y1i" path="res://Art/Environment/Background/scifilightcagefront.png" id="4_1vx68"]

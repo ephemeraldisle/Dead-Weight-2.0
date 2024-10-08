@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxg6gpwbl1rgr"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Player/Ropes/rope_segment.gd" id="1_f868i"]
+[ext_resource type="Script" path="res://Scripts/Player/Rope/rope_segment.gd" id="1_f868i"]
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_h4vr5"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Player/Ropes/RopeSegmentAnimationPlayer.tscn" id="2_tkxfy"]
+[ext_resource type="PackedScene" uid="uid://bmbxeboh0568r" path="res://Scenes/Objects/Player/Ropes/RopeSegmentAnimationPlayer.tscn" id="2_tkxfy"]
 [ext_resource type="Texture2D" uid="uid://b28opmgjgrtkn" path="res://Art/Player/brickGrey.png" id="3_t4h30"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hwjhq"]

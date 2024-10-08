@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ct623pcsie3xh"]
 
 [ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="2_l6fns"]
-[ext_resource type="Script" path="res://Scripts/CCDRotator.gd" id="3_1itm4"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCDRotator.gd" id="3_1itm4"]
 [ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="4_8n7rb"]
-[ext_resource type="Script" path="res://Scripts/CCD.gd" id="5_5ttac"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCD.gd" id="5_5ttac"]
 [ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="6_0qifh"]
 
 [node name="RightArm" type="Node2D"]

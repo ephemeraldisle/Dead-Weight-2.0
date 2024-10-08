@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://gkgo4t5s1h7x"]
 
-[ext_resource type="Script" path="res://Scenes/UI/main_menu.gd" id="1_jliru"]
+[ext_resource type="Script" path="res://Scripts/UI/Menus/main_menu.gd" id="1_jliru"]
 [ext_resource type="Texture2D" uid="uid://dy7baby5ksfpr" path="res://Art/Menus/deadweight title alone.svg" id="2_676wp"]
 [ext_resource type="Texture2D" uid="uid://c07umaqwoigfc" path="res://Art/Menus/bigship.png" id="2_fy7nj"]
 [ext_resource type="Theme" uid="uid://cexmcmmcmil1d" path="res://Resources/UI/kenneyUI.tres" id="4_8nn3a"]
-[ext_resource type="PackedScene" uid="uid://d3ooplnmbcpgt" path="res://Scenes/UI/Cinematic/explosion_spawner.tscn" id="5_y85r3"]
+[ext_resource type="PackedScene" uid="uid://d3ooplnmbcpgt" path="res://Scenes/UI/Scenes/explosion_spawner.tscn" id="5_y85r3"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/crt_with_fisheye.gdshader" id="6_irfxy"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/crtagain.gdshader" id="7_klb3i"]
 [ext_resource type="PackedScene" uid="uid://bxebxj7d50njp" path="res://Scenes/Audio/rumble_looper.tscn" id="8_yygft"]

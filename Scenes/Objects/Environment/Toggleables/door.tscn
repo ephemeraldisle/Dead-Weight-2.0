@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ca68d1662dfc"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/door.gd" id="1_mi17c"]
+[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/door.gd" id="1_mi17c"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_mtchp"]
 [ext_resource type="Texture2D" uid="uid://c3dyj2huam0dp" path="res://Art/Environment/Tiles/level_tileset.png" id="3_p7e2e"]
 [ext_resource type="PackedScene" uid="uid://b18jambxofrj0" path="res://Scenes/Components/Environment/pressure_activator.tscn" id="4_aupf0"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjpkpflus3c0r"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Modules/ability_power_controller.gd" id="1_68iga"]
+
+[node name="AbilityPowerController" type="Node"]
+script = ExtResource("1_68iga")

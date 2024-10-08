@@ -4,8 +4,8 @@ class_name DamagingZone
 const DIRECTIONS := 4
 const FULL_ROTATION := TAU
 
-@export var knockback_power := 500.0
-@export var knockback_multiplier := 100.0
+@export var knockback_power := 400.0
+@export var knockback_multiplier := 50.0
 
 @onready var impact_sound: AudioStreamPlayer2D = $ImpactSoundForPlayer
 

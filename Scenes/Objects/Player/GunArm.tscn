@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bne6lem03sgxs"]
 
-[ext_resource type="Script" path="res://Scripts/CCDRotator.gd" id="1_nq8ir"]
-[ext_resource type="Script" path="res://Scenes/Objects/Player/GunArm.gd" id="1_sc7wp"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCDRotator.gd" id="1_nq8ir"]
+[ext_resource type="Script" path="res://Scripts/Player/Astro/GunArm.gd" id="1_sc7wp"]
 [ext_resource type="Texture2D" uid="uid://cfoyitf2vd1jj" path="res://Art/Player/Astro/upper arm right.png" id="2_ictul"]
 [ext_resource type="Texture2D" uid="uid://n1o6ok5mdv7t" path="res://Art/Player/Astro/lower arm right.png" id="3_gy4xg"]
-[ext_resource type="Script" path="res://Scripts/CCD.gd" id="5_214qg"]
+[ext_resource type="Script" path="res://Scripts/Objects/CCD.gd" id="5_214qg"]
 [ext_resource type="Texture2D" uid="uid://b65758gjauxgw" path="res://Art/Player/Astro/hand.png" id="5_yuk0u"]
 [ext_resource type="Texture2D" uid="uid://bkms6mv0roa4a" path="res://Art/Player/Astro/shitty gun.svg" id="6_54kop"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://on0iu2qx50wr"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Environment/Toggleables/toggleable_base.gd" id="1_kb30b"]
+[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/toggleable_base.gd" id="1_kb30b"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_4lpxb"]
 
 [node name="ToggleableBase" type="Node2D"]

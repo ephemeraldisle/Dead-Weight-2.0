@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://by64xyomyanos"]
 
-[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Environment/ability_power_controller.tscn" id="1_nspmh"]
-[ext_resource type="Script" path="res://Scenes/Components/Player/interact_module.gd" id="1_vtn5r"]
+[ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Player/ability_power_controller.tscn" id="1_nspmh"]
+[ext_resource type="Script" path="res://Scripts/Player/Modules/interact_module.gd" id="1_vtn5r"]
 
 [node name="InteractModule" type="Node"]
 script = ExtResource("1_vtn5r")

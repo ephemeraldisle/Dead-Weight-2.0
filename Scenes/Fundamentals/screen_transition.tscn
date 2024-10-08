@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlfb53trmcaek"]
 
-[ext_resource type="Script" path="res://Scenes/Fundamentals/screen_transition.gd" id="1_nu8uj"]
+[ext_resource type="Script" path="res://Scripts/Autoload/screen_transition.gd" id="1_nu8uj"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/glitchtrans.gdshader" id="2_ilje8"]
 [ext_resource type="AudioStream" uid="uid://d4ltry0syyciq" path="res://Audio/UI/Sequence_06.wav" id="3_jdiwy"]
 
