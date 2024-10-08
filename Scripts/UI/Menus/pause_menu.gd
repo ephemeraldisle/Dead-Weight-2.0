@@ -2,8 +2,8 @@ extends CanvasLayer
 
 const ENTER_SPEED_SCALE := 2.2
 const OPTIONS_SPEED_SCALE := 2.0
-const OPTIONS_SCENE := preload("res://Scenes/UI/options_menu.tscn")
-const MAIN_MENU_SCENE := "res://Scenes/UI/main_menu.tscn"
+const OPTIONS_SCENE := preload("res://Scenes/UI/Menus/options_menu.tscn")
+const MAIN_MENU_SCENE := "res://Scenes/UI/Menus/main_menu.tscn"
 const ENTER_ANIMATION := "enter"
 const ENTER_2_ANIMATION := "enter_2"
 const OPTIONS_TRANSITION_TIME := 0.5

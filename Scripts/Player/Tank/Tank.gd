@@ -54,7 +54,7 @@ func player_take_damage(impulse: Vector2) -> void:
 	if _shield_module.shielded:
 		_shield_module.remove_shield()
 	else:
-		apply_central_impulse(impulse)
+		apply_central_impulse(impulse * TANK_IMPULSE_MULTIPLIER)
 		_water_drops.emitting = true
 		GameEvents.emit_water_collected(-randfn(ON_HIT_WATER_LOSS, ON_HIT_WATER_LOSS_DEVIATION))
 	

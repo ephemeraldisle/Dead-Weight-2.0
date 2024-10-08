@@ -35,6 +35,7 @@ var _off_animation := "Inactive"
 @onready var discharge_sound: AudioStreamPlayer2D = %DischargeSound
 @onready var light: PointLight2D = %Light
 @onready var timer_component: Timer = $TimerComponent
+@onready var wall: StaticBody2D = %Wall
 
 
 
@@ -84,6 +85,7 @@ func activate(instant: bool = false) -> void:
 		loop_sound.play()
 
 	damaging_zone.monitoring = true
+	wall.call_deferred(CHANGE_WALL_COLLISION, WALL_COLLISION_LAYER, true)
 	_looping = true
 	activated.emit()
 
@@ -92,7 +94,8 @@ func charge_down() -> void:
 	animated_sprite_2d.play(_deactivate_animation)
 	var light_tween = create_tween() as Tween
 	light_tween.tween_property(light, g.LIGHT_OPACITY, g.NO_OPACITY, LIGHT_CHARGE_TIME)
-	damaging_zone.monitoring = false
+	damaging_zone.set_deferred(MONITORING, false)
+	wall.call_deferred(CHANGE_WALL_COLLISION, WALL_COLLISION_LAYER, false)
 	await animated_sprite_2d.animation_finished
 	finished_discharging.emit()
 
@@ -100,12 +103,14 @@ func charge_down() -> void:
 func deactivate(_instant: bool = false) -> void:
 	animated_sprite_2d.play(_off_animation)
 	light.visible = false
-	damaging_zone.monitoring = false
+	damaging_zone.set_deferred(MONITORING, false)
+	wall.call_deferred(CHANGE_WALL_COLLISION, WALL_COLLISION_LAYER, false)
 	_looping = false
 	if sound_enabled:
 		loop_sound.stop()
 	_initializing = false
-	deactivated.emit()
+	if power_controller.powered:
+		deactivated.emit()
 
 
 func synced_sound_coroutine() -> void:

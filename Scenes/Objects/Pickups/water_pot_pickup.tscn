@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0eeiggg48xvt"]
+[gd_scene load_steps=18 format=3 uid="uid://d0eeiggg48xvt"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Pickups/water_pot_pickup.gd" id="1_07bee"]
 [ext_resource type="Texture2D" uid="uid://b4hhuujda0uqn" path="res://Art/Pickups/water_pot_item.png" id="2_4nn5j"]
-[ext_resource type="AudioStream" uid="uid://g71ttdtoyhca" path="res://Audio/Objects/Pickups/maximize_008.ogg" id="2_8650p"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="4_4ankn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhmne"]
@@ -98,13 +97,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4i4fw"]
-radius = 38.3275
+radius = 100.0
 
 [node name="WaterPotPickup" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_07bee")
 water_restoration_amount = 1.0
-water_sound = ExtResource("2_8650p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3mvod")
@@ -116,7 +114,6 @@ collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_4i4fw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

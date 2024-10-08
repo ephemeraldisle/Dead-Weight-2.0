@@ -13,7 +13,7 @@ const RESET_ANIMATION = "RESET"
 @export var gun_animator: AnimationPlayer
 
 var target
-var gpu_particles_2d = preload("res://Scenes/Projectiles/bullet sparks.tscn")
+var gpu_particles_2d = preload("res://Scenes/Particles/bullet sparks.tscn")
 
 @onready var parent = get_parent()
 @onready var foreground = get_tree().get_first_node_in_group("foreground")

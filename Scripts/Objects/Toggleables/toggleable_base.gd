@@ -7,6 +7,9 @@ signal made_invisible
 signal made_visible
 
 const FADE_TIME := 0.4
+const MONITORING := "monitoring"
+const WALL_COLLISION_LAYER := 2
+const CHANGE_WALL_COLLISION := "set_collision_layer_value"
 
 @onready var power_controller = $PowerController as PowerController
 

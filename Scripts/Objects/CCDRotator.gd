@@ -1,4 +1,5 @@
 extends Node2D
+class_name CCDRotator
 
 const FULL_ROTATION := TAU
 

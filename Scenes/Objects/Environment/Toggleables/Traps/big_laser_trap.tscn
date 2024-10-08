@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://bdupa46nloidk"]
+[gd_scene load_steps=120 format=3 uid="uid://bdupa46nloidk"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Toggleables/Traps/big_laser_trap.gd" id="1_gb5eu"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_lbmrj"]
@@ -768,6 +768,9 @@ streams_count = 1
 stream_0/stream = ExtResource("13_xpref")
 stream_0/weight = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28eml"]
+size = Vector2(15, 402)
+
 [node name="BigLaserTrap" type="Node2D"]
 script = ExtResource("1_gb5eu")
 always_on = true
@@ -845,5 +848,14 @@ texture = ExtResource("15_wkt60")
 [node name="Identifier" parent="." node_paths=PackedStringArray("power_controller") instance=ExtResource("16_a8uoc")]
 position = Vector2(0, 0)
 power_controller = NodePath("../PowerController")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-2.5, -7)
+shape = SubResource("RectangleShape2D_28eml")
 
 [connection signal="body_entered" from="DamagingZone" to="DamagingZone" method="_on_body_entered"]

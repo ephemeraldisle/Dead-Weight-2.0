@@ -1,6 +1,6 @@
 extends Node
 
-const PAUSE_MENU_SCENE := preload("res://Scenes/UI/pause_menu.tscn")
+const PAUSE_MENU_SCENE := preload("res://Scenes/UI/Menus/pause_menu.tscn")
 
 var game_running := true
 

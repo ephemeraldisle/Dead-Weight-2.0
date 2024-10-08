@@ -16,6 +16,7 @@ const OFF_ANIMATION := "off"
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var on_hum: AudioStreamPlayer2D = $"on hum"
 @onready var power_down: AudioStreamPlayer2D = $"power down"
+@onready var wall: StaticBody2D = %Wall
 
 
 func _ready() -> void:
@@ -34,12 +35,14 @@ func activate(instant: bool = false) -> void:
 	on_hum.play()
 	animated_sprite_2d.play(ACTIVATE_ANIMATION)
 	damaging_zone.monitoring = true
+	wall.call_deferred(CHANGE_WALL_COLLISION, WALL_COLLISION_LAYER, true)
 	current_mode = Mode.on
 	activated.emit()
 
 
 func deactivate(instant: bool = false) -> void:
 	damaging_zone.monitoring = false
+	wall.call_deferred(CHANGE_WALL_COLLISION, WALL_COLLISION_LAYER, false)
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(light, g.LIGHT_POWER, g.NO_LIGHT_POWER, g.INSTANT_TIME if instant else BARRIER_FADE_TIME)

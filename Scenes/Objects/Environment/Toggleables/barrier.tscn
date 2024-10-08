@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bf75lquvw7wae"]
+[gd_scene load_steps=58 format=3 uid="uid://bf75lquvw7wae"]
 
 [ext_resource type="Texture2D" uid="uid://nq0u7l2nkp67" path="res://Art/Environment/Objects/barrier_idle.png" id="1_14ark"]
 [ext_resource type="Script" path="res://Scripts/Objects/Toggleables/barrier.gd" id="1_d84bt"]
@@ -330,6 +330,9 @@ stream_0/weight = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01w5r"]
 size = Vector2(40, 112)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4whco"]
+size = Vector2(31, 154)
+
 [node name="Barrier" type="Node2D"]
 script = ExtResource("1_d84bt")
 
@@ -389,5 +392,14 @@ shape = SubResource("RectangleShape2D_01w5r")
 
 [node name="Identifier" parent="." instance=ExtResource("10_gb4xh")]
 position = Vector2(2, 0)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_4whco")
 
 [connection signal="body_entered" from="DamagingZone" to="." method="_on_damaging_zone_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://7blqfr6i1rfj"]
+[gd_scene load_steps=44 format=3 uid="uid://7blqfr6i1rfj"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Toggleables/Traps/long_spike_trap.gd" id="1_fi858"]
 [ext_resource type="Texture2D" uid="uid://cci34tu340nh1" path="res://Art/Environment/Objects/wall_blades.png" id="1_jbhcw"]
@@ -219,6 +219,9 @@ size = Vector2(83, 132)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qj5qn"]
 size = Vector2(121, 132)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il43c"]
+size = Vector2(15, 138)
+
 [node name="LongSpikeTrap" type="Node2D"]
 script = ExtResource("1_fi858")
 always_on = false
@@ -301,3 +304,12 @@ shape = SubResource("RectangleShape2D_qj5qn")
 activatable = true
 
 [node name="TimerComponent" parent="." instance=ExtResource("11_oo3lx")]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-2.5, -1)
+shape = SubResource("RectangleShape2D_il43c")

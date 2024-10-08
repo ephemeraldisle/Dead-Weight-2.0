@@ -11,8 +11,8 @@ var _stored_state := false
 var _activated := false
 
 func _ready() -> void:
-	powered = initial_power_state
 	_stored_state = initial_power_state
+	_update_power_state()
 
 func power_on() -> void:
 	_stored_state = true

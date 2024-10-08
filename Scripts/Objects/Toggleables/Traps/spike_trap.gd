@@ -72,7 +72,7 @@ func activate(_instant: bool = false) -> void:
 	animated_sprite_2d.play(ACTIVE_ANIMATION)
 	if sound_enabled:
 		loop_sound.play()
-	damaging_zone.monitoring = true
+	damaging_zone.set_deferred(MONITORING, true)
 	_looping = true
 	activated.emit()
 
@@ -83,7 +83,7 @@ func deactivate(instant: bool = false) -> void:
 	animated_sprite_2d.play(DEACTIVATE_ANIMATION)
 	if instant:
 		animated_sprite_2d.set_frame_and_progress(_deactivated_frame, FULL_FRAME_PROGRESS)
-	damaging_zone.monitoring = false
+	damaging_zone.set_deferred(MONITORING, false)
 	_looping = false
 	if sound_enabled:
 		loop_sound.stop()

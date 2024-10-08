@@ -5,16 +5,21 @@ signal player_jetpacked
 signal player_damaged
 
 const RECENT_CONTACT_TIME := 0.5
-const DAMAGE_VELOCITY := 300
+const DAMAGE_VELOCITY := 325
 const MIN_DAMAGE_ANGLE := 60
 const MAX_DAMAGE_ANGLE := 120
 const STANDARD_SCREENSHAKE_NUMBER := 0.5
 const DAMAGE_COOLDOWN := 1.0
 const FULL_ROTATION := 2 * PI
+const MIN_PROXIMITY_FRAMES := 10
 
 @export var tank: PhysicsBody2D
 @export var rope_holder: RopeHolder
 @export var hurt_sounds: AudioStream
+
+var _head_proximity_frames := 0
+var _head_collision_particles := preload("res://Scenes/Particles/power_node_hit_particles.tscn")
+var _recent_damage := false 
 
 @onready var pointer := $Pointer
 @onready var health_manager := %HealthManager
@@ -23,10 +28,7 @@ const FULL_ROTATION := 2 * PI
 @onready var attachment_point := %AttachmentPoint
 @onready var _gun_arm := $GunArm
 @onready var _gun_art : Sprite2D = _gun_arm.gun
-
-var _head_collision_particles := preload("res://Scenes/Particles/power_node_hit_particles.tscn")
-var _recent_damage := false 
-
+@onready var head_raycast: RayCast2D = $HeadRaycast
 
 func _ready() -> void:
 	#GlobalCamera.follow_node(self)
@@ -41,10 +43,17 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	pointer.position = get_local_mouse_position()
+	_check_head_raycast()
+
+func _check_head_raycast() -> void:
+	if head_raycast.is_colliding() and linear_velocity.length() > DAMAGE_VELOCITY:
+		_head_proximity_frames += 1
+	else:
+		_head_proximity_frames = 0
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if state.get_contact_count() <= 0: return
+	if state.get_contact_count() <= 0 or _recent_damage: return
 	
 	for contact_index in range(state.get_contact_count()):
 		var collider := state.get_contact_collider_object(contact_index)
@@ -54,7 +63,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		var collision_velocity := state.get_contact_local_velocity_at_position(contact_index).length()
 		var collision_angle := atan2(collision_normal.y, collision_normal.x)
 		var relative_angle := _normalize_angle(collision_angle - rotation)
-
+		
 		if _is_head_collision(relative_angle) and _is_damaging_velocity(collision_velocity):
 			_spawn_head_collision_particles()
 			player_take_damage(Vector2.ZERO)
@@ -66,7 +75,7 @@ func _is_head_collision(angle: float) -> bool:
 
 
 func _is_damaging_velocity(velocity: float) -> bool:
-	return velocity > DAMAGE_VELOCITY
+	return velocity > DAMAGE_VELOCITY and _head_proximity_frames >= MIN_PROXIMITY_FRAMES or velocity >= DAMAGE_VELOCITY * 2
 
 
 func _spawn_head_collision_particles() -> void:

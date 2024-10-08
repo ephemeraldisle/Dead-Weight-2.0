@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://ci67irojgt1k2"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Astro/Player.gd" id="1_5bc4x"]
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_k54aa"]
+[ext_resource type="Script" path="res://Scripts/Player/Astro/Player.gd" id="2_cougb"]
 [ext_resource type="AudioStream" uid="uid://bfy6v5jrvv3r3" path="res://Resources/Audio/hurt_sounds.tres" id="2_gqq08"]
 [ext_resource type="PackedScene" uid="uid://cfldpt74nosda" path="res://Scenes/Components/Player/health_manager.tscn" id="2_jhuq7"]
 [ext_resource type="PackedScene" uid="uid://cgeh48bgco303" path="res://Scenes/Components/Universal/hitflash.tscn" id="2_qj748"]
@@ -193,7 +193,7 @@ continuous_cd = 2
 max_contacts_reported = 5
 contact_monitor = true
 angular_damp = 3.0
-script = ExtResource("1_5bc4x")
+script = ExtResource("2_cougb")
 hurt_sounds = ExtResource("2_gqq08")
 
 [node name="InteractModule" parent="." instance=ExtResource("4_7y4eu")]
@@ -222,6 +222,11 @@ sprites = [NodePath("../BodySprite"), NodePath("../GunArm/Sprite2D"), NodePath("
 z_index = 3
 position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_imi5j")
+
+[node name="HeadRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, -48)
+rotation = -3.14159
+collision_mask = 3
 
 [node name="HeadArea" type="Area2D" parent="."]
 position = Vector2(0, -59)
