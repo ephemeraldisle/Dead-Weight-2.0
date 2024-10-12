@@ -102,6 +102,10 @@ func clean_up_pickups() -> void:
 
 func play_thump_sound() -> void:
 	thump_sounds.play()
+	
+func damage_player() -> void:
+	if player:
+		player.player_take_damage(Vector2.ZERO)
 
 func die() -> void:
 	if _dying:

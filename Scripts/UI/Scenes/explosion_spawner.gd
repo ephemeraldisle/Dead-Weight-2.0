@@ -1,6 +1,6 @@
 extends Node2D
 
-const EXPLOSION_SCENE := preload("res://Scenes/UI/Cinematic/explosions.tscn")
+const EXPLOSION_SCENE := preload("res://Scenes/UI/Scenes/explosions.tscn")
 const EXPLOSION_SOUND := preload("res://Scenes/Audio/ship_explosions.tscn")
 
 const INITIAL_DELAY := 2.0

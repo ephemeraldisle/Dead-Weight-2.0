@@ -27,16 +27,16 @@ position = Vector2(0, -11)
 tank = NodePath("../Tank")
 rope_holder = NodePath("../RopeHolder")
 
-[node name="GunArm" parent="Player" index="20" node_paths=PackedStringArray("target")]
+[node name="GunArm" parent="Player" index="21" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/ArmTarget")
 
-[node name="RightArm" parent="Player" index="21" node_paths=PackedStringArray("target")]
+[node name="RightArm" parent="Player" index="22" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/ArmTarget")
 
-[node name="RightLeg" parent="Player" index="22" node_paths=PackedStringArray("target")]
+[node name="RightLeg" parent="Player" index="23" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/RightLegTarget")
 
-[node name="RightLeg2" parent="Player" index="23" node_paths=PackedStringArray("target")]
+[node name="RightLeg2" parent="Player" index="24" node_paths=PackedStringArray("target")]
 target = NodePath("../../PlayerParts/RigidBody2D5/LeftLegTarget")
 
 [node name="PlayerParts" type="Node2D" parent="."]

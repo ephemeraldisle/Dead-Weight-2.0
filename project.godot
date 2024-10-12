@@ -29,6 +29,7 @@ AudioManager="*res://Scenes/Fundamentals/audio_manager.tscn"
 FlowController="*res://Scripts/Autoload/flow_controller.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 g="*res://Scripts/Autoload/global_consts.gd"
+TimeController="*res://Scenes/Fundamentals/time_controller.tscn"
 
 [dialogue_manager]
 

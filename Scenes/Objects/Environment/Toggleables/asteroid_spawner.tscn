@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk4i3gjhmqok0"]
+[gd_scene load_steps=4 format=3 uid="uid://bk4i3gjhmqok0"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Toggleables/asteroid_spawner.gd" id="1_vvj34"]
+[ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_k3i4w"]
+[ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="3_1ce6w"]
 
 [node name="AsteroidSpawner" type="Node2D"]
 script = ExtResource("1_vvj34")
+
+[node name="PowerController" parent="." instance=ExtResource("2_k3i4w")]
+activatable = true
+
+[node name="TimerComponent" parent="." instance=ExtResource("3_1ce6w")]

@@ -12,8 +12,6 @@ const EMPTY_WATER := 0.0
 const NO_TICKS := 0
 const INITIAL_WATERLESS_TICKS := -1
 
-@export var health_manager: Node
-
 var _waterless_ticks := INITIAL_WATERLESS_TICKS
 var _water_active := false
 
@@ -39,7 +37,7 @@ func _update_water_percent() -> void:
 func _check_for_damage() -> void:
 	if water_percent <= EFFECTIVELY_EMPTY_WATER_AMOUNT:
 		if _waterless_ticks >= TICK_DAMAGE_TRIGGER_AMOUNT:
-			health_manager.on_damage()
+			SharedPlayerManager.damage_player()
 			_waterless_ticks = NO_TICKS
 		else:
 			_waterless_ticks += 1

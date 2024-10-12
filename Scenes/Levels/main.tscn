@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=220 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="Material" uid="uid://ctbaan0qf40hr" path="res://Resources/Materials/tile_shader.tres" id="1_a3mvc"]
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Environment/parallax_background_space.tscn" id="1_a8rnd"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://4mcd07bt6gxd" path="res://Scenes/Environment/light_holder_thing.tscn" id="24_43n7f"]
 [ext_resource type="PackedScene" uid="uid://2camwyroxen8" path="res://Scenes/Environment/secret_hider.tscn" id="24_udsjm"]
 [ext_resource type="TileSet" uid="uid://il7emji1b17m" path="res://Resources/secrettileset.tres" id="25_144ko"]
+[ext_resource type="PackedScene" uid="uid://bkpsfvlrv5ymc" path="res://Scenes/Fundamentals/turret_master.tscn" id="28_uh6aq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01usf"]
 atlas = ExtResource("8_uk1ne")
@@ -1310,11 +1311,8 @@ position = Vector2(39, -1241)
 linked_objects_start_active = [NodePath("../LaserTrap"), NodePath("../../WireHolder/Wire3")]
 
 [node name="LaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
-position = Vector2(192, -1179)
+position = Vector2(192, -1177)
 rotation = 1.57079
-always_on = false
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="Door" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("5_6bcy1")]
@@ -1330,7 +1328,6 @@ rotation = -1.57079
 
 [node name="LaserTrap32" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-765, -127)
-always_on = false
 off_time = 4.0
 on_time = 4.0
 initial_delay = 0.0
@@ -1338,7 +1335,6 @@ initial_delay = 0.0
 [node name="LaserTrap33" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-962, 30)
 rotation = 1.57079
-always_on = false
 off_time = 4.0
 on_time = 4.0
 initial_delay = 5.2
@@ -1381,16 +1377,9 @@ position = Vector2(-600, 0.000610352)
 
 [node name="LaserTrap8" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-215, 575)
-always_on = false
-off_time = 5.0
-on_time = 2.0
-initial_delay = 0.5
 
 [node name="LaserTrap9" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1057, -447)
-always_on = false
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="Barrier" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("9_kt32a")]
@@ -1400,8 +1389,6 @@ position = Vector2(1630, -386)
 z_index = -6
 position = Vector2(1506, -383)
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="BigLaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("12_bi31i")]
@@ -1584,21 +1571,17 @@ rotation = -1.57079
 
 [node name="LaserTrap" parent="SECTION_1/SHIELD_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(390, -133)
-always_on = false
 off_time = 3.0
 on_time = 3.0
-initial_delay = 0.5
 
 [node name="LaserTrap2" parent="SECTION_1/SHIELD_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(198, -133)
-always_on = false
 off_time = 3.0
 on_time = 3.0
 initial_delay = 1.0
 
 [node name="LaserTrap3" parent="SECTION_1/SHIELD_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(6, -133)
-always_on = false
 off_time = 3.0
 on_time = 3.0
 initial_delay = 2.0
@@ -1606,15 +1589,11 @@ initial_delay = 2.0
 [node name="LaserTrap4" parent="SECTION_1/SHIELD_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-250, -133)
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = -1.0
 
 [node name="LaserTrap5" parent="SECTION_1/SHIELD_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-250, 123)
-always_on = false
 off_time = 2.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="Secrets" type="Node2D" parent="SECTION_1/SHIELD_ROOM"]
@@ -1726,53 +1705,37 @@ position = Vector2(18, -180)
 position = Vector2(117, -1181)
 rotation = -1.57081
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap11" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1495, -150)
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap16" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-500, -920)
 rotation = 3.14159
-always_on = false
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap14" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-1228, -245)
 rotation = 1.57079
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap12" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1207, -151)
-always_on = false
 off_time = 4.0
-on_time = 2.0
-initial_delay = 0.5
 
 [node name="LaserTrap17" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-397, -1051)
 rotation = -1.57081
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap13" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(920, -151)
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 1.0
 
 [node name="LaserTrap15" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
@@ -1780,31 +1743,24 @@ position = Vector2(499, -618)
 rotation = 1.57079
 always_on = true
 off_time = -1.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap20" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-139, -472)
 rotation = 1.57079
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap21" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-272, -596)
 rotation = 3.14159
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 3.0
 
 [node name="LaserTrap19" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-1225, -497)
 rotation = 1.57079
-always_on = false
 off_time = 4.0
-on_time = 2.0
 initial_delay = 2.0
 
 [node name="SpikeTrap" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("10_i3rmq")]
@@ -2072,8 +2028,6 @@ starting_mode = 1
 position = Vector2(-339, -148)
 rotation = 3.14159
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="Door" parent="SECTION_2/GUN_ROOM/Objects" instance=ExtResource("5_6bcy1")]
@@ -2450,57 +2404,42 @@ speed_factor = 50
 [node name="LaserTrap29" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-459, -1592)
 rotation = -1.57079
-always_on = false
 off_time = 6.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap25" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(1100, -1686)
 rotation = 3.14159
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap24" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-458, -1334)
 rotation = -1.57081
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap26" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(393, -1941)
 rotation = 3.14159
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap27" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(657, -1941)
 rotation = 3.14159
 always_on = true
-off_time = 5.0
-on_time = 2.0
 initial_delay = 0.0
 
 [node name="LaserTrap30" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-458, -2106)
 rotation = -1.57079
-always_on = false
 off_time = 6.0
-on_time = 2.0
-initial_delay = 0.5
 
 [node name="LaserTrap31" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(-459, -1916)
 rotation = -1.57079
-always_on = false
 off_time = 6.0
-on_time = 2.0
 initial_delay = 1.0
 
 [node name="Barrier7" parent="SECTION_2/BATTERY_ZONE/Objects" instance=ExtResource("9_kt32a")]
@@ -2957,7 +2896,6 @@ on_time = 20.0
 [node name="LaserTrap28" parent="SECTION_2/BOSS_APPROACH/Objects" instance=ExtResource("7_ela7u")]
 position = Vector2(691, -2808)
 rotation = -1.5708
-always_on = false
 off_time = 5.55556e+14
 on_time = 0.0
 initial_delay = 5.55556e+11
@@ -3418,6 +3356,8 @@ blend_mode = 2
 range_item_cull_mask = 32768
 texture = SubResource("PlaceholderTexture2D_ft5ub")
 texture_scale = 50.0
+
+[node name="TurretMaster" parent="." instance=ExtResource("28_uh6aq")]
 
 [editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel"]
 [editable path="SECTION_1/INTRO_ROOM/Objects/IntroControlPanel/TogglerComponent"]

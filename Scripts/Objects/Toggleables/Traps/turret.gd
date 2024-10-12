@@ -1,10 +1,13 @@
 extends Toggleable
+class_name Turret
 
 signal finished_charging
 
 const ANIMATION_TIME := 0.6875
 const LASER_ADJUST_SCALE := Vector2(2.124, 2.124)
 const FIRE_ANIMATION_NAME := "fire"
+const FOREGROUND_GROUP := "foreground"
+const MASTER_GROUP := "turret_master"
 
 @export var laser: PackedScene
 @export var light: PackedScene
@@ -20,26 +23,22 @@ var _visible := true
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var charge_sound: AudioStreamPlayer2D = %ChargeSound
 @onready var fire_sound: AudioStreamPlayer2D = %FireSound
-@onready var foreground: Node2D = get_tree().get_first_node_in_group("foreground")
+@onready var foreground: Node2D = get_tree().get_first_node_in_group(FOREGROUND_GROUP)
+@onready var turret_master: TurretMaster = get_tree().get_first_node_in_group(MASTER_GROUP)
 @onready var timer_component: Timer = $TimerComponent
 
 
 func _ready() -> void:
-	off_time = max(off_time - ANIMATION_TIME, g.INSTANT_TIME)
-	timer_component.change_time(off_time)
-	timer_component.timeout.connect(on_timer_timeout)
+	turret_master.register_turret(self, initial_delay, off_time)
 	super()
 	if not power_controller.powered:
 		deactivate(true)
-	else:
-		fire_laser()
 
 
 func fire_laser() -> void:
-	if _firing:
+	if _firing or not power_controller.powered:
 		return
 	_firing = true
-	await get_tree().create_timer(initial_delay, false, true).timeout
 	charge_up()
 	await finished_charging
 	activate()
@@ -80,11 +79,6 @@ func activate(_instant: bool = false) -> void:
 
 func deactivate(_instant: bool = false) -> void:
 	deactivated.emit()
-
-
-func on_timer_timeout() -> void:
-	if power_controller.powered:
-		fire_laser()
 
 
 func make_invisible(instant: bool = false) -> void:
