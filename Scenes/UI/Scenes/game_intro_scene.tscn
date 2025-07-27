@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://inrrhdjlx1pg"]
+[gd_scene load_steps=6 format=3 uid="uid://inrrhdjlx1pg"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Scenes/game_intro_scene.gd" id="1_epbx6"]
+[ext_resource type="PackedScene" uid="uid://w6ibpj2eq24t" path="res://Scenes/UI/Dialogue/buddy.tscn" id="2_gbdar"]
 
 [sub_resource type="Animation" id="Animation_h0xjb"]
 length = 0.001
@@ -61,3 +62,5 @@ libraries = {
 "": SubResource("AnimationLibrary_mcs28")
 }
 autoplay = "new_animation"
+
+[node name="Buddy" parent="." instance=ExtResource("2_gbdar")]

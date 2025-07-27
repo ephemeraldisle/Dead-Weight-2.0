@@ -15,12 +15,6 @@ var _current_song: AudioStreamPlayer
 @onready var main_song: AudioStreamPlayer = $MainSong
 @onready var menu_song: AudioStreamPlayer = $MenuSong
 
-
-func _ready():
-	intro_music.play()
-	_current_song = intro_music
-	fade_volume(intro_music, g.SILENT_DB, g.NORMAL_DB, INTRO_FADE_TIME)
-
 func _attempt_play(audio_player: PackedScene, position: Vector2, audio: AudioStream, volume: float = g.NORMAL_DB):
 	var stream = audio_player.instantiate()
 	add_child(stream)
@@ -31,13 +25,18 @@ func _attempt_play(audio_player: PackedScene, position: Vector2, audio: AudioStr
 	stream.play()
 
 func _crossfade(new_song: AudioStreamPlayer):
+	if _current_song == new_song:
+		return
 	var old_song = _current_song
+	if old_song:
+		fade_volume(old_song, g.NORMAL_DB, g.SILENT_DB, SONG_FADE_TIME)
 	_current_song = new_song
-	fade_volume(old_song, g.NORMAL_DB, g.SILENT_DB, SONG_FADE_TIME)
 	_current_song.play()
 	fade_volume(_current_song, g.SILENT_DB, g.NORMAL_DB, SONG_FADE_TIME)
-	await get_tree().create_timer(SONG_FADE_TIME).timeout	
-	old_song.stop()
+	
+	if old_song:
+		await get_tree().create_timer(SONG_FADE_TIME).timeout	
+		old_song.stop()
 
 func switch_to_main_song():
 	_crossfade(main_song)

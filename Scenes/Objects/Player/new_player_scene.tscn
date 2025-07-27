@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0fofoki0541p"]
+
+[ext_resource type="PackedScene" uid="uid://ci67irojgt1k2" path="res://Scenes/Objects/Player/player.tscn" id="1_jb08c"]
+
+[node name="New Player Scene" instance=ExtResource("1_jb08c")]
+
+[node name="Pointer" parent="." index="11"]
+visible = true
+position = Vector2(-76, 21)
+
+[node name="BodySprite" parent="." index="12"]
+rotation = 0.0
+
+[editable path="PingAnimation"]
+[editable path="GunArm"]
+[editable path="RightArm"]
+[editable path="RightLeg"]
+[editable path="RightLeg2"]

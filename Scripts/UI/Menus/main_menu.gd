@@ -7,7 +7,7 @@ const MAIN_SCENE_PATH := "res://Scenes/Levels/main.tscn"
 const OPTIONS_SCENE_PATH := "res://Scenes/UI/Menus/options_menu.tscn"
 const ENTER_ANIMATION := "enter"
 const OPTIONS_SCENE := preload(OPTIONS_SCENE_PATH)
-#const INTRODUCTION_SCENE = preload("res://Scenes/Levels/game_intro_scene.tscn")
+const INTRODUCTION_SCENE = preload("res://Scenes/UI/Scenes/game_intro_scene.tscn")
 
 @export var tester: Node2D
 
@@ -18,27 +18,30 @@ const OPTIONS_SCENE := preload(OPTIONS_SCENE_PATH)
 @onready var quit_button: Button = %QuitButton
 
 var options_instance: Node
+var entering_play_mode := false
 
 func _ready() -> void:
 	FlowController.unpause_game()
+	AudioManager.switch_to_menu_song()
 	play_button.pressed.connect(on_play_pressed)
 	options_button.pressed.connect(on_options_pressed)
 	quit_button.pressed.connect(on_quit_pressed)	
 	GlobalCamera.follow_node(tester)
 
 func on_play_pressed() -> void:
+	if entering_play_mode:
+		return
+	entering_play_mode = true
 	AudioManager.play_ui_click()
 	await get_tree().create_timer(PLAY_PRESSED_DELAY).timeout
-#	ScreenTransition.transition()
-	animation_player.play_backwards(ENTER_ANIMATION)
-#	await ScreenTransition.transitioned_halfway
-#	if !GameState.introduction_watched:
-#		var intro = INTRODUCTION_SCENE.instantiate()
-#		add_child(intro)
-#	else:
 	ScreenTransition.transition()
-	await get_tree().create_timer(TRANSITION_DELAY).timeout
-	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
+	animation_player.play_backwards(ENTER_ANIMATION)
+	await ScreenTransition.transitioned_halfway
+	if !GameState.state.progression.introduction_watched:
+		var intro = INTRODUCTION_SCENE.instantiate()
+		add_child(intro)
+	else:
+		get_tree().change_scene_to_file(MAIN_SCENE_PATH)
 
 func on_options_pressed() -> void:
 	AudioManager.play_ui_click()
@@ -47,8 +50,7 @@ func on_options_pressed() -> void:
 	if options_instance == null:
 		options_instance = OPTIONS_SCENE.instantiate()
 		add_child(options_instance)
-		options_instance.back_pressed.connect(on_options_closed)
-	
+		options_instance.back_pressed.connect(on_options_closed)	
 	options_instance.enter()
 
 func on_quit_pressed() -> void:

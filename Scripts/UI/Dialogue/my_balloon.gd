@@ -43,6 +43,7 @@ var dialogue_line: DialogueLine:
 
 		if not next_dialogue_line:
 			if speaker != null:
+				print("We have a speaker")
 				speaker.ping_animation.animation_player.play("RESET")
 				animation_player.play_backwards("Appear With Portrait")
 				is_visible = false
@@ -74,8 +75,11 @@ var dialogue_line: DialogueLine:
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
 		dialogue_label.dialogue_line = dialogue_line
 		if not dialogue_line.character.is_empty():
+			print("Dialogue line has character ", dialogue_line.character)
 			var new_speaker = get_tree().get_first_node_in_group("%s" %dialogue_line.character)
+			print(new_speaker, speaker)
 			if new_speaker != speaker:
+				
 				if speaker != null:
 					speaker.ping_animation.animation_player.play("RESET")
 				speaker = new_speaker

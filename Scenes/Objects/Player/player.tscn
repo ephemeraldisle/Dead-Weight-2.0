@@ -259,11 +259,10 @@ position = Vector2(3, -27)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_5kbsb")
 autoplay = "default"
-frame_progress = 0.323302
+frame_progress = 0.363298
 flip_h = true
 
 [node name="FrontLegTarget" type="Node2D" parent="."]
-visible = false
 position = Vector2(-15, 25)
 
 [node name="EyeHolder" type="Sprite2D" parent="FrontLegTarget"]
@@ -271,7 +270,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("12_137wm")
 
 [node name="BackLegTarget" type="Node2D" parent="."]
-visible = false
 position = Vector2(16, 23)
 rotation = 0.385902
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bgdg00v7sqhv4" path="res://Art/UI/ECG/glassPanel_cornerTL.png" id="2_ovyqd"]
 [ext_resource type="FontFile" uid="uid://jfrvsgah5wcs" path="res://Resources/Fonts/Saira-SemiBold.woff2" id="3_t0hmq"]
 [ext_resource type="Texture2D" uid="uid://cettg3qaog3k7" path="res://Art/UI/path257.png" id="3_vd8dk"]
-[ext_resource type="Texture2D" uid="uid://dkugrel5ecc1d" path="res://Art/Faces/astro zoom.png" id="4_hhafh"]
+[ext_resource type="Texture2D" uid="uid://c5auxll8o2gs8" path="res://Art/Faces/cool face.png" id="4_q7aje"]
 [ext_resource type="FontFile" uid="uid://2afp3lo5y5sf" path="res://Resources/Fonts/Saira-Regular.woff2" id="5_ywghf"]
 [ext_resource type="Texture2D" uid="uid://dllkbwvj1by25" path="res://Art/UI/glasspanel_cornerTL OPAQUE.png" id="6_1clvm"]
 [ext_resource type="Texture2D" uid="uid://bxjgyoih0uyq8" path="res://Art/UI/input tilemap.png" id="8_uk1ne"]
@@ -334,7 +334,7 @@ theme_override_constants/margin_right = 4
 unique_name_in_owner = true
 show_behind_parent = true
 layout_mode = 2
-texture = ExtResource("4_hhafh")
+texture = ExtResource("4_q7aje")
 expand_mode = 5
 stretch_mode = 5
 
@@ -541,10 +541,10 @@ texture = SubResource("AtlasTexture_32dwa")
 stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Placer/PromptHolder"]
-autoplay = "new_animation"
 libraries = {
 "": SubResource("AnimationLibrary_gbkbl")
 }
+autoplay = "new_animation"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

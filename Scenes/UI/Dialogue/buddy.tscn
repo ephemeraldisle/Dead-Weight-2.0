@@ -1,0 +1,20 @@
+[gd_scene load_steps=12 format=3 uid="uid://w6ibpj2eq24t"]
+
+[ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="1_3sexe"]
+[ext_resource type="Script" path="res://Scenes/UI/Dialogue/buddy.gd" id="1_y554y"]
+[ext_resource type="Texture2D" uid="uid://c5auxll8o2gs8" path="res://Art/Faces/cool face.png" id="3_l5tse"]
+[ext_resource type="Texture2D" uid="uid://15tnvwxnoh4v" path="res://Art/Faces/tongue wink face.png" id="4_j4y5y"]
+[ext_resource type="Texture2D" uid="uid://cunaco4wvi0k0" path="res://Art/Faces/tongue grin face.png" id="4_jriqx"]
+[ext_resource type="Texture2D" uid="uid://cltpc0c82mni2" path="res://Art/Faces/sad face.png" id="5_l8ui4"]
+[ext_resource type="Texture2D" uid="uid://dfv3foxmiyyoa" path="res://Art/Faces/yelly face.png" id="6_eixc1"]
+[ext_resource type="Texture2D" uid="uid://dv7au5uhubc8y" path="res://Art/Faces/sad worried face.png" id="7_xi82v"]
+[ext_resource type="Texture2D" uid="uid://bwne30q5i102u" path="res://Art/Faces/scared face.png" id="8_l1pti"]
+[ext_resource type="Texture2D" uid="uid://duxrf0gm8dcce" path="res://Art/Faces/grin face.png" id="10_g3s4j"]
+[ext_resource type="Texture2D" uid="uid://dj32ds0hoarwc" path="res://Art/Faces/smug glasses face.png" id="11_otf2h"]
+
+[node name="Buddy" type="Node" groups=["BUDDY"]]
+script = ExtResource("1_y554y")
+
+[node name="PingAnimation" parent="." instance=ExtResource("1_3sexe")]
+visible = false
+portrait_texture = Array[Texture]([ExtResource("3_l5tse"), ExtResource("4_jriqx"), ExtResource("5_l8ui4"), ExtResource("6_eixc1"), ExtResource("7_xi82v"), ExtResource("8_l1pti"), ExtResource("4_j4y5y"), ExtResource("10_g3s4j"), ExtResource("11_otf2h")])

@@ -784,7 +784,7 @@ activatable = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_pagme")
-animation = &"big deactivate"
+animation = &"big active"
 
 [node name="DamagingZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -812,7 +812,7 @@ bus = &"Sounds"
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_3uvdd")
-volume_db = -4.052
+volume_db = -13.497
 max_distance = 1000.0
 attenuation = 1.62451
 panning_strength = 3.0

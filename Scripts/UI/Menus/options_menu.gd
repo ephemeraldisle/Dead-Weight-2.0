@@ -16,6 +16,7 @@ const ENTER_ANIMATION := "enter"
 
 func _ready() -> void:
 	GameState.state.progression.options_visited = true
+	SaveManager.update_save_data()
 	beep_check.toggled.connect(on_beep_check_toggled)
 	window_check.toggled.connect(on_window_check_toggled)
 	screenshake_check.toggled.connect(on_screenshake_check_toggled)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dead Weight"
-run/main_scene="res://Scenes/Levels/main.tscn"
+run/main_scene="res://Scenes/UI/Menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://Art/System/deadweight_player_title_thing_vhi_icon-5.png"

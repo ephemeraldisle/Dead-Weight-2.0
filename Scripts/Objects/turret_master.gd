@@ -21,5 +21,6 @@ func _on_timer_tick(time: float) -> void:
 
 func _activate_turrets(time: float) -> void:
 	for turret in _turret_list:
+		#                              turret's cooldown          turret's delay
 		if is_equal_approx(fmod(time, _turret_list[turret].y), _turret_list[turret].x):
 			turret.fire_laser()

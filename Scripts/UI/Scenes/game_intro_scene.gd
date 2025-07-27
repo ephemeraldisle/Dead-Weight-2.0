@@ -16,9 +16,9 @@ func _ready():
 	AudioManager.fade_volume(AudioManager.soft_loop, g.SILENT_DB, g.NORMAL_DB, AUDIO_FADE_TIME)
 	var balloon = ACTUAL_BUBBLE.instantiate()
 	await get_tree().create_timer(FIRST_PAUSE_TIME).timeout
-	GlobalCamera.follow_pos(g.HALF_WINDOW_SIZE)
 	add_child(balloon)
-	if !GameState.options_visited:
+	balloon.place_balloon(g.HALF_WINDOW_SIZE)
+	if !GameState.state.progression.options_visited:
 		var animator = balloon.animation_player as AnimationPlayer
 		balloon.start(DIALOGUE_RESOURCE, SCREENSHAKE_WARN)
 		await DialogueManager.dialogue_ended
@@ -29,6 +29,6 @@ func _ready():
 	await DialogueManager.dialogue_ended
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
-	GameState.introduction_watched = true
-	SaveManager.update_game_states()
+	GameState.state.progression.introduction_watched = true
+	SaveManager.update_save_data()
 	get_tree().change_scene_to_file(MAIN_GAME_SCENE_PATH)

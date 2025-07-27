@@ -3,7 +3,7 @@ extends Label
 const LONG_FADE_TIME := 2.0
 const SHORT_FADE_TIME := 0.75
 const TRANSITION_FADE_TIME := 0.5
-const MAIN_MENU_SCENE := "res://Scenes/UI/main_menu.tscn"
+const MAIN_MENU_SCENE := "res://Scenes/UI/Menus/main_menu.tscn"
 const TRANSITION_ANIMATION := &"advance"
 const PARTIAL_OPACITY := 0.75
 

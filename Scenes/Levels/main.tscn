@@ -3242,7 +3242,6 @@ z_index = 500
 position = Vector2(-230, -451)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [node name="Lights" type="Node2D" parent="CanvasModulate"]
