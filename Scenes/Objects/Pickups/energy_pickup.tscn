@@ -1,8 +1,14 @@
-[gd_scene load_steps=68 format=3 uid="uid://cq0bavny1jtr6"]
+[gd_scene load_steps=70 format=3 uid="uid://cq0bavny1jtr6"]
 
 [ext_resource type="Script" uid="uid://b2x3jx8iyu6u3" path="res://Scripts/Objects/Pickups/energy_pickup.gd" id="1_a7vdv"]
 [ext_resource type="Texture2D" uid="uid://btoj14vq414fo" path="res://Art/Pickups/battery_25x50px-Sheet.png" id="1_sbayy"]
+[ext_resource type="AudioStream" uid="uid://dwj2e3brvyrx6" path="res://Audio/Objects/Pickups/electircpickupsound.wav" id="2_i7sqt"]
 [ext_resource type="Texture2D" uid="uid://b51jc1bwxk3j3" path="res://Resources/Gradients/basic light.tres" id="4_kyb1c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w5wrs"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("2_i7sqt")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhnqm"]
 atlas = ExtResource("1_sbayy")
@@ -460,6 +466,7 @@ _data = {
 [node name="EnergyPickup" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_a7vdv")
+pickup_sound = SubResource("AudioStreamRandomizer_w5wrs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8.23332)
@@ -476,7 +483,7 @@ shape = SubResource("RectangleShape2D_m41ol")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6qk8a")
+&"": SubResource("AnimationLibrary_6qk8a")
 }
 autoplay = "default"
 
