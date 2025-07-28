@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://ci67irojgt1k2"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_k54aa"]
-[ext_resource type="Script" path="res://Scripts/Player/Astro/Player.gd" id="2_cougb"]
+[ext_resource type="Script" uid="uid://b043m7bi46d55" path="res://Scripts/Player/Astro/Player.gd" id="2_cougb"]
 [ext_resource type="AudioStream" uid="uid://bfy6v5jrvv3r3" path="res://Resources/Audio/hurt_sounds.tres" id="2_gqq08"]
 [ext_resource type="PackedScene" uid="uid://cfldpt74nosda" path="res://Scenes/Components/Player/health_manager.tscn" id="2_jhuq7"]
 [ext_resource type="PackedScene" uid="uid://cgeh48bgco303" path="res://Scenes/Components/Universal/hitflash.tscn" id="2_qj748"]
@@ -130,8 +130,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akui4"]
 _data = {
-"RESET": SubResource("Animation_7ppj5"),
-"idle legs": SubResource("Animation_nhcy4")
+&"RESET": SubResource("Animation_7ppj5"),
+&"idle legs": SubResource("Animation_nhcy4")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljav4"]
@@ -174,8 +174,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_52b0x"]
 _data = {
-"Fire": SubResource("Animation_hw2b5"),
-"RESET": SubResource("Animation_0w47n")
+&"Fire": SubResource("Animation_hw2b5"),
+&"RESET": SubResource("Animation_0w47n")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_am32y"]
@@ -190,8 +190,8 @@ mass = 40.0
 physics_material_override = ExtResource("1_k54aa")
 gravity_scale = 0.0
 continuous_cd = 2
-max_contacts_reported = 5
 contact_monitor = true
+max_contacts_reported = 5
 angular_damp = 3.0
 script = ExtResource("2_cougb")
 hurt_sounds = ExtResource("2_gqq08")
@@ -263,6 +263,7 @@ frame_progress = 0.363298
 flip_h = true
 
 [node name="FrontLegTarget" type="Node2D" parent="."]
+visible = false
 position = Vector2(-15, 25)
 
 [node name="EyeHolder" type="Sprite2D" parent="FrontLegTarget"]
@@ -270,6 +271,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("12_137wm")
 
 [node name="BackLegTarget" type="Node2D" parent="."]
+visible = false
 position = Vector2(16, 23)
 rotation = 0.385902
 
@@ -280,7 +282,7 @@ texture = ExtResource("12_137wm")
 [node name="leganimator" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_akui4")
+&"": SubResource("AnimationLibrary_akui4")
 }
 autoplay = "idle legs"
 
@@ -329,7 +331,7 @@ scale = Vector2(0.25, 0.25)
 unique_name_in_owner = true
 root_node = NodePath("../../../../..")
 libraries = {
-"": SubResource("AnimationLibrary_52b0x")
+&"": SubResource("AnimationLibrary_52b0x")
 }
 
 [node name="RightArm" parent="." instance=ExtResource("19_7d6u3")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dklu45t3cxodm"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Components/damaging_zone.gd" id="1_f6dw6"]
+[ext_resource type="Script" uid="uid://dwlbt330247ou" path="res://Scripts/Objects/Components/damaging_zone.gd" id="1_f6dw6"]
 [ext_resource type="PackedScene" uid="uid://cktj00bqwqqud" path="res://Scenes/Audio/impact_sound_for_player.tscn" id="2_3l3wb"]
 
 [node name="DamagingZone" type="Area2D"]

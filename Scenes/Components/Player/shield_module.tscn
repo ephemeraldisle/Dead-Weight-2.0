@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bayla3pm7wq78"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Modules/Shield Module.gd" id="1_0qxpu"]
+[ext_resource type="Script" uid="uid://daie76bdc4wa4" path="res://Scripts/Player/Modules/Shield Module.gd" id="1_0qxpu"]
 [ext_resource type="AudioStream" uid="uid://derfs2gmyr7o" path="res://Audio/Objects/Player/Tank/shield charge.mp3" id="2_2fan6"]
 [ext_resource type="AudioStream" uid="uid://cn7uelhcqwpic" path="res://Audio/Objects/Player/Tank/shieldrecharge.mp3" id="3_054u1"]
 [ext_resource type="AudioStream" uid="uid://3683cg1d36r0" path="res://Audio/Objects/Player/Tank/shiledubrst.mp3" id="4_qwtie"]
@@ -15,8 +15,7 @@ colors = PackedColorArray(0.960784, 0.843137, 0.615686, 0, 0.729412, 0.729412, 0
 gradient = SubResource("Gradient_5pbub")
 
 [sub_resource type="Curve" id="Curve_w6kh2"]
-min_value = -370.0
-max_value = 368.19
+_limits = [-370.0, 368.19, 0.0, 1.0]
 _data = [Vector2(0, -10), 0.0, 0.0, 0, 0, Vector2(0.41, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -32,17 +31,17 @@ curve = SubResource("Curve_mdetc")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wsogl"]
 lifetime_randomness = 0.13
+particle_flag_align_y = true
 emission_shape = 2
 emission_sphere_radius = 57.16
-particle_flag_align_y = true
+angle_min = -163.6
+angle_max = 147.3
 direction = Vector3(1, 1, 0)
 spread = 180.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 70.45
 radial_accel_max = 88.64
 radial_accel_curve = SubResource("CurveTexture_sdrlx")
-angle_min = -163.6
-angle_max = 147.3
 scale_min = 0.02
 scale_max = 0.03
 scale_curve = SubResource("CurveTexture_edt4k")

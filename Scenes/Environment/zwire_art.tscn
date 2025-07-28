@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1c5jbbul1yfq"]
 
-[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="1_8fhjr"]
+[ext_resource type="Shader" uid="uid://lvv8i8h0itck" path="res://Scripts/Shaders/wire.gdshader" id="1_8fhjr"]
 [ext_resource type="Texture2D" uid="uid://bm0d4vphxnxnj" path="res://Art/Environment/wire.png" id="1_lrxy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6hok5"]

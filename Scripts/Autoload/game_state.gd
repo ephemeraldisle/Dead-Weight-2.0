@@ -83,6 +83,3 @@ func check_saved_action(action_id: int) -> bool:
 
 func check_ability(ability_name: String) -> bool:
 	return state.abilities[ability_name]
-
-
-

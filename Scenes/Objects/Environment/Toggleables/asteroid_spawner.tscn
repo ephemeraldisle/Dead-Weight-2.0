@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk4i3gjhmqok0"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Toggleables/asteroid_spawner.gd" id="1_vvj34"]
+[ext_resource type="Script" uid="uid://dwxy40ii258k2" path="res://Scripts/Objects/Toggleables/asteroid_spawner.gd" id="1_vvj34"]
 [ext_resource type="PackedScene" uid="uid://c34mfqhn2vlcn" path="res://Scenes/Components/Environment/power_controller.tscn" id="2_k3i4w"]
 [ext_resource type="PackedScene" uid="uid://cywuss6hgdpb7" path="res://Scenes/Components/Universal/timer_component.tscn" id="3_1ce6w"]
 

@@ -79,7 +79,7 @@ float draw_bubble(vec2 uv, vec2 offset, float size){
     float highlight_2 = smooth_circle(uv, HIGHLIGHT_2_POS, HIGHLIGHT_2_SIZE)*HIGHLIGHT_2_MULTI;
     bubble += highlight_1;
     bubble += highlight_2;
-    return bubble; 
+    return bubble;
 }
 
 vec2 within(vec2 uv, vec4 rect) {
@@ -114,7 +114,7 @@ float draw_bubbles(vec2 uv){
         float horizontal_time = abs(velocity.x / X_ACCELERATION);
         time = min(horizontal_time, time);
         float xOffset = abs(velocity.x) * time + 0.5 * X_ACCELERATION * pow(time, 2.0)
-                + sin(TIME*(BUB_X_SIN_CONST + rand(i) * BUB_X_SIN_MULTI) 
+                + sin(TIME*(BUB_X_SIN_CONST + rand(i) * BUB_X_SIN_MULTI)
                 + rand(i) * BUB_X_SIN_MULTI * PI) * X_OFFSET_MULTI;
         float x = sign(velocity.x) * xOffset;
         vec2 offset = vec2(x, y);
@@ -130,33 +130,33 @@ void fragment() {
 	}
 	else{
         vec2 uv = vec2(UV.x, -UV.y);
-        
-        
+
+
         float vertical_band = smoothstep(WAVE_BAND_RANGE.x, WAVE_BAND_RANGE.y, sin(uv.x + (PI * WAVE_BAND_SIN_MULTI)) - WAVE_BAND_CONST);
         float vertical_band_animated = vertical_band * sin(TIME*ANIM_SIN_MULTI) * ANIM_MULTI;
-        
+
         float front_wave = (sin((TIME * WAVE_TIME_MULTI + uv.x) * WAVE_SIN_MULTI) * FRONT_WAVE_MULTI) + vertical_band_animated + FRONT_WAVE_CONST;
         float back_wave = (sin((TIME * -WAVE_TIME_MULTI + uv.x) * WAVE_SIN_MULTI + PI) * BACK_WAVE_MULTI) - vertical_band_animated - BACK_WAVE_CONST;
-        
+
         float fill_animation = sin(TIME * FILL_TIME_MULTI) * FILL_MULTI * vertical_band;
-        
+
         float fill_value = mix(FILL_MIN, progress - FILL_MAX, step(0.0, 1.0));
         float fill_progress = fill_value + (sin(TIME * PI) * FILL_PROGRESS_MULTI);
-        
+
         float front_fill = step(uv.y, fill_animation + front_wave + fill_progress);
         float back_fill = step(uv.y, -fill_animation + back_wave + fill_progress);
-        
+
         vec3 wave_colored = vec3(front_fill) * mix(mix(wave_1_color.rgb, wave_2_color.rgb, -uv.y), wave_mix_color.rgb, -uv.y * (1.0 - progress));
         vec3 wave_2_colored = vec3(back_fill) * mix(mix(wave_2_color.rgb, wave_1_color.rgb, -uv.y), wave_mix_color.rgb, -uv.y * (1.0 - progress));
-        
+
         vec3 waves_color = mix(wave_colored, wave_2_colored, back_fill);
- 
-        
+
+
         waves_color += draw_bubbles(uv) * BUBBLE_COLOR;
         COLOR.rgb = mix(bg_color.rgb, waves_color, max(back_fill, front_fill));
-        
+
         if (max(back_fill, front_fill) <= 0.0){
             COLOR.a = bg_color.a;
         }
-	}	
+	}
 }

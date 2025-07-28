@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Dialogue/my_balloon.gd" id="1_4u26j"]
+[ext_resource type="Script" uid="uid://drw5wc0etts6n" path="res://Scripts/UI/Dialogue/my_balloon.gd" id="1_4u26j"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Texture2D" uid="uid://bgdg00v7sqhv4" path="res://Art/UI/ECG/glassPanel_cornerTL.png" id="2_ovyqd"]
 [ext_resource type="FontFile" uid="uid://jfrvsgah5wcs" path="res://Resources/Fonts/Saira-SemiBold.woff2" id="3_t0hmq"]
@@ -79,8 +79,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbkbl"]
 _data = {
-"RESET": SubResource("Animation_88tcn"),
-"new_animation": SubResource("Animation_rlco0")
+&"RESET": SubResource("Animation_88tcn"),
+&"new_animation": SubResource("Animation_rlco0")
 }
 
 [sub_resource type="Animation" id="Animation_y4cij"]
@@ -206,9 +206,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ira2h"]
 _data = {
-"Appear": SubResource("Animation_y4cij"),
-"Appear With Portrait": SubResource("Animation_goucp"),
-"RESET": SubResource("Animation_04atf")
+&"Appear": SubResource("Animation_y4cij"),
+&"Appear With Portrait": SubResource("Animation_goucp"),
+&"RESET": SubResource("Animation_04atf")
 }
 
 [node name="MyBalloon" type="CanvasLayer"]
@@ -376,8 +376,8 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/normal_font = ExtResource("3_t0hmq")
 theme_override_font_sizes/normal_font_size = 28
@@ -464,8 +464,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_shadow_color = Color(0.0431373, 0.0431373, 0.0705882, 1)
-theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_outline_size = 3
 theme_override_constants/line_separation = -4
 theme_override_fonts/normal_font = ExtResource("5_ywghf")
@@ -482,8 +482,8 @@ offset_right = 470.0
 offset_bottom = 480.0
 size_flags_vertical = 4
 theme_override_colors/font_shadow_color = Color(0.0431373, 0.0431373, 0.0705882, 1)
-theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_outline_size = 3
 theme_override_constants/line_separation = -4
 theme_override_fonts/normal_font = ExtResource("5_ywghf")
@@ -498,8 +498,8 @@ offset_top = 103.0
 offset_right = 260.0
 offset_bottom = 139.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/normal_font = ExtResource("5_ywghf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5d24i")
@@ -542,13 +542,13 @@ stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Placer/PromptHolder"]
 libraries = {
-"": SubResource("AnimationLibrary_gbkbl")
+&"": SubResource("AnimationLibrary_gbkbl")
 }
 autoplay = "new_animation"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ira2h")
+&"": SubResource("AnimationLibrary_ira2h")
 }
 
 [connection signal="gui_input" from="Placer/MainBubbleMarginContainer/Balloon" to="." method="_on_balloon_gui_input"]

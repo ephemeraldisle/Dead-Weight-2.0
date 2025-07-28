@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bevh20socrq5h"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Menus/pause_menu.gd" id="1_osmk8"]
+[ext_resource type="Script" uid="uid://duncvaytbmmit" path="res://Scripts/UI/Menus/pause_menu.gd" id="1_osmk8"]
 [ext_resource type="Texture2D" uid="uid://dorsg0fspa5jg" path="res://Art/Environment/Background/bkgd_0.png" id="2_qjl56"]
 [ext_resource type="Theme" uid="uid://cexmcmmcmil1d" path="res://Resources/UI/kenneyUI.tres" id="4_h4erd"]
 
@@ -115,9 +115,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2t8l"]
 _data = {
-"RESET": SubResource("Animation_uf2yk"),
-"enter": SubResource("Animation_kccgd"),
-"enter_2": SubResource("Animation_0oqmn")
+&"RESET": SubResource("Animation_uf2yk"),
+&"enter": SubResource("Animation_kccgd"),
+&"enter_2": SubResource("Animation_0oqmn")
 }
 
 [node name="PauseMenu" type="CanvasLayer"]
@@ -235,6 +235,6 @@ color = Color(0.129412, 0.129412, 0.129412, 0.870588)
 unique_name_in_owner = true
 process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_g2t8l")
+&"": SubResource("AnimationLibrary_g2t8l")
 }
 autoplay = "enter"

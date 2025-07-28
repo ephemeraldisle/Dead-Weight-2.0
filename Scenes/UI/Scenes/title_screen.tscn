@@ -3,17 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://deyq0qnyvr1hg" path="res://Art/TitleScreenStuff/ovalground.svg" id="1_0onto"]
 [ext_resource type="Texture2D" uid="uid://c6uvhnk61f86p" path="res://Art/TitleScreenStuff/dead weight dead.png" id="2_38m8c"]
 [ext_resource type="Texture2D" uid="uid://c7ec445d8bdy5" path="res://Art/TitleScreenStuff/dead weight weight.png" id="3_8xtyo"]
-[ext_resource type="Script" path="res://Scripts/Player/Rope/rope_holder.gd" id="4_yvvbs"]
+[ext_resource type="Script" uid="uid://dchdbplmdjehj" path="res://Scripts/Player/Rope/rope_holder.gd" id="4_yvvbs"]
 [ext_resource type="PackedScene" uid="uid://bxg6gpwbl1rgr" path="res://Scenes/Objects/Player/Ropes/rope_segment.tscn" id="5_od2xm"]
 [ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="6_e7njd"]
-[ext_resource type="Script" path="res://Scripts/TitleScreen/whyyyy.gd" id="7_x0ohe"]
+[ext_resource type="Script" uid="uid://ddlywthx5akci" path="res://Scripts/TitleScreen/whyyyy.gd" id="7_x0ohe"]
 [ext_resource type="Texture2D" uid="uid://beavunbpdlqwn" path="res://Art/TitleScreenStuff/tanktitle.svg" id="8_8s2qp"]
 [ext_resource type="Texture2D" uid="uid://ke3sjvc0dvua" path="res://Art/TitleScreenStuff/robot mouth.svg" id="9_jt2x4"]
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Environment/parallax_background_space.tscn" id="10_ul5r6"]
-[ext_resource type="Script" path="res://Scripts/TitleScreen/MenuCamera.gd" id="11_v0plg"]
+[ext_resource type="Script" uid="uid://bln108140pmpe" path="res://Scripts/TitleScreen/MenuCamera.gd" id="11_v0plg"]
 [ext_resource type="Texture2D" uid="uid://craepmyfxs4wx" path="res://Art/TitleScreenStuff/deadweight player title thing.png" id="12_8hgyr"]
 [ext_resource type="FontFile" uid="uid://brjucymfesu5x" path="res://Resources/Fonts/Saira-ExtraBold.woff2" id="13_qypcl"]
-[ext_resource type="Script" path="res://Scripts/TitleScreen/titletextfadein.gd" id="14_cw4jp"]
+[ext_resource type="Script" uid="uid://lu2w6rdqnpl5" path="res://Scripts/TitleScreen/titletextfadein.gd" id="14_cw4jp"]
 [ext_resource type="AudioStream" uid="uid://dklc52t0usm7d" path="res://Audio/TitleScreen/Bleep_05.ogg" id="15_bbt8k"]
 [ext_resource type="AudioStream" uid="uid://ehwqoae5rd8h" path="res://Audio/TitleScreen/457531__breviceps__dinosaur-falls-to-the-ground.mp3" id="15_pl7bj"]
 [ext_resource type="AudioStream" uid="uid://bwrbj3ohrysu8" path="res://Audio/TitleScreen/559469__nox_sound__foley_mechanism_wheel_small_rusty_loop_mono.mp3" id="16_r702i"]
@@ -813,10 +813,10 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tojek"]
 _data = {
-"RESET": SubResource("Animation_edlkp"),
-"advance": SubResource("Animation_wymuf"),
-"entrance": SubResource("Animation_6tgfi"),
-"idle": SubResource("Animation_ji18w")
+&"RESET": SubResource("Animation_edlkp"),
+&"advance": SubResource("Animation_wymuf"),
+&"entrance": SubResource("Animation_6tgfi"),
+&"idle": SubResource("Animation_ji18w")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_idcmu"]

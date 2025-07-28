@@ -12,11 +12,14 @@ func _ready() -> void:
 	GameEvents.ability_access_changed.connect(on_ability_access_changed)
 
 func on_ability_access_changed(ability: String) -> void:
+	print("I am " + ability_name + " listening at " + ability)
 	if not ability == ability_name:
 		return
+	print("I am " + ability_name + " and I activated.")
 	power_change(GameState.check_ability(ability_name))
 
 func power_change(power: bool) -> void:
+	print("I am " + ability_name + " changing power to ", power)
 	powered = power
 	power_changed.emit(powered)
 

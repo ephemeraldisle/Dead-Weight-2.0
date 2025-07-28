@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dvl23gobvxmx"]
 
 [ext_resource type="Texture2D" uid="uid://5elhfg0itwc" path="res://Art/UI/ECG/ECG.svg" id="1_dqm1l"]
-[ext_resource type="Script" path="res://Scripts/UI/Player/ekg.gd" id="1_gx1eo"]
+[ext_resource type="Script" uid="uid://c31amjf8gyq2l" path="res://Scripts/UI/Player/ekg.gd" id="1_gx1eo"]
 [ext_resource type="AudioStream" uid="uid://js2qt7tmsc6j" path="res://Audio/UI/ECG/beeper.wav" id="2_4vqxk"]
 [ext_resource type="Texture2D" uid="uid://bes5oflofx3dd" path="res://Art/UI/ECG/ecg window.svg" id="2_jwwk8"]
 [ext_resource type="Texture2D" uid="uid://bgdg00v7sqhv4" path="res://Art/UI/ECG/glassPanel_cornerTL.png" id="2_ofqay"]
@@ -119,8 +119,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brwiu"]
 _data = {
-"RESET": SubResource("Animation_cn57k"),
-"pulse": SubResource("Animation_cx7ed")
+&"RESET": SubResource("Animation_cn57k"),
+&"pulse": SubResource("Animation_cx7ed")
 }
 
 [sub_resource type="Animation" id="Animation_7mg1w"]
@@ -174,9 +174,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htg0v"]
 _data = {
-"RESET": SubResource("Animation_7mg1w"),
-"beat": SubResource("Animation_cjjyb"),
-"statuschange": SubResource("Animation_osy2c")
+&"RESET": SubResource("Animation_7mg1w"),
+&"beat": SubResource("Animation_cjjyb"),
+&"statuschange": SubResource("Animation_osy2c")
 }
 
 [sub_resource type="Gradient" id="Gradient_x8flh"]

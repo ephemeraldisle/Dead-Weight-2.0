@@ -1,12 +1,12 @@
 [gd_scene load_steps=26 format=3 uid="uid://bs1ax2n2enoln"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Player/battery_meter.gd" id="1_rn33s"]
+[ext_resource type="Script" uid="uid://bih3qp3xph8yh" path="res://Scripts/UI/Player/battery_meter.gd" id="1_rn33s"]
 [ext_resource type="Texture2D" uid="uid://2fo8homs1gar" path="res://Art/UI/Battery/battery 0.svg" id="2_teiuf"]
 [ext_resource type="Texture2D" uid="uid://bgngu6myjorfy" path="res://Art/UI/Battery/battery 0.25.svg" id="3_iabhq"]
 [ext_resource type="Texture2D" uid="uid://gvhufc0d7w5l" path="res://Art/UI/Battery/battery 0.5.svg" id="4_uajie"]
 [ext_resource type="Texture2D" uid="uid://ca2td56fr5fau" path="res://Art/UI/Battery/battery 0.75.svg" id="5_uhjp6"]
 [ext_resource type="Texture2D" uid="uid://tkutpyc135i7" path="res://Art/UI/Battery/full battery.svg" id="6_4gutn"]
-[ext_resource type="Script" path="res://Scripts/UI/Player/IndividualBattery.gd" id="7_jw7tm"]
+[ext_resource type="Script" uid="uid://cjimdfvytmquy" path="res://Scripts/UI/Player/IndividualBattery.gd" id="7_jw7tm"]
 [ext_resource type="Texture2D" uid="uid://ck3nlp0pu3n3t" path="res://Art/UI/Battery/battery fill bar shading.svg" id="8_s4tbg"]
 [ext_resource type="Texture2D" uid="uid://igcxemyvhpwg" path="res://Art/Particles/electric.svg" id="9_4gepj"]
 [ext_resource type="Texture2D" uid="uid://cst3s1v1b1qra" path="res://Resources/Textures/battery textures.tres" id="10_ww28s"]
@@ -140,10 +140,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dc7n5"]
 _data = {
-"RESET": SubResource("Animation_kghdt"),
-"on": SubResource("Animation_a2crq"),
-"poweroff": SubResource("Animation_awkym"),
-"poweron": SubResource("Animation_08w1n")
+&"RESET": SubResource("Animation_kghdt"),
+&"on": SubResource("Animation_a2crq"),
+&"poweroff": SubResource("Animation_awkym"),
+&"poweron": SubResource("Animation_08w1n")
 }
 
 [sub_resource type="Gradient" id="Gradient_g32v7"]
@@ -154,7 +154,7 @@ colors = PackedColorArray(0.960784, 0.843137, 0.615686, 0, 0.729412, 0.729412, 0
 gradient = SubResource("Gradient_g32v7")
 
 [sub_resource type="Curve" id="Curve_2b0cs"]
-max_value = 368.19
+_limits = [0.0, 368.19, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, 0.0, 0, 0, Vector2(0.03, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -170,12 +170,15 @@ curve = SubResource("Curve_bv5mu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gbh2u"]
 lifetime_randomness = 0.13
+particle_flag_align_y = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 1)
 emission_ring_height = 2.32
 emission_ring_radius = 51.29
 emission_ring_inner_radius = 47.27
-particle_flag_align_y = true
+emission_ring_cone_angle = 90.0
+angle_min = -163.6
+angle_max = 147.3
 direction = Vector3(1, 1, 0)
 spread = 180.0
 flatness = 1.0
@@ -183,8 +186,6 @@ gravity = Vector3(0, 0, 0)
 radial_accel_min = 70.45
 radial_accel_max = 88.64
 radial_accel_curve = SubResource("CurveTexture_evr1i")
-angle_min = -163.6
-angle_max = 147.3
 scale_min = 0.04
 scale_max = 0.07
 scale_curve = SubResource("CurveTexture_qom2p")

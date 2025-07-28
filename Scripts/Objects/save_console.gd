@@ -14,7 +14,7 @@ var resource = preload("res://Dialogue/interactions.dialogue")
 @onready var ping_animation = $PingAnimation
 
 func do_action():
-	#print("gonna act now thx")
+	print("gonna save now thx")
 	audio.play()
 	
 	GameEvents.emit_water_collected(g.MAX_WATER_PERCENT)
@@ -26,7 +26,7 @@ func do_action():
 	balloon.place_balloon(dialogue_placer.global_position)
 	balloon.start(resource, title)
 	await DialogueManager.dialogue_ended
-	#print("dialogue is over now!")
+	print("dialogue is over now!")
 	GameState.update_spawn_position(spawn_position)
 	GameState.total_save()
 	action_finished.emit()

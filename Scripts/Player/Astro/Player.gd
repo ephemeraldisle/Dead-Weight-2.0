@@ -33,9 +33,9 @@ var _recent_damage := false
 func _ready() -> void:
 	#GlobalCamera.follow_node(self)
 	if not GameState.state.abilities.gun:
-		GameEvents.gun_collected.connect(_enable_gun)
+		GameEvents.ability_access_changed.connect(_enable_gun)
 	else:
-		_enable_gun()
+		_enable_gun("gun")
 	SharedPlayerManager.player = self
 #	if GameState.tutorial_complete || GameState.death_enabled:
 #		enable_all_ui()
@@ -84,8 +84,8 @@ func _spawn_head_collision_particles() -> void:
 	particles.global_position = _head_area.global_position
 	particles.emitting = true
 
-
-func _enable_gun() -> void:
+func _enable_gun(ability_name: String) -> void:
+	if ability_name != "gun": return
 	_gun_art.visible = true
 	_gun_arm.target = null
 
@@ -93,8 +93,6 @@ func _enable_gun() -> void:
 func _normalize_angle(angle: float) -> float:
 	return fmod(angle + FULL_ROTATION, FULL_ROTATION)
 
-
-	
 func player_take_damage(impulse: Vector2) -> void:
 	if _recent_damage: return
 	player_damaged.emit()

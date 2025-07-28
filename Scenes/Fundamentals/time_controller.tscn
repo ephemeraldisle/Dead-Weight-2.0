@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbxn35faud03a"]
 
-[ext_resource type="Script" path="res://Scripts/Autoload/time_controller.gd" id="1_pn4qi"]
+[ext_resource type="Script" uid="uid://xqccqrfvsxa8" path="res://Scripts/Autoload/time_controller.gd" id="1_pn4qi"]
 
 [node name="TimeController" type="Node"]
 process_mode = 1

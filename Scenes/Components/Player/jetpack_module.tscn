@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccdapjnk4pmbt"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Modules/jetpack_module.gd" id="1_xdcwn"]
+[ext_resource type="Script" uid="uid://igkcmb1782ek" path="res://Scripts/Player/Modules/jetpack_module.gd" id="1_xdcwn"]
 [ext_resource type="Texture2D" uid="uid://bnjhswvpb476j" path="res://Art/Particles/smoke_02.png" id="2_87hyr"]
 [ext_resource type="Texture2D" uid="uid://bylh0nyxa1vnv" path="res://Art/Player/dirtCliff_right.png" id="3_gtfh3"]
 [ext_resource type="AudioStream" uid="uid://ie2r4sp53y27" path="res://Audio/Objects/Player/Astro/512815__mostyxs__good-jetpack-sound-loop.wav" id="4_ktkwa"]
@@ -34,9 +34,9 @@ position = Vector2(-1, 26)
 scale = Vector2(0.75, 1)
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_p5dux")
 texture = ExtResource("2_87hyr")
 lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_p5dux")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2

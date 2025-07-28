@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0c65s"]
 _data = {
-"RESET": SubResource("Animation_6820s"),
-"default": SubResource("Animation_tfi4e")
+&"RESET": SubResource("Animation_6820s"),
+&"default": SubResource("Animation_tfi4e")
 }
 
 [node name="InteractablePrompt" type="Node2D"]

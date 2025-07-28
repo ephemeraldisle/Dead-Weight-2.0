@@ -1,8 +1,8 @@
-[gd_scene load_steps=220 format=3 uid="uid://dmvkm5ouu0lnd"]
+[gd_scene load_steps=221 format=3 uid="uid://dmvkm5ouu0lnd"]
 
 [ext_resource type="Material" uid="uid://ctbaan0qf40hr" path="res://Resources/Materials/tile_shader.tres" id="1_a3mvc"]
 [ext_resource type="PackedScene" uid="uid://buuhc6ktc4orh" path="res://Scenes/Environment/parallax_background_space.tscn" id="1_a8rnd"]
-[ext_resource type="Script" path="res://Scripts/Environment/main.gd" id="1_ji81j"]
+[ext_resource type="Script" uid="uid://ud60jkkmpdo2" path="res://Scripts/Environment/main.gd" id="1_ji81j"]
 [ext_resource type="PackedScene" uid="uid://cqqi5h3fb3eoj" path="res://Scenes/Levels/Tiles/big_tilemap.tscn" id="2_skake"]
 [ext_resource type="PackedScene" uid="uid://ca68d1662dfc" path="res://Scenes/Objects/Environment/Toggleables/door.tscn" id="5_6bcy1"]
 [ext_resource type="PackedScene" uid="uid://bl4x0ktce5gsp" path="res://Scenes/Objects/Environment/Togglers/control_panel.tscn" id="6_gbw75"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://7blqfr6i1rfj" path="res://Scenes/Objects/Environment/Toggleables/Traps/long_spike_trap.tscn" id="11_1hoxj"]
 [ext_resource type="PackedScene" uid="uid://bdupa46nloidk" path="res://Scenes/Objects/Environment/Toggleables/Traps/big_laser_trap.tscn" id="12_bi31i"]
 [ext_resource type="PackedScene" uid="uid://bbhc3j087wtxl" path="res://Scenes/Objects/Environment/Toggleables/Traps/saw_track.tscn" id="12_f607i"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/wire.gdshader" id="13_nowdy"]
+[ext_resource type="Shader" uid="uid://lvv8i8h0itck" path="res://Scripts/Shaders/wire.gdshader" id="13_nowdy"]
 [ext_resource type="PackedScene" uid="uid://b6pqpgnnjyp7p" path="res://Scenes/Objects/Environment/Toggleables/Traps/turret.tscn" id="13_ulx8t"]
 [ext_resource type="PackedScene" uid="uid://drj6k528vq4no" path="res://Scenes/Objects/Pickups/pickup_spawner.tscn" id="20_prrcb"]
 [ext_resource type="Texture2D" uid="uid://bv4g3t6nddt1b" path="res://Art/Environment/Objects/power node.png" id="21_7puoi"]
@@ -1223,8 +1223,12 @@ fill = 1
 fill_from = Vector2(0.0683761, 0.474359)
 fill_to = Vector2(1, 0.384937)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ft5ub"]
-size = Vector2(1000, 1000)
+[sub_resource type="Gradient" id="Gradient_56s34"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v8chn"]
+gradient = SubResource("Gradient_56s34")
+fill_from = Vector2(0, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ji81j")
@@ -1398,6 +1402,7 @@ position = Vector2(-1470, -448)
 
 [node name="Wire" parent="SECTION_1/INTRO_ROOM/WireHolder" instance=ExtResource("8_ls52l")]
 z_index = 15
+z_as_relative = false
 position = Vector2(-386, -620)
 curve = SubResource("Curve2D_hwv2x")
 on_material = SubResource("ShaderMaterial_t3x4q")
@@ -3346,15 +3351,21 @@ energy = 3.23
 range_item_cull_mask = 512
 texture = SubResource("GradientTexture2D_w447r")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasModulate"]
+visible = false
+position = Vector2(-66, -385)
+energy = 0.9
+blend_mode = 2
+
 [node name="WireLight" type="PointLight2D" parent="CanvasModulate"]
-position = Vector2(-1856, -951)
-rotation = -1.57079
+position = Vector2(-2382, -1987)
 scale = Vector2(30.3537, 32.3313)
 energy = 0.75
 blend_mode = 2
 range_item_cull_mask = 32768
-texture = SubResource("PlaceholderTexture2D_ft5ub")
+texture = SubResource("GradientTexture2D_v8chn")
 texture_scale = 50.0
+height = 1545.0
 
 [node name="TurretMaster" parent="." instance=ExtResource("28_uh6aq")]
 

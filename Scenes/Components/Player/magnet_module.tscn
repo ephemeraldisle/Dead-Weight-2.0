@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0i0vf4geewcj"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Modules/Magnet Module.gd" id="1_qpcpe"]
+[ext_resource type="Script" uid="uid://bwld6b4hkhqdl" path="res://Scripts/Player/Modules/Magnet Module.gd" id="1_qpcpe"]
 [ext_resource type="PackedScene" uid="uid://cjpkpflus3c0r" path="res://Scenes/Components/Player/ability_power_controller.tscn" id="2_42isc"]
 [ext_resource type="Texture2D" uid="uid://b5qi2wers0ldt" path="res://Art/Player/Tank/tankmagnet.png" id="3_ein21"]
 [ext_resource type="AudioStream" uid="uid://blxukddjdx6hp" path="res://Audio/Objects/Player/Tank/magnetloop.mp3" id="4_pr5bo"]
@@ -66,8 +66,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlwih"]
 _data = {
-"RESET": SubResource("Animation_j8scl"),
-"extend": SubResource("Animation_1p6nq")
+&"RESET": SubResource("Animation_j8scl"),
+&"extend": SubResource("Animation_1p6nq")
 }
 
 [sub_resource type="Gradient" id="Gradient_qqlo5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkpsfvlrv5ymc"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/turret_master.gd" id="1_0b1jw"]
+[ext_resource type="Script" uid="uid://dltvy838vlank" path="res://Scripts/Objects/turret_master.gd" id="1_0b1jw"]
 
 [node name="TurretMaster" type="Node" groups=["turret_master"]]
 process_mode = 1

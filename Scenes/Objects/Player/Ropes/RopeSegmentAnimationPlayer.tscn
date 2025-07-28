@@ -82,8 +82,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_10kuy"]
 _data = {
-"RESET": SubResource("Animation_3jsks"),
-"pump": SubResource("Animation_uk426")
+&"RESET": SubResource("Animation_3jsks"),
+&"pump": SubResource("Animation_uk426")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]

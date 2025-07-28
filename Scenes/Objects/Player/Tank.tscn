@@ -1,19 +1,19 @@
 [gd_scene load_steps=75 format=3 uid="uid://5xkp2n7lbo7x"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://uwvuoyaqlumx" path="res://Resources/Physics Materials/playerphysicsmaterial.tres" id="1_j445f"]
-[ext_resource type="Script" path="res://Scripts/Player/Tank/Tank.gd" id="1_rjyx0"]
-[ext_resource type="Texture2D" uid="uid://bo6j26vrkq6s5" path="res://Art/Player/Tank/LILGUYS.svg" id="2_can6j"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/outline.gdshader" id="3_5583u"]
+[ext_resource type="Script" uid="uid://kvncbugkoao3" path="res://Scripts/Player/Tank/Tank.gd" id="1_rjyx0"]
+[ext_resource type="Shader" uid="uid://h3bshh0hvwrj" path="res://Scripts/Shaders/outline.gdshader" id="3_5583u"]
 [ext_resource type="Texture2D" uid="uid://docx0qqt25n3k" path="res://Art/Player/Tank/mouth2.png" id="3_h8kbu"]
 [ext_resource type="Texture2D" uid="uid://bu3xhuundkdhi" path="res://Art/Player/Tank/eye holder.svg" id="3_qe3rf"]
 [ext_resource type="Texture2D" uid="uid://dm01f5kb2x85u" path="res://Art/Player/Tank/eye ball.svg" id="4_atax5"]
+[ext_resource type="Texture2D" uid="uid://bngkin0n7x3le" path="res://Art/Player/Tank/LILGUYS.png" id="4_cwfi2"]
 [ext_resource type="PackedScene" uid="uid://ce7rh3vtcmies" path="res://Scenes/Components/Universal/ping_animation.tscn" id="5_0ib4i"]
 [ext_resource type="Texture2D" uid="uid://cvuarc0yqhe2m" path="res://Art/Player/Tank/eyebrow.png" id="5_bcr6x"]
 [ext_resource type="PackedScene" uid="uid://bf2m6g8fuvyo5" path="res://Scenes/Components/Player/action_finder.tscn" id="6_ahqjg"]
 [ext_resource type="Texture2D" uid="uid://ufgcvwivabk7" path="res://Art/Faces/tank worried.png" id="6_b3tie"]
 [ext_resource type="Texture2D" uid="uid://o3qk8khlp31s" path="res://Art/Faces/tank confused.png" id="6_u4pmg"]
 [ext_resource type="Texture2D" uid="uid://bo6qweedev5g4" path="res://Art/Faces/tank determined.png" id="7_dub0d"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/blinky.gdshader" id="7_ec5ib"]
+[ext_resource type="Shader" uid="uid://b24kxpquvo8jq" path="res://Scripts/Shaders/blinky.gdshader" id="7_ec5ib"]
 [ext_resource type="Texture2D" uid="uid://6g8uxr81lwpr" path="res://Art/Player/Tank/eyebrow2.png" id="7_g2wqk"]
 [ext_resource type="Texture2D" uid="uid://7y4kqexqljn5" path="res://Art/Faces/tank happy.png" id="8_2wljt"]
 [ext_resource type="Texture2D" uid="uid://c7kckn08t5tsv" path="res://Art/Player/Tank/blinker.png" id="8_hogxd"]
@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://demu11mu3a5b1" path="res://Art/Player/Tank/mouth1.png" id="16_upsqu"]
 [ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="19_pcqb3"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="24_1rugv"]
-[ext_resource type="Script" path="res://Scripts/Player/Tank/ExpressionManager.gd" id="31_36umq"]
+[ext_resource type="Script" uid="uid://hkrjm8netaah" path="res://Scripts/Player/Tank/ExpressionManager.gd" id="31_36umq"]
 [ext_resource type="PackedScene" uid="uid://bayla3pm7wq78" path="res://Scenes/Components/Player/shield_module.tscn" id="34_sjcxy"]
 [ext_resource type="PackedScene" uid="uid://d4elk6omn8qmt" path="res://Scenes/Components/Player/player_bump_noise_trigger.tscn" id="35_fw5iy"]
 [ext_resource type="PackedScene" uid="uid://d0i0vf4geewcj" path="res://Scenes/Components/Player/magnet_module.tscn" id="37_cpaf8"]
@@ -61,52 +61,52 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(4, 4)
 shader_parameter/noise = SubResource("NoiseTexture2D_a3jor")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g8ghr"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw0qp"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(0, 378, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j5r4s"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft7jg"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(378, 378, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_05ewk"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n55do"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(756, 378, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jolpy"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mme3l"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(1134, 378, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_itl1m"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5qyf"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(0, 0, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jfh4"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl5u8"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(378, 0, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yb8jl"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa6td"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(756, 0, 378, 378)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8lt7r"]
-atlas = ExtResource("2_can6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtyke"]
+atlas = ExtResource("4_cwfi2")
 region = Rect2(1134, 0, 378, 378)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o2tow"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g8ghr")
+"texture": SubResource("AtlasTexture_mw0qp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j5r4s")
+"texture": SubResource("AtlasTexture_ft7jg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_05ewk")
+"texture": SubResource("AtlasTexture_n55do")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jolpy")
+"texture": SubResource("AtlasTexture_mme3l")
 }],
 "loop": true,
 "name": &"rest",
@@ -114,16 +114,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_itl1m")
+"texture": SubResource("AtlasTexture_n5qyf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jfh4")
+"texture": SubResource("AtlasTexture_yl5u8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yb8jl")
+"texture": SubResource("AtlasTexture_qa6td")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8lt7r")
+"texture": SubResource("AtlasTexture_rtyke")
 }],
 "loop": true,
 "name": &"walk",
@@ -282,10 +282,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mn03v"]
 _data = {
-"RESET": SubResource("Animation_0xar8"),
-"no_shield": SubResource("Animation_55xxs"),
-"on": SubResource("Animation_aumo5"),
-"shieldbreak": SubResource("Animation_w5c12")
+&"RESET": SubResource("Animation_0xar8"),
+&"no_shield": SubResource("Animation_55xxs"),
+&"on": SubResource("Animation_aumo5"),
+&"shieldbreak": SubResource("Animation_w5c12")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxpla"]
@@ -1744,11 +1744,11 @@ tracks/25/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucykm"]
 _data = {
-"RESET": SubResource("Animation_1pn2x"),
-"concentrating": SubResource("Animation_dy5l2"),
-"happy": SubResource("Animation_b16mh"),
-"hurt": SubResource("Animation_nom6i"),
-"worried": SubResource("Animation_l7xko")
+&"RESET": SubResource("Animation_1pn2x"),
+&"concentrating": SubResource("Animation_dy5l2"),
+&"happy": SubResource("Animation_b16mh"),
+&"hurt": SubResource("Animation_nom6i"),
+&"worried": SubResource("Animation_l7xko")
 }
 
 [sub_resource type="Animation" id="Animation_mroc6"]
@@ -1809,8 +1809,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eln2e"]
 _data = {
-"RESET": SubResource("Animation_mroc6"),
-"eye movement": SubResource("Animation_r0pt2")
+&"RESET": SubResource("Animation_mroc6"),
+&"eye movement": SubResource("Animation_r0pt2")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm70l"]
@@ -1885,11 +1885,12 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_o2tow")
 animation = &"rest"
 autoplay = "rest"
+frame_progress = 0.46345
 
 [node name="ShieldAnimator" type="AnimationPlayer" parent="Art/Body"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_mn03v")
+&"": SubResource("AnimationLibrary_mn03v")
 }
 autoplay = "no_shield"
 
@@ -2013,13 +2014,13 @@ flip_h = true
 [node name="Expressions" type="AnimationPlayer" parent="Art/EyeHolders"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_ucykm")
+&"": SubResource("AnimationLibrary_ucykm")
 }
 
 [node name="EyeBobber" type="AnimationPlayer" parent="Art"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_eln2e")
+&"": SubResource("AnimationLibrary_eln2e")
 }
 autoplay = "eye movement"
 
@@ -2072,13 +2073,13 @@ unique_name_in_owner = true
 position = Vector2(0, -1)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_afhbq")
 texture = ExtResource("19_pcqb3")
 lifetime = 2.0
 one_shot = true
 speed_scale = 3.84
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_afhbq")
 
 [node name="ExpressionManager" type="Area2D" parent="." node_paths=PackedStringArray("target_tracker")]
 visible = false

@@ -14,4 +14,3 @@ func collect() -> void:
 func on_area_entered(other_area: Area2D) -> void:
 	animation_player.stop()
 	super(other_area)
-

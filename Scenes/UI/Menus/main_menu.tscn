@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://gkgo4t5s1h7x"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Menus/main_menu.gd" id="1_jliru"]
+[ext_resource type="Script" uid="uid://dh4p3arap7vg7" path="res://Scripts/UI/Menus/main_menu.gd" id="1_jliru"]
 [ext_resource type="Texture2D" uid="uid://dy7baby5ksfpr" path="res://Art/Menus/deadweight title alone.svg" id="2_676wp"]
 [ext_resource type="Texture2D" uid="uid://c07umaqwoigfc" path="res://Art/Menus/bigship.png" id="2_fy7nj"]
 [ext_resource type="Theme" uid="uid://cexmcmmcmil1d" path="res://Resources/UI/kenneyUI.tres" id="4_8nn3a"]
 [ext_resource type="PackedScene" uid="uid://d3ooplnmbcpgt" path="res://Scenes/UI/Scenes/explosion_spawner.tscn" id="5_y85r3"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/crt_with_fisheye.gdshader" id="6_irfxy"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/crtagain.gdshader" id="7_klb3i"]
+[ext_resource type="Shader" uid="uid://ddn6vj1fr84rk" path="res://Scripts/Shaders/crt_with_fisheye.gdshader" id="6_irfxy"]
+[ext_resource type="Shader" uid="uid://bispnrkk3rxer" path="res://Scripts/Shaders/crtagain.gdshader" id="7_klb3i"]
 [ext_resource type="PackedScene" uid="uid://bxebxj7d50njp" path="res://Scenes/Audio/rumble_looper.tscn" id="8_yygft"]
 [ext_resource type="AudioStream" uid="uid://c0nwfxwtfwo36" path="res://Audio/Music/Sci_Fi_Alarm_Loop_15.wav" id="9_xptvl"]
 [ext_resource type="AudioStream" uid="uid://ctm4dk11l5f1j" path="res://Audio/Music/Sci_Fi_Alarm_Loop_13.wav" id="10_brde6"]
@@ -82,8 +82,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2t8l"]
 _data = {
-"RESET": SubResource("Animation_uf2yk"),
-"enter": SubResource("Animation_kccgd")
+&"RESET": SubResource("Animation_uf2yk"),
+&"enter": SubResource("Animation_kccgd")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ixk46"]

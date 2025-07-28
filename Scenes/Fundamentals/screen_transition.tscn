@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlfb53trmcaek"]
 
-[ext_resource type="Script" path="res://Scripts/Autoload/screen_transition.gd" id="1_nu8uj"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/glitchtrans.gdshader" id="2_ilje8"]
+[ext_resource type="Script" uid="uid://djxkjatyy43ht" path="res://Scripts/Autoload/screen_transition.gd" id="1_nu8uj"]
+[ext_resource type="Shader" uid="uid://dd7dr5m6mm4k4" path="res://Scripts/Shaders/glitchtrans.gdshader" id="2_ilje8"]
 [ext_resource type="AudioStream" uid="uid://d4ltry0syyciq" path="res://Audio/UI/Sequence_06.wav" id="3_jdiwy"]
 
 [sub_resource type="Animation" id="Animation_w5ayx"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_je03n"]
 _data = {
-"RESET": SubResource("Animation_w5ayx"),
-"default": SubResource("Animation_pc3b3")
+&"RESET": SubResource("Animation_w5ayx"),
+&"default": SubResource("Animation_pc3b3")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_miwwg"]

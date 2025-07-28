@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dsurnmyedsdo5"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Player/water_meter.gd" id="1_k0g2m"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/water_meter.gdshader" id="2_pfgyn"]
+[ext_resource type="Script" uid="uid://ce3n452wqn7oa" path="res://Scripts/UI/Player/water_meter.gd" id="1_k0g2m"]
+[ext_resource type="Shader" uid="uid://cnlq2gpmksti4" path="res://Scripts/Shaders/water_meter.gdshader" id="2_pfgyn"]
 [ext_resource type="Texture2D" uid="uid://cwqmj66y1mys1" path="res://Art/UI/Water/roundedrect.png" id="3_64fra"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/loading_fluid.gdshader" id="4_u76uw"]
+[ext_resource type="Shader" uid="uid://omde1t76ry37" path="res://Scripts/Shaders/loading_fluid.gdshader" id="4_u76uw"]
 [ext_resource type="Texture2D" uid="uid://dsx87sp7tkhmk" path="res://Art/UI/Water/roundedddrect.png" id="5_ehu82"]
 [ext_resource type="Texture2D" uid="uid://35sqdti6wyb4" path="res://Art/Particles/water-drop.svg" id="6_ilxua"]
 

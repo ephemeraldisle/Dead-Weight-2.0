@@ -17,19 +17,17 @@ curve = SubResource("Curve_kvd6j")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ehxtf"]
 lifetime_randomness = 1.0
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 1.0
-particle_flag_disable_z = true
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 66.03
-initial_velocity_max = 122.07
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-damping_min = 100.0
-damping_max = 100.0
 angle_min = -720.0
 angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 66.03
+initial_velocity_max = 122.07
+gravity = Vector3(0, 0, 0)
+damping_min = 100.0
+damping_max = 100.0
 scale_min = 0.35
 scale_curve = SubResource("CurveTexture_2vq5s")
 color_ramp = SubResource("GradientTexture1D_b6iqi")
@@ -128,8 +126,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvxae"]
 _data = {
-"RESET": SubResource("Animation_jyiri"),
-"default": SubResource("Animation_xyfvx")
+&"RESET": SubResource("Animation_jyiri"),
+&"default": SubResource("Animation_xyfvx")
 }
 
 [node name="GPUParticles2D" type="GPUParticles2D"]

@@ -1,6 +1,7 @@
 ~ save_crystal
 do pause_game()
-if state.progression.tutorial_complete == true
+SAVR: hi
+if state.progression.tutorial_complete == false
 	SAVR: [speed=2]Temporal signature registration completed. Enjoy your [wave amp=25 freq=5]save juice[/wave]!
 	SUITS.U.: Great. I suggest we find other means of propulsion. Perhaps a firearm?
 	do alternate_face = 7

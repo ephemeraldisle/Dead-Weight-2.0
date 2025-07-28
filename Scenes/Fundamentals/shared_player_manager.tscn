@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bp4xcrakwe6wl"]
 
-[ext_resource type="Script" path="res://Scripts/Autoload/shared player manager.gd" id="1_shdlt"]
+[ext_resource type="Script" uid="uid://dvh7fs08k6ukg" path="res://Scripts/Autoload/shared player manager.gd" id="1_shdlt"]
 [ext_resource type="Texture2D" uid="uid://c2yn5ubrpfd5t" path="res://Art/icon.svg" id="2_2scta"]
 [ext_resource type="AudioStream" uid="uid://d1k12deehk832" path="res://Audio/Hurt Sounds/Robot/robohit.mp3" id="3_1txdn"]
 [ext_resource type="AudioStream" uid="uid://cavnptp542jp4" path="res://Audio/Hurt Sounds/Robot/robohit7.mp3" id="4_me8qp"]
@@ -20,17 +20,11 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nnmg"]
 streams_count = 6
 stream_0/stream = ExtResource("3_1txdn")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("4_me8qp")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("5_sdmau")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("6_mjwwd")
-stream_3/weight = 1.0
 stream_4/stream = ExtResource("7_vix1u")
-stream_4/weight = 1.0
 stream_5/stream = ExtResource("8_w4nov")
-stream_5/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mlapg"]
 playback_mode = 1
@@ -38,11 +32,8 @@ random_pitch = 1.2
 random_volume_offset_db = 1.0
 streams_count = 3
 stream_0/stream = ExtResource("11_upvq4")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("12_lf5od")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("13_0syl4")
-stream_2/weight = 1.0
 
 [node name="SharedPlayerManager" type="Node2D"]
 process_mode = 3
