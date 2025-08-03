@@ -30,6 +30,7 @@ FlowController="*res://Scripts/Autoload/flow_controller.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 g="*res://Scripts/Autoload/global_consts.gd"
 TimeController="*res://Scenes/Fundamentals/time_controller.tscn"
+TrapCoordinator="*res://Scenes/Fundamentals/trap_coordinator.tscn"
 
 [dialogue_manager]
 

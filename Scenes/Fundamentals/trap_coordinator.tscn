@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3t2m3q06qmam"]
+
+[ext_resource type="Script" uid="uid://yyftskhvqa6g" path="res://Scripts/Objects/trap_coordinator.gd" id="1_jj3ml"]
+
+[node name="TrapCoordinator" type="Node"]
+script = ExtResource("1_jj3ml")

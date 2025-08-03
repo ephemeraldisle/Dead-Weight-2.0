@@ -1397,6 +1397,7 @@ initial_delay = 0.0
 
 [node name="BigLaserTrap" parent="SECTION_1/INTRO_ROOM/Objects" instance=ExtResource("12_bi31i")]
 position = Vector2(-1470, -448)
+on_time = 1e+07
 
 [node name="WireHolder" type="Node2D" parent="SECTION_1/INTRO_ROOM"]
 

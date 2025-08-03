@@ -775,9 +775,9 @@ always_on = true
 sound_enabled = true
 off_time = -1.0
 initial_delay = 0.0
+debug = true
 
 [node name="PowerController" parent="." instance=ExtResource("2_lbmrj")]
-activatable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
@@ -819,7 +819,8 @@ bus = &"Sounds"
 [node name="LoopSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_khfxh")
-volume_db = -4.052
+volume_db = 3.983
+pitch_scale = 0.9
 max_distance = 1000.0
 attenuation = 1.62451
 panning_strength = 3.0

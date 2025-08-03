@@ -779,7 +779,7 @@ activatable = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_tg5ai")
-animation = &"Activate"
+animation = &"Inactive"
 autoplay = "Inactive"
 
 [node name="DamagingZone" type="Area2D" parent="."]
